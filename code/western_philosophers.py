@@ -33,23 +33,20 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
 
     # Unidecode first paragraph
     par = unidecode(soup.select('p')[0].get_text())
-    sentences = par.split('.')
+
+    # Split text on parentheses
+    split_par = re.split(r'[()]', par)
 
     # Calculate lifespan of philosopher
     all=string.maketrans('','')
     nodigs=all.translate(all, string.digits)
 
-    # Check for sentence that contains years person lived
-    for sentence in sentences:
-        lifespan = sentence.translate(all, nodigs)
+    # Check for item that contains years lived
+    for item in split_par:
+        lifespan = item.translate(all, nodigs)
         if len(lifespan) > 2:
             break
-
-    # Check if there were extra numbers in the sentence
-    if len(lifespan) > 8:
-        lifespan = lifespan[:8]
-
-    # Set Philosopher information (Make year negative if BC)
+# Set Philosopher information (Make year negative if BC)
     middle = len(lifespan) / 2
     try:
         phil_dict[name]['year_born'] = -1 * int(lifespan[:middle]) if birth == 'BC' else int(lifespan[:middle])
@@ -84,7 +81,7 @@ def get_image(name):
     url = unidecode(soup.img['src'])
 
     # Specify filepath for image and save it accordingly
-    filepath = 'images/' + name.lower().replace(' ', '_') + '.jpg'
+    filepath = '../images/' + name.lower().replace(' ', '_') + '.jpg'
     urllib.urlretrieve(url, filepath)
 
     return filepath
@@ -141,6 +138,8 @@ def ancient_time_period(time_period):
             url = base_url + name.lower() + '.html'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period)
+
+        phil_dict = thucydides(phil_dict)
 
     elif time_period == 'hellenistic':
         for name in philosophers:
@@ -410,6 +409,30 @@ def standardize_names(d, images=False):
             new_d[new_key.strip()]['Image'] = filepath
 
     return new_d
+
+def thucydides(d):
+    url = 'https://en.wikipedia.org/wiki/Thucydides'
+
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, 'html.parser')
+
+    name_tag = soup.select('h1#firstHeading')
+    name = unidecode(name_tag[0].string)
+
+    lifespan = soup.select('span')
+    birth = unidecode(lifespan[2].string)
+    death = unidecode(lifespan[4].string)
+    nationality = 'Greek'
+    time_period = 'Socratic'
+    western = True
+
+    d[name]['year_born'] = -1 * int(filter(str.isdigit, birth))
+    d[name]['year_died'] = -1 * int(filter(str.isdigit, death))
+    d[name]['time_period'] = time_period
+    d[name]['Nationality'] = nationality
+    d[name]['Western?'] = western
+
+    return d
 
 if __name__ == '__main__':
     western = western_philosophers()
