@@ -1,9 +1,6 @@
-import numpy as np
-import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
-from collections import defaultdict
 from default_ordered_dict import DefaultOrderedDict
 import re
 import string
@@ -410,15 +407,20 @@ def standardize_names(d, images=False):
 
     return new_d
 
+# Add Thucydides (not in original scrape) to data
 def thucydides(d):
+    # Url to use for Thucydides
     url = 'https://en.wikipedia.org/wiki/Thucydides'
 
+    # Request from url and parse html
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
 
+    # Get name
     name_tag = soup.select('h1#firstHeading')
     name = unidecode(name_tag[0].string)
 
+    # Find lifespan, set other features in entry
     lifespan = soup.select('span')
     birth = unidecode(lifespan[2].string)
     death = unidecode(lifespan[4].string)
@@ -426,6 +428,7 @@ def thucydides(d):
     time_period = 'Socratic'
     western = True
 
+    # Set the values in dictionary entry 'Thucydides'
     d[name]['year_born'] = -1 * int(filter(str.isdigit, birth))
     d[name]['year_died'] = -1 * int(filter(str.isdigit, death))
     d[name]['time_period'] = time_period
