@@ -4,8 +4,11 @@ from requests import get
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from collections import defaultdict
+from default_ordered_dict import DefaultOrderedDict
 import re
 import string
+import urllib
+import os
 
 # WESTERN PHILOSOPHERS
 
@@ -48,6 +51,23 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
 
     return phil_dict
 
+# Gets the image of specified philosopher
+def get_image(name):
+    img_url = '''https://www.google.com/search?site=imghp&tbm=isch&source=hp&biw=1440&bih=803&q={}&oq={}&
+                    gs_l=img.3..0l10.1021.2400.0.2681.10.7.0.3.3.0.82.519.7.7.0....0...
+                    1ac.1.64.img..0.10.523.IxXhEvSJyAw
+               '''.format(name, name)
+
+    r = get(img_url)
+    soup = BeautifulSoup(r.content, 'html.parser')
+
+    url = unidecode(soup.img['src'])
+
+    filepath = 'images/' + name.lower().replace(' ', '_') + '.jpg'
+    urllib.urlretrieve(url, filepath)
+
+    return filepath
+
 # Get information for philosophers of a certain era
 # for ancient time periods
 def ancient_time_period(time_period):
@@ -73,7 +93,7 @@ def ancient_time_period(time_period):
 
     # Base url for web pages
     base_url = 'http://www.philosophybasics.com/philosophers_'
-    phil_dict = defaultdict(dict)
+    phil_dict = DefaultOrderedDict(dict)
 
     # Determine url to get request from
     if time_period == 'presocratic':
@@ -97,13 +117,12 @@ def ancient_time_period(time_period):
 
             url = base_url + name.lower() + '.html'
 
-
             phil_dict = add_philosopher(url, name, phil_dict, time_period)
 
     elif time_period == 'hellenistic':
         for name in philosophers:
             if name == 'Zeno of Citium':
-                name = 'Zeno'
+                name = 'Zeno_Citrium'
                 birth, death = 'BC', 'BC'
                 url = base_url + 'zeno_citium.html'
 
@@ -129,9 +148,9 @@ def ancient_time_period(time_period):
                 url = base_url + name.lower() + '.html'
 
             elif name == 'St. Augustine of Hippo':
-                name = 'St_Augustine'
+                name = 'Augustine'
                 birth, death = 'AD', 'AD'
-                url = base_url + 'augustine.html'
+                url = base_url + name.lower() + '.html'
 
             else:
                 name = name.split(r'[, \. ' ']')[0]
@@ -140,7 +159,7 @@ def ancient_time_period(time_period):
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
 
-    return dict(phil_dict)
+    return phil_dict
 
 # Group dictionaries from ancient time period together
 def ancient_philosophers():
@@ -175,14 +194,13 @@ def medieval_time_period(time_period):
     philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
 
     base_url = 'http://www.philosophybasics.com/philosophers_'
-    phil_dict = defaultdict(dict)
+    phil_dict = DefaultOrderedDict(dict)
 
     if time_period == 'medieval':
 
         for name in philosophers:
 
             if name == 'Bacon, Roger':
-                name = 'Roger_Bacon'
                 url = base_url + 'bacon_roger.html'
 
             else:
@@ -209,7 +227,7 @@ def medieval_time_period(time_period):
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
 
-    return dict(phil_dict)
+    return phil_dict
 
 # Combine dictionaries from medieval time period
 def medieval_philosophers():
@@ -240,14 +258,14 @@ def modern_time_period(time_period):
     philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
 
     base_url = 'http://www.philosophybasics.com/philosophers_'
-    phil_dict = defaultdict(dict)
+    phil_dict = DefaultOrderedDict(dict)
 
     if time_period == 'reason':
         for name in philosophers:
 
-            name = name.split(',')[0]
+            name_temp = name.split(',')[0]
 
-            url = base_url + name.lower() + '.html'
+            url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
@@ -255,9 +273,9 @@ def modern_time_period(time_period):
     elif time_period == 'enlightenment':
         for  name in philosophers:
 
-            name = name.split(',')[0]
+            name_temp = name.split(',')[0]
 
-            url = base_url + name.lower() + '.html'
+            url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
@@ -266,17 +284,17 @@ def modern_time_period(time_period):
         for name in philosophers:
 
             if name == 'Friedrich Schelling':
-                name = 'Schelling'
+                name_temp = 'Schelling'
 
             else:
-                name = name.split(',')[0]
+                name_temp = name.split(',')[0]
 
-            url = base_url + name.lower() + '.html'
+            url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
 
-    return dict(phil_dict)
+    return phil_dict
 
 # Group modern philosophers together
 def modern_philosophers():
@@ -302,5 +320,54 @@ def western_philosophers():
 
     return western
 
+def find_nationality(d):
+    time_periods = ['presocratic', 'socratic', 'hellenistic', 'roman', 'medieval', 'renaissance', 'reason', \
+                   'enlightenment', 'modern']
+    for time_period in time_periods:
+        url = 'http://www.philosophybasics.com/historical_' + time_period + '.html'
+        r = get(url)
+        soup = BeautifulSoup(r.content, 'html.parser')
+        content = soup.select('font font')
+
+        nationals = []
+        for i in xrange(len(content)):
+            lst_words = [unidecode(x) for x in content[i].get_text().strip().split('\n')]
+            if len(lst_words) > 1:
+                nationals.append(lst_words)
+
+        nationals = [item for lst in nationals for item in lst]
+
+        i = 0
+        for name in d.iterkeys():
+            if d[name]['time_period'] == time_period:
+
+                components = re.split(r'\)', nationals[i])
+
+                d[name]['Nationality'] = components[-1].strip()
+
+                i += 1
+
+    return d
+
+def standardize_names(d, images=False):
+    new_d = DefaultOrderedDict(dict)
+    for key, value in d.iteritems():
+        components = re.split(r',', key)
+        new_key = ' '.join(x for x in components[::-1])
+
+        new_d[new_key.strip()] = value
+
+        if images: # Only set true on first run to load images
+            newpath = './images'
+            if not os.path.exists(newpath):
+                os.makedirs(newpath)
+
+            filepath = get_image(new_key.strip())
+            new_d[new_key.strip()]['Image'] = filepath
+
+    return new_d
+
 if __name__ == '__main__':
-	pass
+    western = western_philosophers()
+    western = find_nationality(western)
+    western = standardize_names(western)

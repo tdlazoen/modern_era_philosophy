@@ -15,8 +15,6 @@
 	* Classification (Western or Eastern)
 	* Time period (Renaissance, Industrial Revolution, etc..)
 	* List of famous works
-	* Summary
-	* Famous Quotes
 	* Year of Birth
 	* Year of Death
 
@@ -34,11 +32,13 @@
 * __Document Word Data__
 
 	* Word information for each document
+	* NMF, SVD, TF-IDF
 
 
 * __Philosopher Word Data__
 
 	* Word information for each given philosopher
+	* NMF, SVD, TF-IDF
 
 
 ### Insights
