@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from requests import get
+import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from collections import defaultdict
@@ -12,9 +12,23 @@ import os
 
 # WESTERN PHILOSOPHERS
 
-# Add the philosopher into the dictionary
+
 def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', western=True):
-    r = get(url)
+    '''
+    Add the philosopher's information to the dictionary
+
+    INPUT: url - the url that corresponds to the philosopher's profile
+           name - name of philosopher
+           phil_dict - the dictionary of philsoophers thus far
+           time_period - time from which philosopher is from
+           birth - Whether the philosopher was born in 'BC' or 'AD' era
+           birth - Whether the philosopher died in 'BC' or 'AD' era
+           western - Whether the philosopher is a western thinker or not
+
+    OUTPUT: philosopher dictionary updated with new philosopher's information
+    '''
+    # Request url
+    r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
 
     # Unidecode first paragraph
@@ -51,31 +65,39 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
 
     return phil_dict
 
-# Gets the image of specified philosopher
 def get_image(name):
+    '''
+    Saves the image of given philosopher and returns filepath
+    INPUT: name of philosopher
+    OUTPUT: filepath of image file
+    '''
+    # Google images url with search terms of name
     img_url = '''https://www.google.com/search?site=imghp&tbm=isch&source=hp&biw=1440&bih=803&q={}&oq={}&
                     gs_l=img.3..0l10.1021.2400.0.2681.10.7.0.3.3.0.82.519.7.7.0....0...
                     1ac.1.64.img..0.10.523.IxXhEvSJyAw
                '''.format(name, name)
-
-    r = get(img_url)
+    # Request url
+    r = requests.get(img_url)
     soup = BeautifulSoup(r.content, 'html.parser')
 
+    # Unidecode source url
     url = unidecode(soup.img['src'])
 
+    # Specify filepath for image and save it accordingly
     filepath = 'images/' + name.lower().replace(' ', '_') + '.jpg'
     urllib.urlretrieve(url, filepath)
 
     return filepath
 
-# Get information for philosophers of a certain era
-# for ancient time periods
 def ancient_time_period(time_period):
+    '''
+    Get information for philosophers of a certain era for ancient time periods
+    '''
     # Make Request to page of specific time period
-    r = get('http://www.philosophybasics.com/historical_' + time_period + '.html')
+    r = requests.get('http://www.philosophybasics.com/historical_' + time_period + '.html')
     soup = BeautifulSoup(r.content, 'html.parser')
 
-    # Get names of each philosopher from specified time period
+    # Determine the <a> tags that are philosopher names
     philosophers = soup.select('a')
     if time_period == 'presocratic':
         min_slice, max_slice = 11, 23
@@ -89,16 +111,17 @@ def ancient_time_period(time_period):
     else: # time_period == 'roman'
         min_slice, max_slice = 9, 14
 
+    # Return list of unidecoded philosopher names
     philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
 
-    # Base url for web pages
+    # Base url for philosopher profile pages
     base_url = 'http://www.philosophybasics.com/philosophers_'
     phil_dict = DefaultOrderedDict(dict)
 
     # Determine url to get request from
     if time_period == 'presocratic':
         for name in philosophers:
-
+            # Account for double name
             if name == 'Zeno of Elea':
                 name = 'Zeno_Elea'
 
@@ -121,11 +144,13 @@ def ancient_time_period(time_period):
 
     elif time_period == 'hellenistic':
         for name in philosophers:
+            # Account for double name
             if name == 'Zeno of Citium':
                 name = 'Zeno_Citrium'
                 birth, death = 'BC', 'BC'
                 url = base_url + 'zeno_citium.html'
 
+            # Account for inconsistency in url pattern
             elif name == 'Philo of Alexandria':
                 name = 'Philo'
                 birth, death = 'BC', 'AC'
@@ -161,8 +186,10 @@ def ancient_time_period(time_period):
 
     return phil_dict
 
-# Group dictionaries from ancient time period together
 def ancient_philosophers():
+    '''
+    Combine all ancient time period philosophers into one dictionary
+    '''
     pre_socratic = ancient_time_period('presocratic')
     socratic = ancient_time_period('socratic')
     hellenistic = ancient_time_period('hellenistic')
@@ -175,24 +202,28 @@ def ancient_philosophers():
 
     return ancient
 
-# Get information for philosophers of a certain era
-# for medieval time periods
 def medieval_time_period(time_period):
+    '''
+    Get information for philosophers of a certain era for medieval time periods
+    '''
     # Make Request to page of specific time period
-    r = get('http://www.philosophybasics.com/historical_' + time_period + '.html')
+    r = requests.get('http://www.philosophybasics.com/historical_' + time_period + '.html')
     soup = BeautifulSoup(r.content, 'html.parser')
 
     # Get names of each philosopher from specified time period
     philosophers = soup.select('a')
 
+    # Determine which <a> tags are philosopher names
     if time_period == 'medieval':
         min_slice, max_slice = 8, 18
 
     else: # time_period == 'renaissance'
         min_slice, max_slice = 12, 16
 
+    # Create list of unidecoded philosopher names
     philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
 
+    # Url for philosopher profile pages
     base_url = 'http://www.philosophybasics.com/philosophers_'
     phil_dict = DefaultOrderedDict(dict)
 
@@ -229,8 +260,11 @@ def medieval_time_period(time_period):
 
     return phil_dict
 
-# Combine dictionaries from medieval time period
+
 def medieval_philosophers():
+    '''
+    Combine all medieval philosophers into one dictionary
+    '''
     medieval = medieval_time_period('medieval')
     renaissance = medieval_time_period('renaissance')
 
@@ -239,11 +273,12 @@ def medieval_philosophers():
 
     return medieval
 
-# Get information for philosophers of a certain era
-# for modern time periods
 def modern_time_period(time_period):
+    '''
+    Get information for philosophers of a certain era for modern time period
+    '''
     # Make Request to page of specific time period
-    r = get('http://www.philosophybasics.com/historical_' + time_period + '.html')
+    r = requests.get('http://www.philosophybasics.com/historical_' + time_period + '.html')
     soup = BeautifulSoup(r.content, 'html.parser')
 
     # Get names of each philosopher from specified time period
@@ -296,8 +331,10 @@ def modern_time_period(time_period):
 
     return phil_dict
 
-# Group modern philosophers together
 def modern_philosophers():
+    '''
+    Combine all modern philosopher groups into one dictionary
+    '''
     reason = modern_time_period('reason')
     enlightenment = modern_time_period('enlightenment')
     modern = modern_time_period('modern')
@@ -308,8 +345,10 @@ def modern_philosophers():
 
     return modern_phil
 
-# Combine all western philosophers into one dictionary
 def western_philosophers():
+    '''
+    Combine all western philosophers into one dictionary
+    '''
     ancient = ancient_philosophers()
     medieval = medieval_philosophers()
     modern = modern_philosophers()
@@ -321,11 +360,16 @@ def western_philosophers():
     return western
 
 def find_nationality(d):
+    '''
+    Determine the nationality of each philosopher
+    INPUT: Dictionary (philosopher data)
+    OUTPUT: Dictionary with added nationality feature
+    '''
     time_periods = ['presocratic', 'socratic', 'hellenistic', 'roman', 'medieval', 'renaissance', 'reason', \
                    'enlightenment', 'modern']
     for time_period in time_periods:
         url = 'http://www.philosophybasics.com/historical_' + time_period + '.html'
-        r = get(url)
+        r = requests.get(url)
         soup = BeautifulSoup(r.content, 'html.parser')
         content = soup.select('font font')
 
