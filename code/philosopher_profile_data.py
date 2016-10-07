@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from default_ordered_dict import DefaultOrderedDict
-import re
 import string
 import urllib
 import os
+import re
+import time
 
 # WESTERN PHILOSOPHERS
-
 
 def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', western=True):
     '''
@@ -26,7 +26,7 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
     '''
     # Request url
     r = requests.get(url)
-    soup = BeautifulSoup(r.content, 'html.parser')
+    soup = BeautifulSoup(r.content, 'lxml')
 
     # Unidecode first paragraph
     par = unidecode(soup.select('p')[0].get_text())
@@ -43,7 +43,7 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
         lifespan = item.translate(all, nodigs)
         if len(lifespan) > 2:
             break
-# Set Philosopher information (Make year negative if BC)
+    # Set Philosopher information (Make year negative if BC)
     middle = len(lifespan) / 2
     try:
         phil_dict[name]['year_born'] = -1 * int(lifespan[:middle]) if birth == 'BC' else int(lifespan[:middle])
@@ -59,10 +59,10 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
 
     return phil_dict
 
-def get_image(name):
+def get_image(name, filepath):
     '''
     Saves the image of given philosopher and returns filepath
-    INPUT: name of philosopher
+    INPUT: filepath to save image to
     OUTPUT: filepath of image file
     '''
     # Google images url with search terms of name
@@ -77,11 +77,9 @@ def get_image(name):
     # Unidecode source url
     url = unidecode(soup.img['src'])
 
-    # Specify filepath for image and save it accordingly
-    filepath = '../images/' + name.lower().replace(' ', '_') + '.jpg'
+    # Save image to inputted filepath
     urllib.urlretrieve(url, filepath)
 
-    return filepath
 
 def ancient_time_period(time_period):
     '''
@@ -117,22 +115,22 @@ def ancient_time_period(time_period):
         for name in philosophers:
             # Account for double name
             if name == 'Zeno of Elea':
-                name = 'Zeno_Elea'
+                name_temp = 'Zeno_Elea'
 
             else:
                 # Split name into needed part only
-                name = name.split()[0]
+                name_temp = name.split()[0]
 
 
-            url = base_url + name.lower() + '.html'
+            url = base_url + name_temp.lower() + '.html'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period)
 
     elif time_period == 'socratic':
         for name in philosophers:
-            name = name.split()[0]
+            name_temp = name.split()[0]
 
-            url = base_url + name.lower() + '.html'
+            url = base_url + name_temp.lower() + '.html'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period)
 
@@ -142,7 +140,7 @@ def ancient_time_period(time_period):
         for name in philosophers:
             # Account for double name
             if name == 'Zeno of Citium':
-                name = 'Zeno_Citrium'
+                name_temp = 'Zeno_Citrium'
                 birth, death = 'BC', 'BC'
                 url = base_url + 'zeno_citium.html'
 
@@ -164,19 +162,22 @@ def ancient_time_period(time_period):
     else: # time_period == 'roman'
         for name in philosophers:
             if name == 'Cicero, Marcus Tullius':
-                name = 'Cicero'
+                name_temp = 'Cicero'
                 birth, death = 'BC', 'BC'
                 url = base_url + name.lower() + '.html'
 
+            elif name == 'Marcus Aurelius':
+                name_temp = name.replace(' ', '_')
+
             elif name == 'St. Augustine of Hippo':
-                name = 'Augustine'
+                name_temp = 'Augustine'
                 birth, death = 'AD', 'AD'
-                url = base_url + name.lower() + '.html'
+                url = base_url + name_temp.lower() + '.html'
 
             else:
-                name = name.split(r'[, \. ' ']')[0]
+                name_temp = re.split(r'[,()\.]', name)[0]
                 birth, death = 'AD', 'AD'
-                url = base_url + name.lower() + '.html'
+                url = base_url + name_temp.lower() + '.html'
 
             phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
 
@@ -231,8 +232,8 @@ def medieval_time_period(time_period):
                 url = base_url + 'bacon_roger.html'
 
             else:
-                name = name.split(r'[, ' ']')[0]
-                url = base_url + name.lower() + '.html'
+                name_temp = re.split(r'[(),\." "]', name)[0]
+                url = base_url + name_temp.lower() + '.html'
 
             birth, death = 'AD', 'AD'
 
@@ -243,12 +244,11 @@ def medieval_time_period(time_period):
         for name in philosophers:
 
             if name == 'Bacon, Sir Francis':
-                name = 'Sir_Francis_Bacon'
                 url = base_url + 'bacon_francis.html'
 
             else:
-                name = name.split(',')[0]
-                url = base_url + name.lower() + '.html'
+                name_temp = name.split(',')[0]
+                url = base_url + name_temp.lower() + '.html'
 
             birth, death = 'AD', 'AD'
 
@@ -353,6 +353,9 @@ def western_philosophers():
     western.update(medieval)
     western.update(modern)
 
+    western = find_nationality(western)
+    western = standardize_names(western)
+
     return western
 
 def find_nationality(d):
@@ -397,13 +400,16 @@ def standardize_names(d, images=False):
 
         new_d[new_key.strip()] = value
 
+        filepath = os.path.expanduser('~') + '/philosophy_capstone/images/' + new_key.strip().lower().replace(' ', '_') + '.jpg'
+
         if images: # Only set true on first run to load images
-            newpath = './images'
+            newpath = os.path.expanduser('~') + '/philosophy_capstone/images'
             if not os.path.exists(newpath):
                 os.makedirs(newpath)
 
-            filepath = get_image(new_key.strip())
-            new_d[new_key.strip()]['Image'] = filepath
+            get_image(new_key.strip(), filepath)
+
+        new_d[new_key.strip()]['image_path'] = filepath
 
     return new_d
 
@@ -439,5 +445,3 @@ def thucydides(d):
 
 if __name__ == '__main__':
     western = western_philosophers()
-    western = find_nationality(western)
-    western = standardize_names(western)
