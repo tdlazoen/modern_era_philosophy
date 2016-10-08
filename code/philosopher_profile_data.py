@@ -8,9 +8,34 @@ import os
 import re
 import time
 
+'''
+This file contains the steps taken to obtain the initial set of
+philosophers for analysis.  More philosophers were added to this
+set later.
+'''
+
 # WESTERN PHILOSOPHERS
 
-def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', western=True):
+def add_new(phil_dict, name, birth, death):
+    name, filepath = standardize_name(name, image=True)
+    phil_dict[name]['time_period'] = determine_time_period(phil_dict, birth)
+    phil_dict[name]['year_born'] = birth
+    phil_dict[name]['year_died'] = death
+    phil_dict[name]['image_path'] = filepath
+
+    return phil_dict
+
+def determine_time_period(phil_dict, birth):
+    time_periods = set([phil_dict[x]['time_period'] for x in phil_dict])
+    for time_period in time_periods:
+        years = [int(phil_dict[x]['year_born']) for x in phil_dict if phil_dict[x]['time_period'] == time_period]
+        min_year = min(years) - 20
+        max_year = max(years) + 20
+
+        if birth in range(min_year, max_year):
+            return time_period
+
+def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', death='BC'):
     '''
     Add the philosopher's information to the dictionary
 
@@ -55,7 +80,6 @@ def add_philosopher(url, name, phil_dict, time_period, birth='BC', death='BC', w
         phil_dict[name]['year_died'] = float('NaN')
 
     phil_dict[name]['time_period'] = time_period
-    phil_dict[name]['Western?'] = western
 
     return phil_dict
 
@@ -124,7 +148,7 @@ def ancient_time_period(time_period):
 
             url = base_url + name_temp.lower() + '.html'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period)
 
     elif time_period == 'socratic':
         for name in philosophers:
@@ -132,7 +156,7 @@ def ancient_time_period(time_period):
 
             url = base_url + name_temp.lower() + '.html'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period)
 
         phil_dict = thucydides(phil_dict)
 
@@ -157,7 +181,7 @@ def ancient_time_period(time_period):
             if name == 'Plotinus':
                 birth, death = 'AC', 'AC'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     else: # time_period == 'roman'
         for name in philosophers:
@@ -179,7 +203,7 @@ def ancient_time_period(time_period):
                 birth, death = 'AD', 'AD'
                 url = base_url + name_temp.lower() + '.html'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     return phil_dict
 
@@ -237,7 +261,7 @@ def medieval_time_period(time_period):
 
             birth, death = 'AD', 'AD'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     else: # time_period == 'Renaissance'
 
@@ -252,7 +276,7 @@ def medieval_time_period(time_period):
 
             birth, death = 'AD', 'AD'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     return phil_dict
 
@@ -299,7 +323,7 @@ def modern_time_period(time_period):
             url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     elif time_period == 'enlightenment':
         for  name in philosophers:
@@ -309,7 +333,7 @@ def modern_time_period(time_period):
             url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     else: # time_period == 'modern'
         for name in philosophers:
@@ -323,7 +347,7 @@ def modern_time_period(time_period):
             url = base_url + name_temp.lower() + '.html'
             birth, death = 'AD', 'AD'
 
-            phil_dict = add_philosopher(url, name, phil_dict, time_period, birth=birth, death=death)
+            phil_dict = add_initial_philosophers(url, name, phil_dict, time_period, birth=birth, death=death)
 
     return phil_dict
 
@@ -354,7 +378,7 @@ def western_philosophers():
     western.update(modern)
 
     western = find_nationality(western)
-    western = standardize_names(western)
+    western = standardize_initial_dict(western)
 
     return western
 
@@ -383,6 +407,8 @@ def find_nationality(d):
         i = 0
         for name in d.iterkeys():
             if d[name]['time_period'] == time_period:
+                if name == 'Thucydides':
+                    continue
 
                 components = re.split(r'\)', nationals[i])
 
@@ -392,24 +418,57 @@ def find_nationality(d):
 
     return d
 
-def standardize_names(d, images=False):
+# Standardize name of philosopher
+def standardize_name(name, image=False):
+
+    if 'Sir' in name:
+        components = re.split(r', Sir ', name)
+    else:
+        components = re.split(r',', name)
+    new_name = ' '.join(x for x in components[::-1])
+
+    try:
+        start = new_name.index('(')
+        end = new_name.index(')')
+
+        new_name = new_name[:start-1] + new_name[end+1:]
+
+    except ValueError:
+        pass
+
+    filepath = os.path.expanduser('~') + '/philosophy_capstone/images/' + new_name.strip().lower().replace(' ', '_') + '.jpg'
+
+    if image:
+        get_image(new_name.strip(), filepath)
+
+    return new_name.strip(), filepath
+
+# Add consistency across dataset
+def standardize_initial_dict(d, images=False):
+    if images: # Only set true on first run to load images
+        # Make new directory images
+        newpath = os.path.expanduser('~') + '/philosophy_capstone/images'
+        if not os.path.exists(newpath):
+            os.makedirs(newpath)
+
+    # Create a new dictionary
     new_d = DefaultOrderedDict(dict)
     for key, value in d.iteritems():
-        components = re.split(r',', key)
-        new_key = ' '.join(x for x in components[::-1])
 
-        new_d[new_key.strip()] = value
+        # Get cleaned name and filepath
+        new_key, filepath = standardize_name(key, images)
 
-        filepath = os.path.expanduser('~') + '/philosophy_capstone/images/' + new_key.strip().lower().replace(' ', '_') + '.jpg'
+        # Set the new key to the values of the dictionary
+        new_d[new_key] = value
+        if new_key == 'Voltaire':
+            new_d[new_key]['year_born'] = 1694
+            new_d[new_key]['year_died'] = 1778
+        elif new_key == 'Marcus Tullius Cicero':
+            new_d[new_key]['year_born'] = -1 * 106
+            new_d[new_key]['year_died'] = -1 * 43
 
-        if images: # Only set true on first run to load images
-            newpath = os.path.expanduser('~') + '/philosophy_capstone/images'
-            if not os.path.exists(newpath):
-                os.makedirs(newpath)
-
-            get_image(new_key.strip(), filepath)
-
-        new_d[new_key.strip()]['image_path'] = filepath
+        # Save the filepath location of the image
+        new_d[new_key]['image_path'] = filepath
 
     return new_d
 
@@ -431,7 +490,7 @@ def thucydides(d):
     birth = unidecode(lifespan[2].string)
     death = unidecode(lifespan[4].string)
     nationality = 'Greek'
-    time_period = 'Socratic'
+    time_period = 'socratic'
     western = True
 
     # Set the values in dictionary entry 'Thucydides'
@@ -439,9 +498,5 @@ def thucydides(d):
     d[name]['year_died'] = -1 * int(filter(str.isdigit, death))
     d[name]['time_period'] = time_period
     d[name]['Nationality'] = nationality
-    d[name]['Western?'] = western
 
     return d
-
-if __name__ == '__main__':
-    western = western_philosophers()
