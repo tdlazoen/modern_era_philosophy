@@ -143,4 +143,4 @@ if __name__ == '__main__':
 	# renaissance_philosophers(phils)
 	# reason_philosophers(phils)
 	# contemporary_philosophers(phils)
-	hellenistic_philosophers(phils)
+	# hellenistic_philosophers(phils)

@@ -23,13 +23,15 @@ class Philosophers(object):
 			if time_period is None:
 				time_period = self.determine_time_period(birth, death)
 
-			year_born = birth
-			year_died = death
+			era = self.determine_era(time_period)
+			century = self.determine_century(birth, death)
 
 			new_entry = {'name': name,
+						 'year_born': birth,
+						 'year_died': death,
+						 'century': century,
 						 'time_period': time_period,
-						 'year_born': year_born,
-						 'year_died': year_died,
+						 'era': era,
 						 'image_path': filepath}
 
 			self.df = self.df.append(new_entry, ignore_index=True)
@@ -48,6 +50,51 @@ class Philosophers(object):
 			diffs.append(birth_diff + death_diff)
 
 		return time_periods[diffs.index(np.nanmin(diffs))]
+
+	def determine_era(self, time_period):
+		'''
+		Returns the era of a philosopher given their
+		time period.
+		'''
+		if time_period in ['presocratic', 'socratic', 'hellenistic', 'roman']:
+			return 'ancient'
+		elif time_period in ['medieval', 'renaissance']:
+			return 'medieval'
+		elif time_period == 'contemporary':
+			return 'contemporary'
+		else:
+			return 'modern'
+
+	def determine_century(self, year_born, year_died):
+		if year_born < 0:
+			if year_died + (abs(year_died) % 100) == year_born + (abs(year_born) % 100):
+				return year_born + (abs(year_born) % 100)
+
+			elif abs(year_born) % 100 > 25:
+				return year_born + (abs(year_born) % 100)
+
+			else:
+				return (year_born + 100) + (abs(year_born) % 100)
+
+		elif year_born < 1900:
+			if year_died - (year_died % 100) == year_born - (year_born % 100):
+				return year_born - (year_born % 100)
+
+			elif year_born % 100 < 50:
+				return year_born - (year_born % 100)
+
+			else:
+				return (year_born + 100) - (year_born % 100)
+
+		else:
+			if year_died - (year_died % 100) == year_born - (year_born % 100):
+				return year_born - (year_born % 100)
+
+			elif year_born % 100 < 35:
+				return year_born - (year_born % 100)
+			else:
+				return (year_born + 100) - (year_born % 100)
+
 
 	def standardize_name(self, name, image=False):
 		'''
@@ -77,25 +124,26 @@ class Philosophers(object):
 		return new_name.strip(), filepath
 
 	def get_image(self, name, filepath):
-	    '''
-	    Saves the image of given philosopher and returns filepath
-	    INPUT: filepath to save image to
-	    OUTPUT: filepath of image file
-	    '''
-	    # Google images url with search terms of name
-	    img_url = '''https://www.google.com/search?site=imghp&tbm=isch&source=hp&biw=1440&bih=803&q={}&oq={}&
+		'''
+		Saves the image of given philosopher and returns filepath
+		INPUT: filepath to save image to
+		OUTPUT: filepath of image file
+		'''
+		# Google images url with search terms of name
+		img_url = '''https://www.google.com/search?site=imghp&tbm=isch&source=hp&biw=1440&bih=803&q={}&oq={}&
 	                    gs_l=img.3..0l10.1021.2400.0.2681.10.7.0.3.3.0.82.519.7.7.0....0...
 	                    1ac.1.64.img..0.10.523.IxXhEvSJyAw
 	               '''.format(name, name)
 	    # Request url
-	    r = requests.get(img_url)
-	    soup = BeautifulSoup(r.content, 'html.parser')
+		r = requests.get(img_url)
+		soup = BeautifulSoup(r.content, 'html.parser')
 
 	    # Unidecode source url
-	    url = unidecode(soup.img['src'])
+		url = unidecode(soup.img['src'])
 
-	    # Save image to inputted filepath
-	    urllib.urlretrieve(url, filepath)
+		# Save image to inputted filepath
+		if filepath not in self.df['image_path'].values:
+			urllib.urlretrieve(url, filepath)
 
 	def update_df(self, df):
 		'''
