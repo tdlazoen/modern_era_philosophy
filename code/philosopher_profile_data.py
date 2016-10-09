@@ -382,12 +382,14 @@ def western_philosophers():
 
     return western
 
+# Function proved to not be useful
+'''
 def find_nationality(d):
-    '''
-    Determine the nationality of each philosopher
-    INPUT: Dictionary (philosopher data)
-    OUTPUT: Dictionary with added nationality feature
-    '''
+
+    # Determine the nationality of each philosopher
+    # INPUT: Dictionary (philosopher data)
+    # OUTPUT: Dictionary with added nationality feature
+
     time_periods = ['presocratic', 'socratic', 'hellenistic', 'roman', 'medieval', 'renaissance', 'reason', \
                    'enlightenment', 'modern']
     for time_period in time_periods:
@@ -417,7 +419,7 @@ def find_nationality(d):
                 i += 1
 
     return d
-
+'''
 # Standardize name of philosopher
 def standardize_name(name, image=False):
 
