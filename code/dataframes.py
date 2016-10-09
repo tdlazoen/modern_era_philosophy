@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import requests
 
 class Philosophers(object):
 
@@ -12,16 +13,16 @@ class Philosophers(object):
 			'''
 			Add a new philosopher to the dataframe
 			'''
-		    name, filepath = self.standardize_name(name, image=True)
+			name, filepath = self.standardize_name(name, image=True)
 			time_period = self.determine_time_period(birth)
 			year_born = birth
 			year_died = death
 
 			new_entry = {'name': name,
 						 'nationality': nationality,
-						 'time_period': time_period
+						 'time_period': time_period,
 						 'year_born': year_born,
-						 'year_died': year_died
+						 'year_died': year_died,
 						 'image_path': filepath}
 
 			self.df.append(new_entry, ignore_index=True)
@@ -31,40 +32,41 @@ class Philosophers(object):
 		Determine the time period of a philosopher given
 		their birth year
 		'''
-	    time_periods = np.unique(self.df['time_period'])
-	    for time_period in time_periods:
-	        years = time_periods[time_periods == time_period]
-	        min_year = np.min(years) - 20
-	        max_year = np.max(years) + 20
+		time_periods = np.unique(self.df['time_period'])
+		for time_period in time_periods:
+			years = time_periods[time_periods == time_period]
+			min_year = np.min(years) - 20
+			max_year = np.max(years) + 20
 
-	        if birth in range(min_year, max_year):
-	            return time_period
+			if birth in range(min_year, max_year):
+				return time_period
 
 	def standardize_name(self, name, image=False):
 		'''
 		Standardize name to format used throughout dataframe
 		'''
-	    if 'Sir' in name:
-	        components = re.split(r', Sir ', name)
-	    else:
-	        components = re.split(r',', name)
-	    new_name = ' '.join(x for x in components[::-1])
+		if 'Sir' in name:
+			components = re.split(r', Sir ', name)
+		else:
+			components = re.split(r',', name)
 
-	    try:
-	        start = new_name.index('(')
-	        end = new_name.index(')')
+		new_name = ' '.join(x for x in components[::-1])
 
-	        new_name = new_name[:start-1] + new_name[end+1:]
+		try:
+			start = new_name.index('(')
+			end = new_name.index(')')
 
-	    except ValueError:
-	        pass
+			new_name = new_name[:start-1] + new_name[end+1:]
 
-	    filepath = os.path.expanduser('~') + '/philosophy_capstone/images/' + new_name.strip().lower().replace(' ', '_') + '.jpg'
+		except ValueError:
+			pass
 
-	    if image:
-	        get_image(new_name.strip(), filepath)
+		filepath = os.path.expanduser('~') + '/philosophy_capstone/images/' + new_name.strip().lower().replace(' ', '_') + '.jpg'
 
-	    return new_name.strip(), filepath
+		if image:
+			get_image(new_name.strip(), filepath)
+
+		return new_name.strip(), filepath
 
 	def update_df(self, df):
 		'''
@@ -76,17 +78,16 @@ class Philosophers(object):
 		'''
 		Save dataframe to filepath specified
 		'''
-		if filepath:
+		if not (filepath is None):
 			self.filepath = filepath
-		path = filepath
-		self.df.to_csv(self.filepath)
+		self.df.to_csv(self.filepath, index=False)
 
 class Documents(object):
 
 	def __init__(self):
 		self.df = pd.read_csv('../data/documents.csv')
 		self.docs = self.df['title']
-		self.filename = '../data/documents.csv'
+		self.filepath = '../data/documents.csv'
 
 	def add_document(self, author, title, year, text, url, filename=None):
 		'''
@@ -111,7 +112,6 @@ class Documents(object):
 		'''
 		Save dataframe to filepath specified
 		'''
-		if filepath:
+		if not (filepath is None):
 			self.filepath = filepath
-		path = filepath
-		self.df.to_csv(self.filepath)
+		self.df.to_csv(self.filepath, index=False)

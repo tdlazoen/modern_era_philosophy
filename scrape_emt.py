@@ -407,6 +407,3 @@ def main():
 	philosophers, authors = add_to_philosophers_dict(philosophers)
 	documents = download_pdfs(authors)
 	save_dfs(documents, philosophers)
-
-if __name__ == '__main__':
-	main()

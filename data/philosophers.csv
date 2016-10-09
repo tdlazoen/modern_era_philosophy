@@ -1,100 +1,100 @@
-,name,nationality,time_period,year_born,year_died,image_path
-0,Thales of Miletos,,presocratic,-624,-546,/Users/tylerlazoen/philosophy_capstone/images/thales_of_miletos.jpg
-1,Anaximander,,presocratic,-610,-546,/Users/tylerlazoen/philosophy_capstone/images/anaximander.jpg
-2,Anaximenes,,presocratic,-585,-525,/Users/tylerlazoen/philosophy_capstone/images/anaximenes.jpg
-3,Pythagoras,,presocratic,-570,-490,/Users/tylerlazoen/philosophy_capstone/images/pythagoras.jpg
-4,Heraclitus,,presocratic,-535,-475,/Users/tylerlazoen/philosophy_capstone/images/heraclitus.jpg
-5,Parmenides of Elea,,presocratic,-515,-450,/Users/tylerlazoen/philosophy_capstone/images/parmenides_of_elea.jpg
-6,Anaxagoras,,presocratic,-500,-428,/Users/tylerlazoen/philosophy_capstone/images/anaxagoras.jpg
-7,Empedocles,,presocratic,-490,-430,/Users/tylerlazoen/philosophy_capstone/images/empedocles.jpg
-8,Zeno of Elea,,presocratic,-490,-430,/Users/tylerlazoen/philosophy_capstone/images/zeno_of_elea.jpg
-9,Protagoras,,presocratic,-490,-420,/Users/tylerlazoen/philosophy_capstone/images/protagoras.jpg
-10,Gorgias,,presocratic,-487,-376,/Users/tylerlazoen/philosophy_capstone/images/gorgias.jpg
-11,Democritus,,presocratic,-460,-370,/Users/tylerlazoen/philosophy_capstone/images/democritus.jpg
-12,Socrates,,socratic,-469,-399,/Users/tylerlazoen/philosophy_capstone/images/socrates.jpg
-13,Plato,,socratic,-428,-348,/Users/tylerlazoen/philosophy_capstone/images/plato.jpg
-14,Diogenes of Sinope,,socratic,-412,-323,/Users/tylerlazoen/philosophy_capstone/images/diogenes_of_sinope.jpg
-15,Aristotle,,socratic,-384,-322,/Users/tylerlazoen/philosophy_capstone/images/aristotle.jpg
-16,Thucydides,,socratic,-460,-400,/Users/tylerlazoen/philosophy_capstone/images/thucydides.jpg
-17,Pyrrho,,hellenistic,-360,-270,/Users/tylerlazoen/philosophy_capstone/images/pyrrho.jpg
-18,Epicurus,,hellenistic,-341,-270,/Users/tylerlazoen/philosophy_capstone/images/epicurus.jpg
-19,Zeno of Citium,,hellenistic,-334,-262,/Users/tylerlazoen/philosophy_capstone/images/zeno_of_citium.jpg
-20,Philo,,hellenistic,-20,50,/Users/tylerlazoen/philosophy_capstone/images/philo.jpg
-21,Plotinus,,hellenistic,204,270,/Users/tylerlazoen/philosophy_capstone/images/plotinus.jpg
-22,Marcus Tullius Cicero,,roman,-106,-43,/Users/tylerlazoen/philosophy_capstone/images/marcus_tullius_cicero.jpg
-23,Epictetus,,roman,55,135,/Users/tylerlazoen/philosophy_capstone/images/epictetus.jpg
-24,Marcus Aurelius,,roman,55,135,/Users/tylerlazoen/philosophy_capstone/images/marcus_aurelius.jpg
-25,St. Augustine of Hippo,,roman,354,430,/Users/tylerlazoen/philosophy_capstone/images/st._augustine_of_hippo.jpg
-26,Boethius,,roman,480,525,/Users/tylerlazoen/philosophy_capstone/images/boethius.jpg
-27,Avicenna,,medieval,980,1037,/Users/tylerlazoen/philosophy_capstone/images/avicenna.jpg
-28,St. Anselm,,medieval,1033,1109,/Users/tylerlazoen/philosophy_capstone/images/st._anselm.jpg
-29,Peter Abelard,,medieval,1079,1142,/Users/tylerlazoen/philosophy_capstone/images/peter_abelard.jpg
-30,Averroes,,medieval,1126,1198,/Users/tylerlazoen/philosophy_capstone/images/averroes.jpg
-31,Maimonides,,medieval,1135,1204,/Users/tylerlazoen/philosophy_capstone/images/maimonides.jpg
-32,Albertus Magnus,,medieval,1200,1280,/Users/tylerlazoen/philosophy_capstone/images/albertus_magnus.jpg
-33,Roger Bacon,,medieval,1214,1294,/Users/tylerlazoen/philosophy_capstone/images/roger_bacon.jpg
-34,St. Thomas Aquinas,,medieval,1225,1274,/Users/tylerlazoen/philosophy_capstone/images/st._thomas_aquinas.jpg
-35,John Duns Scotus,,medieval,1266,1308,/Users/tylerlazoen/philosophy_capstone/images/john_duns_scotus.jpg
-36,William of Ockham,,medieval,1285,1348,/Users/tylerlazoen/philosophy_capstone/images/william_of_ockham.jpg
-37,Desiderius Erasmus,,renaissance,1466,1536,/Users/tylerlazoen/philosophy_capstone/images/desiderius_erasmus.jpg
-38,Niccolo Machiavelli,,renaissance,1469,1527,/Users/tylerlazoen/philosophy_capstone/images/niccolo_machiavelli.jpg
-39,Thomas More,,renaissance,1478,1535,/Users/tylerlazoen/philosophy_capstone/images/thomas_more.jpg
-40,Francis Bacon,,renaissance,1561,1626,/Users/tylerlazoen/philosophy_capstone/images/francis_bacon.jpg
-41,Thomas Hobbes,,reason,1588,1679,/Users/tylerlazoen/philosophy_capstone/images/thomas_hobbes.jpg
-42,Rene Descartes,,reason,1596,1650,/Users/tylerlazoen/philosophy_capstone/images/rene_descartes.jpg
-43,Blaise Pascal,,reason,1623,1662,/Users/tylerlazoen/philosophy_capstone/images/blaise_pascal.jpg
-44,Baruch Spinoza,,reason,1623,1677,/Users/tylerlazoen/philosophy_capstone/images/baruch_spinoza.jpg
-45,John Locke,,reason,1632,1704,/Users/tylerlazoen/philosophy_capstone/images/john_locke.jpg
-46,Nicolas Malebranche,,reason,1638,1715,/Users/tylerlazoen/philosophy_capstone/images/nicolas_malebranche.jpg
-47,Gottfried Wilhelm Leibniz,,reason,1646,1716,/Users/tylerlazoen/philosophy_capstone/images/gottfried_wilhelm_leibniz.jpg
-48,Bishop George Berkeley,,enlightenment,1685,1753,/Users/tylerlazoen/philosophy_capstone/images/bishop_george_berkeley.jpg
-49,Voltaire,,enlightenment,1694,1778,/Users/tylerlazoen/philosophy_capstone/images/voltaire.jpg
-50,David Hume,,enlightenment,1711,1776,/Users/tylerlazoen/philosophy_capstone/images/david_hume.jpg
-51,Jean-Jacques Rousseau,,enlightenment,1712,1778,/Users/tylerlazoen/philosophy_capstone/images/jean-jacques_rousseau.jpg
-52,Adam Smith,,enlightenment,1723,1790,/Users/tylerlazoen/philosophy_capstone/images/adam_smith.jpg
-53,Immanuel Kant,,enlightenment,1724,1804,/Users/tylerlazoen/philosophy_capstone/images/immanuel_kant.jpg
-54,Edmund Burke,,enlightenment,1729,1797,/Users/tylerlazoen/philosophy_capstone/images/edmund_burke.jpg
-55,Jeremy Bentham,,modern,1748,1832,/Users/tylerlazoen/philosophy_capstone/images/jeremy_bentham.jpg
-56,Johann Gottlieb Fichte,,modern,1762,1814,/Users/tylerlazoen/philosophy_capstone/images/johann_gottlieb_fichte.jpg
-57,G.W.F. Hegel,,modern,1770,1831,/Users/tylerlazoen/philosophy_capstone/images/g.w.f._hegel.jpg
-58,Friedrich Schelling,,modern,1775,1854,/Users/tylerlazoen/philosophy_capstone/images/friedrich_schelling.jpg
-59,Arthur Schopenhauer,,modern,1788,1860,/Users/tylerlazoen/philosophy_capstone/images/arthur_schopenhauer.jpg
-60,Auguste Comte,,modern,1798,1857,/Users/tylerlazoen/philosophy_capstone/images/auguste_comte.jpg
-61,Ralph Waldo Emerson,,modern,1803,1882,/Users/tylerlazoen/philosophy_capstone/images/ralph_waldo_emerson.jpg
-62,John Stuart Mill,,modern,1806,1873,/Users/tylerlazoen/philosophy_capstone/images/john_stuart_mill.jpg
-63,Soren Kierkegaard,,modern,1813,1855,/Users/tylerlazoen/philosophy_capstone/images/soren_kierkegaard.jpg
-64,Henry David Thoreau,,modern,1817,1862,/Users/tylerlazoen/philosophy_capstone/images/henry_david_thoreau.jpg
-65,Karl Marx,,modern,1818,1883,/Users/tylerlazoen/philosophy_capstone/images/karl_marx.jpg
-66,Charles Sanders Peirce,,modern,1839,1914,/Users/tylerlazoen/philosophy_capstone/images/charles_sanders_peirce.jpg
-67,William James,,modern,1842,1910,/Users/tylerlazoen/philosophy_capstone/images/william_james.jpg
-68,Friedrich Nietzsche,,modern,1844,1900,/Users/tylerlazoen/philosophy_capstone/images/friedrich_nietzsche.jpg
-69,Gottlob Frege,,modern,1848,1925,/Users/tylerlazoen/philosophy_capstone/images/gottlob_frege.jpg
-70,John Dewey,,modern,1859,1952,/Users/tylerlazoen/philosophy_capstone/images/john_dewey.jpg
-71,Edmund Husserl,,modern,1859,1938,/Users/tylerlazoen/philosophy_capstone/images/edmund_husserl.jpg
-72,Alfred North Whitehead,,modern,1861,1947,/Users/tylerlazoen/philosophy_capstone/images/alfred_north_whitehead.jpg
-73,Bertrand Russell,,modern,1872,1970,/Users/tylerlazoen/philosophy_capstone/images/bertrand_russell.jpg
-74,George Edward Moore,,modern,1873,1958,/Users/tylerlazoen/philosophy_capstone/images/george_edward_moore.jpg
-75,Ludwig Wittgenstein,,modern,1889,1951,/Users/tylerlazoen/philosophy_capstone/images/ludwig_wittgenstein.jpg
-76,Martin Heidegger,,modern,1889,1976,/Users/tylerlazoen/philosophy_capstone/images/martin_heidegger.jpg
-77,Gilbert Ryle,,modern,1900,1976,/Users/tylerlazoen/philosophy_capstone/images/gilbert_ryle.jpg
-78,Jean-Paul Sartre,,modern,1905,1980,/Users/tylerlazoen/philosophy_capstone/images/jean-paul_sartre.jpg
-79,Willard Van Orman Quine,,modern,1908,2000,/Users/tylerlazoen/philosophy_capstone/images/willard_van_orman_quine.jpg
-80,Alfred Ayer,,modern,1910,1989,/Users/tylerlazoen/philosophy_capstone/images/alfred_ayer.jpg
-81,Michel Foucault,,modern,1926,1984,/Users/tylerlazoen/philosophy_capstone/images/michel_foucault.jpg
-82,Jacques Derrida,,modern,1930,2004,/Users/tylerlazoen/philosophy_capstone/images/jacques_derrida.jpg
-83,Robert Boyle,,reason,1627,1691,/Users/tylerlazoen/philosophy_capstone/images/robert_boyle.jpg
-84,Anne Conway,,reason,1631,1679,/Users/tylerlazoen/philosophy_capstone/images/anne_conway.jpg
-85,Anthony Ashley Cooper,,enlightenment,1671,1713,/Users/tylerlazoen/philosophy_capstone/images/anthony_ashley_cooper.jpg
-86,Samuel Clarke,,enlightenment,1675,1729,/Users/tylerlazoen/philosophy_capstone/images/samuel_clarke.jpg
-87,George Berkeley,,enlightenment,1685,1753,/Users/tylerlazoen/philosophy_capstone/images/george_berkeley.jpg
-88,Joseph Butler,,enlightenment,1692,1752,/Users/tylerlazoen/philosophy_capstone/images/joseph_butler.jpg
-89,Francis Hutcheson,,enlightenment,1694,1746,/Users/tylerlazoen/philosophy_capstone/images/francis_hutcheson.jpg
-90,Jonathan Edwards,,enlightenment,1703,1758,/Users/tylerlazoen/philosophy_capstone/images/jonathan_edwards.jpg
-91,Julien Offray de La Mettrie,,enlightenment,1709,1751,/Users/tylerlazoen/philosophy_capstone/images/julien_offray_de_la_mettrie.jpg
-92,Thomas Reid,,enlightenment,1710,1796,/Users/tylerlazoen/philosophy_capstone/images/thomas_reid.jpg
-93,Richard Price,,enlightenment,1723,1791,/Users/tylerlazoen/philosophy_capstone/images/richard_price.jpg
-94,Moses Mendelssohn,,modern,1729,1786,/Users/tylerlazoen/philosophy_capstone/images/moses_mendelssohn.jpg
-95,Nicolas de Condorcet,,modern,1743,1794,/Users/tylerlazoen/philosophy_capstone/images/nicolas_de_condorcet.jpg
-96,Mary Wollstonecraft,,modern,1759,1797,/Users/tylerlazoen/philosophy_capstone/images/mary_wollstonecraft.jpg
-97,Benjamin Constant,,modern,1767,1830,/Users/tylerlazoen/philosophy_capstone/images/benjamin_constant.jpg
-98,Henry Sidgwick,,modern,1838,1900,/Users/tylerlazoen/philosophy_capstone/images/henry_sidgwick.jpg
+name,nationality,time_period,year_born,year_died,image_path
+Thales of Miletos,Greek,presocratic,-624,-546,/Users/tylerlazoen/philosophy_capstone/images/thales_of_miletos.jpg
+Anaximander,Greek,presocratic,-610,-546,/Users/tylerlazoen/philosophy_capstone/images/anaximander.jpg
+Anaximenes,Greek,presocratic,-585,-525,/Users/tylerlazoen/philosophy_capstone/images/anaximenes.jpg
+Pythagoras,Greek,presocratic,-570,-490,/Users/tylerlazoen/philosophy_capstone/images/pythagoras.jpg
+Heraclitus,Greek,presocratic,-535,-475,/Users/tylerlazoen/philosophy_capstone/images/heraclitus.jpg
+Parmenides of Elea,Greek,presocratic,-515,-450,/Users/tylerlazoen/philosophy_capstone/images/parmenides_of_elea.jpg
+Anaxagoras,Greek,presocratic,-500,-428,/Users/tylerlazoen/philosophy_capstone/images/anaxagoras.jpg
+Empedocles,Greek,presocratic,-490,-430,/Users/tylerlazoen/philosophy_capstone/images/empedocles.jpg
+Zeno of Elea,Greek,presocratic,-490,-430,/Users/tylerlazoen/philosophy_capstone/images/zeno_of_elea.jpg
+Protagoras,Greek,presocratic,-490,-420,/Users/tylerlazoen/philosophy_capstone/images/protagoras.jpg
+Gorgias,Greek,presocratic,-487,-376,/Users/tylerlazoen/philosophy_capstone/images/gorgias.jpg
+Democritus,Greek,presocratic,-460,-370,/Users/tylerlazoen/philosophy_capstone/images/democritus.jpg
+Socrates,Greek,socratic,-469,-399,/Users/tylerlazoen/philosophy_capstone/images/socrates.jpg
+Plato,Greek,socratic,-428,-348,/Users/tylerlazoen/philosophy_capstone/images/plato.jpg
+Diogenes of Sinope,Greek,socratic,-412,-323,/Users/tylerlazoen/philosophy_capstone/images/diogenes_of_sinope.jpg
+Aristotle,Greek,socratic,-384,-322,/Users/tylerlazoen/philosophy_capstone/images/aristotle.jpg
+Thucydides,Greek,socratic,-460,-400,/Users/tylerlazoen/philosophy_capstone/images/thucydides.jpg
+Pyrrho,Greek,hellenistic,-360,-270,/Users/tylerlazoen/philosophy_capstone/images/pyrrho.jpg
+Epicurus,Greek,hellenistic,-341,-270,/Users/tylerlazoen/philosophy_capstone/images/epicurus.jpg
+Zeno of Citium,Greek,hellenistic,-334,-262,/Users/tylerlazoen/philosophy_capstone/images/zeno_of_citium.jpg
+Philo,Egyptian-Jewish,hellenistic,-20,50,/Users/tylerlazoen/philosophy_capstone/images/philo.jpg
+Plotinus,Egyptian-Greek,hellenistic,204,270,/Users/tylerlazoen/philosophy_capstone/images/plotinus.jpg
+Marcus Tullius Cicero,Roman,roman,-106,-43,/Users/tylerlazoen/philosophy_capstone/images/marcus_tullius_cicero.jpg
+Epictetus,Greek-Roman,roman,55,135,/Users/tylerlazoen/philosophy_capstone/images/epictetus.jpg
+Marcus Aurelius,Roman,roman,55,135,/Users/tylerlazoen/philosophy_capstone/images/marcus_aurelius.jpg
+St. Augustine of Hippo,Roman,roman,354,430,/Users/tylerlazoen/philosophy_capstone/images/st._augustine_of_hippo.jpg
+Boethius,Roman,roman,480,525,/Users/tylerlazoen/philosophy_capstone/images/boethius.jpg
+Avicenna,Persian,medieval,980,1037,/Users/tylerlazoen/philosophy_capstone/images/avicenna.jpg
+St. Anselm,Italian,medieval,1033,1109,/Users/tylerlazoen/philosophy_capstone/images/st._anselm.jpg
+Peter Abelard,French,medieval,1079,1142,/Users/tylerlazoen/philosophy_capstone/images/peter_abelard.jpg
+Averroes,Spanish-Arabic,medieval,1126,1198,/Users/tylerlazoen/philosophy_capstone/images/averroes.jpg
+Maimonides,Spanish-Jewish,medieval,1135,1204,/Users/tylerlazoen/philosophy_capstone/images/maimonides.jpg
+Albertus Magnus,German,medieval,1200,1280,/Users/tylerlazoen/philosophy_capstone/images/albertus_magnus.jpg
+Roger Bacon,English,medieval,1214,1294,/Users/tylerlazoen/philosophy_capstone/images/roger_bacon.jpg
+St. Thomas Aquinas,Italian,medieval,1225,1274,/Users/tylerlazoen/philosophy_capstone/images/st._thomas_aquinas.jpg
+John Duns Scotus,Scottish,medieval,1266,1308,/Users/tylerlazoen/philosophy_capstone/images/john_duns_scotus.jpg
+William of Ockham,English,medieval,1285,1348,/Users/tylerlazoen/philosophy_capstone/images/william_of_ockham.jpg
+Desiderius Erasmus,Dutch,renaissance,1466,1536,/Users/tylerlazoen/philosophy_capstone/images/desiderius_erasmus.jpg
+Niccolo Machiavelli,Italian,renaissance,1469,1527,/Users/tylerlazoen/philosophy_capstone/images/niccolo_machiavelli.jpg
+Thomas More,English,renaissance,1478,1535,/Users/tylerlazoen/philosophy_capstone/images/thomas_more.jpg
+Francis Bacon,English,renaissance,1561,1626,/Users/tylerlazoen/philosophy_capstone/images/francis_bacon.jpg
+Thomas Hobbes,English,reason,1588,1679,/Users/tylerlazoen/philosophy_capstone/images/thomas_hobbes.jpg
+Rene Descartes,French,reason,1596,1650,/Users/tylerlazoen/philosophy_capstone/images/rene_descartes.jpg
+Blaise Pascal,French,reason,1623,1662,/Users/tylerlazoen/philosophy_capstone/images/blaise_pascal.jpg
+Baruch Spinoza,Dutch-Jewish,reason,1623,1677,/Users/tylerlazoen/philosophy_capstone/images/baruch_spinoza.jpg
+John Locke,English,reason,1632,1704,/Users/tylerlazoen/philosophy_capstone/images/john_locke.jpg
+Nicolas Malebranche,French,reason,1638,1715,/Users/tylerlazoen/philosophy_capstone/images/nicolas_malebranche.jpg
+Gottfried Wilhelm Leibniz,German,reason,1646,1716,/Users/tylerlazoen/philosophy_capstone/images/gottfried_wilhelm_leibniz.jpg
+Bishop George Berkeley,,enlightenment,1685,1753,/Users/tylerlazoen/philosophy_capstone/images/bishop_george_berkeley.jpg
+Voltaire,,enlightenment,1694,1778,/Users/tylerlazoen/philosophy_capstone/images/voltaire.jpg
+David Hume,,enlightenment,1711,1776,/Users/tylerlazoen/philosophy_capstone/images/david_hume.jpg
+Jean-Jacques Rousseau,,enlightenment,1712,1778,/Users/tylerlazoen/philosophy_capstone/images/jean-jacques_rousseau.jpg
+Adam Smith,,enlightenment,1723,1790,/Users/tylerlazoen/philosophy_capstone/images/adam_smith.jpg
+Immanuel Kant,,enlightenment,1724,1804,/Users/tylerlazoen/philosophy_capstone/images/immanuel_kant.jpg
+Edmund Burke,,enlightenment,1729,1797,/Users/tylerlazoen/philosophy_capstone/images/edmund_burke.jpg
+Jeremy Bentham,,modern,1748,1832,/Users/tylerlazoen/philosophy_capstone/images/jeremy_bentham.jpg
+Johann Gottlieb Fichte,,modern,1762,1814,/Users/tylerlazoen/philosophy_capstone/images/johann_gottlieb_fichte.jpg
+G.W.F. Hegel,,modern,1770,1831,/Users/tylerlazoen/philosophy_capstone/images/g.w.f._hegel.jpg
+Friedrich Schelling,,modern,1775,1854,/Users/tylerlazoen/philosophy_capstone/images/friedrich_schelling.jpg
+Arthur Schopenhauer,,modern,1788,1860,/Users/tylerlazoen/philosophy_capstone/images/arthur_schopenhauer.jpg
+Auguste Comte,,modern,1798,1857,/Users/tylerlazoen/philosophy_capstone/images/auguste_comte.jpg
+Ralph Waldo Emerson,,modern,1803,1882,/Users/tylerlazoen/philosophy_capstone/images/ralph_waldo_emerson.jpg
+John Stuart Mill,,modern,1806,1873,/Users/tylerlazoen/philosophy_capstone/images/john_stuart_mill.jpg
+Soren Kierkegaard,,modern,1813,1855,/Users/tylerlazoen/philosophy_capstone/images/soren_kierkegaard.jpg
+Henry David Thoreau,,modern,1817,1862,/Users/tylerlazoen/philosophy_capstone/images/henry_david_thoreau.jpg
+Karl Marx,,modern,1818,1883,/Users/tylerlazoen/philosophy_capstone/images/karl_marx.jpg
+Charles Sanders Peirce,,modern,1839,1914,/Users/tylerlazoen/philosophy_capstone/images/charles_sanders_peirce.jpg
+William James,,modern,1842,1910,/Users/tylerlazoen/philosophy_capstone/images/william_james.jpg
+Friedrich Nietzsche,,modern,1844,1900,/Users/tylerlazoen/philosophy_capstone/images/friedrich_nietzsche.jpg
+Gottlob Frege,,modern,1848,1925,/Users/tylerlazoen/philosophy_capstone/images/gottlob_frege.jpg
+John Dewey,,modern,1859,1952,/Users/tylerlazoen/philosophy_capstone/images/john_dewey.jpg
+Edmund Husserl,,modern,1859,1938,/Users/tylerlazoen/philosophy_capstone/images/edmund_husserl.jpg
+Alfred North Whitehead,,modern,1861,1947,/Users/tylerlazoen/philosophy_capstone/images/alfred_north_whitehead.jpg
+Bertrand Russell,,modern,1872,1970,/Users/tylerlazoen/philosophy_capstone/images/bertrand_russell.jpg
+George Edward Moore,,modern,1873,1958,/Users/tylerlazoen/philosophy_capstone/images/george_edward_moore.jpg
+Ludwig Wittgenstein,,modern,1889,1951,/Users/tylerlazoen/philosophy_capstone/images/ludwig_wittgenstein.jpg
+Martin Heidegger,,modern,1889,1976,/Users/tylerlazoen/philosophy_capstone/images/martin_heidegger.jpg
+Gilbert Ryle,,modern,1900,1976,/Users/tylerlazoen/philosophy_capstone/images/gilbert_ryle.jpg
+Jean-Paul Sartre,,modern,1905,1980,/Users/tylerlazoen/philosophy_capstone/images/jean-paul_sartre.jpg
+Willard Van Orman Quine,,modern,1908,2000,/Users/tylerlazoen/philosophy_capstone/images/willard_van_orman_quine.jpg
+Alfred Ayer,,modern,1910,1989,/Users/tylerlazoen/philosophy_capstone/images/alfred_ayer.jpg
+Michel Foucault,,modern,1926,1984,/Users/tylerlazoen/philosophy_capstone/images/michel_foucault.jpg
+Jacques Derrida,,modern,1930,2004,/Users/tylerlazoen/philosophy_capstone/images/jacques_derrida.jpg
+Robert Boyle,,reason,1627,1691,/Users/tylerlazoen/philosophy_capstone/images/robert_boyle.jpg
+Anne Conway,,reason,1631,1679,/Users/tylerlazoen/philosophy_capstone/images/anne_conway.jpg
+Anthony Ashley Cooper,,enlightenment,1671,1713,/Users/tylerlazoen/philosophy_capstone/images/anthony_ashley_cooper.jpg
+Samuel Clarke,,enlightenment,1675,1729,/Users/tylerlazoen/philosophy_capstone/images/samuel_clarke.jpg
+George Berkeley,,enlightenment,1685,1753,/Users/tylerlazoen/philosophy_capstone/images/george_berkeley.jpg
+Joseph Butler,,enlightenment,1692,1752,/Users/tylerlazoen/philosophy_capstone/images/joseph_butler.jpg
+Francis Hutcheson,,enlightenment,1694,1746,/Users/tylerlazoen/philosophy_capstone/images/francis_hutcheson.jpg
+Jonathan Edwards,,enlightenment,1703,1758,/Users/tylerlazoen/philosophy_capstone/images/jonathan_edwards.jpg
+Julien Offray de La Mettrie,,enlightenment,1709,1751,/Users/tylerlazoen/philosophy_capstone/images/julien_offray_de_la_mettrie.jpg
+Thomas Reid,,enlightenment,1710,1796,/Users/tylerlazoen/philosophy_capstone/images/thomas_reid.jpg
+Richard Price,,enlightenment,1723,1791,/Users/tylerlazoen/philosophy_capstone/images/richard_price.jpg
+Moses Mendelssohn,,modern,1729,1786,/Users/tylerlazoen/philosophy_capstone/images/moses_mendelssohn.jpg
+Nicolas de Condorcet,,modern,1743,1794,/Users/tylerlazoen/philosophy_capstone/images/nicolas_de_condorcet.jpg
+Mary Wollstonecraft,,modern,1759,1797,/Users/tylerlazoen/philosophy_capstone/images/mary_wollstonecraft.jpg
+Benjamin Constant,,modern,1767,1830,/Users/tylerlazoen/philosophy_capstone/images/benjamin_constant.jpg
+Henry Sidgwick,,modern,1838,1900,/Users/tylerlazoen/philosophy_capstone/images/henry_sidgwick.jpg
