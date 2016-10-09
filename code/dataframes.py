@@ -43,23 +43,11 @@ class Philosophers(object):
 		diffs = []
 		for time_period in time_periods:
 			tp_df = self.df[self.df['time_period'] == time_period]
-			years_born = tp_df['year_born']
-			years_died = tp_df['year_died']
-
-			if not (birth == np.nan):
-				birth_diff = np.abs(birth - np.nanmedian(years_born))
-			else:
-				birth_diff = 0
-
-			if not (death == np.nan):
-				death_diff = np.abs(death - np.nanmedian(years_died))
-
-			else:
-				death_diff = 0
-
+			birth_diff = np.abs(birth - tp_df['year_born'].median())
+			death_diff = np.abs(death - tp_df['year_died'].median())
 			diffs.append(birth_diff + death_diff)
 
-		return time_periods[diffs.index(np.min(diffs[np.nonzero(diffs)]))]
+		return time_periods[diffs.index(np.nanmin(diffs))]
 
 	def standardize_name(self, name, image=False):
 		'''

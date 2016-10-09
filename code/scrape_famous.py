@@ -5,8 +5,7 @@ http://famous-philosophers.com/
 https://en.wikipedia.org/wiki/17th-century_philosophy
 https://en.wikipedia.org/wiki/Renaissance_philosophy
 http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/
-http://www.logicmuseum.com/wiki/List_of_medieval_philosophers
-http://www.logicmuseum.com/wiki/List_of_medieval_philosophers
+https://en.wikipedia.org/wiki/Hellenistic_philosophy
 '''
 
 import numpy as np
@@ -46,27 +45,6 @@ def famous_philosophers(phils):
 	names[idx1] = 'Gottfried Wilhelm Leibniz'
 	names[idx2] = 'St. Thomas Aquinas'
 	names[idx3] = 'St. Augustine of Hippo'
-
-	for i in xrange(len(names)):
-		if names[i] not in phils.df['name'].values:
-			phils.add_philosopher_entry(names[i], births[i], deaths[i])
-
-def medieval_philosophers(phils):
-	url = 'http://www.logicmuseum.com/wiki/List_of_medieval_philosophers'
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content, 'html.parser')
-
-	names = [unidecode(x.get_text().strip()) for x in soup.select('td a')]
-	idx = names.index('Anselm')
-	names[idx] = 'St. Anselm'
-
-	births = [unidecode(x.get_text().strip()) for x in soup.select('tr td')[1::6]]
-	births = [filter(str.isdigit, x)[:4] for x in births]
-	births = [np.nan if x == '' else int(x) for x in births]
-
-	deaths = [unidecode(x.get_text().strip()) for x in soup.select('tr td')[4::6]]
-	deaths = [filter(str.isdigit, x)[:4] for x in deaths]
-	deaths = [np.nan if x == '' else int(x) for x in deaths]
 
 	for i in xrange(len(names)):
 		if names[i] not in phils.df['name'].values:
@@ -118,10 +96,51 @@ def contemporary_philosophers(phils):
 		if names[i] not in phils.df['name'].values:
 			phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
 
+def hellenistic_philosophers(phils):
+	url = 'https://en.wikipedia.org/wiki/Hellenistic_philosophy'
+	r = requests.get(url)
+	soup = BeautifulSoup(r.content, 'html.parser')
+
+	names_years = [unidecode(x.get_text().strip()) for x in soup.select('li')[17:71]]
+	k = 0
+	for i in xrange(len(names_years)):
+	    if 'century' in names_years[i-k] or 'c.' in names_years[i-k]:
+	        names_years.remove(names_years[i-k])
+	        k += 1
+
+	names = [re.split(r'[()]', x)[0].strip() for x in names_years]
+	names.remove('Pythagoras of Croton')
+	years = [filter(str.isdigit, re.split(r'[()]', x)[1].strip()) for x in names_years]
+	births = [int(x[:len(x)/2]) for x in years]
+	deaths = [int(x[len(x)/2:]) for x in years]
+
+	for i in xrange(len(names_years)):
+	    if 'BCE' in names_years[i]:
+	        births[i] *= -1
+	        deaths[i] *= -1
+
+	idx1 = names.index('Philo of Alexandria')
+	births[idx1] = -30
+	deaths[idx1] = 45
+	idx2 = names.index('Seneca the Younger')
+	births[idx2] = -4
+	deaths[idx2] = 65
+	idx3 = names.index('Cicero')
+	names[idx3] = 'Marcus Tullius Cicero'
+	idx4 = names.index('Augustine of Hippo')
+	names[idx4] = 'St. Augustine of Hippo'
+
+	for i in xrange(len(names)):
+		if names[i] == 'Varro Reatinus':
+			births[i] = -116
+			deaths[i] = -127
+		if names[i] not in phils.df['name'].values:
+			phils.add_philosopher_entry(names[i], births[i], deaths[i])
+
 if __name__ == '__main__':
 	phils = Philosophers()
 	# famous_philosophers(phils)
 	# renaissance_philosophers(phils)
 	# reason_philosophers(phils)
 	# contemporary_philosophers(phils)
-	medieval_philosophers(phils)
+	hellenistic_philosophers(phils)
