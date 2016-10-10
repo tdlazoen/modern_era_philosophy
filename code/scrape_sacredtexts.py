@@ -5,7 +5,13 @@ from bs4 import BeautifulSoup
 from unidecode import unidecode
 from collections import defaultdict
 from dataframes import Philosophers, Documents
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import re
+import pdb
 
 def scrape_sacred():
 	base_url = 'http://sacred-texts.com/phi/'
@@ -98,7 +104,63 @@ def merge_parts(docs):
 	    docs.df = docs.df.append(new_entry, ignore_index=True)
 	    docs.df.drop(idxs, inplace=True)
 
-		docs.save_df()
+	docs.save_df()
+
+def init_driver():
+	driver = webdriver.Chrome()
+	driver.implicitly_wait(10)
+	driver.wait = WebDriverWait(driver, 10)
+
+	return driver
+
+def aristotle(docs):
+	driver = init_driver()
+
+	driver.get('http://www.sacred-texts.com/cla/ari/index.htm')
+
+	author = 'aristotle'
+
+	num_links = len(driver.find_elements_by_xpath('/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/span/span[@class="c_e"]/span[@class="c_t"]/a'))
+
+	for i in xrange(num_links):
+
+		links = driver.find_elements_by_xpath('/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/span/span[@class="c_e"]/span[@class="c_t"]/a')
+
+		title = unidecode(links[i].text)
+		url = unidecode(links[i].get_attribute('href'))
+
+		if title == 'Aristotle: On Generation and Corruption' or title == 'Aristotle: On the Heavens':
+			title = title[len('Aristotle: '):]
+
+		links[i].click()
+
+		num_parts = len(driver.find_elements(By.XPATH, '/html/body/a[position() > 2]'))
+
+		text = ''
+		for i in xrange(num_parts):
+			try:
+				link_new_present = EC.element_to_be_clickable((By.XPATH, '/html/body/a[{}]'.format(i + 3)))
+				link_new = driver.wait.until(link_new_present)
+
+				link_new.click()
+
+				pars = driver.find_elements(By.TAG_NAME, 'p')
+
+				page_text = ' '.join(x.text for x in pars)
+				text += unidecode(page_text)
+
+				driver.back()
+
+			except TimeoutException:
+				print "Timed out"
+
+		print '\nAdding Document {}'.format(title)
+		docs.add_document(author, title, 0, text, url)
+
+		driver.back()
+
+	return driver
 
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
+	# driver = aristotle(docs)
