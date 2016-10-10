@@ -4,5 +4,5 @@ import matplotlib.pyplot as plt
 from dataframes import Philosophers, Documents
 
 if __name__ == '__main__':
-	phils = Philosophers()
-	docs = Documents()
+	phils = Philosophers(filepath='../data/philosophers.csv')
+	docs = Documents(filepath='../data/documents.csv')

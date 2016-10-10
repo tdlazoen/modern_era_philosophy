@@ -47,8 +47,7 @@ def famous_philosophers(phils):
 	names[idx3] = 'St. Augustine of Hippo'
 
 	for i in xrange(len(names)):
-		if names[i] not in phils.df['name'].values:
-			phils.add_philosopher_entry(names[i], births[i], deaths[i])
+		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def renaissance_philosophers(phils):
 	url = 'https://en.wikipedia.org/wiki/Renaissance_philosophy'
@@ -80,8 +79,7 @@ def get_philosophers(url, tag, first_index, last_index):
 		deaths[idx] = 1682
 
 	for i in xrange(len(names)):
-		if names[i] not in phils.df['name'].values:
-			phils.add_philosopher_entry(names[i], births[i], deaths[i])
+		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def contemporary_philosophers(phils):
 	url = 'http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/'
@@ -93,8 +91,7 @@ def contemporary_philosophers(phils):
 	births = [int(filter(str.isdigit, re.split(r'[()]', x)[1])) for x in name_years]
 
 	for i in xrange(len(names)):
-		if names[i] not in phils.df['name'].values:
-			phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
+		phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
 
 def hellenistic_philosophers(phils):
 	url = 'https://en.wikipedia.org/wiki/Hellenistic_philosophy'
@@ -134,8 +131,8 @@ def hellenistic_philosophers(phils):
 		if names[i] == 'Varro Reatinus':
 			births[i] = -116
 			deaths[i] = -127
-		if names[i] not in phils.df['name'].values:
-			phils.add_philosopher_entry(names[i], births[i], deaths[i])
+
+		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 if __name__ == '__main__':
 	phils = Philosophers()

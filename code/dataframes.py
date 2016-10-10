@@ -3,16 +3,17 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
+from string import punctuation
 import urllib
 import re
 import os
 
 class Philosophers(object):
 
-	def __init__(self):
-		self.df = pd.read_csv('../data/philosophers.csv')
+	def __init__(self, filepath='../data/philosophers.csv'):
+		self.df = pd.read_csv(filepath)
 		self.philosophers = self.df['name']
-		self.filepath = '../data/philosophers.csv'
+		self.filepath = filepath
 
 	def add_philosopher_entry(self, name, birth, death, time_period=None):
 			'''
@@ -20,21 +21,24 @@ class Philosophers(object):
 			'''
 			name, filepath = self.standardize_name(name, image=True)
 
-			if time_period is None:
-				time_period = self.determine_time_period(birth, death)
+			if name not in self.df.name.values:
+				if time_period is None:
+					time_period = self.determine_time_period(birth, death)
 
-			era = self.determine_era(time_period)
-			century = self.determine_century(birth, death)
+				era = self.determine_era(time_period)
+				century = self.determine_century(birth, death)
 
-			new_entry = {'name': name,
-						 'year_born': birth,
-						 'year_died': death,
-						 'century': century,
-						 'time_period': time_period,
-						 'era': era,
-						 'image_path': filepath}
+				new_entry = {'name': name,
+							 'year_born': birth,
+							 'year_died': death,
+							 'century': century,
+							 'time_period': time_period,
+							 'era': era,
+							 'image_path': filepath}
 
-			self.df = self.df.append(new_entry, ignore_index=True)
+				self.df = self.df.append(new_entry, ignore_index=True)
+			else:
+				print 'The philosopher {} already exists!'.format(name)
 
 	def determine_time_period(self, birth, death):
 		'''
@@ -161,23 +165,46 @@ class Philosophers(object):
 
 class Documents(object):
 
-	def __init__(self):
-		self.df = pd.read_csv('../data/documents.csv')
+	def __init__(self, filepath='../data/documents.csv'):
+		self.df = pd.read_csv(filepath)
 		self.docs = self.df['title']
-		self.filepath = '../data/documents.csv'
+		self.filepath = filepath
 
-	def add_document(self, author, title, year, text, url, filename=None):
+	def add_document(self, author, title, year, text, url, filepath=None):
 		'''
 		Add new document to the documents dataframe
 		'''
-		new_entry = {'title': title,
-					 'author': author,
-					 'year': year,
-					 'text': text,
-					 'url': url,
-					 'filename': filename}
+		if title not in self.df.title.values:
+			new_entry = {'title': title,
+						 'author': author,
+						 'year': year,
+						 'text': text,
+						 'url': url,
+						 'filepath': filepath}
 
-		self.df = self.df.append(new_entry, ignore_index=True)
+			self.df = self.df.append(new_entry, ignore_index=True)
+
+		else:
+			print 'Document {} already exists!'.format(title)
+
+	def clean_text(self, text):
+		'''
+		Clean text of a document
+		'''
+
+		text = text.strip(punctuation)
+
+		if not(text.isalpha()):
+			text_lst = text.split()
+
+		for i in xrange(len(text_lst)):
+			if not(text_lst[i].isalpha()):
+				text_lst[i] = filter(str.isalnum, text_lst[i])
+
+		text = ' '.join(word for word in text_lst)
+
+		return text.lower()
+
 
 	def update_df(self, df):
 		'''
