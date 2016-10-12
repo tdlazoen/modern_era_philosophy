@@ -56,7 +56,7 @@ def add_to_philosophers_dict(phil_dict):
 	authors[idx] = 'Anthony Ashley Cooper'
 
 	# Add philosophers to the philospher dictionary
-	for i in xrange(len(authors)):
+	for i in range(len(authors)):
 	    if authors[i] not in phil_dict.keys():
 	        phil_dict = ppd.add_new(phil_dict, authors[i], birth_years[i], death_years[i])
 
@@ -111,19 +111,19 @@ def get_pdfs(author):
     if author == 'Thomas Hobbes':
         title = titles[0]
         titles = []
-        for i in xrange(1, 5):
+        for i in range(1, 5):
             titles.append(title + ' Part {}'.format(i))
 
     elif author == 'John Locke':
         idx = titles.index('Essay Concerning Human Understanding')
-        for i in xrange(1, 5):
+        for i in range(1, 5):
             title = 'Essay Concerning Human Understanding' + ' Part {}'.format(i)
             titles.insert(idx + (i-1), title)
         titles.remove('Essay Concerning Human Understanding')
 
     elif author == 'Gottfried Wilhelm Leibniz':
         idx = titles.index('New Essays on Human Understanding')
-        for i in xrange(1, 5):
+        for i in range(1, 5):
             title = 'New Essays on Human Understanding' + ' Book {}'.format(i)
             titles.insert(idx + (i-1), title)
         titles.remove('New Essays on Human Understanding')
@@ -131,13 +131,13 @@ def get_pdfs(author):
     elif author == 'Thomas Reid':
         idx1 = titles.index('Essays on the Intellectual Powers of Man')
 
-        for i in xrange(1, 8):
+        for i in range(1, 8):
             title = 'Essays on the Intellectual Powers of Man' + ' Essay {}'.format(i)
             titles.insert(idx1 + (i-1), title)
 
         idx2 = titles.index('Essays on the Active Powers of Man')
 
-        for i in xrange(1, 6):
+        for i in range(1, 6):
             title = 'Essays on the Active Powers of Man' + ' Essay {}'.format(i)
             titles.insert(idx2 + (i-1), title)
 
@@ -288,14 +288,14 @@ def download_pdfs(authors):
 	documents = defaultdict(dict)
 	for author in authors:
 		# Get pdf
-	    print '\nReceiving PDF\'s for {}'.format(author)
+	    print('\nReceiving PDF\'s for {}'.format(author))
 	    text_author, titles, year_pub, pdf_links, filepaths = get_pdfs(author)
 
 		# Download all of the author's pdfs
-	    for i in xrange(len(pdf_links)):
-	        print 'Downloading PDF {} for {}'.format(i, author)
+	    for i in range(len(pdf_links)):
+	        print('Downloading PDF {} for {}'.format(i, author))
 	        urllib.urlretrieve(pdf_links[i], filepaths[i])
-	        print 'Adding Document'
+	        print('Adding Document')
 	        documents = add_document(documents, text_author, titles[i], year_pub[i], pdf_links[i], filepaths[i])
 	        time.sleep(5)
 
@@ -346,7 +346,7 @@ def get_text(pdf_file, author):
     if not(text.isalpha()):
         text_lst = text.split()
 
-        for i in xrange(len(text_lst)):
+        for i in range(len(text_lst)):
             if not(text_lst[i].isalpha()):
                 text_lst[i] = filter(str.isalnum, text_lst[i])
 
@@ -394,11 +394,11 @@ def save_dfs(documents_dict, philosopher_dict):
 
 def scrape_pdfs(documents_df):
 	# Obtain text for each document
-	for i in xrange(documents_df.shape[0]):
+	for i in range(documents_df.shape[0]):
 	    author = documents_df.loc[i, 'author']
 	    pdf_file = documents_df.loc[i, 'pdf_file']
 	    documents_df.loc[i, 'text'] = get_text(pdf_file, author)
-		print 'Getting text from: {}'.format(documents_df.loc[i, 'title'])
+		print('Getting text from: {}'.format(documents_df.loc[i, 'title']))
 
 	return documents_df
 

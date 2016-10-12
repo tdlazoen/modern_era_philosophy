@@ -399,7 +399,7 @@ def find_nationality(d):
         content = soup.select('font font')
 
         nationals = []
-        for i in xrange(len(content)):
+        for i in range(len(content)):
             lst_words = [unidecode(x) for x in content[i].get_text().strip().split('\n')]
             if len(lst_words) > 1:
                 nationals.append(lst_words)

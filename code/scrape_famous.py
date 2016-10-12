@@ -28,7 +28,7 @@ def famous_philosophers(phils):
 	births = [int(x[:len(x)/2]) for x in years]
 	deaths = [int(x[len(x)/2:]) for x in years]
 
-	for i in xrange(len(names)):
+	for i in range(len(names)):
 	    if 'BC' in names[i]:
 	        births[i] *= -1
 	        deaths[i] *= -1
@@ -46,7 +46,7 @@ def famous_philosophers(phils):
 	names[idx2] = 'St. Thomas Aquinas'
 	names[idx3] = 'St. Augustine of Hippo'
 
-	for i in xrange(len(names)):
+	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def renaissance_philosophers(phils):
@@ -78,7 +78,7 @@ def get_philosophers(url, tag, first_index, last_index):
 		births[idx] = 1605
 		deaths[idx] = 1682
 
-	for i in xrange(len(names)):
+	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def contemporary_philosophers(phils):
@@ -90,7 +90,7 @@ def contemporary_philosophers(phils):
 	names = [re.split(r'[()]', x)[0].strip() for x in name_years]
 	births = [int(filter(str.isdigit, re.split(r'[()]', x)[1])) for x in name_years]
 
-	for i in xrange(len(names)):
+	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
 
 def hellenistic_philosophers(phils):
@@ -100,7 +100,7 @@ def hellenistic_philosophers(phils):
 
 	names_years = [unidecode(x.get_text().strip()) for x in soup.select('li')[17:71]]
 	k = 0
-	for i in xrange(len(names_years)):
+	for i in range(len(names_years)):
 	    if 'century' in names_years[i-k] or 'c.' in names_years[i-k]:
 	        names_years.remove(names_years[i-k])
 	        k += 1
@@ -111,7 +111,7 @@ def hellenistic_philosophers(phils):
 	births = [int(x[:len(x)/2]) for x in years]
 	deaths = [int(x[len(x)/2:]) for x in years]
 
-	for i in xrange(len(names_years)):
+	for i in range(len(names_years)):
 	    if 'BCE' in names_years[i]:
 	        births[i] *= -1
 	        deaths[i] *= -1
@@ -127,7 +127,7 @@ def hellenistic_philosophers(phils):
 	idx4 = names.index('Augustine of Hippo')
 	names[idx4] = 'St. Augustine of Hippo'
 
-	for i in xrange(len(names)):
+	for i in range(len(names)):
 		if names[i] == 'Varro Reatinus':
 			births[i] = -116
 			deaths[i] = -127

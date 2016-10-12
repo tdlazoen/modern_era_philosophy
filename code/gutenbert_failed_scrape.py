@@ -115,12 +115,12 @@ def gutenberg_info():
 
 	# Loop through list of author names (with books attached) and get only author names
 	authors = []
-	for i in xrange(len(authors_and_docs)):
+	for i in range(len(authors_and_docs)):
 		name = authors_and_docs[i].replace(doc_mask[i], '').strip()
 		authors.append(name)
 
 	# Insert authors for books where need be (i.e. multiple volumes or parts)
-	for i in xrange(len(doc_titles)):
+	for i in range(len(doc_titles)):
 		# Multiple edition/volumes of below work
 		if doc_titles[i][:46] == 'A System Of Logic, Ratiocinative And Inductive':
 			authors.insert(i, 'John Stuart Mill')
@@ -148,7 +148,7 @@ def get_document_text(url):
 	pars = soup.select('p')
 
 	paragraphs = []
-	for i in xrange(len(pars)):
+	for i in range(len(pars)):
 		try:
 			cl = unidecode(pars[i]['class'][0])
 			if cl == 'toc' or pars[i] == '':
@@ -174,12 +174,12 @@ def gutenberg_docs():
 	documents = DefaultOrderedDict(dict)
 	authors, doc_titles, urls = gutenberg_info()
 
-	for i in xrange(len(authors)):
-		print '\nAdding document {} to Dictionary'.format(doc_titles[i])
+	for i in range(len(authors)):
+		print('\nAdding document {} to Dictionary'.format(doc_titles[i]))
 		documents = add_document(documents, i, authors[i], doc_titles[i], urls[i])
-		print 'Retrieving Document text for document {}'.format(doc_titles[i])
+		print('Retrieving Document text for document {}'.format(doc_titles[i]))
 		documents[i]['doc_text'] = get_document_text(urls[i])
-		print documents[i]['doc_text'][:5]
+		print(documents[i]['doc_text'][:5])
 
 	return documents
 

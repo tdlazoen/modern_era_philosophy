@@ -39,7 +39,7 @@ def cicero(docs):
 	author = 'marcus tullius cicero'
 	titles = [unidecode(re.split(r'[\[\]]', x.text)[0]).lower().strip() for x in cicero_links]
 
-	for i in xrange(len(links)):
+	for i in range(len(links)):
 		link = links[i]
 		title = titles[i]
 		year = 0
@@ -48,13 +48,13 @@ def cicero(docs):
 		filepath = os.path.expanduser('~') + '/philosophy_capstone/pdfs/' + pdf_name
 
 		if not os.path.isfile(filepath):
-			print '\nDownloading pdf'
+			print('\nDownloading pdf')
 			urllib.urlretrieve(link, filepath)
 		else:
-			print '\nFile {} already exists!'.format(title)
-			print 'Getting Text from {}'.format(title)
+			print('\nFile {} already exists!'.format(title))
+			print('Getting Text from {}'.format(title))
 			text = get_text(filepath, 'cicero')
-			print 'Adding Document'
+			print('Adding Document')
 			docs.add_document(author, title, year, text, link, filepath)
 
 		time.sleep(10)
@@ -99,7 +99,7 @@ def other_philosophers(phils, docs):
 	stockl = False
 	martyr = False
 	tertullian = False
-	for i in xrange(len(links) - 10, len(links)):
+	for i in range(len(links) - 10, len(links)):
 		if authors[i] == 'albert stockl' and stockl == False:
 			phils.add_philosopher_entry(authors[i], 1823, 1895)
 			stockl = True
@@ -146,28 +146,28 @@ def other_philosophers(phils, docs):
 				if not os.path.isfile(filepath):
 					new_filepath = re.split(r'\.', filepath)[0] + '_new.pdf'
 					if not os.path.isfile(new_filepath):
-						print '\nDownloading pdf {}'.format(title)
+						print('\nDownloading pdf {}'.format(title))
 						urllib.urlretrieve(link, filepath)
 						os.system('qpdf --password="" --decrypt ' + filepath +' ' + new_filepath)
 						os.remove(filepath)
 						time.sleep(10)
 					else:
-						print '\nFile {} already exists!'.format(title)
+						print('\nFile {} already exists!'.format(title))
 
 					filepath = new_filepath
 
 				else:
-					print '\nFile {} already exists!'.format(title)
+					print('\nFile {} already exists!'.format(title))
 
 
-				print 'Getting Text from {} by {}'.format(title, author)
+				print('Getting Text from {} by {}'.format(title, author))
 				text = get_text(filepath, author)
 
-				print 'Adding Document'
+				print('Adding Document')
 				docs.add_document(author, title, year, text, link, filepath)
 
 			else:
-				print '{} already exists!'.format(titles[i])
+				print('{} already exists!'.format(titles[i]))
 
 
 	return driver
@@ -191,7 +191,7 @@ def convert(fname, pages=None):
 		for page in PDFPage.get_pages(infile, pagenums):
 			interpreter.process_page(page)
 	except PDFTextExtractionNotAllowed:
-		print 'This pdf won\'t allow text extraction!'
+		print('This pdf won\'t allow text extraction!')
 
 	infile.close()
 	converter.close()
@@ -224,7 +224,7 @@ def get_text(pdf_file, author):
 	if not(text.isalpha()):
 		text_lst = text.split()
 
-		for i in xrange(len(text_lst)):
+		for i in range(len(text_lst)):
 			if not(text_lst[i].isalpha()):
 				text_lst[i] = filter(str.isalnum, text_lst[i])
 

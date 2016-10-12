@@ -38,7 +38,7 @@ class Philosophers(object):
 
 				self.df = self.df.append(new_entry, ignore_index=True)
 			else:
-				print 'The philosopher {} already exists!'.format(name)
+				print('The philosopher {} already exists!'.format(name))
 
 	def determine_time_period(self, birth, death):
 		'''
@@ -175,7 +175,7 @@ class Documents(object):
 		Add new document to the documents dataframe
 		'''
 		text = self.clean_text(text)
-		
+
 		if title not in self.df.title.values:
 			new_entry = {'title': title,
 						 'author': author,
@@ -187,7 +187,7 @@ class Documents(object):
 			self.df = self.df.append(new_entry, ignore_index=True)
 
 		else:
-			print 'Document {} already exists!'.format(title)
+			print('Document {} already exists!'.format(title))
 
 	def clean_text(self, text):
 		'''
@@ -199,7 +199,7 @@ class Documents(object):
 		if not(text.isalpha()):
 			text_lst = text.split()
 
-		for i in xrange(len(text_lst)):
+		for i in range(len(text_lst)):
 			if not(text_lst[i].isalpha()):
 				text_lst[i] = filter(str.isalnum, text_lst[i])
 

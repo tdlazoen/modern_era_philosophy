@@ -168,12 +168,12 @@ def gutenberg_works_and_authors():
 
     # Loop through list of author names (with books attached) and get only author names
     authors = []
-    for i in xrange(len(authors_and_works)):
+    for i in range(len(authors_and_works)):
         name = authors_and_works[i].replace(work_mask[i], '').strip()
         authors.append(name)
 
     # Insert authors for books where need be (i.e. multiple volumes or parts)
-    for i in xrange(len(work_titles)):
+    for i in range(len(work_titles)):
 
         # Multiple edition/volumes of below work
         if work_titles[i][:46] == 'A System Of Logic, Ratiocinative And Inductive':
@@ -201,7 +201,7 @@ def get_document_text(url):
 	pars = soup.select('p')
 
 	paragraphs = []
-    for i in xrange(len(pars)):
+    for i in range(len(pars)):
         try:
             cl = unidecode(pars[i]['class'][0])
             if cl == 'toc' or pars[i] == '':
@@ -227,7 +227,7 @@ def gutenberg_docs():
 	documents = DefaultOrderedDict(dict)
 	authors, work_titles, urls = gutenberg_works_and_authors()
 
-	for i in xrange(len(authors)):
+	for i in range(len(authors)):
 		documents = add_document(documents, i, authors[i], work_titles[i], urls[i])
 		documents[i]['doc_text'] = get_document_text(urls[i])
 

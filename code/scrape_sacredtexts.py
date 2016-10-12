@@ -77,7 +77,7 @@ def merge_parts(docs):
 	last_title = docs.df.title.values[0]
 	for title in docs.df.title.values[1:]:
 	    if last_title[:8] in title:
-	        print title
+	        print(title)
 	    last_title = title
 
 	part_texts = ['leviathan', 'essay concerning human understanding', 'new essays on human understanding', 'essays on the intellectual powers of man', 'essays on the active powers of man', 'a treatise of human nature', 'an inquiry into the nature and causes of the wealth of nations', 'the critique of pure reason', 'a system of logic']
@@ -122,7 +122,7 @@ def aristotle(docs):
 
 	num_links = len(driver.find_elements_by_xpath('/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/span/span[@class="c_e"]/span[@class="c_t"]/a'))
 
-	for i in xrange(num_links):
+	for i in range(num_links):
 
 		links = driver.find_elements_by_xpath('/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/span/span[@class="c_e"]/span[@class="c_t"]/a')
 
@@ -137,7 +137,7 @@ def aristotle(docs):
 		num_parts = len(driver.find_elements(By.XPATH, '/html/body/a[position() > 2]'))
 
 		text = ''
-		for i in xrange(num_parts):
+		for i in range(num_parts):
 			try:
 				link_new_present = EC.element_to_be_clickable((By.XPATH, '/html/body/a[{}]'.format(i + 3)))
 				link_new = driver.wait.until(link_new_present)
@@ -152,9 +152,9 @@ def aristotle(docs):
 				driver.back()
 
 			except TimeoutException:
-				print "Timed out"
+				print("Timed out")
 
-		print '\nAdding Document {}'.format(title)
+		print('\nAdding Document {}'.format(title))
 		docs.add_document(author, title, 0, text, url)
 
 		driver.back()
