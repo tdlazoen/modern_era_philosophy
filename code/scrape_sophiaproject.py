@@ -15,7 +15,6 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument, PDFTextExtractionNotAllowed
 import time
-import shutil
 import os
 import re
 
