@@ -69,29 +69,41 @@ def other_philosophers(phils, docs):
 
 	driver.get(url)
 
-	# philosophers = driver.find_elements_by_xpath('//*[@id="wsite-content"]/div/div/div/table/tbody/tr/td[1]/div/div/div/table/tbody/tr/td[1]/div[@class="paragraph"]')
 	philosophers = driver.find_elements_by_xpath('//td[@class="wsite-multicol-col"][1]/div[@class="paragraph"]')
-	authors = [unidecode(x.text).strip() for x in philosophers[:-1]]
+	authors = [unidecode(x.text).lower().strip() for x in philosophers][:-1]
+	authors = authors[1:]
+	idx_sandbach = authors.index('f.h. sandbach')
+	authors.pop(idx_sandbach)
 
 	links_text = driver.find_elements_by_xpath('//div[@class="paragraph"]//a')
-	links = [unidecode(x.get_attribute('href')).strip() for x in links_text]
-	idx = links.index('http://www.sophia-project.org/nicomachean-ethics.html')
-	titles = [unidecode(x.text).lower().strip() for x in links_text]
-	titles = [re.split(r'[\[\]]', x)[0].strip() for x in titles]
-	links.pop(idx)
-	titles.pop(idx)
-	authors.pop(idx)
+	links = [unidecode(x.get_attribute('href')).strip() for x in links_text][:-10]
+	idx_russo_ethics = links.index('http://www.sophia-project.org/uploads/1/3/9/5/13955288/russo_stoicism_ethics.pdf')
+	links.pop(idx_russo_ethics)
+	idx_zeno = links.index('http://www.sophia-project.org/uploads/1/3/9/5/13955288/sandbach_zeno.pdf')
+	links.pop(idx_zeno)
+	idx_plato_study = links.index('http://www.sophia-project.org/apology.html')
+	links.pop(idx_plato_study)
 
-	links = links[:-10]
-	titles = titles[:-10]
+	titles = [unidecode(x.text).lower().strip() for x in links_text][:-10]
+	titles = [x for x in titles if not (x == '')]
+	titles.pop(idx_zeno)
+	titles.pop(idx_plato_study)
+
+	idx1 = links.index('http://www.sophia-project.org/nicomachean-ethics.html')
+	links.pop(idx1)
+	titles.pop(idx1)
+	authors.pop(idx1)
+
+	idx2 = authors.index('socrates')
+	authors.pop(idx2)
 
 	stockl = False
 	martyr = False
 	tertullian = False
-	for i in xrange(len(links)):
+	for i in xrange(len(links) - 10, len(links)):
 		if authors[i] == 'albert stockl' and stockl == False:
 			phils.add_philosopher_entry(authors[i], 1823, 1895)
-			albert = True
+			stockl = True
 
 		elif authors[i] == 'justin martyr' and martyr == False:
 			phils.add_philosopher_entry(authors[i], 100, 165)
@@ -99,6 +111,7 @@ def other_philosophers(phils, docs):
 
 		elif authors[i] == 'tertullian' and tertullian == False:
 			phils.add_philosopher_entry(authors[i], 155, 240)
+			tertullian = True
 
 		elif authors[i] == 'seneca':
 			authors[i] = 'seneca the younger'
@@ -106,13 +119,25 @@ def other_philosophers(phils, docs):
 		elif authors[i] == 'diogenes laerius':
 			authors[i] = 'diogenes laertius'
 
+		elif authors[i] == 'lucian of samosata':
+			phils.add_philosopher_entry(authors[i], 125, 180)
+
+		elif authors[i] == 'pericles':
+			phils.add_philosopher_entry(authors[i], -495, -429)
+
+		elif authors[i] == 'quintilian':
+			phils.add_philosopher_entry(authors[i], 35, 100)
+
+		elif authors[i] == 'cicero':
+			continue
+
 		if authors[i].lower() in phils.df.name.values:
 			if 'nicomachean ethics' in titles[i]:
 				continue
 
 			elif titles[i] not in docs.df.title.values:
 				link = links[i]
-				title = titles[i]
+				title = re.split(r'[\[\]]', titles[i])[0].strip()
 				author = authors[i]
 				year = 0
 
@@ -120,24 +145,28 @@ def other_philosophers(phils, docs):
 				filepath = os.path.expanduser('~') + '/philosophy_capstone/pdfs/' + pdf_name
 
 				if not os.path.isfile(filepath):
-					print '\nDownloading pdf'
-					urllib.urlretrieve(link, filepath)
-					with open(filepath) as f:
-						new_filepath = re.split(r'\.', filepath)[0] + '_.pdf'
-						new_f = file(new_filepath, 'w')
-						new_f.write(f.read())
-						new_f.close()
-					os.remove(filepath)
+					new_filepath = re.split(r'\.', filepath)[0] + '_new.pdf'
+					if not os.path.isfile(new_filepath):
+						print '\nDownloading pdf {}'.format(title)
+						urllib.urlretrieve(link, filepath)
+						os.system('qpdf --password="" --decrypt ' + filepath +' ' + new_filepath)
+						os.remove(filepath)
+						time.sleep(10)
+					else:
+						print '\nFile {} already exists!'.format(title)
+
 					filepath = new_filepath
+
 				else:
 					print '\nFile {} already exists!'.format(title)
 
-				print 'Getting Text from {}'.format(title)
-				text = get_text(filepath, authors[i])
+
+				print 'Getting Text from {} by {}'.format(title, author)
+				text = get_text(filepath, author)
+
 				print 'Adding Document'
 				docs.add_document(author, title, year, text, link, filepath)
 
-				time.sleep(10)
 			else:
 				print '{} already exists!'.format(titles[i])
 
@@ -178,7 +207,20 @@ def get_text(pdf_file, author):
 	'''
 	text = convert(pdf_file)
 
-	text = text.strip(punctuation)
+	text = text.lower().strip(punctuation)
+
+	text = text.replace('tetullian', 'tertullian')
+
+	try:
+		last_period = [m.start() for m in re.finditer(r'\.', text)][-11]
+
+	except IndexError:
+		last_period = -1
+
+	text = text[:last_period]
+	text = text.replace(author, '')
+	text = text.replace('sophiaomni', '')
+	text = text.replace('wwwsophiaomniorg', '')
 
 	if not(text.isalpha()):
 		text_lst = text.split()
@@ -189,7 +231,7 @@ def get_text(pdf_file, author):
 
 		text = ' '.join(word for word in text_lst)
 
-	return text.lower()
+	return text
 
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')

@@ -174,6 +174,8 @@ class Documents(object):
 		'''
 		Add new document to the documents dataframe
 		'''
+		text = self.clean_text(text)
+		
 		if title not in self.df.title.values:
 			new_entry = {'title': title,
 						 'author': author,
