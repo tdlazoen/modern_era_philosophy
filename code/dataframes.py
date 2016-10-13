@@ -8,6 +8,11 @@ import urllib
 import re
 import os
 
+'''
+Classes utilized for easily editing and accessing
+the philosopher and document dataframes
+'''
+
 class Philosophers(object):
 
 	def __init__(self, filepath='../data/philosophers.csv'):
@@ -28,7 +33,15 @@ class Philosophers(object):
 				era = self.determine_era(time_period)
 				century = self.determine_century(birth, death)
 
+				nationality = self.get_nationality(name)
+				birthplace = self.get_birthplace(name)
+
+				if nationality == 'american' and birthplace:
+					birthplace = self.american_birthplaces(birthplace)
+
 				new_entry = {'name': name,
+							 'nationality': nationality,
+							 'birthplace': birthplace,
 							 'year_born': birth,
 							 'year_died': death,
 							 'century': century,
@@ -99,6 +112,90 @@ class Philosophers(object):
 			else:
 				return (year_born + 100) - (year_born % 100)
 
+	def get_nationality(self, name):
+		'''
+		Attempt to get the nationality of the philosopher
+		'''
+		query_nat = name + ' nationality'
+
+		driver = webdriver.Chrome()
+		driver.wait = WebDriverWait(driver, 5)
+
+		driver.get('https://www.google.com/')
+		time.sleep(2)
+		box = driver.wait.until(
+				EC.presence_of_element_located((By.NAME, 'q'))
+		)
+
+		box.send_keys(query_nat)
+
+		button = driver.wait.until(
+				EC.element_to_be_clickable((By.NAME, 'btnG'))
+		)
+
+		button.click()
+
+		time.sleep(2)
+
+		try:
+			nationality = driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+			nationality = nationality.text.lower().strip()
+
+		except NoSuchElementException:
+			try:
+				nationality = driver.find_element_by_xpath('//*[@id="uid_V_56oAAEBGwKVMWFIwPVsA_0"]/div/div/div[1]/div/div/a/div[2]/div/div/div')
+				nationality = nationality.text.lower().strip()
+
+			except NoSuchElementException:
+				nationality = np.nan
+
+		return nationality
+
+	def get_birthplace(self, name):
+		'''
+		Attempt to get the birthplace of a philosopher
+		'''
+		query_birth = name + ' philosopher birthplace'
+
+		driver = webdriver.Chrome()
+		driver.wait = WebDriverWait(driver, 5)
+
+		driver.get('https://www.google.com/')
+		time.sleep(2)
+		box = driver.wait.until(
+				EC.presence_of_element_located((By.NAME, 'q'))
+		)
+
+		box.send_keys(query_birth)
+
+		button = driver.wait.until(
+				EC.element_to_be_clickable((By.NAME, 'btnG'))
+		)
+
+		button.click()
+
+		time.sleep(2)
+
+		try:
+			birthplace = driver.find_element_by_xpath('//*[@id="uid_0"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+			birthplace = birthplace.text.lower().strip()
+
+		except NoSuchElementException:
+			try:
+				birthplace = driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]').text
+
+				birthplace = birthplace.split()[-1].lower().strip()
+
+			except NoSuchElementException:
+				birthplace = np.nan
+
+		return birthplace
+
+	def american_birthplaces(self, birthplace):
+		birthplace_state = re.split(r',', birthplace)[-1].strip()
+		if len(birthplace_state) > 2:
+			return birthplace
+		return us.states.lookup(birthplace).name.lower() + ', united states'
 
 	def standardize_name(self, name, image=False):
 		'''
@@ -201,7 +298,7 @@ class Documents(object):
 
 		for i in range(len(text_lst)):
 			if not(text_lst[i].isalpha()):
-				text_lst[i] = filter(str.isalnum, text_lst[i])
+				text_lst[i] = ''.join(x for x in text_lst[i] if x.isalpha())
 
 		text = ' '.join(word for word in text_lst)
 

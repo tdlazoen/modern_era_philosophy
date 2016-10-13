@@ -1,8 +1,3 @@
-'''
-This file scapes the website Early Modern Philosophy
-http://www.earlymoderntexts.com/texts
-'''
-
 import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
@@ -14,6 +9,8 @@ import os
 import re
 import time
 import philosopher_profile_data as ppd
+'''
+------- Originally used for python 2 ---------
 from cStringIO import StringIO
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -21,8 +18,18 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
+'''
+from pdfminer.pdfparser import PDFParser, PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import PDFPageAggregator
+from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 import pandas as pd
 import numpy as np
+
+'''
+This file scapes the website Early Modern Philosophy
+http://www.earlymoderntexts.com/texts
+'''
 
 def add_to_philosophers_dict(phil_dict):
 	'''
@@ -66,15 +73,15 @@ def add_document(dct, author, title, year, url, filepath=None):
 	'''
 	Add new document to the documents list
 	'''
-    idx = len(dct)
-    dct[idx]['title'] = title
-    dct[idx]['author'] = author
-    dct[idx]['year'] = year
-    dct[idx]['pdf_url'] = url
+	idx = len(dct)
+	dct[idx]['title'] = title
+	dct[idx]['author'] = author
+	dct[idx]['year'] = year
+	dct[idx]['pdf_url'] = url
 	if filepath:
-    	dct[idx]['pdf_file'] = filepath
+		dct[idx]['pdf_file'] = filepath
 
-    return dct
+	return dct
 
 def get_pdfs(author):
 	'''
@@ -325,10 +332,12 @@ def convert(fname, pages=None):
 
     return text
 
+'''
+------ Original Python 2 function --------
 def get_text(pdf_file, author):
-	'''
-	Clean text received from convert function
-	'''
+
+	# Clean text received from convert function
+
     text = convert(pdf_file)
 
     start = text.find('Copyright')
@@ -353,6 +362,31 @@ def get_text(pdf_file, author):
         text = ' '.join(word for word in text_lst)
 
     return text
+'''
+
+def convert(fname, pages=None):
+	'''
+	Get text from pdf (Python 3 version)
+	'''
+	fp = open(fname, 'rb')
+	parser = PDFParser(fp)
+	doc = PDFDocument()
+	parser.set_document(doc)
+	doc.set_parser(parser)
+	doc.initialize('')
+	rsrcmgr = PDFResourceManager()
+	laparams = LAParams()
+	device = PDFPageAggregator(rsrcmgr, laparams=laparams)
+	interpreter = PDFPageInterpreter(rsrcmgr, device)
+	# Process each page contained in the document.
+	text = ''
+	for page in doc.get_pages():
+	    interpreter.process_page(page)
+	    layout = device.get_result()
+	    for lt_obj in layout:
+	        if isinstance(lt_obj, LTTextBox) or isinstance(lt_obj, LTTextLine):
+	            text += lt_obj.get_text()
+	return text
 
 def save_dfs(documents_dict, philosopher_dict):
 	'''

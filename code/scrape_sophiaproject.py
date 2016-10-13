@@ -7,16 +7,28 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from string import punctuation
-from cStringIO import StringIO
+from io import StringIO
+'''
+------- Originally used for python 2 ------------
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument, PDFTextExtractionNotAllowed
+'''
+from pdfminer.pdfparser import PDFParser, PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import PDFPageAggregator
+from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 import time
 import os
 import re
+
+'''
+This file scrapes the the sophia-project site for additional documents
+http://www.sophia-project.org/classical-philosophy.html
+'''
 
 def init_driver():
 	driver = webdriver.Chrome()
@@ -176,28 +188,24 @@ def convert(fname, pages=None):
 	'''
 	Get text from pdf
 	'''
-	if not pages:
-		pagenums = set()
-	else:
-		pagenums = set(pages)
-
-	output = StringIO()
-	manager = PDFResourceManager()
-	converter = TextConverter(manager, output, laparams=LAParams())
-	interpreter = PDFPageInterpreter(manager, converter)
-
-	infile = file(fname, 'rb')
-	try:
-		for page in PDFPage.get_pages(infile, pagenums):
-			interpreter.process_page(page)
-	except PDFTextExtractionNotAllowed:
-		print('This pdf won\'t allow text extraction!')
-
-	infile.close()
-	converter.close()
-	text = output.getvalue()
-	output.close
-
+	fp = open(fname, 'rb')
+	parser = PDFParser(fp)
+	doc = PDFDocument()
+	parser.set_document(doc)
+	doc.set_parser(parser)
+	doc.initialize('')
+	rsrcmgr = PDFResourceManager()
+	laparams = LAParams()
+	device = PDFPageAggregator(rsrcmgr, laparams=laparams)
+	interpreter = PDFPageInterpreter(rsrcmgr, device)
+	# Process each page contained in the document.
+	text = ''
+	for page in doc.get_pages():
+	    interpreter.process_page(page)
+	    layout = device.get_result()
+	    for lt_obj in layout:
+	        if isinstance(lt_obj, LTTextBox) or isinstance(lt_obj, LTTextLine):
+	            text += lt_obj.get_text()
 	return text
 
 def get_text(pdf_file, author):
@@ -235,4 +243,4 @@ def get_text(pdf_file, author):
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
 	# driver = cicero(docs)
-	driver = other_philosophers(phils, docs)
+	# driver = other_philosophers(phils, docs)

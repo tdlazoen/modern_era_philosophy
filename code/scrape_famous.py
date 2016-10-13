@@ -1,3 +1,12 @@
+import numpy as np
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+from unidecode import unidecode
+from collections import defaultdict
+from dataframes import Philosophers, Documents
+import re
+
 '''
 This file scrapes various websites for information about prominent philosophers
 for various time periods
@@ -7,15 +16,6 @@ https://en.wikipedia.org/wiki/Renaissance_philosophy
 http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/
 https://en.wikipedia.org/wiki/Hellenistic_philosophy
 '''
-
-import numpy as np
-import pandas as pd
-import requests
-from bs4 import BeautifulSoup
-from unidecode import unidecode
-from collections import defaultdict
-from dataframes import Philosophers, Documents
-import re
 
 def famous_philosophers(phils):
 	url = 'http://famous-philosophers.com/'
