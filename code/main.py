@@ -88,6 +88,7 @@ if __name__ == '__main__':
 	docs = Documents(filepath='../data/documents.csv')
 	print('Authors with no documents: ', len([x for x in phils.df['name'] if x not in np.unique(docs.df.author.values)]))
 	print('Authors with documents not in philosopher df: ', [x for x in np.unique(docs.df['author']) if x not in phils.df.name.values])
+	print('Authors with more than one document: ', len([x for x in np.unique(docs.df['author']) if docs.df[docs.df.author == x].shape[0] > 1]))
 	print('Shape of Philosopher dataframe: ', phils.df.shape)
 	print('Shape of Documents dataframe: ', docs.df.shape)
 	print('Number of null nationalities: ', phils.df[phils.df.nationality.isnull()].shape[0])
