@@ -13,6 +13,7 @@ import time
 import urllib
 import re
 import os
+import us
 
 '''
 Classes utilized for easily editing and accessing
@@ -200,10 +201,13 @@ class Philosophers(object):
 		return birthplace
 
 	def american_birthplaces(self, birthplace):
-		birthplace_state = re.split(r',', birthplace)[-1].strip()
-		if len(birthplace_state) > 2:
+		try:
+			birthplace_state = re.split(r',', birthplace)[-1].strip()
+			if len(birthplace_state) > 2:
+				return birthplace
+			return us.states.lookup(birthplace_state).name.lower() + ', united states'
+		except AttributeError:
 			return birthplace
-		return us.states.lookup(birthplace).name.lower() + ', united states'
 
 	def standardize_name(self, name, image=False):
 		'''
