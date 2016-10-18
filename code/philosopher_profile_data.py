@@ -102,7 +102,7 @@ def get_image(name, filepath):
     url = unidecode(soup.img['src'])
 
     # Save image to inputted filepath
-    urllib.urlretrieve(url, filepath)
+    urllib.request.urlretrieve(url, filepath)
 
 
 def ancient_time_period(time_period):

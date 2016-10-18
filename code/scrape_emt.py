@@ -301,7 +301,7 @@ def download_pdfs(authors):
 		# Download all of the author's pdfs
 	    for i in range(len(pdf_links)):
 	        print('Downloading PDF {} for {}'.format(i, author))
-	        urllib.urlretrieve(pdf_links[i], filepaths[i])
+	        urllib.request.urlretrieve(pdf_links[i], filepaths[i])
 	        print('Adding Document')
 	        documents = add_document(documents, text_author, titles[i], year_pub[i], pdf_links[i], filepaths[i])
 	        time.sleep(5)

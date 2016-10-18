@@ -22,7 +22,6 @@ def nationality_birthplace(driver, name):
     query_nat = name + ' nationality'
 
     driver.get('https://www.google.com/')
-    time.sleep(2)
     box = driver.wait.until(
             EC.presence_of_element_located((By.NAME, 'q'))
     )
@@ -52,7 +51,6 @@ def nationality_birthplace(driver, name):
     query_birth = name + ' philosopher birthplace'
 
     driver.get('https://www.google.com/')
-    time.sleep(2)
     box = driver.wait.until(
             EC.presence_of_element_located((By.NAME, 'q'))
     )
@@ -89,5 +87,6 @@ if __name__ == '__main__':
     driver = init_driver()
     for i in range(phils.df.shape[0]):
         name = phils.df.loc[i, 'name']
-        phils.df.loc[i, 'nationality'], phils.df.loc[i, 'birthplace'] = nationality_birthplace(driver, name)
+        # phils.df.loc[i, 'nationality'], phils.df.loc[i, 'birthplace'] = nationality_birthplace(driver, name)
+        nationality, birthplace = nationality_birthplace(driver, name)
     driver.quit()

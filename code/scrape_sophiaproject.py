@@ -61,7 +61,7 @@ def cicero(docs):
 
 		if not os.path.isfile(filepath):
 			print('\nDownloading pdf')
-			urllib.urlretrieve(link, filepath)
+			urllib.request.urlretrieve(link, filepath)
 		else:
 			print('\nFile {} already exists!'.format(title))
 			print('Getting Text from {}'.format(title))
@@ -159,7 +159,7 @@ def other_philosophers(phils, docs):
 					new_filepath = re.split(r'\.', filepath)[0] + '_new.pdf'
 					if not os.path.isfile(new_filepath):
 						print('\nDownloading pdf {}'.format(title))
-						urllib.urlretrieve(link, filepath)
+						urllib.request.urlretrieve(link, filepath)
 						os.system('qpdf --password="" --decrypt ' + filepath +' ' + new_filepath)
 						os.remove(filepath)
 						time.sleep(10)

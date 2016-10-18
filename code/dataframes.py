@@ -4,6 +4,12 @@ import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from string import punctuation
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+import time
 import urllib
 import re
 import os
@@ -149,6 +155,7 @@ class Philosophers(object):
 			except NoSuchElementException:
 				nationality = np.nan
 
+		driver.quit()
 		return nationality
 
 	def get_birthplace(self, name):
@@ -189,6 +196,7 @@ class Philosophers(object):
 			except NoSuchElementException:
 				birthplace = np.nan
 
+		driver.quit()
 		return birthplace
 
 	def american_birthplaces(self, birthplace):
@@ -244,7 +252,7 @@ class Philosophers(object):
 
 		# Save image to inputted filepath
 		if filepath not in self.df['image_path'].values:
-			urllib.urlretrieve(url, filepath)
+			urllib.request.urlretrieve(url, filepath)
 
 	def update_df(self, df):
 		'''
