@@ -18,6 +18,9 @@ https://en.wikipedia.org/wiki/Hellenistic_philosophy
 '''
 
 def famous_philosophers(phils):
+	'''
+	Get philosopher data from famous-philosohpers.com
+	'''
 	url = 'http://famous-philosophers.com/'
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
@@ -50,14 +53,23 @@ def famous_philosophers(phils):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def renaissance_philosophers(phils):
+	'''
+	Get renaissance philosopher info from wikipedia page on renaissance philosophy
+	'''
 	url = 'https://en.wikipedia.org/wiki/Renaissance_philosophy'
 	get_philosophers(url, 'li', first_index=68, last_index=90)
 
 def reason_philosophers(phils):
+	'''
+	Get age of reason philosopher info from wikipedia page on age of reason philosophy
+	'''
 	url = 'https://en.wikipedia.org/wiki/17th-century_philosophy'
 	get_philosophers(url, 'li', first_index=34, last_index=54)
 
 def get_philosophers(url, tag, first_index, last_index):
+	'''
+	Used for scraping philosopher data originating on wikipedia pages
+	'''
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
 
@@ -82,6 +94,9 @@ def get_philosophers(url, tag, first_index, last_index):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
 def contemporary_philosophers(phils):
+	'''
+	Get base collection of contemporary philosophers
+	'''
 	url = 'http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/'
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
@@ -94,6 +109,9 @@ def contemporary_philosophers(phils):
 		phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
 
 def hellenistic_philosophers(phils):
+	'''
+	Obtain info on hellenistic/roman time_period philosophers
+	'''
 	url = 'https://en.wikipedia.org/wiki/Hellenistic_philosophy'
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')

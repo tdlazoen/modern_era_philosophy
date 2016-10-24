@@ -74,3 +74,6 @@ could give some context to this change.
 * Try to find the school of thought each document falls into
 * Try to discover a way to determine a document's influence on the outside
 world
+
+* Cytoscape
+* Co-citation network

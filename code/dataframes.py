@@ -90,6 +90,9 @@ class Philosophers(object):
 			return 'modern'
 
 	def determine_century(self, year_born, year_died):
+		'''
+		Determine the century the majority of a philosopher's contributions occured in based on birth and death year
+		'''
 		if year_born < 0:
 			if year_died + (abs(year_died) % 100) == year_born + (abs(year_born) % 100):
 				return year_born + (abs(year_born) % 100)
@@ -201,6 +204,9 @@ class Philosophers(object):
 		return birthplace
 
 	def american_birthplaces(self, birthplace):
+		'''
+		Convert american birthplaces to format (state, united states) if in format (city, state)
+		'''
 		try:
 			birthplace_state = re.split(r',', birthplace)[-1].strip()
 			if len(birthplace_state) > 2:
@@ -283,13 +289,20 @@ class Documents(object):
 		'''
 		Add new document to the documents dataframe
 		'''
+		# Get cleaned text
 		text = self.clean_text(text)
 
+		# Get number of words in document
+		num_words = self.get_num_words(text)
+
+		# Check if title already exists
 		if title not in self.df.title.values:
+			# Create and add new document to dataframe
 			new_entry = {'title': title,
 						 'author': author,
 						 'year': year,
 						 'text': text,
+						 'words': num_words,
 						 'url': url,
 						 'filepath': filepath}
 
@@ -302,7 +315,6 @@ class Documents(object):
 		'''
 		Clean text of a document
 		'''
-
 		text = text.strip(punctuation)
 
 		if not(text.isalpha()):
@@ -316,6 +328,11 @@ class Documents(object):
 
 		return text.lower()
 
+	def get_num_words(self, text):
+		'''
+		Get number of words in a document
+		'''
+		return len(text.split())
 
 	def update_df(self, df):
 		'''

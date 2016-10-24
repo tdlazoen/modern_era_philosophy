@@ -10,18 +10,24 @@ from dataframes import Philosophers, Documents
 from unidecode import unidecode
 
 '''
-This file scrapes the site openculture
+This file was intended to scrape the site openculture
 http://www.openculture.com/free-philosophy-ebooks
+The scraping of the site wasn't performed as there wouldn't be enough data obtained for the amount of work needed.
 '''
 
 def init_driver():
+    '''
+    Initialize Selenium Driver
+    '''
     driver = webdriver.Chrome()
     driver.wait = WebDriverWait(driver, 5)
 
     return driver
 
 def get_initial_info(driver, phils):
-
+    '''
+    Exploratory web scraping - Getting basic information that would be needed to scrape documents
+    '''
     url = 'http://www.openculture.com/free-philosophy-ebooks'
     driver.get(url)
 
@@ -73,16 +79,13 @@ def get_initial_info(driver, phils):
     for i, idx in enumerate(eastern_idxs):
         authors.pop(idx - i)
         titles.pop(idx - i)
-        
+
 
     print(len(authors))
     print(len(titles))
     print(len(links))
 
     return driver, authors, titles, links
-
-def get_text(phils):
-    pass
 
 if __name__ == '__main__':
     phils, docs = Philosophers(), Documents

@@ -13,12 +13,18 @@ This file tested out the webdriver method of
 getting the nationaility and birthplaces
 '''
 def init_driver():
+    '''
+    Initilize selenium driver
+    '''
     driver = webdriver.Chrome()
     driver.wait = WebDriverWait(driver, 5)
 
     return driver
 
 def nationality_birthplace(driver, name):
+    '''
+    Use google search to attempt finding the nationality and birthplace of a particular philosopher
+    '''
     query_nat = name + ' nationality'
 
     driver.get('https://www.google.com/')
@@ -82,8 +88,10 @@ def nationality_birthplace(driver, name):
 
 if __name__ == '__main__':
     phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
+
     phils.df['nationality'] = np.nan
     phils.df['birthplace'] = np.nan
+    
     driver = init_driver()
     for i in range(phils.df.shape[0]):
         name = phils.df.loc[i, 'name']

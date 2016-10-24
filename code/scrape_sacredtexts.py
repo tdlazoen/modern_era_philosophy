@@ -13,7 +13,15 @@ from selenium.common.exceptions import TimeoutException
 import re
 import pdb
 
+'''
+This file scrapes the philosophy section of
+http://sacred-texts.com/phi/
+'''
+
 def scrape_sacred():
+	'''
+
+	'''
 	base_url = 'http://sacred-texts.com/phi/'
 	r = requests.get(base_url)
 	soup = BeautifulSoup(r.content, 'lxml')
@@ -73,15 +81,45 @@ def scrape_sacred():
 
 	return new_names, titles, dates, links
 
+def add_documents():
+	'''
+	Add documents (text files) to documents dataframe
+	'''
+	new_names, titles, dates, links = scrape_sacred()
+
+	for i in range(len(links)):
+    url = links[i]
+    author = new_names[i].lower()
+    title = titles[i].lower()
+    year = dates[i]
+    text = []
+
+    if title not in docs.df.title.values:
+        print('\n{} documents remaining'.format(len(links) - i))
+        filepath = os.path.expanduser('~') + '/philosophy_capstone/text_files/' + title.lower()
+        print('Downloading file for {}'.format(title))
+        urllib.urlretrieve(url, filepath)
+        with open(filepath) as f:
+            text = f.read()
+        text = docs.clean_text(text)
+        print('Adding Document')
+        docs.add_document(author, title, year, text, url, filepath=filepath)
+
 def merge_parts(docs):
+	'''
+	Data cleaning - merges documents that have multiple parts before adding more documents
+	'''
+	# Used to determine which documents have multiple parts
 	last_title = docs.df.title.values[0]
 	for title in docs.df.title.values[1:]:
 	    if last_title[:8] in title:
 	        print(title)
 	    last_title = title
 
+	# Root titles for works with multiple parts
 	part_texts = ['leviathan', 'essay concerning human understanding', 'new essays on human understanding', 'essays on the intellectual powers of man', 'essays on the active powers of man', 'a treatise of human nature', 'an inquiry into the nature and causes of the wealth of nations', 'the critique of pure reason', 'a system of logic']
 
+	# Merge parts together
 	for text_name in part_texts:
 	    lst_title = [x for x in docs.df.title.values if x[:len(text_name)] == text_name]
 	    idxs = [docs.df[docs.df.title == x].index[0] for x in lst_title]
@@ -104,9 +142,13 @@ def merge_parts(docs):
 	    docs.df = docs.df.append(new_entry, ignore_index=True)
 	    docs.df.drop(idxs, inplace=True)
 
+	# Save dataframe
 	docs.save_df()
 
 def init_driver():
+	'''
+	Initialize selenium driver
+	'''
 	driver = webdriver.Chrome()
 	driver.implicitly_wait(10)
 	driver.wait = WebDriverWait(driver, 10)
@@ -114,6 +156,11 @@ def init_driver():
 	return driver
 
 def aristotle(docs):
+	'''
+	Get works for Aristotle (served as test for getting data on other classical philosophers)
+
+	Proved unfruitful due to too many format inconsistencies among other philosopher
+	'''
 	driver = init_driver()
 
 	driver.get('http://www.sacred-texts.com/cla/ari/index.htm')

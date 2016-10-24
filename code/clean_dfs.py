@@ -5,9 +5,10 @@ import re
 import us
 from modern_dfs import ModernPhilosophers, ModernDocuments
 
-# Determines nationality based off of birthplace
 def determine_nationality(df):
-
+	'''
+	Determines the nationality of philosophers with null nationalities but non-null birthplaces based on their birthplace
+	'''
 	df_temp = df.fillna('')
 	for i in range(df_temp.shape[0]):
 		if not df_temp.loc[i, 'nationality'] and df_temp.loc[i, 'birthplace']:
@@ -69,8 +70,10 @@ def determine_nationality(df):
 
 	return df
 
-# Changes american birthplaces from city, state to state, country
 def american_birthplaces(df):
+	'''
+	Re-formats american birthplaces from (city, state) to (state, united states) using the 'us' module
+	'''
 	df_temp = df.fillna('')
 
 	for i in range(df_temp.shape[0]):
@@ -83,8 +86,10 @@ def american_birthplaces(df):
 
 	return df
 
-# Removes copyright sections from documents
 def remove_copyright(author, text):
+	'''
+	Removes copyright sections from documents that have them
+	'''
 	start = text.find('copyright')
 	end = text[start:].find(author) + start
 
@@ -98,13 +103,23 @@ def remove_copyright(author, text):
 	return text
 
 if __name__ == '__main__':
+	# Load dataframes
 	phils = ModernPhilosophers()
 	docs = ModernDocuments()
+
+	# Pring out useful information
 	print('Modern Authors with no documents: ', len([x for x in phils.df['name'] if x not in docs.df.author.values]))
+
 	print('Modern Authors with documents not in philosopher df: ', [x for x in np.unique(docs.df['author']) if x not in phils.df.name.values])
+
 	print('Modern Authors with more than one document: ', len([x for x in np.unique(docs.df['author']) if docs.df[docs.df.author == x].shape[0] > 1]))
+
 	print('Documents with no year: ', docs.df[docs.df.year == 0].shape[0])
+
 	print('Shape of Modern Philosopher dataframe: ', phils.df.shape)
+
 	print('Shape of Modern Documents dataframe: ', docs.df.shape)
+
 	print('Number of null nationalities: ', phils.df[phils.df.nationality.isnull()].shape[0])
+	
 	print('Number of null birthplaces: ', phils.df[phils.df.birthplace.isnull()].shape[0])

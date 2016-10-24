@@ -24,6 +24,9 @@ to get gutenberg texts
 
 # Add a document to the dictionary
 def add_document(dct, idx, author, doc_title, link):
+	'''
+	Add document to document dictionary
+	'''
 	dct[str(idx)]['author'] = author
 	dct[str(idx)]['document_title'] = doc_title
 	dct[str(idx)]['url'] = link
@@ -31,6 +34,9 @@ def add_document(dct, idx, author, doc_title, link):
 	return dct
 
 def get_document_info(tags):
+	'''
+	Get document titles and links
+	'''
 	# Initialize document title variables
 	doc_titles = []
 	doc_mask = [] # Used for creating authors list later
@@ -148,6 +154,9 @@ def gutenberg_info():
 	return authors, doc_titles, links
 
 def get_document_text(url):
+	'''
+	Get text for each document by scraping page with unique id (resulted in 403 error)
+	'''
 	unique_id = filter(str.isdigit, url)
 	time.sleep(5)
 	doc_url = 'https://www.gutenberg.org/files/{}/{}-h/{}-h.htm'.format(unique_id, unique_id, unique_id)
@@ -179,6 +188,9 @@ def get_document_text(url):
 	return text
 
 def gutenberg_docs():
+	'''
+	Add documents to documents dictionary
+	'''
 	authors, doc_titles, links = gutenberg_info()
 	ids = [int(re.sub('\D', '', x)) for x in links]
 
@@ -202,9 +214,6 @@ def gutenberg_docs():
             print('Download URI for {} not supported'.format(ids[i]))
     else:
         print('\nThat Author isn\'t one of the philosophers!')
-
-
-
 
 if __name__ == '__main__':
 	gut_docs = gutenberg_docs()

@@ -28,39 +28,39 @@ class ModernPhilosophers(object):
 		self.filepath = filepath
 
 	def add_philosopher_entry(self, name, birth, death, time_period='modern'):
-			'''
-			Add a new philosopher to the dataframe
-			'''
-			name, filepath = self.standardize_name(name, image=True)
+		'''
+		Add a new philosopher to the dataframe
+		'''
+		name, filepath = self.standardize_name(name, image=True)
 
-			if name not in self.df.name.values:
-				era = self.determine_era(time_period)
-				century = self.determine_century(birth, death)
+		if name not in self.df.name.values:
+			era = self.determine_era(time_period)
+			century = self.determine_century(birth, death)
 
-				nationality = self.get_nationality(name)
-				birthplace = self.get_birthplace(name)
+			nationality = self.get_nationality(name)
+			birthplace = self.get_birthplace(name)
 
-				if nationality == 'american' and birthplace:
-					birthplace = self.american_birthplaces(birthplace)
+			if nationality == 'american' and birthplace:
+				birthplace = self.american_birthplaces(birthplace)
 
-				new_entry = {'name': name,
-							 'nationality': nationality,
-							 'birthplace': birthplace,
-							 'year_born': birth,
-							 'year_died': death,
-							 'century': century,
-							 'time_period': time_period,
-							 'era': era,
-							 'image_path': filepath}
+			new_entry = {'name': name,
+						 'nationality': nationality,
+						 'birthplace': birthplace,
+						 'year_born': birth,
+						 'year_died': death,
+						 'century': century,
+						 'time_period': time_period,
+						 'era': era,
+						 'image_path': filepath}
 
-				self.df = self.df.append(new_entry, ignore_index=True)
-			else:
-				print('The philosopher {} already exists!'.format(name))
+			self.df = self.df.append(new_entry, ignore_index=True)
+		else:
+			print('The philosopher {} already exists!'.format(name))
 
 	def determine_era(self, time_period):
 		'''
 		Returns the era of a philosopher given their
-		time period.
+		time period
 		'''
 		if time_period in ['presocratic', 'socratic', 'hellenistic', 'roman']:
 			return 'ancient'
@@ -72,17 +72,10 @@ class ModernPhilosophers(object):
 			return 'modern'
 
 	def determine_century(self, year_born, year_died):
-		if year_born < 0:
-			if year_died + (abs(year_died) % 100) == year_born + (abs(year_born) % 100):
-				return year_born + (abs(year_born) % 100)
-
-			elif abs(year_born) % 100 > 25:
-				return year_born + (abs(year_born) % 100)
-
-			else:
-				return (year_born + 100) + (abs(year_born) % 100)
-
-		elif year_born < 1900:
+		'''
+		Determine century philosopher was most prominent in based on birth and death years
+		'''
+		if year_born < 1900:
 			if year_died - (year_died % 100) == year_born - (year_born % 100):
 				return year_born - (year_born % 100)
 
@@ -183,6 +176,9 @@ class ModernPhilosophers(object):
 		return birthplace
 
 	def american_birthplaces(self, birthplace):
+		'''
+		Re-format amercian birthplace to (state, united states) if birthplace is in format (city, state)
+		'''
 		try:
 			birthplace_state = re.split(r',', birthplace)[-1].strip()
 			if len(birthplace_state) > 2:
@@ -265,10 +261,15 @@ class ModernDocuments(object):
 		'''
 		Add new document to the documents dataframe
 		'''
+		# Get cleaned text
 		text = self.clean_text(text)
+
+		# Get number of words
 		num_words = self.get_num_words(text)
 
+		# Check if title exists already
 		if title not in self.df.title.values:
+			# Create new entry and add to dataframe
 			new_entry = {'title': title,
 						 'author': author,
 						 'year': year,
@@ -286,7 +287,6 @@ class ModernDocuments(object):
 		'''
 		Clean text of a document
 		'''
-
 		text = text.strip(punctuation)
 
 		if not(text.isalpha()):
@@ -301,6 +301,9 @@ class ModernDocuments(object):
 		return text.lower()
 
 	def get_num_words(self, text):
+		'''
+		Get number of words in a document
+		'''
 		return len(text.split())
 
 	def update_df(self, df):

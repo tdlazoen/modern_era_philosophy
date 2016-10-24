@@ -31,6 +31,9 @@ http://www.sophia-project.org/classical-philosophy.html
 '''
 
 def init_driver():
+	'''
+	Initialize selenium driver
+	'''
 	driver = webdriver.Chrome()
 	driver.implicitly_wait(10)
 	driver.wait = WebDriverWait(driver, 10)
@@ -38,6 +41,9 @@ def init_driver():
 	return driver
 
 def cicero(docs):
+	'''
+	Get works for Cicero (test for other philosophers)
+	'''
 	url = 'http://www.sophia-project.org/classical-philosophy.html'
 
 	driver = init_driver()
@@ -74,6 +80,9 @@ def cicero(docs):
 	return driver
 
 def other_philosophers(phils, docs):
+	'''
+	Obtain documents for other philosophers on the page
+	'''
 	url = 'http://www.sophia-project.org/classical-philosophy.html'
 
 	driver = init_driver()
