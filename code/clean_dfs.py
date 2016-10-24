@@ -83,6 +83,20 @@ def american_birthplaces(df):
 
 	return df
 
+# Removes copyright sections from documents
+def remove_copyright(author, text):
+	start = text.find('copyright')
+	end = text[start:].find(author) + start
+
+	# Check if the start and end worked.  If not, just scrape entire text
+	if not (start == -1 or end == -1):
+		text = text[:start] + text[end-1:]
+		name_first = text.find(author)
+		idx = name_first + len(author)
+		text = text[:idx] + text[idx:].replace(author, '')
+
+	return text
+
 if __name__ == '__main__':
 	phils = ModernPhilosophers()
 	docs = ModernDocuments()
