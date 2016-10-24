@@ -84,13 +84,13 @@ def american_birthplaces(df):
 	return df
 
 if __name__ == '__main__':
-	mod_phils = ModernPhilosophers()
-	mod_docs = ModernDocuments()
-	print('Modern Authors with no documents: ', len([x for x in mod_phils.df['name'] if x not in mod_docs.df.author.values]))
-	print('Modern Authors with documents not in philosopher df: ', [x for x in np.unique(mod_docs.df['author']) if x not in mod_phils.df.name.values])
-	print('Modern Authors with more than one document: ', len([x for x in np.unique(mod_docs.df['author']) if mod_docs.df[mod_docs.df.author == x].shape[0] > 1]))
-	print('Documents with no year: ', mod_docs.df[mod_docs.df.year == 0].shape[0])
-	print('Shape of Modern Philosopher dataframe: ', mod_phils.df.shape)
-	print('Shape of Modern Documents dataframe: ', mod_docs.df.shape)
-	print('Number of null nationalities: ', mod_phils.df[mod_phils.df.nationality.isnull()].shape[0])
-	print('Number of null birthplaces: ', mod_phils.df[mod_phils.df.birthplace.isnull()].shape[0])
+	phils = ModernPhilosophers()
+	docs = ModernDocuments()
+	print('Modern Authors with no documents: ', len([x for x in phils.df['name'] if x not in docs.df.author.values]))
+	print('Modern Authors with documents not in philosopher df: ', [x for x in np.unique(docs.df['author']) if x not in phils.df.name.values])
+	print('Modern Authors with more than one document: ', len([x for x in np.unique(docs.df['author']) if docs.df[docs.df.author == x].shape[0] > 1]))
+	print('Documents with no year: ', docs.df[docs.df.year == 0].shape[0])
+	print('Shape of Modern Philosopher dataframe: ', phils.df.shape)
+	print('Shape of Modern Documents dataframe: ', docs.df.shape)
+	print('Number of null nationalities: ', phils.df[phils.df.nationality.isnull()].shape[0])
+	print('Number of null birthplaces: ', phils.df[phils.df.birthplace.isnull()].shape[0])

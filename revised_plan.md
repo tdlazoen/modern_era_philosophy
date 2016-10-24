@@ -11,7 +11,7 @@
 	* Are there any patterns between philosophers in the same countries?
 * What works appeared to be influencing society the most?
 	* E.g. John Locke and Thomas Hobbes (American Revolution)
-* Are certain schools of thought more prominent?
+* Are certain branches more prominent?
 	* Use counts of documents
 	* Only interested if there's a significant deviation from the mean
 * Are there any significant shifts in thinking throughout the era?
@@ -31,6 +31,18 @@
 	* Use for summary page
 * If there's a way to obtain information for each document and which school of thought
 it falls in, use the information to analyze the changes in that school's topics
+
+#### Algorithm Specific Stuff
+1) Group by major time periods (reason, enlightenment, etc...)
+	* See differences in prominent words / topics
+2) Group by century
+	* Also see differences
+3) When a difference is observed, research to see if anything happened that
+could give some context to this change.
+4) Cluster based on number of main branches in philosophy
+	* See if it actually gets the classification correct
+5) Examine similarities between different philosophers
+	* Same time period and previous ones
 
 #### Web App Stuff
 * Still a story setting - Take the listeners through the time period
