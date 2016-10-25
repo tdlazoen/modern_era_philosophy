@@ -31,10 +31,9 @@ def clean_document(text):
 
     # Part's of speech to keep in the result
     pos_lst = ['ADJ', 'ADV', 'NOUN', 'PROPN', 'VERB']
-
     tokens = [token.lemma_.lower().replace(' ', '_') for token in doc]# if token.pos_ in pos_lst]
 
-    return ' '.join(token for token in tokens if token not in STOPLIST).replace("'s", '').translate(PUNCT_DICT)
+    return ' '.join(token for token in tokens if token not in STOPLIST)
 
 if __name__ == '__main__':
     phils, docs, full_texts, titles = load_data()
