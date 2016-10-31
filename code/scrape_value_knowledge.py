@@ -50,6 +50,7 @@ def get_author_doc_info(phils, driver):
     titles[idx_humboldt] = 'on language'
     titles[idx_goethe] = 'on science'
     titles[titles.index('commodities: use value and value')] = 'commodities'
+    links[titles.index('computing machinery and intelligence')] = 'http://www.abelard.org/turpap/turpap.php'
     authors_years[idx_humboldt] = ', wilhelm von humboldt, 1810'
     authors_years[idx_goethe] = ', johann wolfgang von goethe, 1798'
 
@@ -101,24 +102,45 @@ def get_text(link, driver):
     soup = BeautifulSoup(r.content, 'html.parser')
 
     exceptions = ['https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S1', \
-                  'https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S2']
+                  'https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S2', \
+                  'https://www.marxists.org/subject/women/authors/millett-kate/theory.htm']
+                  
+    multiple_links = ['https://www.marxists.org/reference/archive/feuerbach/works/future/index.htm', \
+                      'https://www.marxists.org/reference/archive/spirkin/works/dialectical-materialism/index.html', \
+                      'https://www.marxists.org/archive/vygotsky/works/words/index.htm', \
+                      'https://www.marxists.org/reference/archive/marcuse/works/reason/index.htm', \
+                      'https://www.marxists.org/archive/novack/works/history/index.htm', \
+                      'https://www.marxists.org/archive/lektorsky/subject-object/index.htm']
 
-    if len(soup.findAll('p', {'class': 'index'})) == 0 or link in exceptions:
-        pars = soup.select('p')
-        text = ' '.join(x.text for x in pars)
-        return text
-    elif link == 'https://www.marxists.org/reference/archive/feuerbach/works/future/index.htm':
+    if link in multiple_links:
         driver.get(link)
         time.sleep(2)
 
-        lnks = driver.find_elements_by_xpath('/html/body/p[@class="index"]/a')
-        lnks = [link for link in lnks if 'glossary' not in link.get_attribute('href')]
+        if link == 'https://www.marxists.org/archive/novack/works/history/index.htm':
+            lnks = driver.find_elements_by_xpath('/html/body/p[contains(@class, "toc") or contains(@class, "tob")][position() > 1]/a')
+            lnks.pop()
+        elif link == 'https://www.marxists.org/archive/lektorsky/subject-object/index.htm':
+            lnks = driver.find_elements_by_xpath('/html/body/p[@class="fst"]//a')
+            lnks.pop(10)
+        elif link == 'https://www.marxists.org/archive/vygotsky/works/words/index.htm':
+            lnks = driver.find_elements_by_xpath('/html/body/p[position() < 2]/a')
+        else:
+            lnks = driver.find_elements_by_xpath('/html/body/p[@class="index"]/a')
+            lnks = [link for link in lnks if 'glossary' not in link.get_attribute('href')]
 
         text = ''
         for i in range(len(lnks)):
-            lnks = driver.find_elements_by_xpath('/html/body/p[@class="index"]/a')
-            lnks = [link for link in lnks if 'glossary' not in link.get_attribute('href')]
-            lnks = [link for link in lnks if 'reference' not in link.get_attribute('href')]
+            if link == 'https://www.marxists.org/archive/novack/works/history/index.htm':
+                lnks = driver.find_elements_by_xpath('/html/body/p[contains(@class, "toc") or contains(@class, "tob")][position() > 1]/a')
+                lnks.pop()
+            elif link == 'https://www.marxists.org/archive/lektorsky/subject-object/index.htm':
+                lnks = driver.find_elements_by_xpath('/html/body/p[@class="fst"]//a')
+                lnks.pop(10)
+            elif link == 'https://www.marxists.org/archive/vygotsky/works/words/index.htm':
+                lnks = driver.find_elements_by_xpath('/html/body/p[@class="index"][position() < 2]/a')
+            else:
+                lnks = driver.find_elements_by_xpath('/html/body/p[@class="index"]/a')
+                lnks = [link for link in lnks if 'glossary' not in link.get_attribute('href')]
 
             lnks[i].click()
             time.sleep(1)
@@ -129,6 +151,12 @@ def get_text(link, driver):
             driver.back()
             time.sleep(2)
         return text
+
+    elif len(soup.findAll('p', {'class': 'index'})) == 0 or link in exceptions:
+        pars = soup.select('p')
+        text = ' '.join(x.text for x in pars)
+        return text
+
     else:
         try:
             driver.get(link)
