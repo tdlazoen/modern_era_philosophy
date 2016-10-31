@@ -1,14 +1,15 @@
 import numpy as np
 import pandas as pd
+import pickle
 from modern_dfs import ModernPhilosophers, ModernDocuments
 from spacy.en import English
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 from nltk.corpus import stopwords
 from spacy.en import English
 from string import punctuation
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 import re
+import pdb
 
 def load_data():
     phils = ModernPhilosophers()
@@ -40,7 +41,15 @@ if __name__ == '__main__':
 
     small_texts = full_texts[:5]
 
-    cleaned_texts = [''] * len(small_texts)
+    # cleaned_texts = np.array([''] * len(full_texts))
 
-    for i in range(len(small_texts)):
-        cleaned_texts[i] = clean_document(small_texts[i])
+    # for i in range(len(full_texts)):
+    #     cleaned_texts[i] = clean_document(full_texts[i])
+
+    vectorizer = TfidfVectorizer(preprocessor=clean_document)
+    tfidf_matrix = vectorizer.fit_transform(full_texts)
+
+    # with open('vectorizer.pkl', 'w') as f:
+    #     pickle.dump(vectorizer, f)
+    # with open('data/tfidf.pkl', 'w') as f:
+    #     pickle.dump(tfidf_matrix, f)

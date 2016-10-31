@@ -21,8 +21,15 @@ the philosopher and document dataframes
 '''
 
 class Philosophers(object):
-
+	'''
+	Allows for easy accessing and updating/saving of
+	dataframe containing all philosophers
+	'''
 	def __init__(self, filepath='../data/philosophers.csv'):
+		'''
+		Parameters:
+			filepath - The filepat the csv file will be saved to
+		'''
 		self.df = pd.read_csv(filepath)
 		self.philosophers = self.df['name']
 		self.filepath = filepath
@@ -279,8 +286,15 @@ class Philosophers(object):
 		self.df.to_csv(self.filepath, index=False)
 
 class Documents(object):
-
+	'''
+	Allows for easy accessing and updating/saving of
+	dataframe containing all documents
+	'''
 	def __init__(self, filepath='../data/documents.csv'):
+		'''
+		Parameters:
+			filepath - The filepat the csv file will be saved to
+		'''
 		self.df = pd.read_csv(filepath)
 		self.docs = self.df['title']
 		self.filepath = filepath

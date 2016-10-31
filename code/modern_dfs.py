@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 import time
 import urllib
 import re
@@ -21,20 +21,34 @@ the philosopher and document dataframes
 '''
 
 class ModernPhilosophers(object):
-
+	'''
+	Allows for easy accessing and updating/saving of
+	dataframe containing all modern era philosophers
+	'''
 	def __init__(self, filepath='../data/modern_philosophers.csv'):
+		'''
+		Parameters:
+			filepath - The filepat the csv file will be saved to
+		'''
 		self.df = pd.read_csv(filepath)
 		self.philosophers = self.df['name']
 		self.filepath = filepath
+		self.driver = None
 
-	def add_philosopher_entry(self, name, birth, death, time_period='modern'):
+	def add_philosopher_entry(self, name, birth=None, death=None, time_period=None):
 		'''
 		Add a new philosopher to the dataframe
 		'''
 		name, filepath = self.standardize_name(name, image=True)
 
+		if birth is None and death is None:
+			birth, death = self.get_lifespan(name)
+
+		if time_period is None:
+			time_period = self.determine_time_period(birth, death)
+
 		if name not in self.df.name.values:
-			era = self.determine_era(time_period)
+			era = 'modern'
 			century = self.determine_century(birth, death)
 
 			nationality = self.get_nationality(name)
@@ -57,19 +71,20 @@ class ModernPhilosophers(object):
 		else:
 			print('The philosopher {} already exists!'.format(name))
 
-	def determine_era(self, time_period):
+	def determine_time_period(self, birth, death):
 		'''
-		Returns the era of a philosopher given their
-		time period
+		Determine the time period of a philosopher given
+		their birth and death year
 		'''
-		if time_period in ['presocratic', 'socratic', 'hellenistic', 'roman']:
-			return 'ancient'
-		elif time_period in ['medieval', 'renaissance']:
-			return 'medieval'
-		elif time_period == 'contemporary':
-			return 'contemporary'
-		else:
-			return 'modern'
+		time_periods = np.unique(self.df['time_period'])
+		diffs = []
+		for time_period in time_periods:
+			tp_df = self.df[self.df['time_period'] == time_period]
+			birth_diff = np.abs(birth - tp_df['year_born'].median())
+			death_diff = np.abs(death - tp_df['year_died'].median())
+			diffs.append(birth_diff + death_diff)
+
+		return time_periods[diffs.index(np.nanmin(diffs))]
 
 	def determine_century(self, year_born, year_died):
 		'''
@@ -100,38 +115,20 @@ class ModernPhilosophers(object):
 		'''
 		query_nat = name + ' nationality'
 
-		driver = webdriver.Chrome()
-		driver.wait = WebDriverWait(driver, 5)
-
-		driver.get('https://www.google.com/')
-		time.sleep(2)
-		box = driver.wait.until(
-				EC.presence_of_element_located((By.NAME, 'q'))
-		)
-
-		box.send_keys(query_nat)
-
-		button = driver.wait.until(
-				EC.element_to_be_clickable((By.NAME, 'btnG'))
-		)
-
-		button.click()
-
-		time.sleep(2)
+		self.run_google_query(query_nat)
 
 		try:
-			nationality = driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+			nationality = self.driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
 			nationality = nationality.text.lower().strip()
 
 		except NoSuchElementException:
 			try:
-				nationality = driver.find_element_by_xpath('//*[@id="uid_V_56oAAEBGwKVMWFIwPVsA_0"]/div/div/div[1]/div/div/a/div[2]/div/div/div')
+				nationality = self.driver.find_element_by_xpath('//*[@id="uid_V_56oAAEBGwKVMWFIwPVsA_0"]/div/div/div[1]/div/div/a/div[2]/div/div/div')
 				nationality = nationality.text.lower().strip()
 
 			except NoSuchElementException:
-				nationality = np.nan
+				nationality = ''
 
-		driver.quit()
 		return nationality
 
 	def get_birthplace(self, name):
@@ -140,40 +137,53 @@ class ModernPhilosophers(object):
 		'''
 		query_birth = name + ' philosopher birthplace'
 
-		driver = webdriver.Chrome()
-		driver.wait = WebDriverWait(driver, 5)
-
-		driver.get('https://www.google.com/')
-		time.sleep(2)
-		box = driver.wait.until(
-				EC.presence_of_element_located((By.NAME, 'q'))
-		)
-
-		box.send_keys(query_birth)
-
-		button = driver.wait.until(
-				EC.element_to_be_clickable((By.NAME, 'btnG'))
-		)
-
-		button.click()
-
-		time.sleep(2)
+		self.run_google_query(query_birth)
 
 		try:
-			birthplace = driver.find_element_by_xpath('//*[@id="uid_0"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+			birthplace = self.driver.find_element_by_xpath('//*[@id="uid_0"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
 			birthplace = birthplace.text.lower().strip()
 
 		except NoSuchElementException:
 			try:
-				birthplace = driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]').text
+				birthplace = self.driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]').text
 
 				birthplace = birthplace.split()[-1].lower().strip()
 
 			except NoSuchElementException:
-				birthplace = np.nan
+				birthplace = ''
 
-		driver.quit()
+		self.driver.quit()
 		return birthplace
+
+	def get_lifespan(self, name):
+		'''
+		Attempt to get the birthplace of a philosopher
+		'''
+		self.driver = self.init_driver()
+
+		for i, query in enumerate([' year of birth', ' year of death']):
+			query_phil = name + query
+
+			self.run_google_query(query_phil)
+
+			if i == 0:
+				try:
+					birth_year = self.driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+					birth_year = re.split('\,', birth_year.text)[-1].lower().strip()
+					birth_year = int(''.join(x for x in birth_year if x.isdigit()))
+
+				except NoSuchElementException:
+					birth_year = 0
+			else:
+				try:
+					death_year = self.driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/div[2]/div/div/div[1]')
+					death_year = re.split('\,', death_year.text)[-1].lower().strip()
+					death_year = int(''.join(x for x in death_year if x.isdigit()))
+
+				except NoSuchElementException:
+					death_year = 0
+
+		return birth_year, death_year
 
 	def american_birthplaces(self, birthplace):
 		'''
@@ -250,9 +260,41 @@ class ModernPhilosophers(object):
 			self.filepath = filepath
 		self.df.to_csv(self.filepath, index=False)
 
-class ModernDocuments(object):
+	def init_driver(self):
+		driver = webdriver.Chrome()
+		driver.wait = WebDriverWait(driver, 5)
 
+		return driver
+
+	def run_google_query(self, query):
+		self.driver.get('https://www.google.com/')
+		time.sleep(2)
+		box = self.driver.wait.until(
+				EC.presence_of_element_located((By.NAME, 'q'))
+		)
+
+		box.send_keys(query)
+
+		button = self.driver.wait.until(
+				EC.element_to_be_clickable((By.NAME, 'btnG'))
+		)
+
+		button.click()
+
+		time.sleep(2)
+
+
+class ModernDocuments(object):
+	'''
+	Allows for easy accessing and updating/saving of
+	dataframe containing all documents written by modern era
+	philosophers
+	'''
 	def __init__(self, filepath='../data/modern_documents.csv'):
+		'''
+		Parameters:
+			filepath - The filepat the csv file will be saved to
+		'''
 		self.df = pd.read_csv(filepath)
 		self.docs = self.df['title']
 		self.filepath = filepath
