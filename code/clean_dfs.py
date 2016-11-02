@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import re
 import us
 from modern_dfs import ModernPhilosophers, ModernDocuments
@@ -59,11 +58,20 @@ def determine_nationality(df):
 			elif birthplace == 'jordan':
 				df.loc[i, 'nationality'] = 'jordanian'
 
+			elif birthplace == 'russia':
+				df.loc[i, 'nationality'] = 'russian'
+
 			elif birthplace == 'south africa':
 				df.loc[i, 'nationality'] = 'south african'
 
 			elif birthplace == 'spain':
 				df.loc[i, 'nationality'] = 'spanish'
+
+			elif birthplace == 'belgium':
+				df.loc[i, 'nationality'] = 'belgian'
+
+			elif birthplace == 'martinique':
+				df.loc[i, 'nationality'] = 'martiniquais'
 
 			elif birthplace == 'czech republic':
 				df.loc[i, 'nationality'] = 'czech'
@@ -108,11 +116,15 @@ if __name__ == '__main__':
 	docs = ModernDocuments()
 
 	# Pring out useful information
-	print('Modern Authors with no documents: ', len([x for x in phils.df['name'] if x not in docs.df.author.values]))
+	print('# of Modern Authors with no documents: ', len([x for x in phils.df['name'] if x not in docs.df.author.values]))
+
+	print('Modern Authors with no documents: ', [x for x in phils.df['name'] if x not in docs.df.author.values])
 
 	print('Modern Authors with documents not in philosopher df: ', [x for x in np.unique(docs.df['author']) if x not in phils.df.name.values])
 
 	print('Modern Authors with more than one document: ', len([x for x in np.unique(docs.df['author']) if docs.df[docs.df.author == x].shape[0] > 1]))
+
+	print('Modern Authors with more than two documents: ', len([x for x in np.unique(docs.df['author']) if docs.df[docs.df.author == x].shape[0] > 2]))
 
 	print('Documents with no year: ', docs.df[docs.df.year == 0].shape[0])
 
@@ -121,5 +133,5 @@ if __name__ == '__main__':
 	print('Shape of Modern Documents dataframe: ', docs.df.shape)
 
 	print('Number of null nationalities: ', phils.df[phils.df.nationality.isnull()].shape[0])
-	
+
 	print('Number of null birthplaces: ', phils.df[phils.df.birthplace.isnull()].shape[0])

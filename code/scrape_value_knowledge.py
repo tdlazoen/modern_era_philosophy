@@ -11,6 +11,12 @@ from bs4 import BeautifulSoup
 import time
 import re
 
+'''
+This file scrapes the website
+https://www.marxists.org/reference/subject/philosophy/
+for modern era philosophical texts
+'''
+
 def init_driver():
     driver = webdriver.Chrome()
     driver.wait = WebDriverWait(driver, 5)
@@ -18,6 +24,9 @@ def init_driver():
     return driver
 
 def get_author_doc_info(phils, driver):
+    '''
+    Get the basic document info
+    '''
     url = 'https://www.marxists.org/reference/subject/philosophy/'
 
     driver.get(url)
@@ -98,13 +107,16 @@ def get_author_doc_info(phils, driver):
     return authors, years, links, titles
 
 def get_text(link, driver):
+    '''
+    Get text for a specific link
+    '''
     r = requests.get(link)
     soup = BeautifulSoup(r.content, 'html.parser')
 
     exceptions = ['https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S1', \
                   'https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S2', \
                   'https://www.marxists.org/subject/women/authors/millett-kate/theory.htm']
-                  
+
     multiple_links = ['https://www.marxists.org/reference/archive/feuerbach/works/future/index.htm', \
                       'https://www.marxists.org/reference/archive/spirkin/works/dialectical-materialism/index.html', \
                       'https://www.marxists.org/archive/vygotsky/works/words/index.htm', \
@@ -175,6 +187,9 @@ def get_text(link, driver):
             return ''
 
 def add_documents(authors, years, links, titles, driver, docs):
+    '''
+    Add documents from on website
+    '''
     for i in range(len(authors)):
         author = authors[i]
         year = years[i]

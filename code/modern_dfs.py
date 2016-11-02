@@ -57,9 +57,12 @@ class ModernPhilosophers(object):
 			if nationality == 'american' and birthplace:
 				birthplace = self.american_birthplaces(birthplace)
 
+			country = re.split('\,', birthplace)[-1].strip()
+
 			new_entry = {'name': name,
 						 'nationality': nationality,
 						 'birthplace': birthplace,
+						 'country': country,
 						 'year_born': birth,
 						 'year_died': death,
 						 'century': century,
@@ -309,8 +312,9 @@ class ModernDocuments(object):
 		# Get number of words
 		num_words = self.get_num_words(text)
 
-		# Check if title exists already
-		if title not in self.df.title.values:
+		# Check if title exists already by the author
+		auth_df = self.df[self.df.author == author]
+		if title not in auth_df.title.values:
 			# Create new entry and add to dataframe
 			new_entry = {'title': title,
 						 'author': author,
