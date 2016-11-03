@@ -312,6 +312,9 @@ class ModernDocuments(object):
 		# Get number of words
 		num_words = self.get_num_words(text)
 
+		# Get century of document
+		century = year - (year % 100)
+
 		# Check if title exists already by the author
 		auth_df = self.df[self.df.author == author]
 		if title not in auth_df.title.values:
@@ -319,6 +322,7 @@ class ModernDocuments(object):
 			new_entry = {'title': title,
 						 'author': author,
 						 'year': year,
+						 'century': century,
 						 'text': text,
 						 'words': num_words,
 						 'url': url,
