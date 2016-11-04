@@ -547,6 +547,3 @@ def thucydides(d):
     d[name]['time_period'] = time_period
 
     return d
-
-if __name__ == '__main__':
-    western = western_philosophers()

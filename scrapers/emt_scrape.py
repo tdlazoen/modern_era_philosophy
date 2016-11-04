@@ -421,5 +421,6 @@ if __name__ == '__main__':
 	philosophers, authors = add_to_philosophers_dict(philosophers)
 	documents = download_pdfs(authors)
 	save_dfs(documents, philosophers)
-	doc_df = pd.read_csv('data/documents.csv')
+	doc_df = pd.read_csv('../data/documents.csv')
 	doc_df = scrape_pdfs(documents_df)
+	doc_df.to_csv('../data/documents.csv')

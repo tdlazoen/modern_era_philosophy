@@ -246,5 +246,7 @@ if __name__ == '__main__':
     phils, docs = ModernPhilosophers(), ModernDocuments()
     driver = init_driver()
     authors, years, links, titles = get_author_doc_info(phils, driver)
+    phils.save_df()
     add_documents(authors, years, links, titles, driver, docs)
     driver.quit()
+    docs.save_df()

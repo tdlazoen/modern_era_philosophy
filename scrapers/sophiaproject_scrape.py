@@ -268,3 +268,5 @@ def get_text(pdf_file, author):
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
 	driver = other_philosophers(phils, docs)
+	docs.save_df()
+	phils.save_df()

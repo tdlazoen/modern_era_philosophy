@@ -190,3 +190,4 @@ if __name__ == '__main__':
 	reason_philosophers(phils)
 	contemporary_philosophers(phils)
 	hellenistic_philosophers(phils)
+	phils.save_df()

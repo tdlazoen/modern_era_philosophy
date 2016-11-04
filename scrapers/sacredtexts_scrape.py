@@ -240,3 +240,5 @@ def aristotle_test(docs):
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
 	add_documents()
+	docs.save_df()
+	phils.save_df()

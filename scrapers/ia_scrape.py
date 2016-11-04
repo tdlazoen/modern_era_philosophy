@@ -299,3 +299,4 @@ if __name__ == '__main__':
 
     docs_info = load_data('../data/ia_document_info.json')
     add_documents(docs, docs_info)
+    docs.save_df()
