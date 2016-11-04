@@ -2,80 +2,24 @@ import numpy as np
 import pandas as pd
 import re
 import us
+import json
 from modern_dfs import ModernPhilosophers, ModernDocuments
 
 def determine_nationality(df):
 	'''
 	Determines the nationality of philosophers with null nationalities but non-null birthplaces based on their birthplace
 	'''
+	with open('../data/nationalities.json', 'r') as f:
+		nationality_dict = json.load(f)
 	df_temp = df.fillna('')
+
 	for i in range(df_temp.shape[0]):
 		if not df_temp.loc[i, 'nationality'] and df_temp.loc[i, 'birthplace']:
 			birthplace = re.split(r'\,', df.loc[i, 'birthplace'])[-1].strip()
 
-			if birthplace == 'greece' or birthplace == 'turkey':
-				df.loc[i, 'nationality'] = 'greek'
-
-			elif birthplace == 'italy':
-				df.loc[i, 'nationality'] = 'italian'
-
-			elif birthplace == 'france':
-				df.loc[i, 'nationality'] = 'french'
-
-			elif birthplace == 'germany':
-				df.loc[i, 'nationality'] = 'german'
-
-			elif birthplace == 'united kingdom':
-				df.loc[i, 'nationality'] = 'british'
-
-			elif birthplace == 'united states':
-				df.loc[i, 'nationality'] = 'american'
-
-			elif birthplace == 'poland':
-				df.loc[i, 'nationality'] = 'poland'
-
-			elif birthplace == 'ireland':
-				df.loc[i, 'nationality'] = 'irish'
-
-			elif birthplace == 'austria':
-				df.loc[i, 'nationality'] = 'austrian'
-
-			elif birthplace == 'algeria':
-				df.loc[i, 'nationality'] = 'algerian'
-
-			elif birthplace == 'iran':
-				df.loc[i, 'nationality'] = 'iranian'
-
-			elif birthplace == 'netherlands':
-				df.loc[i, 'nationality'] = 'dutch'
-
-			elif birthplace == 'israel':
-				df.loc[i, 'nationality'] = 'israeli'
-
-			elif birthplace == 'egypt':
-				df.loc[i, 'nationality'] = 'egyptian'
-
-			elif birthplace == 'jordan':
-				df.loc[i, 'nationality'] = 'jordanian'
-
-			elif birthplace == 'russia':
-				df.loc[i, 'nationality'] = 'russian'
-
-			elif birthplace == 'south africa':
-				df.loc[i, 'nationality'] = 'south african'
-
-			elif birthplace == 'spain':
-				df.loc[i, 'nationality'] = 'spanish'
-
-			elif birthplace == 'belgium':
-				df.loc[i, 'nationality'] = 'belgian'
-
-			elif birthplace == 'martinique':
-				df.loc[i, 'nationality'] = 'martiniquais'
-
-			elif birthplace == 'czech republic':
-				df.loc[i, 'nationality'] = 'czech'
-
+			for country in nationality_dict.keys():
+				if birthplace == country:
+					df.loc[i, 'nationality'] = nationality_dict[country]
 	return df
 
 def american_birthplaces(df):
@@ -99,7 +43,7 @@ def remove_copyright(author, text):
 	Removes copyright sections from documents that have them
 	'''
 	start = text.find('copyright')
-	end = text[start:].find(author) + start
+	end = text[start:].find(author.split()[-1]) + start
 
 	# Check if the start and end worked.  If not, just scrape entire text
 	if not (start == -1 or end == -1):
