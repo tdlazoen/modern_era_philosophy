@@ -10,6 +10,7 @@ from string import punctuation
 from requests.exceptions import ConnectionError
 import pdb
 import os
+import codecs
 
 def init_driver():
     driver = webdriver.Chrome()
@@ -65,39 +66,42 @@ def load_data(filename):
 def get_text(item, title):
     user = os.path.expanduser('~')
 
-    text_file = [x['name'] for x in item.item_metadata['files'] if '.txt' in x['name']][0]
+    text_file = [x['name'] for x in item.item_metadata['files'] if ('.txt' in x['name']) and ('meta.' not in x['name'])]
+
+    text_file = text_file[0]
 
     new_filepath = user + '/philosophy_capstone/text_files/' \
                    + title.replace(' ', '_')
 
     item.get_file(text_file).download(new_filepath)
 
-    with open(new_filepath, 'r') as f:
+    with codecs.open(new_filepath, 'r', encoding='utf-8', errors='replace') as f:
         text = f.read()
 
     return text, new_filepath
 
 def clean_text(text):
-    remove_sections = ['PREFACE', 'INTRODUCTION', 'NOTE', 'FOREWORD', 'CONTENTS']
+    remove_begin_sections = ['PREFACE', 'INTRODUCTION', "NOTE", 'FOREWORD']
+    remove_end_sections = ['INDEX', 'APPENDIX']
     d_us = enchant.Dict('en_US')
     d_gb = enchant.Dict('en_GB')
 
     text = text.replace('\n', '').replace('\r', '')
 
-    for section in remove_sections:
+    for section in remove_begin_sections:
         idx = text.find(section)
-        while idx > 0:
-            text = text[idx + len(section):]
-            idx = text.find(section)
+        while idx > -1:
+            if idx < 0.5 * len(text):
+                text = text[idx + len(section):]
+                idx = text.find(section)
+            else:
+                idx = -1
+    for section in remove_end_sections:
+        idx = text.find(section)
+        if idx > -1 and idx > 0.5 * len(text):
+            text = text[:idx]
 
-    cleaned_text = ''
-    for word in text.split():
-        if word in punctuation:
-            continue
-        elif not (d_us.check(word) or d_gb.check(word)):
-            word = spell(word)
-        cleaned_text += ' ' + word.strip(punctuation).strip()
-    return cleaned_text
+    return text
 
 def get_doc_info(ident_dict):
     driver = init_driver()
@@ -197,6 +201,10 @@ def add_documents(docs, docs_info):
         text = clean_text(text)
 
         print(len(text.split()))
+        if len(text.split()) < 1000:
+            cont = input("continue? ")
+            if cont == 'n':
+                break
         if title in docs.df.title.values:
             print('Another part of {} already exists! Adding text now'.format(title))
             idx = docs.df[docs.df.title == title].index

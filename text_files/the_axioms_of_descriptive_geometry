@@ -1,0 +1,4838 @@
+Google 
+
+
+
+This is a digital copy of a book that was preserved for generations on library shelves before it was carefully scanned by Google as part of a project 
+
+to make the world's books discoverable online. 
+
+It has survived long enough for the copyright to expire and the book to enter the public domain. A public domain book is one that was never subject 
+
+to copyright or whose legal copyright term has expired. Whether a book is in the public domain may vary country to country. Public domain books 
+
+are our gateways to the past, representing a wealth of history, culture and knowledge that's often difficult to discover. 
+
+Marks, notations and other maiginalia present in the original volume will appear in this file - a reminder of this book's long journey from the 
+
+publisher to a library and finally to you. 
+
+Usage guidelines 
+
+Google is proud to partner with libraries to digitize public domain materials and make them widely accessible. Public domain books belong to the 
+public and we are merely their custodians. Nevertheless, this work is expensive, so in order to keep providing tliis resource, we liave taken steps to 
+prevent abuse by commercial parties, including placing technical restrictions on automated querying. 
+We also ask that you: 
+
++ Make non-commercial use of the files We designed Google Book Search for use by individuals, and we request that you use these files for 
+personal, non-commercial purposes. 
+
++ Refrain fivm automated querying Do not send automated queries of any sort to Google's system: If you are conducting research on machine 
+translation, optical character recognition or other areas where access to a large amount of text is helpful, please contact us. We encourage the 
+use of public domain materials for these purposes and may be able to help. 
+
++ Maintain attributionTht GoogXt "watermark" you see on each file is essential for in forming people about this project and helping them find 
+additional materials through Google Book Search. Please do not remove it. 
+
++ Keep it legal Whatever your use, remember that you are responsible for ensuring that what you are doing is legal. Do not assume that just 
+because we believe a book is in the public domain for users in the United States, that the work is also in the public domain for users in other 
+countries. Whether a book is still in copyright varies from country to country, and we can't offer guidance on whether any specific use of 
+any specific book is allowed. Please do not assume that a book's appearance in Google Book Search means it can be used in any manner 
+anywhere in the world. Copyright infringement liabili^ can be quite severe. 
+
+About Google Book Search 
+
+Google's mission is to organize the world's information and to make it universally accessible and useful. Google Book Search helps readers 
+discover the world's books while helping authors and publishers reach new audiences. You can search through the full text of this book on the web 
+
+at |http: //books .google .com/I 
+
+
+
+BIBLIOGRAPHIC RECORD TARGET 
+
+Graduate Library 
+University of Michigan 
+
+Preservation Office 
+
+Storage Number: 
+
+
+
+ABN2643 
+
+ULFMTBRTaBLmT/C DT 07/18/88 R/DT 07/18/88 CC STATmmE/Ll 
+
+010: : I a 07038569 
+
+035/1: : | a (RLIN)MIUG86-B42066 
+
+035/2: : [a (CaOTULAS)160031819 
+
+040: : |cCtY IdCtY |dMiU 
+
+050/1:0: |aQA501 |b.W59 
+
+100:1 : I a Whitehead, Alfred North, ] d 1861-1947. 
+
+245:04: | a The axioms of descriptive geometry, |cby A.N. Whitehead. 
+
+260; : | a Cambridge, | b University press, |cl907. 
+
+300/1: : javiii, 74p. |bdiagrs. |c22cm. 
+
+440/1: 0: | a Cambridge tracts in mathematics and matiiematical physics. | v no. 5 
+
+650/1:0: I a Geometry, Descriptive 
+
+998: : |cRSH |s9124 
+
+
+
+Scanned by Imagenes Digitales 
+Nogales, AZ 
+
+On behalf of 
+
+Preservation Division 
+
+The University of Michigan Libraries 
+
+
+
+Date work Began: _ 
+Camera Operator: . 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+oamonage i racts in Mathematics 
+and Mathematical Physics 
+
+General Editors 
+
+J. G. LEATHEM, M.A. 
+
+E. T. WHITTAKER, M.A„ F.R.S. 
+
+
+
+No. 5 
+
+THE AXIOMS OF 
+DESCRIPTIVE GEOMETRY 
+
+by 
+A. N. WHITEHEAD, Sc.D., F.R.S. 
+
+
+
+Cambridge University Press Warehouse 
+
+C. F. Clay, Manager 
+
+London : Fetter Lane^ E.C, 
+
+Glasgow: jo, Wellington Street 
+
+1907 
+
+Price 2S. 6d. net 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+Cambridge Tracts in Mathematics 
+and Mathematical Physics 
+
+General Editors 
+
+J. G. LEATHEM, M.A. 
+
+E. T. WHITTAKER, M.A., F.R.S. 
+
+
+
+No. 5 
+The Axioms of Descriptive Geometry. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CAMBRIDGE UNIVERSITY PRESS WAREHOUSE, 
+
+C. F. CLAY, Manager. 
+
+EonDon: FETTEE LANE, E.G. 
+
+Blatgotoi 60, WELLINGTON STREiiT. 
+
+
+
+l.ii;ijiB; F. i. BROCKHADS. 
+(ftfto gorh: O. P. PUTUAM'S SONS. 
+Utrnlma anC UbIibUb: MACM1I,1j\N AND CO., " 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+THE AXIOMS OF 
+DESCRIPTIVE GEOMETRY 
+
+
+
+by 
+A. N. WHITEHEAD, Sc.D., F.R.S. 
+
+Fellow of Trinity College. 
+
+
+
+Cambridge; 
+
+at the University Press 
+
+1907 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+PREFACE. 
+
+THIS tract is written in connection with the previous tract, No. 4 of 
+this series, on Projective Geometry, and with the same general 
+aims. In that tract, after the statement of the axioms, the ideas 
+considered were those concerning harmonic ranges, projectivity, order, 
+the introduction of coordinates, and cross-ratio. In the present tract, 
+after the statement of the axioms, the ideas considered are those 
+concerning the association of Projective and Descriptive Geometry by 
+means of ideal points, point to point correspondence, congruence, 
+distance, and metrical geometry. It has been my object in both 
+tracts to extend tlie investigations just far enough to assure the reader 
+that the whole of Geometry is really secured by the axioms statfid. 
+My hopes for a comparative freedom from typographical errors are 
+based upon my experience of the excellence of the University Press. 
+
+
+
+A. N. W. 
+
+
+
+Cambbidob. 
+
+March, 1907. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CONTENTS. 
+
+
+
+ChAI'TER I. FORMULATIO^JS OF THE AsiOMS. 
+
+Sect. 1. The Introduction of Order 1 
+
+2. Undefined Ideas 2 
+
+3. Pcano's Asioms 3 
+
+4. Definition of a Plane 4 
+
+5. Axioms of a Plane 4 
+
+S. Axioms of Three Dimensions o 
+
+7. Vajioiis Definitions 6 
+
+8. Veblen's Axioms ........ 7 
+
+9. Dedekind'8 Axiom 9 
+
+10. The Euclidean Axiom 10 
+
+Chapter II. The Associated Projective Space. 
+
+Sect. 11. Convex Regions 12 
+
+12. Convex Regions as Descriptive Spaces ... 13 
+
+13. Existence Theorems 14 
+
+14. Further Existence Theorems 14 
+
+15. Advantages of Ideal Points 15 
+
+16. A Lemma 15 
+
+17. Desaigues' Perspective Theorems .... 16 
+
+18. Trihedrons 17 
+
+19. Theorem on Sheaves of Planes 18 
+
+20. Theorem on Coplauarity of Lines .... 19 
+
+Chapter III. Ideal Points. 
+
+Sect 21. Definitions of Ideal Elements 22 
+
+22. A Property of Ideal Points 23 
+
+23. A Property of Ideal Lines 23 
+
+24. Idea! Points and Lines 26 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+AaiomB of Projective Geometry 27 
+
+Theoreme on Ideal Elements 27 
+
+Aiioms of the Projective Piano 29 
+
+Harmonic Ranges 30 
+
+Order of Ideal Points ... .31 
+
+The Dedekind Property . . .32 
+
+
+
+Chapter IV. General Theory or CoHREsroNDENCE. 
+
+Sect. 31. Definition of a Relation 
+
+32. The Transformation of Coordinates . 
+
+33. One-one Point Correspondences . 
+
+34. Finite Continuous Groups . 
+
+35. Infinitesimal Transformations 
+
+36. The Second Fundamental Theorem . 
+
+37. Latent Elements 
+
+38. The Correspondence of Neighhourhoods 
+
+39. The General Projective Group . 
+
+40. Infinitesimal Projective Transform ations 
+
+
+
+Chapter V. Axioms oe Congruence 
+Sect. 41. Congruen e as F ndw 
+
+42. Lie a Pr loedure 
+
+43. Lies Frst h lut o 
+
+44. Lies 'seco d Sol t 
+
+45. A Th rd Pehn t on f C 
+
+
+
+Chapter VI. Infinitesimal R tati f 
+
+
+
+4fi. 
+
+
+Ti e U que es. f fi 1 1 s 
+
+
+
+
+
+
+
+
+
+
+47. 
+
+
+Latent PUnes thr gh the \ 
+
+
+s 
+
+
+
+
+
+
+
+
+48. 
+
+
+M >dr y 
+
+
+
+
+
+
+
+
+
+
+49. 
+
+
+The Late cy of Po ta on Ai 
+
+
+s 
+
+
+
+
+
+
+
+
+50. 
+
+
+Late t Pla ee 
+
+
+
+
+
+
+
+
+
+
+51. 
+
+
+Latent Plat es { o i ed) 
+
+
+
+
+
+
+
+
+
+
+S2, 
+
+
+The Axes of E tat o 
+
+
+
+
+
+
+
+
+
+
+53. 
+
+
+The Axes of Rotat ons ( o ( 
+
+
+«-/) 
+
+
+
+
+
+
+
+
+fi4. 
+
+
+Rectang lar Axes 
+
+
+
+
+
+
+
+
+
+
+.'iS. 
+
+
+The Axes f Rotat o ( o 
+
+
+«') 
+
+
+
+
+
+
+
+
+fifi. 
+
+
+The Con Latent Pla e 
+
+
+
+
+
+
+
+
+
+
+57. 
+
+
+The \xes of Rotat ons { 
+
+
+ed) 
+
+
+
+
+
+
+
+
+
+58. Ge e al Fo -m f r Infan te mal Rotat ons round Origin 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+Chapter VII. The Absolute. 
+
+Sect. 69. Surfeees of Revolution 61 
+
+60. Spheres 61 
+
+61. Quadrics of Revolution 6^ 
+
+62. Families of Concentric Spheres 63 
+
+63. The Absolute Sphere 64 
+
+64. The Absolute 65 
+
+65. The Absolute {continued] 65 
+
+66. The Three Types of Congruence Groups ... 67 
+
+67. Paj-abolic Groups 6" 
+
+Chaptbe VIII, Metrical Gbometky. 
+
+Sect. 68. Definition of Distance 69 
+
+69. Analytical Espresaion for Distance in Elliptic Groups . 70 
+
+70. Analytical Expression for Distance in Hyjierbolie 
+
+Groups 70 
+
+71. Analytical Expression for Distance in Paralxilio Groups 71 
+
+72. Angles between Planes 71 
+
+73. Angles between Lines 72 
+
+74. Metrical Geometry and Congruence Groups 73 
+
+75. Special Metrical Aiionis 73 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER I. 
+
+FORMULATIONS OF THE AXIOMS. 
+
+The general considerations which must govern a mathematical 
+1 on the foundations of Geometry have been explained in 
+Chapter I of the previous tract of this series, on the Axioms of 
+Projective Geometry*, It is explained there that 'Descriptive 
+Geometry' is here used as a generic term for any Geometry in which 
+two straight lines in a plane do not necessarily intersect. Also it is 
+pointed out that the purely classificatory portions of a Descriptive 
+Geometry are clumsy and uninteresting, and that accordingly the idea 
+of order is introduced from the very beginning. 
+
+There are three main ways by which this introduction of order 
+can be conveniently managed. In one way, which is represented by 
+Peano's axioms given below (^ 3—6), the class of points whieli lie 
+between any two points is taken as a fundamental idea. It is then 
+easy to define the class of points collinear with the two points and 
+lying beyond one of them. Thus these three classes of points, namely 
+the two classes lying beyond the two points respectively and the class 
+lying between the two points, together with the two points themselves 
+form the straight line defined by the two points. Then a set of axioms 
+of the straight line are required, concerned with the idea of ' between,' 
+and also axioms are required respecting coplanar lines. 
+
+Another way, which was pointed out by Vailatif and RussellJ, is 
+to conceive a straight line as essentially a serial relation involving two 
+terras. The whole field of such a rektion, namely the terms which are 
+thus ranged in order by it, forms the class of points on the straight 
+line. Thus the Geometry starts with the fundamental conception of a 
+
+* In the sequel this tract will be referred to fta ' Proj. Geoul.' 
++ Cf. Rivista di Matematica, vol. iv. 
+t Cf, Pnnciples 0/ Mathematice. g 376, 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+2 THE INTRODUCTION OF ORDER [CH. I 
+
+class of relations. The axioms of the straight line are the axioms 
+which secure that each of these relations is a serial relation. The 
+points are the entities occurring in the fields of any of these relations. 
+The axioms of the plane are the same as in the previous mode of 
+development. 
+
+Tlie third way, recently developed by Prof. 0. Veblen*, is to 
+consider the science of Descriptive Geometry as the study of the 
+properties of one 'iiii^le three termed relation of order. The entities 
+forming the field of thi^ relation aie the points. When this relation 
+holds between three pumts A, B, and C it is said that 'the points 
+A, B, and G, are m the linear order A BC ' This method of conceiving 
+tlie subject results m a notable simphfacation, and combines advantages 
+from the two previous metliod'^ Veblen & axioms will be stated in full 
+(of. I S). 
+
+2. The enunciation ot the axioma ot Descriptive Geometry, wliich 
+is given in the sections (§§ 3 — 6) immediately following, is that due to 
+Peanot. His formulation is based upon that of Pasch J, to whom is due 
+the first satisfactory systematic exposition of the subject, The unde- 
+fined fundamental ideas are two in number, namely that of a class of 
+entities called ' points,' and that of the ' class of points Ipng between 
+any two given points.' It has already been explained^ that this 
+undetermined class of points is in fact any class of entities with inter- 
+relations, such that the axioms are satisfied when considered as referring 
+to them. 
+
+The symbol AB will represent the class of points lying between 
+the points A and B. This class will be called the segment AB. 
+
+The first group of axioms, eleven in number, secure the ordinary 
+properties of a straight line with respect to the order of points on it, 
+and also with respect to the division of a lineil into three parts by any 
+
+* Cf. A •System of iiwmsfor Geometry Trana of the Amer Math Soe., vol. t., 
+190*. 
+
++ Ct. I pnjicjpn d% Oeometria, Tann, 1889 These axiima are repeated by 
+hira in an article Sui fondamenU della ireomftria, Riiiata di Matpraatica, vol. iv. 
+1894. In this latter article the minute mathematical dednctions are omitted, and 
+their place is "taken by valuable obEJecvation? on the main pniuti tr be oonfiiiiered. 
+Alao a treatment of conRcuenee la Riven which does not appear in the earlier 
+tract. This article should be studied oarefully bv even student of the subject. 
+
+I Of. VortesuTigen uber neuere Geometrie, Leipzig lHhi Thib treatise is the 
+olassio work on the subject 
+
+§ Cf. Pro]. GeoTi!. § 2. 
+
+II Note that 'line' will be habitually used for 'straight line.' 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+1-3] PEANOS AXIOMS 6 
+
+two points on it, and into two parts by any siuglo point on it. The 
+Dedekind property* is not secured by them, but, compactness f is 
+secured by axiom IV. 
+
+3, Peano's axioms of the straight line are as follows : 
+
+I. There is at least one point. 
+
+II. If ^ is any point, there is a point distinct from A. 
+
+III. If -4 is a point, there is no point lying between A and A. 
+It follows that the class AA possesses no members. 
+
+IV. If A and B are distinct points, there is at least one point 
+lying between A and B. 
+
+Thus the class AB is not the null class. 
+
+V. If the point C lies between A and B, it also lies between 
+B and A. 
+
+It easily follows that the classes AB and BA are identical 
+
+VI. The point A does not lie between the points A and Jl. 
+Thus the class, or segment, AB does not include its end-point« 
+
+A and 5. 
+
+Definition. If A and B are points, the symbol A'B represents the 
+class of points, such as C, with tte property that B lies between 
+A and C. Thus A'B is the prolongation of the line beyond £, and 
+BA is its prolongation beyond A. 
+
+VII. If A and B are distinct pomts, there exists at least one 
+member of A'B. 
+
+VIII. If ^ and J) are distinct points, and Cis a member o( AD, 
+and 5 of Jl C, then 5 is a member of A D. 
+
+IX. If .4 and i? are distinct points, and B and Care members of 
+AD, then either B is a member of AC, or B is identical with C, or B 
+is a member of CD. 
+
+X. If A and B are distinct points, and C and D are members of 
+A'B, then either C is identical with D, or C is a member of BD, or D 
+is a member of BG. 
+
+XI. if A, B, C, D are points, and 5 is a member oi AC, and G 
+of BD, then C is a member of A D. 
+
+D^nitim. The straight line possessing A and B, symbolized by 
+str (A, B), is composed of the three classes A'B, AB, BA. together 
+with the points A and B themselves. 
+
+Then by the aid of the previous axioms the usual theorems, 
+
+* Cf. Proj. Geom. § 19, and g 9 of the present tract, 
+t Cf. Proj. Geoin. § 16, 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+4 DEFINITION OF A PLANE [CH, 1 
+
+excluding the Dedekind property, respecting the order of points on a 
+line can be proved. Also any two points are both contained by one 
+and only one line. 
+
+4. Peano uses the following useful notation which is an extension 
+of his notation for segments and prolongations. If .-4 is a point and 
+M is a class of points, then Au is the class of points lying on the 
+segments between A and points of u, and A'u is the class of point* on 
+the prolongations of these segments beyond the points of u. 
+
+Then in conformity with this notation the seven regions into which 
+a plane is divided by three lines are as in the figure. 
+
+
+
+
+The plane determined by the three non-collinear points A, B, C — 
+written pie {A, B, C) — is defined to be the class of points consisting of 
+the points on tihe three lines str {BG), str {CA), and str (AB), and 
+of the points in the seven regions A (BC), A' (B&j. B' (CA), C (AB). 
+A- (B-O), B (_C'A), O'(A-B). 
+
+5. Three axioms are re(iuired to establish the Geometry of 
+a plane. 
+
+XII. If r is a straight line, there exists a point which does not 
+lie on r. 
+
+Note that it would be sufficient to enunciate this axiom for one 
+straight line. 
+
+XIII. If A, B, C are three non-coUinear points, and B lies on 
+the segment BC, and E on the segment AB, there exists a point F 
+on both the segment A(7and the prolongation B'E((s(. fig. i, p. 5). 
+
+XIV. If A, B, C are three non-coUinear points, and B lies on the 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+3-6] AXIOMS OF A PLANE 5 
+
+segment BC, and F on the segment AG, there exists a point E lying 
+on both the segments AD and BF{ci. fig. ii). 
+
+
+
+
+With tliese axioms all the usual properties of the division of a 
+plane by a line, and of the inside and outside of a plane closed figure, 
+
+
+
+
+Fig. ii. 
+can he proved. Thus if ABC form a triangle and a coplanar line 
+intersect the segment BG, it must intersect one and only one of the 
+segments GA and AB. 
+
+Also any three uon-coUinear points lie in one and only one plane ; 
+and the line determined by any two points lying in a plane lies entirely 
+in that plane. But, as the case of Euclidean Geometry shews, we 
+caimot prove from these axioms that any two lines in a plane 
+intersect. 
+
+6. For three-dimensional Geometry two otlier axioms are required. 
+XV. A point can be found external to any plane. The enuncia- 
+tion of this axiom can be restricted bo a particular plane. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+6 AXIOMS OF THREE DIMENSIONS [cH. I 
+
+XVI. Given any plane p, and. any point A outside it, and any 
+point Q on it, and any point fi on the prolongation A'% then, \i X\.% 
+any other point, either X lies on the plane p, or AX intersects the 
+plane p, or JiX intersecta the plane p. 
+
+The annexed figure illustrates the ajdom, the points ^i, X^, X^ 
+being positions of X which illustrate the three alternatives contem- 
+plated in tlie axiom. Thus X, lies on the plane p ; X^ lies on the 
+
+
+
+
+same side of p as B, so that AX.^ must cut p in some point L ; X^ 
+lies on the same side of y as .4, so that BX% must cut p in some 
+point M. 
+
+Axiom XVI secures the limitation to three dimensions, and the 
+division of spa«o by a plane. It can also be proved from the axioms 
+that, if two planes intersect in at least one point, they intersect in 
+a straight line. 
+
+7. A point will be said to divide a line into two half-rays which 
+emanate from it. 
+
+A line will be said to divide a plane into two half-planes which 
+are bounded by it. 
+
+A plane will be said to divide space into two half-spaces which are 
+bounded by it. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+b-Bj VARIOUS DEFINITIONS 7 
+
+A aheaf of lines is a complete set of eoplanar lines coneMrreiit 
+at one point (the vertex). A sheaf of half-rays is a complete set of 
+eoplanar half-rays emanating from one point (the vertes), 
+
+A bundle of lines is a complete set of lines concurrent at one point 
+(the vertex). A bundle of half-rays is a complete set of haif-rays 
+emanating from one point (the vertex). 
+
+If p, q, r are three half-rays belonging to a sheaf of half-rays, then 
+r is said to ' lie between ' p and q, if points A and B can be found on 
+p and q respectively, such that the segment AB intersects r. 
+
+It can be proved that if ;■ lies between p and q, then p does not 
+lie between r and q. 
+
+The complete set of planes through a given line (the axis) is called 
+a sheaf of planes. The axis divides ea^^h plane into two haJf-planes. 
+These half-planes form a sheaf of half-planes. 
+
+If p, q, r are three half-planes belonging to a sheaf of half-planes, 
+then r is said to ' lie between ' p and q, if points A and B can be found 
+on p and q respectively, such that the segment AB intersects )■. 
+
+It can be proved that if r lies between p and q, then p does not lie 
+between r and q. 
+
+The theorems indicated in this and in the preceding sections, and 
+allied theorems, are not always very easy to prove. But their proofs 
+depend so largely upon the particular mode of formulation of the 
+asioms, that it would be outside the scope of this tract to enter into 
+a consideration of them. In the sequel we shall assume that the whole 
+class of theorems of the types, which have been thus generally indi- 
+cated, can be proved from the axioms stated. 
+
+8, Formulations ot the axioms of Descriptive Geometry have also 
+been given by Hilhert*, and by E. H. Moore t, and by B. Russell J, 
+and by Veblen^ Veblen's memoir represents the final outcome of 
+these successive labour=i, and his formulation will be given now. The 
+axioms aie itated m term^ of ' points ' and of a relation among three 
+points called ' order ' Points and order are not defined. 
+
+1 There exist at least two distinct points. 
+
+* Grundlaqen d'r Geometiie, Leipzig, 1899, Engliali Translation by E. J. 
+Townsend, Chicago, 1902 
+
++ On the Prct/tctite ■liioma of Geometry, Trans, of the Amer. Math. Sou., 
+
+TOI UL, I'Wi 
+
+J The Fnnciplf of Mathematici, Cambridge, 1903, ch. SLvr. 
+
+@ A System of Axlonu for Geometry, Trans, of the Amer. Math. Soo., vol. v., 
+1904. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+8 veblen's axioms [ch. I 
+
+II. If the points A, B, Care in the order ABC, they are in the 
+order CBA. 
+
+III. If tlie points A, B, C are m the order ABC, they are not 
+in the order BCA. 
+
+IV. If the points A, B, C are in the order ABC, then A is 
+distinct from C. 
+
+V. If A and B are any two distinct points, there exists a point C 
+such that A, B, are in the order ABC. 
+
+Definition 1. The hne AB {A^B) consists of A and B, and of 
+aU points X in one of the possible orders ABX, AXB, XAB. The 
+points X in the order AXB constitute the 'segment' AB. A and 
+B are the 'end-points' of the segment, but are not included in it. 
+
+VI. If points Cand D {C^D) lie on the line AB, then A lies on 
+the line CD. 
+
+VII. If there exist three distinct points, there exiat three points 
+A, B, C not in any of the orders A BC, BCA, or CAB. 
+
+Definition 2, Three distinct points not lying on the same line are 
+the 'vertices' of a 'triangle' ABC, whose sides are the segments AB, 
+BC, GA, and whose 'boundary' consists of its vertices and the points 
+of its sides. 
+
+VIII. If three distinct points A, B, C do not tie on the same line, 
+and D and E are two points in the orders BCD and CEA, then a 
+
+
+
+
+point F exists in the order AFB and such that D, E, F lie on the 
+same line. 
+
+Definition 5, A point is ' in the interior of a triangle, if it lies 
+on a segment, the end-points of which are points of different sides of a 
+triangle. The aet of such points is ' the interior ' of the triangle. 
+
+Definition 6. If A, B, C form a triangle, the 'plane' ABC 
+consists of all points collineai with any two pomta of the aides of the 
+triangle. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+8, 9J DEDEKIND S AXIOM 9 
+
+IX. If tliere exist tliree points not lying in the saine line, there 
+exists a plane ABG such that there is a point D not lying in the 
+plane ABG. 
+
+Definitim 7. If ^, B, G, and D are fonr points not lying in the 
+same plane, they form a 'tetrahedron ' ABCD, whose 'faces' are the 
+interiors of the triangles ABC, BCD, GDA, DAB, whose 'vertices' 
+are the four points A, B, 0, and D, and whose 'edges' are the 
+segments AB, BG, GB, DA, AG, BD. The point* of faees, edges, 
+and vertices constitute the 'surface' of the tetrahedron. 
+
+Definition 8. If A, B, C, D are the vertices of a tetrahedron, the 
+space ABGD consists of all points collinear with any two points of the 
+faces of the tetrahedron. 
+
+X. If there exist four points, neither lying in the same line, nor 
+lying in the same plane, there exists a space ABCD, such that there is 
+no point E not collinear with two points of the space A BCD. 
+
+The above axioms of Veblen are equivalent to the axioms of Peano 
+which have been previously given. Both Peano and Veblen give an 
+axiom securing the Dedekind property (cf. g 9). Also Veblen gives an 
+axiom secunng the 'Euclidean' property (cf. g 10). 
+
+9. Dodekind'a original formulation* of his famous property applies 
+directly to the case of a descriptive line and is as follows ; 
+
+" If all points of the straight line fall into two classes such that 
+every point of the first class lies to the left of every point of the second 
+class, then there exists one and only one point which produces this 
+division of all points into two classes, this severing of the straight line 
+into two portions." 
+
+It is of course to be understood that the dividing point itself 
+belongs to one of the two classes. 
+
+It follows immediately that the boundary of a triangle consists of 
+points in a compact closed order possessing the Dedekind property as 
+already formulated for closed seriest. 
+
+This definition may be repeated here to exhibit its essential in- 
+dependence of the special definition of projective segments upon which 
+the previous formulation rests. 
+
+Let A, B, C \>^ any three points of a closed series. Then by 
+
+■ Cf. hia Continuity and iTratiimal Numbers, ch. ii(. ; the quotation here ia 
+from Beman'B translation, Chicago, 1901. 
++ Cf. Proj. Geom.§19(a). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+10 dedekind's axiom [ch. I 
+
+liypothesis the series is such that there are two ways round from A 
+to C, uamely, one through B and one not through B. Let segm (ABC) 
+
+
+
+
+denote the points, excluding A and C, which are traversed from 
+A to C through B, and let segm (ABC) denote the remaining 
+points of the series. Again let a class u of the points of the series 
+be called a segment of the series, when (1) there is a point B of the 
+series which does not belong to «, and (2) if F and Q be any two 
+points of M then segm (PBQ) belongs entirely to u. 
+
+Then the series possesses the Dedekind property if any segment 
+such as M (which excludes more than one point of the series) must 
+possess two boundary points, that is to say, if there must exist points 
+A and C such that segm (ABC), with the possible exception of either 
+or both of A and C, is identical with ii. Here— as above — B is a 
+point which does not belong to u. 
+
+Hence a sheaf of half-rays can also be considered as a closed 
+■ compact series with the Dedekind property. This is made immediately 
+evident by surrounding the vertex by a triangle in the plane of the 
+sheaf. Then each half-ray of the sheaf intersects the boundary of the 
+triangle in one and only one point. Also the order of the points on 
+the boundary is the order of the corresponding half-rays of the sheaf 
+But the boundary of the triangle is a closed series with the Dedekind 
+property. 
+
+10. By the aid of the Dedekind axiom and of the preceding 
+axioms, it can now be proved that, if I be any line and A be any point, 
+not incident in I, then in the plane Al at least one line can be drawn 
+through A, which does not intersect l. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+9, 101 THE EUCLIDEAN AXIOM 11 
+
+For take any point B on I, aod \etp and q he the two supplementary 
+half-rays of I which emanate from B. Consider the sheaf of half-rays, 
+
+
+
+vertex A, in the plane Al. Some of these half-rays intersect p and 
+some intersect q, and these classes are mutually exclusive. 
+
+Also, from the Dedekind property, there exist two semi-rays which 
+are limits of the semi-rays intersecting p. AB is one of the semi-rays, 
+let r be the other. Now the semi-ray^ has no end-point. Hence r is 
+not among the semi-rays intersecting p. Again by similar reasoning 
+there is a semi-ray s wldeh is the limit of the semi-rays inter- 
+secting q, and s does not intersect q. 
+
+Now first let r and s be not eoUinear, and let r' and s' be the 
+half-rays supplementary to r and s respectively. Consider the set 
+(a, say) of lines through A with one set of their half-rays between 
+r and a', and therefore with their supplementary half-rays between 
+/ and s. There are an infinite number of such lines. Now all half- 
+rays emanating from A and lying between the half-ray AB and r 
+intersect p, and no other half-rays from A intersect^. Similarly for 
+the half-rays AB and s and q. Also if s' lie between the half-ray AB 
+and r, then r lies between the half-ray AB and s ; and in this case 
+every line of the set a intersects the line I twice, namely once for each 
+of its pair of supplementary half-rays emanating from A. But this is 
+impossible. Hence neither the supplement of r nor that of s can 
+intersect I. Secondly if r and s are collinear, then the complete line 
+formed by r and s cannot intersect I. For neither r nor s intersects I. 
+
+Thus taking any point A and any line /, the sheaf of lines, 
+vertex A and in the plane Al, falls into two parta, namely the lines 
+which intersect /, called the lines ' secant ' to I, and the lines which do 
+not intersect /, called the lines 'non-secant ' to I. The non-secant lines 
+of the sheaf may reduce to one line. The supposition that this is the 
+case is the ' Euclidean Axiom,' 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+to an t 
+
+
+
+CHAPTER II. 
+
+THE ASSOCIATED PROJECTIVE SPACE. 
+
+^ We have now to establish the relation of Descriptive Geometry 
+1 associated Projective Geometry. In a Projective Space let a 
+' convex region ' be defined to be a region which (1) does not include 
+the whole of any line, and (2) includes the whole of one of the two 
+segments between any two points within it. It is easy to prove that 
+such regions exist. For remembering* that we can employ the 
+ordinary theory of homogeneous coordinates, the surface 
+
+is well known to enclose such a region. Let a quadric enclosing a 
+convex region be called a ' convex quadric' Again in two dimensions 
+let A, B, C be any three non-coUineai points, and let P be any point 
+not coUinear with any two of them. Let AP meet the line BC in L, 
+BP meet CA in M, CP meet AB m N. 
+
+
+
+
+Define the triangular region {ABCjP) to he the set of points 
+formed by the collection of segments such as segm(.4Q^)+, where 
+Q is any point on segm (BPM), and B is the point where the line 
+
+
+
+" Cf. Pro], Geom. §g 37 and 42. 
++ Cf. Pcoj. Geom. § 13. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+11,12] CONVEX REGIONS 13 
+
+AQ iDtersects BC. The points A, B, G can be interchanged in this 
+definition without altering the region obtained. 
+
+Similarly in three dimensions, if A, B, C, D are the vertices of a 
+non-degenerate tetrahedron, and P be any point not on any of the 
+planes, ABC, BCD, etc., the ' t«trahedral region ' {ABCDjP) can be 
+similarly defined. From the ordinary theory of homogeneous coordinates, 
+it is well known that a triangular region in two dimensions, and a 
+tetrahedral region in three dimensions', are both convex regions. 
+
+Again the triangular region (ASC/P) considered above has as its 
+'boundary' the segments (BLC), (CMA), (ANB), together with the 
+points A, B, C. Also considering the tetrahedral region (ABCDjP), 
+let AP intersect BCD in L, BP intersect CDA in M, CP intersect 
+DAB in N, DP intersect ABC in 0. Then the ' boundary ' of the 
+tetrahedral region {ABCDjP) consists of the triangular regions 
+{BGDjL\ {CDAjM), (DABjN), (ABCjO), together with the 
+boundaries of these triangular regions. 
+
+It IS now a well-known result from the u-,e of coordinates that m 
+two dimensions any line through a point m a triangular region cuth 
+the boundary m two points onlj , and that m three dimension'- any 
+line through a point in a tetrahedral region cuts the boundaij in two 
+points only 
+
+12. Now consider a convex region, let it be either the region 
+within a convex quadric, or a tetrahedral region. Call the points 
+within it ' Descriptive points' ; and call the portions of lines within it 
+' Descriptive lines.' The projective order of points on a line becomes 
+an open order for Descriptive points on Descriptive lines. Then by 
+the use of coordinate Geometry it is easy to prove that all the 
+Descriptive axioms of the present tnwit, either in Peano's form or in 
+
+
+
+Vehlen's form, are satisfied, including the Dedekind axiom, but exclud- 
+ing the Euclidean axiom. Thus in the figure the lines AB and CD 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+14 EXISTENCE THEOREMS [CH. II 
+
+intersect at a point ^in Descriptive Space ; but the lines AB and EF 
+do not intersect in Descriptive Space, since K lies outside it. Also it 
+is evident that through any point P an infinite number of lines can be 
+drawn, coplanar with AB, and not intersecting it in Descriptive Space. 
+
+13. The previous article (§ 13) proves* the existence theorem for 
+Descriptive Space with the negation of the Euclidean axiom ; in other 
+words, it proves the independence of the Euclidean axiom. 
+
+The existence theorem for Descriptive Space with the Euclidean 
+axiom is immediately proved by considering the region of Projective 
+Space found by excluding all the points on one projective plane. The 
+region is convex according to tlie above definition ; also all the 
+Descriptive axioms, together with the Dedekind axiom and the Euclidean 
+axiom, hold for itf. 
+
+14. The independence of the Dedekind axiom of the other axioms, 
+combined with the negation of the Euclidean axiom, is proved by con- 
+sidering, as in g 12, Descriptive Space to be a tetrahedral region in 
+Projective Space, but confining ourselves to the points whose co- 
+ordinates are algebraic numbersj, as in the corresponding proof for 
+Projective Geometry. 
+
+The independence of the Dedekind axiom of the other axioms, 
+combined with the Euclidean ajtiom, is similarly proved by considering 
+Descriptive Space to be the region in Projective Space found by 
+
+* Cf. Proj. Geom. g 43. 
+
++ In the later Greek period, and daring the seventeenth and eighteenth centuriea, 
+the diBoussion of the foundations of Geometry was alraoBt entirely oonSned to 
+attempts to prove the Euclidean axiom. The explicit recognitions of its inde- 
+pendence by Lobatsehefskij |1828), and by J. Bolyai (1832) laid the foandation of 
+the eiisting theories of aon-Buclidean Geometry. For the literature of the whole 
+question cf. Staokel and Engel, Die Thmrie der ParallcUinieH von Euklid bii auf 
+Gausi, Leipzig, 1895, and also their Urkunden zvr Gesehichte der NiehteukUd- 
+ischen Geometrie, I. Labatsche/skij, Leipzig, 1898. 
+
++ Cf Proj Geom g 43 (o) An oversight in this proof may be here corrected. 
+The proof as printed pr ceeds by considenngonlypointawithrational coordinates. 
+But then a difhcnlty arises as to the theory of Beftments given in Chapter IV. of 
+Pro] Geom For it is necessary that the real double points of a hvperbolio 
+n^oliton hhoild lelong to the po nts oousiiered But these double points are 
+given bj a quadratic eination Thus algebraic numbers (i e. numbers which can 
+occur as tl e roots of equations with integral coefflcientel should be substituted for 
+rational numbers. The proof proceeds without other alteration. 1 am indebted to 
+Mr G. G. Berry of the Bodleian Library for this c< 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+12-16] ADVANTAGES OF IDEAL POINTS 15 
+
+excluding a particular plane ; and further, as before, we confine out 
+consideration to the points whose coordinates are algebraic numbers. 
+
+15. It has been proved in ^ 12 and 13 that a convex region of a 
+Projective Space is a Descriptive Space. The converse problem has 
+now to be considered in this and in the next chapter ; namely, given 
+a Descriptive Space, to construct a Projective Space of which the 
+Descriptive Space is part. This effects a very considerable simplifica- 
+tion in the investigation of the properties of Descriptive Space owing 
+to the superior generality of the analogous properties of Projective 
+Space. Thus a Projective Space affords a complete interpretation of 
+all the entities indicated in coordinate geometry. It is in order to 
+gain this simplification that the 'plane at iufinity' is introduced into 
+ordinary Euclidean Geometry. We have in effect to seek the logical 
+justification for this procedure by indicating the exact nature of the 
+entities which are vaguely defined as the ' points at infinity ' ; and the 
+procedure is extended by shewing that it is not necessarily connected 
+with the assumption of the Euclidean axiom. This investigation is 
+the Theory of Ideal Points*, or of the generation of 'Proper and 
+Improper Projective Points ' in Descriptive Geometry. The Euclidean 
+axiom will not be assumed except when it is explicitly introduced. 
+The remainder of this chapter will be occupied with the general 
+theorems which are required for the investigation. 
+
+16. If A be any point and I be any line not containing A, then 
+the plane Al divides the bundle of half-rays emanating from A into 
+three seta, (1) the half-rays in the plane Al, (2) the half-rays on one 
+side of the pkne, (3) the half-rays on the other side of the plane. 
+The sets (2) and (3) are formed of half-rays supplementary one to 
+the other. 
+
+Lemma. With the above notation, it is possible to find a plane 
+through the line / and intersecting any finite number of the half-rays 
+either of set (2) or of set (.8). 
+
+For let a^, ... a^ be n half-rays of one of the two sets. Let B^ be 
+any point on a^, and B-i be any point on a^. Then either the plane 
+
+* Originally Buggested bj Klein (extending an eailier suggestion of von Staadt), 
+Math. Annal. voU. ly. and vi., 1871 and 1872 ; first worked out in detail bj Pasoh, 
+loc. ctt., ^ 6 — 9. In the test I have followed veiy closely a eimplification of the 
+argument given by E. Bonola, Sulla Introduzione dtgli Enli Iraprofrii in OeotaeiTia 
+Frojectiva, Gioiuale di Matematicic, vol. issviii,, 1900. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+16 BESARGUES' PERSrECTIVE THEOREMS [CH. II 
+
+Bil lies between the planes B^l and Al, or the plane B-il lies between 
+the planes fii^and Al, or the planes BJ and B-J are identical. But 
+in either of the first two cases the intermediate plane intersects both 
+semi-rays «i and a^. Hence a plane is found through I, intersecting 
+both «! and a^. Call it the plane B-il. Again take any point B, on «3; 
+and tlie same argument shews that at least one of Bil and BJ inter- 
+sects Oi, (75, and Oa- Proceeding in this way, a plane is finally found 
+which intersects each of the n semi-rays. 
+
+17. Desargues' Perspective theorems* can be enunciated in the 
+following modified forms : 
+
+(1) If two coplanar triangles ABC and A'BC are such that the 
+linas AA', BB CC are concurrent in ^ point 0, then the three inter- 
+
+
+
+
+sections of BC and B'C\ CA aiid G'A', AB and A'B', if they exist, are 
+eollinear. 
+
+' Cf. Ptoj. Geom. g 7. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+16-18] TRIHEDRONS 17 
+
+(2) If the pairs of homologous sides of the two eoplanar triangles 
+ABC and A'EC, namely, BG and B'C, CA and C'A', AB and A'E, 
+intersect in three collinear points, then the lines A A', BR, GO', if any 
+two intersect, are concurrent in the same point. 
+
+Considering the first proposition let AB and A'ff intersect in L, 
+BGxaA BG' in M, CA and C'A' in N. Now it is not possible both 
+for A' to lie on the segment OA, and for A to lie on the segment OA'. 
+Assume that A! does not lie on the segment OA. Let B be any point 
+external to the given plane (a, say). Now by the lemma of § 16, it is 
+possible to find a piano through LM, lying between the planes LMB. and 
+LMA (i.e. the plane a), and intersecting the three lines BA, MB, BO, 
+say, in the points A", B", C" (in the figure C" is not shewn). Then 
+evidently A" must lie in the segment BA. Hence A'A", since A' 
+does not lie in the segment 0^4, must intersect OB in the segment OB. 
+Thus the intersection of the lines A'A" and OR is secured. Let it 
+be the point 0'. Again the lines O'A' and OB' are the projections 
+from B on the plane A'ffB of the lines OA' and OB. Now A"B' 
+passes through L. Hence B" lies on the plane A'A"B, i.e. on the 
+plane OA'B. Hence B" is on the projection of the line OB' on the 
+plane OA'B', i.e. B" lies on O'B'. Thus B'B" passes through 0'. 
+
+Reasoning in exactly the same way for BG and BC, it follows that 
+CO" passes through 0'. The same figure has now been constructed as 
+in the proof of the corresponding theorem for Projective Geometry*. 
+Accordingly the theorem follows by the same rea.soning. 
+
+In order to demonstrate the converse theorem, we proceed exactly 
+as above, except that, L, M, A'" are now assumed to be collinear, is 
+the point of intersection of AA' and BB. Then the same construc- 
+tion is made as before, and it is successively proved by similar reasoning 
+that every pair of the lines A'A", BB", C'C" intersect. But the lines 
+are not eoplanar. Hence they intersect in the same point 0'. But ff 
+must lie on RO. Thus CO' passes through 0. 
+
+CaroUaty. The enunciation of the first theorem can be modified 
+by removing the assumption that ^(? and ,4 'C intersect, but by adding 
+the assumption that A intersects iM 
+
+18. A trihedron is the figure formed by three lines concurrent 
+in the same point, and not all eoplanar. The three lines form the 
+edges of the trihedron ; the three planes containing the lines, two by 
+• Cf. Proj. Geom. § 7- 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+18 SHEAVES OF PLANES [CH. II 
+
+two, foiin the faces of the trihedron ; the point of concurrence of the 
+three edges is the yertex of the trihedron. 
+
+It follows (cf. § 6) tliat, if two trihedrons have the same vertex, any 
+two faces, one irom each trihedron, must intersect in a line through 
+the vertex ; also that any two planes each containing two edges, one 
+edge from each trihedron, must intersect in a line through the vertex, 
+
+Desargues' theorems can be applied to two trihedrons with the 
+same vertex ; only in this case, as in Projective Geometry, there are 
+no exceptional cases depending on non-intersection. 
+
+The enunciations are as follows : 
+
+(1) If a, b, c and a', V, c' are the edges of two trihedrons with the 
+same vertex, such that the planes containing a and «', h and h', e and c', 
+are concurrent in a line s (i.e. belong to the same she£if), then the three 
+intersections of the planes be and b'c', ea and c'a', ah and a'b' are 
+coplanai-. 
+
+(2) If a, b, c and a', b\ c are the edges of two trihedrons witli the 
+same vertex, such that the three intersections of the planes be and 
+b'c', ca and c'a', at> and a'b', are coplanar, then the three planes 
+containing a and a', b and b', c and c' belong to the same sheaf. 
+
+These propositions immediately follow from the case of triangles 
+by noticing that, by the lemma of § 16, the six edges of the trihedrons 
+can be cut by a plane, not through the vertex. Hence hy the previous 
+remarks on trihedrons, Desarguesian triangles are obtained without the 
+exceptions due to non-intersection, 
+
+19. The two tlieorems of the present and next articles are the 
+central theorems of the whole theory of Ideal Points, 
+
+
+
+
+If the bneti {«, b, c are the intersections of three planes a, /3, y of a 
+sheaf ^ith a plane tt, not belonging to the sheaf, and if be any 
+point not nirident in t, then the three planes Oa, Ob, Oc belong to 
+one sheaf. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+18-20] COPLANARITY OF LINES 19 
+
+If the axis (r) of the sheaf intersect the plane tt in a point S, then 
+the three line.? «, b, c pass throngh 8, and tie line OS is evidently 
+contained in Oa, Ob, Oc, and thus forms the axis of the new sheaf. 
+
+Consider now the case when the axis (r) of the sheaf does not 
+intersect t. Then a, b, c are not concurrent, and no two of them 
+intersect. Hence one of the three (p, say) must lie between [i.e. any 
+segment, joining a point on a and a point on c, intersects b] the other 
+two. Take any two points L and iV on a and c respectively, then the 
+segment LN intersects 6 in a point M. Take two other points P and 
+Q on LN so that we have the order P, L, M, N, Q. Take any point 
+D one; then the segment PD must intersect a and b in two points 
+A and B respectively; and the segment AQ must intersect the 
+segment DN in a point G. Then the line BC must intersect the 
+segment NQ in a point R. Thus a triangle ABC has been formed, 
+whose vertices lie on a, b, c, and whose sides AB, AC, BC pass 
+through P, Q, B respectively. 
+
+By taking another point U on c, another triangle A'B'C can be 
+similarly formed, whose vertices lie on a, b, c, and whose sides A'B' 
+and A'C pass through P and Q respectively. 
+
+We have first to shew that FC passes through R. For taking 
+any point T on the axis (r) of the sheaf, the lines TA, TB, TC form 
+the edges of one trihedron, and the lines 2"^', TB', TC form the 
+edges of another trihedron with the same vertex. 
+
+Also the planes TAA', TBS, TCC belong to the same sheaf. 
+Hence the three intersections of the pairs of planes TAB and TA'B', 
+TAG and TAG', TBG and TFC' are coplanar; hence they lie in 
+the plane TPQ. Hence BC passes through R. 
+
+Now considering the two trihedrons with edges OA, OB, OC, and 
+OA', OB', 00', the intersections of the pairs of faces OAB and OA'S, 
+OAC and OA'G', OBO and ORG', are respectively OP, OQ, OR ; 
+and these are coplanar. Hence by the converse part of Desargues' 
+theorem for trihedrons, the planes OAA', OBB', OGG' belong to the 
+fiame sheaf. Hence Oa, Ob, Oc belong to the same sheaf {i.e. have 
+a common line of intersection). 
+
+20. If any two of the lines a, b, c are coplanar, but the three 
+lines are not coplanar, and similarly for the lines a, b, d, then c and d 
+are coplanar. 
+
+If a and b intersect, the theorem is evident ; for a, b, c are con- 
+current, and '(, b, d are concurrent. Hence c and d are concurrent. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+COPLANARITY OF LINES [CH. II 
+
+3 that a and b do not intersect. Then it is easy to prove 
+that no two of the Hnes intersect. It follows that uo one of the lines 
+c, b, A can intersect any of the planes ab, m, <td in which it does 
+not lie. 
+
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+20] COPLANARITT OF LINES 21 
+
+Hence it follows tliat either c and d lie on opposite sides of the 
+plane ab, or d and b on opposite sides of the plane ac, or b and c on 
+opposite sides of the plane ad. 
+
+First, let c and d lie on opposite sides of the plane ab (cf. fig. 1). 
+Take any point C on c Then the plane Cd must intersect the plane 
+ab in a line, d', say. Then the lines a, h, d' are the intersections of 
+the three planes da, db, rf(7with the plane ab ; and these three planes 
+belong to the same sheaf. Hence (of. g 19) the three planes through 
+the lines a, b, d' respectively and through any point not on ab belong 
+to the same sheaf. But C is such a point. Hence the planes Ca, 
+Cb, Cd' belong to the same sheaf. But c is the common line of Ca 
+and Cb. Hence Cd' contains the line c. Hence c and d are coplanar. 
+
+Secondly, let the plane ad lie between b and c. Then the plane be 
+must intersect the plane ad in some line, d' say. Thus the three lines 
+b, d', c are the intersections of the three planes ab, ad, ac mth the 
+plane be. These three planes belong to the same sheaf. Hence 
+(cf g 19), if D is any point on d, not on be, the planes Db, Dc, Dd' 
+belong to the same sheaf. But Db and Dd' intersect in the line d ; 
+hence Dc passes through tlie line d. Thus c and d are coplanar. 
+
+Thirdly, let the plane ae lie between b and d. Then the proof is 
+as in the second case, interchanging c and d. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER III. 
+
+
+
+IDEAL POINTS. 
+
+
+
+21, Definition. An 'Associated* Projective Point,' or an 'Ideal 
+Point,' is the class of lines which is composed of two coplanar lines, 
+a and b, say, and of the lines formed by the intersections of pairs 
+of distinct planes through a and b respectively, and of the lines in the 
+plane ai which are coplanar with any of the lines of the projective 
+point not lying in the plane ab. 
+
+It follows immediately from g 20 that the lines forming a projective 
+point are two by two coplanar ; and further that (with the notation 
+of the defmition) the lines of the projective point lying in the plane 
+afj are the lines in ab coplanar with any me of the lines of the 
+projective point not lying in ab. 
+
+Definition. A projective point is termed 'proper,' if the lines 
+composing it intersect. Their point of intersection will be called the 
+' vertex ' of the point. 
+
+Thus a proper projective point is simply a bundle of lines, and 
+every bundle is a proper projective point. 
+
+Definition. A projective point is termed ' improper,' if the lines 
+composing it do not intersect. 
+
+It is proved (cf § 24—30) that Projective Geometry holds good of 
+projective points as thus defined, when a fitting definition has been 
+given of a 'projective line.' 
+
+Definition. A projective point will be said to be ' coherent with ' 
+a plane, if any of the lines composing it lie in the plane. 
+
+Definition. A 'projective Kne' is the class of those projective 
+points which are coherent with two given pianes. If the planes 
+" The word ' Assoeiated ' will usually be omittoil. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+21-23] DEPWITIONS OF IDEAL ELEMENTS 23 
+
+intersect, the projective line is called 'proper' ; and the line of inter- 
+section is the 'axis.' If the planes do not intersect, the projective 
+line is called 'improper.' 
+
+Since Projective Geometry has been developed* from the two 
+fundamental ideas of 'point' and 'straight line,' the other definitions 
+of projective elements must simply be those which have been given 
+in considering Projective Geometry. Thust a projective plane is the 
+class of those projective (ideal) points, which lie on any projective 
+line joining any given projective point A to any projective point on 
+any given projective line not possessing the given projective point A. 
+
+Definition. If a projective plane possesses any proper projective 
+points, it will be called a ' proper projective plane.' Otherwise it is an 
+'improper projective plane.' 
+
+The vertices of all the proper projective points on a proper pro- 
+jective plane will be seen to form a plane (cf. § 26 (a)). 
+
+Dejmiiion. A proper projective point and its vertex are said to be 
+'associated,' so likewise are a proper projective lino and its axis, and 
+also a proper projective plane and the plane constituted by the vertices 
+of its proper projective points. 
+
+22. Since any two lines belonging to a projective point are 
+coplanar, it easily follows that any two lines of the projective point 
+can be used in place of the two special lines (a and b) used in the 
+deiinition (cf. § 21). Hence it can easily be proved that any plane, 
+containing one line of a projective point, contains an infinite number 
+of such lines. In other words, if a projective point is coherent with 
+a plane, an infinite number of the lines of the projective point lie 
+in the plane. In fact it follows that, through each point of the plane, 
+one line passes which belongs to the projective point. 
+
+23. If three projective points are incident in the same projective 
+line, then with any plane, with which two of the projective points 
+cohere, the third projective point also coheres. 
+
+First, if the three projective points are proper, the theorem is 
+immediately evident. 
+
+Secondly, let two of the projective points, M and N', say, be 
+proper, and let the third projective point, L, say, he improper. Let 
+
+■ Cf. Proj. Geom. + Cf. Proj. Geom. § 4. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+24 A PROPERTY OP IDEAL LINES [CH. Ill 
+
+the projective line possessing L, M, Nhe defined by the two planes 
+irandjr'(cf. Definition ofg2l). Then the three projective points cohere 
+with X and n-'. Let ir" be any third plane with which two of the three, 
+
+
+
+
+L, M, and N, cohere. Let Mi and JV, be the vertices of the proi er 
+points, M and N. Then M,Ni is a line in the plane tt (if fig * l) 
+also the line M,N, belongs to X. Again (cf. § 22) another line r 
+exists in jt belonging to L ; and Mi and Nj must lie on the same 
+side of r. Let r' be any line in tt belonging to i, and on the opposite 
+side of the line r to M, and N, ; such a line exists (cf ^5 22) Let 
+be any point of ir on the side of r' remote from M, and I^i. Then 
+the segment OM, intersects r and r', in A and A', say; and the 
+* Nole in drawing an illustrative figure, it is convenient to make tlie assump- 
+tion of § 13, and to consider Descriptive apace as a eocves region in a larger 
+Projective Space. Thia region ia marked off by an oval curve in the figure, and an 
+ideal point, such as L, is a point outside the oval. Note that the existence of L, 
+as an aualogons antitj to M^ and Ni, must not be assumed in the present 
+reasoning. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+23] A PROPERTY OF IDEAL LINES lo 
+
+segment ON^ intersects r and r\ in B and E, say. The segments 
+ANi and BMr intersect, in G, say; the segments B'M^ and A'N^ 
+intersect, in C, say. Now project from any point 0' in jt', and two 
+trihedrons are formed, nameiy O'A, OB, O'C, and ffA', OB'.O'G', 
+with the same vertex (7. Also the homologous feces intersect in the 
+three coplanar lines OL, OM„ O'N^. Hence the three planes fJ'AA\ 
+O'BE, O'GC are concurrent in a line. Hence the plane O'CG' eon- 
+tains the line OO. Therefore GG' passes through 0. Again project 
+from any point 0" in tt", and consider the trihedrons 0"A, 0"B, 0"G, 
+and a' A', 0"B, O'C. Then the planes 0'AA\ O'BB', 0"CC' are 
+concurrent in the same line 0"0. Thus the three lines ff'L, 0"M„ 
+0"N, are coplanar. Hence if two of them lie in tt", the third must do 
+so also. Hence if two of L, M, N cohere with :r", the third also 
+does so. 
+
+
+
+
+Thirdly, let either two or three of i, M, N bo improper. Thus 
+let L and M be certainly improper (cf. figs. 2 and .5). In the ])larie ^ 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+26 
+
+
+
+. PROPERTY OF IDEAL LINES 
+
+
+
+[CH, in 
+
+
+
+form a triangle ABC, sueh that its sides AB, BO, OA belong to 
+L, M, N respectively. Thus if iV is a proper point, GA passes 
+through N„ the vertex of N: also since the lines BG and AB do not 
+int«rsect the line N,ML, the points A, B, G lie on the same side 
+of this line (cf. fig. 2) : also since the lines BC and BA do not 
+intersect the line N,ML, either C lies on the same side of the line AB 
+as JVi, or^ lies on the same side of the line BG b,s N-i. Assume that 
+C lies on the same side of AB as N, (cf. fig. 2). The rest of the proof 
+for figures 2 and 3 is now identical. In the plane -r, let r be any line 
+
+
+
+
+belonging to X, on the side oi AB remote from C. In the plane «; 
+take any point on the side of r remote from G. Then the segments 
+OA and OB intersect r, say in A' and B'. Also the line A'N 
+intersects the segment OA, and does not intersect the segment AG; 
+hence it must intersect the segment 00, say in G'. Then, by pro- 
+jecting from any point 0' in the plane t' and by similar reasoning 
+to that in the second case, it is proved that the line B'C' belongs 
+to M. Then, as in the second case, by projecting from any point 
+0" in x", it follows that, if any two of the projective points L, M, N 
+cohere with n-", so also does the third. 
+
+
+
+24. (a) It follows from g 23 that any two planes, 
+both of two given projective points cohere, define the sam 
+
+
+
+fith which 
+projective 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+23-26] AXIOMS OF PROJECTIVE GEOMETRY 27 
+
+line as any other pair of such planes. Hence two projective poiots 
+determine not more than one projective line, 
+
+(/?) Two projective points determioe at least one projective line. 
+For if the points are proper, this is immediately evident. But in any 
+ease let the projective points be A and B, and let be any point. 
+There are at least two lines, a, and a^, which are members of A and 
+such that the plane a,ai does not contain 0. Tlien the planes Oa, 
+and 0«2 intersect in a line which passes through and is a member of 
+A . Hence through any point there passes a line which is a member of 
+a projective point. Hence through there are lines belonging to A 
+and B respectively. But these lines determine a plane, with which A 
+and B both cohere. Similarly a second such plane can be determined. 
+Hence there is a projective line possessing both A and B. 
+
+25. The Axioms of Projective Geometry* can now be seen to be 
+true for the 'Projective Elements' as thus defined. Thus we have tlie 
+following theorems corresponding to those axioms of the previous tract, 
+of which the numbers are enumerated in the initial brackets. 
+
+(I, H, HI.) There is a clas.s of Projective Points, possessing at 
+least two members. 
+
+(IV, V, VI, VII, VIII.) If A and B are Projective Points, there 
+is a definite projective line AB, whicli (I) is a class of projective 
+points, and (2) ia the same as the projective line BA, and (3) possesses 
+A and B, and (4) possesses at least one projective point distinct from 
+A and B. 
+
+Note that two improper projective points may possess no common 
+line. 
+
+{IX and X.) If A and B are projective points, and C is a pro- 
+jective point belonging to the projective line AB, and is not identical 
+with A, then (J) B belongs to the projective line AC, and (2) the 
+projective line -4Cis contained in the projective line AB. 
+
+(XI.) If A and B are distinct projective points, there exists 
+at least one projective point not belonging to the projective line AB. 
+
+26. Before considering the proof of the ' axioms ' of the projective 
+planet, some further propositions are required. 
+
+(a) Since a line exists through any given point and belonging 
+to any given projective point, it easily follows that the set of projective 
+
+' Cf. Praj. Geom. g§ 4, 7, 8, 14. 
+
+t Ct. Proj. Geom., Axioms XII, XIII, XIV. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+28 THEOREMS ON IDEAL ELEMENTS [CH, HI 
+
+points cohering with a plane fonn a proper projective plane ; and that 
+conversely, any proper projective plane is the set of projective points 
+cohering with some plane. 
+
+O) Any projective line intersects any given proper projective 
+plane. For through the vertex of any proper projective point on the 
+projective plane, a plane passes with which every point of the 
+projective line coheres (ef. g 23). This plane intersects the plane 
+associated with the projective plane in a line. Two such planes can 
+be found. The two lines in the plane associated with the projective 
+plane define a projective point which lies both in the projective line 
+and the projective plane. 
+
+(y) Two projective lines in a proper projective plane necessarily 
+intersect. 
+
+For let «i and m be the projective lines and a he the proper 
+projective plane, and a^ its associated plane. Take any point 
+outside a,. Then two planes Om and On exist, with which re- 
+spectively all projective points of in and n cohere. These planes 
+intersect in a line through 0, I, say. Let A be any point in a,. 
+The plane Al intersects a, in a line, /', say. The two lines I and I' 
+define a projective point which lies in both the projective lines m 
+and n. 
+
+(8) Desargues' Theorem holds for triangles formed by projective 
+lines and projective points in a proper projective plane. 
+
+By (y) immediately above, no exception arises from non-intersec- 
+tion. Then by taking a point external to the associated plane, two 
+trihedrons can be formed for which the theorem holds. Hence the 
+theorem holds for the proper projective plana 
+
+(i) The projections upon a proper projective plane of three 
+projective points belonging to the same projective line also belong to 
+a projective line. 
+
+The theorem is immediately evident, if the centre of projection, 
+or if any one of the three projective points, is proper. Assume that 
+all the projective points are improper. Let L, M, N be the three pro- 
+jective points, and iS the projective point which is the centre of 
+projection. Let ir be the proper projective plane on to which L, M, N 
+are to be projected. Let a be any plane with which i, M, N all 
+cohere. On a construct figure 3 of g 23. Project (remembering (^) 
+above) the whole figure of associated projective points from iS on to the 
+plane tt. Then by the first case of the present theorem, all eolhnear 
+groups of projective points which possess a proper projective point are 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+26, 27] AXIOMS OF THE PROJECTIVE PLANE 29 
+
+projected into oollinear groups. Let A, B,...M, N be projected 
+iuto^i, j9i, ...M„Ni. 
+
+Thus, in the plane ir, two homological triangles A,BiCi and 
+Ai'Bi'O,' are obtained, AiA,', B,Bi, dCl being concurrent in Oi ; 
+also BiAi and B-IA{, Bfii and BiC-^, A^Ci and A^Ci are concurrent 
+respectively in Zi, M-^, Ni. Hence, by (S) above, £,, Mi, iVj belong 
+to the same projective line. 
+
+27. The next group of propositions correspond to the three axioms 
+concerning the projective plane. 
+
+(XII.) If A, B, G are three projective points, which do not 
+belong to the same projective line, and A' belongs to the projective 
+line BC, and B' to the projective line GA, then the projective lines 
+AA' and BB' possess a projective point in common. 
+
+If the projective plane ABG is proper, the theorem follows from 
+§ 26 (y). If the projective plane ABG is improper, consider any plane 
+with which all the projective points of the projective line BB' cohere. 
+
+
+
+
+Such planes exist. Thus the associated projective plane of such a 
+plane is a proper projective plane containing the line BB'. But by 
+g 26 (j3) the projective line AA' intersects this proper projective plane, 
+in the projective point D, say. Also by § 26 (t) the projections of 
+B, A', C from A on to this proper projective plane belong to the 
+same projective line. Hence D belongs to BB". Thus AA' and BB' 
+intersect. 
+
+(XIII.) If A, B, G are three projective points, not belonging to 
+the same projective line, then there exists a projective point not 
+belonging to the projective plane ABC. 
+
+This follows immediately from Peano's Axiom XV given in g 6 
+above. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+30 HARMONIC RANGES [CH. Ill 
+
+28. The theory of Harmonic Ranges must now be coiiaidered. 
+
+Li;t A, B be any two points, Ca point in the segment AB. Take 
+F any point outside the line AB, and H any point on the segment 
+li'C, and let EG he as in figure 1. Then the point D, if it exist, is 
+
+
+
+
+fig. 1. 
+
+tlie iiarmonic conjugate of C with respect to A and B. By considering 
+the associated projective points and the associated projective lines, the 
+requisite harmonic conjngate (as a projective point) always exists. 
+Thus, on the basis of the axioms of Projective Geometry already 
+proved, the proof for the uniqueness of the harmonic conjugate in the 
+associated projective geometry holds good*. Thus iu the original 
+Descriptive Geometry, the harmonic conjugate, if it exist, is unique. 
+
+Furthermore, since M is on the segment FC, E and G are re- 
+spectively on the segments AF&i\A FB. Hence D, if it exist, cannot 
+lie on the segment AB. Conversely, if D is any point on the line AB, 
+say on the side of B remote from A, take E any point on the segment 
+AF, tlien DE must intersect the segment BF. Hence AG and BE 
+miist intersect in H, on the segments AG and BF. 'ITierefore J*"^ 
+intersects the segment AB. Thus the harmonic conjugate with respect 
+to A and B of any point on the line AB, not on the segment AB, 
+must exist, and lies on the segment A B. 
+
+Furthermore, if D lies on the side of B remote from A, and C" 
+lies on the segment BC, let FC' and EB intersect in H' ; and AH' 
+intersect the segment FB in G'. Then since C lies in the segment 
+BG, H' lies in the segment BH, and G' lies in the segment BG. 
+Hence D' exists and lies iu the segment BD. Thus as C moves 
+towards B, D also moves in the opposite direction towards fit. 
+* Cf. Proj. Geom. gg 6 and 7. t Cf. Proj. Geom. g 17 (,8). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+28, 29] ORDER OF IDEAL POINTS 31 
+
+Hence it is easily seen tliat the segment AB is divided into three 
+parts by reference to the harmonic conjugates of pobts in it with 
+respect to A and B. The part formed by the segment AKi (cf. fig. 2), 
+
+
+
+Fig. 2. 
+
+exchisive of -i and Ki, contains the points whose harmonic conjugates 
+lie on the side of A remote from B ; the segment 5^3, exchisive of 
+B and K^, contains the points whose harmonic conjugates lie on the 
+side of B remote from A ; the segment KiK^, inclusive of K^ and K^, 
+contains the points for which the liarmonic conjugates do not exist 
+It is not necessary tliat the points K, and K^ be distinct. If they 
+coincide, the segment KiK^, inclusive of Kj and jffs, shrinks into a 
+single point K. Thus in Euclidean Geometry the middle point of any 
+segment AB is this degenerate portion of the segment. 
+
+It immediately follows that Fauo's axiom* is satisfied for proper 
+projective lines. Hence, remembering that the harmonic relation is 
+projective!, we have: 
+
+{XIV.) If A and B are distinct projective points, and C is a 
+projective point of the projective Hue AB, distinct from A and B, 
+then the harmonic conjugate of C, with respect to A and B, is 
+distinct from C. 
+
+Also the restriction to three dimensions follows at once from 
+Peano's Axiom XVI of g 6, giving the same restriction for Descriptive 
+Geometry, Hence we find : 
+
+(XV.) If a be any projective plane, and A be any projective point 
+not lying in a, any projective point P lies on some line joining A to 
+some projective point on a. 
+
+29. The order of the projective points on a projective line must 
+now be considered. 
+
+If the projective line is proper, the order of the proper projective 
+points on it will he defined to correspond to the order of the associated 
+points. Thus (cf. fig, 2 of g 28) if the points marked in the figure are 
+projective points, as C moves from A to K„ excluding K„ the projec- 
+tive point D, which is the harmonic conjugate to G with respect to A 
+and B, moves fix>m G through all the proper projective points on the 
+* Cf, Proj. Oeom, § 8, t Cf, Proj. Geom. g 9 (3). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+32 THE DEDEKIND PROPERTY [CH. Ill 
+
+side of A remote from B ; and as C moves from Zj, eseluding K^, 
+to B, D moves towards B through all tlie proper projective points 
+on the side of B remote from A. 
+
+Now let the order of the improper projective points be defined so 
+as to make the above tlieorem hold generally : thns as C moves from 
+Ki to ATs, including K^ and K^, let the order of the improper 
+projective points through which D moves be snch that B passes 
+continually in the same direction round the line from the proper 
+projective points on the side of A remote from B to the proper 
+projective points on the side of B remote from A. 
+
+Then by theorem (o) of § 17 of the Tract on Projective Geometry, 
+the order as thus defined agrees with the order as defined in ^ 14 
+and 15 of that Tract, Also the order on the improper projective 
+lines is obtained from the order on the proper projective lines by 
+projection. Since the harmonic property ia projective, the orders 
+obtained thus by different projections must agree. Also from Peano's 
+axioms of the segments of the Descriptive line given in g 3 above, 
+it follows that the Projective axioms of order* are satisfied, namely : 
+
+(XVI.) If A, B, G are distinct projective points on tlie same 
+projective line, and i> is a projective point on segm {ABffj'f, not 
+identical either with A or C, then D belongs to segm (BCA). 
+
+(XVII.) If A, B, C are distinct projective points on the same 
+projective line, and i> is a projective point belonging to both 
+segm (SCA) and segm (CAB), then D cannot belong to segm (ABC). 
+
+(XVIII.) If A, B, C are distinct projective points on the same 
+projective line, and i> is a projective point, distinct from B, and 
+belonging to segm (AB(f) [which excludes A and O], and B belongs 
+to &egm(ADC), then E belongs to segm (ABC). 
+
+30, Finally, the Dedekind property J for the jirojective line 
+follows immediately from it* assumption for Descriptive Geometry 
+(cf. § 9 above). 
+
+Thus all the axioms for Projective Geometry, including the axioms 
+of order and the Dedekind property, are satisfied by the Projective 
+Points and the Projective Lines. Furthermore the proper projective 
+points evidently form a convex region in the projective space formed 
+by the projective points. Also the geometry of this convex region of 
+
+* Cf. Proj. Qeom. § 14. 
+
+t i.e. on the segment between A and C not poBseBeing B, cf. Proj. Geom. § 13, 
+
+J Cf. Proj. Geom. § 19 (a). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+29, 30] THE DEDEKIND PROPERTY 33 
+
+proper projective points corresponds step by step with the geometry of 
+the original descriptive space. Thus the geometry of descriptive space 
+can always be investigated by considering it ae a convex region in a 
+projective space. This simply amounts to considering the associated 
+proper projective points and adding thereto the improper projective 
+points. A particular case arises when the Euclidean axiom (cf. § 10, 
+above) is assumed. Tlie improper projective points then lie on a single 
+improper projective plane. Thus in Euclidean Geometry when the 
+' plane at infinity ' is considered, the associated projective geometry has 
+been introduced, and this plane is the single improper projective plane. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER IV. 
+
+GENERAL THEORY OF COREESPONDENCE. 
+
+31. In this chapter the general ideas of Correspondences, or 
+Transformations, and of groups of transformations are explained, and 
+thus the idea of continuous motion is led up to. 
+
+Consider any proposition respecting two entities p and q ; let it be 
+denoted hy ^ (;*, q). The proposition may be varied by replacing 
+P and q by two other entities, say u and v, so that the new proposition 
+is <^ {u, v). Thus we arrive at the notion of a constant form common 
+to all the propositions of the type ^ (x, y), where x and y are any two 
+entities such that a significant proposition results when jc and y replace 
+p and q m ^ (p, q)- Note that a false proposition is significant ; an 
+insignificant proposition is not in tmth a proposition at all, it is a 
+sequence of ideas lacking the type of unity proper to a proposition. 
+
+The constant form of the proposition ^ (ie, y), as x and y vary, may 
+be said to constitute a relation between x and y, in those special eases 
+for which '^{i«,y) is a true proposition. The order of a: and y in 
+respect to this relation represents the special roles of jk and y 
+respectively in the proposition ^ {w, y). Thus if this relation is called 
+B, 'w has the relation R to y,' or more briefly xRy, is equivalent to 
+the proposition ^{i,y), however jrandy be varied. It is evident that 
+we might have considered the relation indicated by the proposition in 
+such form that, if it be denoted by E, y'tt'x represents <^ {x, y). Then 
+J? and R are called mutually converse relations. It is evident that 
+each relation has one and only ono corresponding converse relation. 
+
+When xRy holds, x is called the referent and y the relatum. } 
+relation is said to be a one-one relation when to each referent there i 
+only one relatum, and to each relatum there ih only one referent. Fo. 
+example, MaRb and aRc both hold, where b and c are distinct entities, 
+then the relation B is not one-one. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+31, 32] DEFINITION OF A RELATION 35 
+
+The class of all the referents in respect to a relation is called the 
+domahi of the relation, and the class of all relata is the converse 
+domain. ,, In mathematics a one-one relation is often spoken of as a trans- 
+formation (or correspondence) of the members of its domain into (or 
+with) the corresponding members of the converse domain. The corre- 
+spondence is definite and reversible, and constitntes a rule by which 
+we can pass from any member of one class to a corresponding definite 
+member of the other class. 
+
+For example, the equation, 
+
+constitutes a one-one relation of all real numbers, positive or negative, 
+to the same class of real nnmbers. This brings out the fact that the 
+domain and the converse domain can be identical. 
+
+Again, a projective relation between all the points on one line of 
+projective space and all the points on another (or the same) line 
+constitutes a one-one relation, or transformation, or correspondence, 
+between the points of the two lines. Any one-one relation of which 
+both the domain and the converse domain are each of them al! the 
+points of a projective space will be called a one-one point corre- 
+
+
+
+32. By reasoning* based upon the axioms of Projective Geometry, 
+without reference to any idea of distance or of congruence, coordinates 
+can be introduced, so that the ratios of four coordinates characterize 
+each point, and the equation of a plane is a homogeneous equation of 
+the first degree. Let JT, Y, Z, U be the four coordinates of any 
+point ; then it will be more convenient for us to work with non- 
+homogeneous coordinates found by putting x for JCjU, y for Y!U, 
+z for ZIU. Accordingly the actual values of w, y, s are, as usual, the 
+coordinates characterizing a point. AU points can thus be represented 
+by finite values of se, y, z, except points on the plane, U~ 0. For these 
+points some or all of x, y, and » are infinite. In order to deal with 
+this plane either recourse must be had to the original homogeneous 
+coordinates, or the limiting values of ar to y to ^ must be considered as 
+they become infinit*. 
+
+The plane, x = 0, is called the yz plane, the line, y = 0, z = 0, ia 
+called the axis of as, and the plfuie, U^O, is called the infinite 
+plane. 
+
+■ Ct. Proj. Geoni, eba- vi. and vii. 
+
+3—2 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+36 ONE-ONE POINT COEEESPONDBNCES [CH. IV 
+
+When the fundarcental tfitrahedroii is changed, the coordinates are 
+changed according to the formula 
+
+Y'-<T{ai,X + (hiY+aaZ + aitU], 
+Z' = (T{«5,X + a3j Y+a^Z+OuUi, 
+U' = ir{a,X-i-(h Y+a, Z+a^ U\. 
+Hence the non-homogeneons coordinates are transformed by the 
+formula 
+
+a/ = {ono; + <h?.y + «ia3 + «iO/(«i« + a-iy + a^z + a^, 
+y' = {a^x + a^^y + at^z + <hi)K'^i^ + <^?/ + "s^ ■*" (h\ 
+s" = ((fjiiC + (h^y + ftss^ + awVCai^ + any + aj? + a,)- 
+But if the infinite pUne is the same in both cases, tlie formula for 
+transformation becomes 
+
+x' = «iia; + M,2^ + ai^z + On, 
+with two similar equations. 
+
+33. A one-one point correspondence can be characterized by 
+formulae giving the coordinates of any relatum in terms of those of 
+the corresponding referent. It must be remembered that every point 
+is both a relatum and a referent. Let the correspondence under 
+consideration be called T, then the coordinates of the relatum of any 
+point in, y, z will be written Tx, Ty, Tz. Thus we have, 
+
+Jfe - ^, {x, y, £), Ty^^, (x, y, z), Tz = -/■> (x, y, z), 
+where the functions ^, <^, ^s are defined for every point of space and 
+are single- valued. Furthermore, since the correspondence, being one- 
+one, is reversible, it must be possible to solve these equations for x, y, 
+and z, obtaining 
+
+x^f,(Tx,Ty,Tz), y=^<^^{Tx,Ty,Tz), z^f;iTx,Ty,Tz). 
+
+Let this converse relation be written T-i, and let the coordinates of 
+the relatum of any point x, y, z be written T^x, T^y, T,z. Then 
+x^T,Tx^TT,x, y=T,Ty^TT>y, z = T^Tz^TT,z. 
+
+Then, remembering that by properly choosing x, y, z we can take 
+Tx, Ty, Ts to be any point of space, we find 
+
+T^x^<i.,{x,y,z), Zy = i',(x,y,z), T,z = <if,{x,y,z). 
+where ip-^, \j/s, ^3 are defined for every point of space and are single: 
+valued. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+32-35] FINITE CONTINUOUS OROUPS 37 
+
+34. Consider* the one-one point correspondence (T) defined by 
+Tx^^ {x,y,z, a,, «3,...«r), Ty = <f>^ (x,y, z, «i, a^,...a,.), 
+
+where <i], as,...ar are r parameters. Let the parameters be assumed to 
+be eflfective, so that two different choices of special values for them 
+necessarily produce different correspondences. Then by varying the 
+parameters an assemblage of correspondences is produced, each corre- 
+spondence being defined by a particular choice of the parameters 
+
+Now let S and T be any two members of this assemblage. Then 
+STx, i.e. 8(Tai), STy, and STz obviously are the coordinates of a point 
+which is related to the point {x, y, z) by a one-one point correspondence. 
+This correspondence is denoted by 8T. Now, if BT is necessarily a 
+member of the assemblage whenever 8 and T are both members of it, 
+the assemblage is called a group. When each correspondence of the 
+group is defined by t effective parameters, where r is a finite number, 
+the group is called finite and f-limbed. The group is said to be 
+continuous, if^ B and T being any two different transformations of the 
+group, whenever the parameters of B vary continuously and ultimately 
+approach those of T as their limits, then, for every value of m, y, z, 
+also 8x, Sy, 8z vary continuously and approach Tx, Ty, Tz as their 
+limits. 
+
+The assumption that ^i, -^i, ^3 are analytical functions of their 
+arguments, x, y, s, ai,...a^, secures that the group ia continuous. 
+
+35. The identical one-one point correspondence, il say, is such 
+that, for every value of x, y, z, 
+
+Ox^x, ili/=y, ilz = z (I). 
+
+Finite Continuous Transformation Groups exist which do not 
+contain the identical transformation. But the chief interest of the 
+subject is concerned with those which do contain it. Let a,\ ai,---a^ 
+be the value-system of the parameters for which the corresponding 
+transformation of the group is the identical transformation O, so that 
+
+ilx = x = ^,{x,y^z,a^\a^°,...aj') (2), 
+
+with two similar equations. 
+
+• Cf. Vorlesungen. iiier Continuierliche Gmppen, by Lie, oh. ti. § 2. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+38 INFINITESIMAL TRANSFORMATIONS [CH. IV 
+
+For brevity put 
+
+r"'-%r"" ''-).,...„.,r-(-.^.')"'-.('-'.^--) w 
+
+Now any transformation (7^ of the group can be expressed in the 
+form 
+
+Ti/ = ipi(x,ff,s,ai° + e,t,(h'' + eit,...,ar'' + ert)[ (4). 
+
+JJE = <fe (x, y, z, a," + g, *, Os" + ea*, . . . , a/ + 6,1)] 
+Hence, since the functions ^, <^i, ^ are analytic, if t is not too 
+large, we find, remembering equations (2) and (3), 
+
+Tx = x-vt{e^t\-^e^i-i-\- ■■■ + ^r^;-) + terms involving i!*', f, etc. ] 
+7i/ = j + ((eii7, + ^3ifc + ... + er^jr) + terms involving f', ^, etc. \ (5). 
+r^ = s + ^ (ei t, + e,4 + ■ - + B,.Q + terms involving f, t\ etc. ) 
+Hence in the limit when ( diminishes indefinitely, writing 
+
+Tio-x-^-y-t, etc., 
+at ' ' 
+we find 
+
+:s7 = «ifi + ^4+-+a,.\ 
+
+
+
+^-t','A-<^='/---r«,7,, ^D>. 
+
+'ITiese equations define the infinitesimal transformations of the 
+group, every value-system of ratios of Si, e,, ...fir defining one Infini- 
+tesimal Transformation. 
+
+36. Conversely by integrating equations (6) of g 35, it can be 
+proved that the form of any finite transformation of the group can be 
+recovered. Assume that we have found in this way 
+
+^-/iit,C,C^,C,), y^A(t,C„C^,C,), z=Mt,C„C„C,), 
+where C,, C2, C, are the constants introduced by the integration. Let 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+35-37] LATENT ELEMENTS 39 
+
+'"at %< ^a ^ tlie values of x, y, z when ( = 0. Thtn trom tl e above 
+equatioES it can be proved to be possible, ow y to tl e pr perties of 
+the continuous group of one-one transformatioi s to Ive f i Ci, d, Os 
+in terms of x^, y^, £„. Thus we obtain agaii &]_ at (i) of § 35, 
+namely 
+
+with two similar equations, where w^, y„, s^, now correspond ia x, y, z 
+in those equations, and x, y, z to T^, Ty, Tz. 
+
+But it is not true that^ if any equations of the same form as 
+equations (6) of §35 he written down, where ^i,..., ^ are any 
+arbitrarily chosen functions of is, y, z, the integral forms give the finite 
+transfonnations of an r-limbed finite continuous group. For in 
+equations (6) of § 35, ii,..., £r are derived from equations (3) of § 35, 
+that is to say, they are partial differential coefiicients of functions with 
+special properties. The enunciation of the conditions to be satisfied 
+by ii, -■-, Ir, so that a jvnite continuous group of transformations may 
+result from the integration of the corresponding equations, is called the 
+Second Fundamental Theorem of the subject. It is not required here. 
+
+Also if ei, €;.,... Br are kept unchanged, then the assemblage of 
+transformations found by the variation of t in equations (4) of § 35 
+form a one-limbed continuous group, which is defined by the single 
+infinitesimal transformation which it contains, namely that one corre- 
+sponding to the given value-system of e,, ej, ...er- Also every finite 
+transformation is a member of the one-iimbed group produced by the 
+indefinite repetition of some infinitesimal transformation. 
+
+37. A latent point of a transformation is a point which is trans- 
+fonned into itself. A latent curve or surface is such that any point of 
+it is transformed into some point on the same curve or surface. 
+
+It is evident that the latent points, lines, and surfaces of any 
+infinitesimal transformation ate also latent for every finite transfor- 
+mation belonging to the one-limhed group defined by it. They are 
+called the latent points, lines, and surfaces of the group. 
+
+The transformations which leave a given surface latent must form 
+a group, for the successive application of two such transformations still 
+leaves the surface latent. Also the assemblage of the infinitesimal 
+transformations which leave a surface Jatent must he the infinitesimal 
+transformations of a continuous transformation group. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+40 THE CORRESPONDENCE OF NEIGHBOURHOODS [CH. IV 
+
+38. If a reentrant single-branched curve a (which may be a straight 
+line) is transformed by an infinitesimal transformation of a continuous 
+group into a curve A then the senses* round, or directions round, the 
+curves correspond in a perfectly definite manner, the same for all such 
+infinitesimal transformations. 
+
+In order to make clear the correspondence of directions round any 
+two reentrant single-branched curves a and /i, let OP,L and O/'ei 
+define two complementary segments round a, and let O'QiJIf and (/QiM 
+define two complementary segments round ^. Now consider any 
+one-one point transformation which (1) transforms o into ^, (2) trans- 
+forms segments of a into segments of ,8, (3) transforms into 0'. 
+Then one of the two following mutually exclusive cases must hold, either 
+one of the two, CQiJ/and the relatum of OP^L, contains the other, or 
+one of the two, O'Q^M and the relatum of OP^L contains the other. 
+If one of the two, O'Q^M and the relatum of OP^L, contains the other, 
+then the segments OPjL and O'Qi^wili be said to correspond in sense 
+where and 0' are corresponding origins. Also we shall consider an 
+arbitrary small portion of a containing as the neighbourhmd of ; 
+thus divides its neighbourhood into two parts, one lying in tlie 
+segment OP^L, and the other in the segment OPJj. Similarly 0' 
+divides its neighbourhood on (8 into two partss. Then the case con- 
+templated above, when the segments OP^L and O'QiM correspond in 
+sense with and 0' as corresponding origins, will also be expressed by 
+saying that corresponds to 0' and the neighbourhood of in the 
+segment OPiL corresponds to the neighbourhood of 0' in the segment 
+O'QM 
+
+Now considering the case of an infinitesimal transformation, the 
+curve ff must lie infinitesimally near to the curve a, so that the point 
+Qi may be assumed to be a point infinitesimally near to the point Pi 
+and the point Q^ to be a point infinitesimally near to the point P^. 
+Then no point of the segment OPjL which is infinitesimally near to Pi 
+is infinitesimally near to any point on the segment O'QsM. Hence the 
+segments OP^L and O'ftil/must correspond in sense with and 0' as 
+corresponding origins. Thus only one of the two cases of corre- 
+spondence in sense is now possible. 
+
+Notice that for this theorem the curves o. and /3 need not be distinct, 
+nor need the points and 0'. 
+
+If a straight line / is latent for a transformation, and is a latent 
+point on it, and segments with origin correspond in sense with 
+
+* Cf. Froj. Geom. g 15, eitended to any 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+38] THE COERESPONDENCE OF NEIGHBOURHOODS 41 
+
+themselves, then the line is said to be tranafonned directly in tlie 
+neighbourhood of 0, in the other case it is said to be transformed 
+inversely in the neighhonrhood of 0. 
+
+Thns it follows as a corollary from the above proposition that an 
+infinitesimal transformation, which leaves latent a line and also a 
+point on it, transforms the line directly in the neighbourhood of 0. 
+Hence also it follows that any finite transformation of the one-limbed 
+group defined by the infinitesimal transformation, transforms the line 
+directly in the neighbourhood of 0- 
+
+Similar theorems hold with respect to surfaces. It is sufficient for 
+us to consider a transformaiion for which (I) a given straight line I is 
+latent and also a point on it, and (2) the relata of planes through I 
+are planes and the relata of straight lines through are straight lines. 
+The general extension is obvious. 
+
+The portion of a plane through 0, which lies within an arbitrarily 
+small convex surface (cf. g 11) which contains within it, will be 
+
+
+
+called the neighbourhood of 0. The axis I divides into two parts the 
+neighbourhood of on a plane p through I ; call them pi and p^ . Let 
+the plane q be tlie relatum of ^ with respect to the transformation, and 
+let the two parts of its neighbourhood, as divided by I, be q^ and q^. 
+Let a line through in p cut the convex surface in F„ Pg ; and let 
+the relatum of the line in q cut the surface in §,, Q^; also let OFi 
+stand for the segment of the line in the neighbourhood^, and so on. 
+Then (assuming that continuous lines are transformed into con- 
+tinuous lines) if OF, and OQ, correspond in sense, the same must hold 
+for all similar parts of corresponding lines through in the neighbour- 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+42 THE GENERAL PROJECTIVE GROUP [CH. IV 
+
+hoods p, and q,. The neighbourhoods p, and q, will then be said to 
+correspond in sense. Also if p is latent, it will be said to be trans- 
+formed directly in the neighbourhood of with I as axis, if the 
+neighbourhood pi corresponds to itself in sense. 
+
+Now, if the transformation is infinitesimal, it follows at once from 
+the ease of curves, that a definite one of the two neighbourhoods 
+q, and q^ must correspond in sense with ft, and that, if the plane p is 
+latent, it must be transformed directly in the neighbourhood of with 
+
+
+
+39. The general projective group of one-one point correspondences 
+is the group of those transformations which transform planes into planes. 
+Such transformations must therefore transform straight lines into 
+straight lines, and must leave unaltered all projective relations between 
+sets of points on lines. 
+
+Now, if in such a transformation three points A, B, Con a line I 
+are known to be transformed into A', B, C" on a line l\ the relatum 
+on I' of every point on I is determined. For, by the Fundamental 
+Theorem* one and only one projective relation can be established 
+between the points on I and those on f, such that A corresponds to A', 
+if to 5", and C to C. ITius the given transformation must transform 
+I into i according to this relation. 
+
+Hence it follows that if four points, A, B, C, D on b, plane jo, no 
+three of which are coUinear, are known to be transformed into A', B', 
+C, ff on a plane p', the relatum on p' of every point on^ is determined. 
+For let AD meet BG in B, and A'D' meet BC in E'. Then £" 
+corresponds to E. Hence A, B, Eon AB correspond to A', B, E' on 
+A'B'. Hence the relatum on A'B' of every point on AB is detenuined, 
+and similarly for BG and EC, and for GA and G'A'. But through any 
+point i* on ^ a line I can be drawn cutting BC, CA, AB in L, M, N. 
+Thus the relata on p' of i, M, N, namely L', M', N' on f , are deter- 
+mined. Thus the relatum of every point on I is determined. Hence 
+the rektum of P is determined. 
+
+Similarly, ii A, B, C, B, E are five points, no four of which are 
+coplanar, and if for any projective transformation their relata are 
+determined, then the relatum of every point is determined. Accordingly 
+a projective transformation is completely determined when the relata 
+of five points, no four of which are coplanar, are determined. 
+
+• Of. Proj. Geom. § 9 (y). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+38-40] INFINITESIMAL PROJECTIVE TRANSFORMATIONS 43 
+
+40. Now consider transformations of the type 
+
+Ty = (a^x + «%y + 025^ + a^)l((h!c + a^ + a^z + 1) \ ...{1). 
+Tz = («!,i« + Mjji/ + ass3 + aii)l((iiX + o^y + OsS + 1) J 
+
+They obviously belong to the general projective group as defined 
+above. Also there are fifteen effective parameters. But if we 
+substitute for x, y, s the coordinates of a given point A, and for 
+Tx, Ty, Tz the coordinates of a given point A', three equations are 
+obtained between the parameters. Let the same be done for B and B', 
+C and 0', D and U, E and W. Then in all fifteen equations ate 
+found. Also if no four of A, B, 0, D, E are coplanar, and no four of 
+A', B', C, D\ E' are coplanar, these equations are consistent, and 
+definitely determine the transformation T. Hence (cf. § 39) the 
+equations (1) can, by a proper choice of parameters, be made to 
+represent any assigned transformation of the general projective group. 
+Hence the transformations represented by them are those of the whole 
+general projective group. 
+
+It is obvious from the form of these equations that the group is 
+a fifteen-limbed continuous transformation-group. To find its infini- 
+tesimal trauafoimations, put 
+ajj= 1 +Oji^, ai2 = ii,2(, ai3 = ai3(, an = on*, «i = "i', (1%—°^% «3 = «3^, etc. 
+
+Then we find that the analogues of equations (G) of § 85 are 
+
+^ - a„« + a,.y + o.^^Z \ a^^~ X (n.^ + "a^/ + "s^J | 
+
+^ = aji3: + a;23' + <«iisS + '^-2'("i« + "3y + "s2) \ (2). 
+
+^^ — . _ / + + «1 
+
+These equations give the general form of an lufinitesimal trans- 
+formation of the general projective group. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER V. 
+
+AXIOMS OP CONGRUENCE. 
+
+41. The logical analysis of the method of superposition as applied 
+to geometrical proofs is now to be undertaken. In this method a 
+figure is said to move unchanged till it arrives at coincidence with 
+some other figure. But what moves? Certaiuly not the points of the 
+spa«e. For they remain where they are. If it is some physical body 
+occupying space which moves, then the assumption, that the body 
+remains unchanged in its motion, involves the very comparison 
+between the assemblage of points occupied in one position with that 
+occupied in another position, which the supposition was designed to 
+explain. Accordingly we find that Paseh* in eiVeet treats 'congruence' 
+as a fundamental idea not definable in terms of the geometrical concepts 
+which we have already acquired. He states ten axioms of congruence 
+in a form applicable to Descriptive Geometry. They are as follows, 
+where the single capital letters represent points, and the figures are 
+the ordered assemblages of the points mentioned, ordered in the order 
+of mention. 
+
+I. The figures AB and BA are congruent. 
+
+II. To the figure ABC, one and only one point F can be added, 
+so that AB and AB' are congruent figures and B lies in the segment 
+ACm Cm the segment AB. 
+
+III. If the point C lies in the segment AB and the figures 
+ABCmA A'B'C are congruent, then the point C lies in the segment 
+A'B'. 
+
+IV. If the point Ci lies in the segment ^fi, and the segmented 
+is lengthened by the segment C\C, which is congruent to it, and AC^ 
+is lengthened by the segment C^Ca, congruent to AC,, and so on, then 
+finally a segment C„C«+i is arrived at which contains the point B. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+41, 42] CONGRUENCE AS A FUNDAMENTAL IDEA 45 
+
+V. If in the figure A BC the segments A C and BC are congruent, 
+then the figures ABC and BA are congruent. 
+
+VI. If two figures are congruent, so also are their homologous 
+parts congruent. 
+
+VII. If two figures are each congruent to a third figure, they are 
+congruent to each other. 
+
+VIII. If of two congruent figures one is enlarged by the addition 
+of a point, the other can be similarly enlarged so that the enlarged 
+figures are congruent. 
+
+IX. If AB and FGH are any two given figures, F, G, H being 
+not collinear, and AB is congruent to FG, then in any plane containing 
+AB exactly two points C and D can be found such that the figures 
+ABC and ABD are each congruent to FGH, and furthermore the 
+segment CD has a point in common with the line AB. 
+
+X. Two figures ABGD and ABCE vAikV are not plane figures 
+are not congruent. 
+
+42. These axioms at once suggest the analysis and definition of 
+congruence in terms of our previouaiy stated geometrical concepts. 
+This analysis was first successfully achieved by Lie*. 
+
+Any point of space may be supposed to move with the rigid figure 
+when the method of superposition is applied. Accordingly, considering 
+the explanations of chapter IV, we see at once that a superposition 
+is in fact a one-one point transformation. Let this special class of 
+point transformations be caUed motions. We have now to consider 
+whether the peculiar properties of motions can be defined in terms of 
+the geometrical ideas already on hand. 
+
+If a rigid body is transferred from position a to position j3, and 
+then from ^ to y, the finai transformation defined is the same as if it 
+were transferred directly from a to y. Thus the successive application 
+of two motions produces a motion. But this is the characteristic group 
+property. 
+
+What Lie has succeeded in doing is to define in geometrical terms 
+the properties which must be possessed by a complete group of motions. 
+But now the explanations of the preceding paragraphs are found to be 
+
+* C(. two papers lij Lie in the Leipziger Beriohte, 1890. These investigations 
+are reproduced in a. much ealarged (orm in the TheoTie dtr Transformntiom^ruppen, 
+vol. ill. part V. Bat Lie's line of thought was not that suggested above. He starts 
+from an almost sncoessful solution of the same problem by Helmholtz, of. Ueber die 
+ThaUachen, die der Geometrie za Grande Uegen, Gdtt. Nachr. 1868, and Collected 
+Works, vol. II. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+46 lie's first solution [ch- v 
+
+to some extent faulty. For they implicitly assume that there is one 
+definite group of motions, as indeed our sensations of the physical 
+world do in fact seem to give us special intelligence of one such definite 
+group in physical space. However it will be found that an indefinite 
+number of groups of one-one point transformations exist which satisfy 
+Lie's definitions of the properties of a complete group of motions. 
+Accordingly a motion when one special group is being considered is not 
+a motion when another such group is considered. 
+
+A group of motions is called a congruence-group, and the 
+definitions of the characteristics of such a group are called the axioms 
+of Congruence. 
+
+43. Lie's results, as expressed by himself, are as follows ; 
+
+Definition*. A finite continuous group in the variables it,, Xs,---x^ 
+is called transitive, if in the space {xj, Xi,--.a:n) an »-fold extended 
+region exists, within which each point can be transformed into any 
+other point through at least one transformation of the group. 
+
+Definitim^. A real continuous group of three-fold extended 
+space possesses at the real point P free mobility in the infinitesimal, 
+if it satisfies the following conditions : If a point P and an arbitrary 
+real line-element passing through it are fixed, continuous motion is still 
+possible ; but if, in addition to P and that Une-element, an arbitrary 
+real surface-element, passing through both is held fixed, then shall no 
+continuous motion be further possible. 
+
+Tlworem%. (l) If a real continuous projective group of ordinary 
+three-fold extended space possesses without exception in all real points 
+of this space free mobility in the infinitesimal, then it is six-Hmbed and 
+transitive, and consists of all real projective transformations through 
+which a not- exceptional imaginary surface of the second degree, vrhich 
+is represented by a real equation [e.g. a^ + y + s^ + l =0], remains 
+invariant (latent). 
+
+(2) If a real continuous projective group of ordinary three-fold 
+extended space possesses free mobility in the infinitesimal, not in all 
+real points of this space but only in all real points of a certain region, 
+then it is six-limbed and transitive and ie either the continuous real 
+projective group of a not-exceptional real not-ruled surface of the 
+
+• Cf. TheorU der TTansfommtionsgruppen, vol. i. § S8. 
++ Cf. loi:. cit., vol, in. §98. 
+J Cf. Lie, ioc. cit. vol. ni. § 98. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+42-45] lie's second solution 47 
+
+second degree [i.e. with this surface latent], or it is by means of a real 
+projective transformation similar to the group of Euclidean motions. 
+
+The above constitutes what Lie calls his 'first solution of the 
+Riemann*-Helmholtz Problem.' 
+
+The axioms which are implicit in this solution appear to be the 
+following : 
+
+(1) A congruence-group is a finite continuous group of one-one 
+point transformations, containing the identical transformation. 
+
+(2) It is a sub-group of the general projective group. 
+
+(3) An infinitesimal transformation belonging to it can always be 
+found satisfying the condition, tliat any definite line and any definite 
+point on the line are latent. 
+
+(i) No infinitesimal transformation of the group exists such that 
+a line, a point on it, and a plane through it, shall all be latent. 
+
+44. Lie'st 'second solution of the Riemann-HelmholtK Problem ' 
+consists of the theorem that the following axioms completely 
+characterize a complete assemblage of Euclidean or non-Euclidean 
+Motions : 
+
+(1) The motions form a real continuous group defined by in- 
+finitesimal transformations. 
+
+(2) If any arbitrary real point (yi", ^2°, j/j") is fixed, then the real 
+points (x,, x^, iFs), into which it is possible to move any real point 
+(xi", x^, Xi"), satisfy a real equation of the form 
+
+^(^i". y^"' yi i ^"1 ^a'l ^3" j ^i> ^2> ^i) - Oi 
+which is not satisfied by 3^1 = ^1°, x^-y", x^-ys, and which represents 
+a real surface passing through (ar," x^, xf). 
+
+(3) Round any point {gi, y", yf) a finite three-fold region exists, 
+such that, when {y,^, y.^, y,') is fixed, any other point (x,", xi, x^") 
+can be moved through an irreducible continuous sequence of points up 
+to any point satisiying the above equation of (2). 
+
+45. The conception of a ^finite continuous group, though it is 
+simple enough analytically, does not seem to correspond to any of the 
+obvious and immediate properties of congruence-transformations as 
+presented by sense-perceptions. The following set of axioms conform 
+more closely to the obvious properties of congruence-transformations ; 
+
+* Riemann's work in this oooneotion ie contained in his Habilitationsrcde, 
+I7e6cr die Hypotkesen, viekhe der Geometrie la Grande Uegen, 1834, cf. iiis Collected 
+Works, and also a translation in the Collected Works ot W. K. Clifford. 
+
+t Cf. loc. cit. vol. m. § 102. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+48 A THIRD DEFINITION OF CONGRUENCE [CH. V 
+
+they are based upon, and are modifications of, a set of congriience- 
+axiome given by Peano*. 
+
+(1) The assemblage of congruence -transformations is a sub-group 
+of the general projective group. 
+
+(2) The group contains the converse of every transformation 
+belonging to it. 
+
+(3) Given any two points and O, and any two lines I and I 
+through and 0' respectively, and any two planes t and jt' through 
+I and I respectively, one and only one transformation of the group 
+exists which transforms into O, I into V, t into jt', so that the two 
+neighbourhoods of OomI correspond in an assigned manner with the two 
+neighbourhoods of O on l, and the two neighbourhoods of on tt as 
+divided by I correspond in an assigned manner with the two neigh- 
+bourhoods of 0' on it' as divided by f. 
+
+(4) Given any line and any point on that line, an infinitesimal 
+traiistbrmation of the group exists such that the line and the point 
+are latent. 
+
+Comparing these axioms with those of § 43 which are required for 
+Lie's 'first solution,' it will be found that practically 'finite and 
+continuous ' is left out of the first axiom of g 43, but on the other 
+hand the fourth axiom Is strengthened into the form of axiom (3) of 
+this article. 
+
+The following chapters will be based upon these axioms. 
+
+
+
+It follows immediately from axioms (2) and (3) that 
+the identical transformation is the only member of the group for 
+which a given point is latent, and a given line through the point is 
+latent, being transformed directly in the neighbourhood of the point, 
+and a given plane through the line is latent, being transformed directly 
+in the neighbourhood of the point with respect to the line as axis. 
+
+For with the notation of axiom (3) let The such a transformation 
+with respect to the point 0, the line /, and the plane t. Also let 8 be 
+the transformation of the group which transforms 0, /, and tt, into 0', 
+t, and it', in a specified way according to axiom (3) ; and let 5, be the 
+converse of B which also belongs to the group. Then the transforma- 
+tion 8T belongs to the group, and transforms 0, I, -a into O, I, ir' 
+according to the same specified way as S. Hence by axiom (3), we 
+have ST - S. ITius operating with S,, we have 8^8T= 8,S. But by 
+axiom (2) yS,ST and 8i8 belong to the group ; also 8^81 = ilT^T, and 
+8,8= a. Hence 7"= a 
+
+" Cf. loc. rAl. Biv. Mat. vol. ly. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER VI. 
+
+
+
+INFINITESIMAL ROTATIONS. 
+
+
+
+46. An infinitesimal transformation of the projective group (cf. 
+§ 40, equations (2)), which leaves the origin and the axis of x latent, is 
+of the form 
+
+
+
+
+
+
+dy 
+
+de / . , \\ 
+
+We proceed to consider the specialization necessary for the co- 
+efficients in order that this may be a 'rotation round the axis of a:' in 
+a congruence group. 
+
+There is in a congruence group only one infinitesimal 'rotation' 
+round any given line with a given point on the line latent. For consider 
+the motion of the plane, }/==■■ pe, round the axis of x with the origin 
+latent; after the infinitesimal transformation (1), we have 
+
+dy _ dz ^ 
+'dt^^di'^^dt' 
+
+Substituting from (l), and putting y ^pz, we find 
+
+^ = o^;, + (o,j2 - a^,) p - a^p^. 
+
+
+
+dp _ 
+dt~ 
+
+
+
+Hence when p is changed to ^ + <:?^ by the infinitesimal transformation 
+(1) we find 
+
+d^t^ ., '^\_ ,. (2). 
+
+
+
+o^, + {<x^-o..^)p 
+
+
+
+i 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+50 THE UN1QUENL~)~) <.IF BOrUIONS [CH. VI 
+
+Now consider a second loflnitesmial transformation of similar form 
+to (1), only with 0,1, a^', etc as coettiLieiits Let dit be the inere- 
+meiit of i requisite to change p into p + dp Then we liavo 
+
+*'-<To?^>-..y (* 
+
+Now consider the transformation 
+
+mth two similar equations ; where {-^) e fro tl e first trans- 
+formation, and (-37 1 from the second. Buttl tra sfor ation leaves 
+
+the plane, y -pz, latent. Hence by the pi l " t n of 45, it is the 
+identical transformation. Thus we find dv dj d 0, for every 
+value of a;, if, s, and^. Thus 
+
+^i£+ o^ + asiZ - a: (aiO! + a^p + Ojs) 
+
+with corresponding equations for y and z. These three equations hold 
+for every value of x, y, z, and p. Hence it is easy to prove that 
+
+
+
+Thus the infinitesimal transformations are identical. 
+
+47. The plane, my + nz = (i,\s latent for the rotation of g 46 (1), 
+
+if, ™ -^ + M -jT - 0, is satisfied whenever the point (x, y, z) lies on the 
+
+plane. Hence 
+
+moja 4- na.fi = am, 
+mii^t + im-fs. = mi, 
+and o- is given by 
+
+(<r - a,,) (tr-o.^) -<.,,«,, = (l). 
+
+
+
+But by the proposition of § 45, there can be no real latent plane of 
+this form. Hence the roots of equation (l) are imaginary. Thus 
+
+4 (nsaOoj -«,=««.) -(o:= + '^x,/>0 (2). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+46-48] MONODHOMY 51 
+
+48. Ill the neighbourhood of the origin the rotittioiiH of S 46 (I) 
+
+
+
+dz 
+
+it- ")*"■" I 
+
+Thus, writingyx ef', zfx eP*,p satisfies equation (1) of § 47. Heuee 
+p is com])lex. llius we may write 
+
+y = eH«jt+°!s)( fj/„ cos vt + q sin vf)] 
+
+2 = gi (-^ + "h) t (z^ cos vt + q sin vt) \ 
+
+where V - J{a^<>-s, — a^o-ii — \ (ojj + aaa)^!, and q and q can be detennined 
+
+in terms oiyt, So,and of the coefficients. Thus, putting A = eK"52"^"s'>"''', 
+
+when t - tt/v, 
+
+y = -\y„ z=-i^z„ (3), 
+
+and when ? = 2t/i', y=^%< s=^% (4). 
+
+By the proposition of § 45, the equations (4) must reduce to 
+? = ?iii 3=2o- Hence A = i, and therefore 
+
+■^ + "^ = (5). 
+
+Thus for a value of (, not zero, the integral form of equations (l) yields 
+the identical transformation. 
+Also equations (! 
+
+
+
+y^y„cosvt- 
+
+
+
+<^^-^o + 
+
+
+
+..(6). 
+
+
+
+Hence a value of t can be found such that by the corresponding 
+transformation of the type of etiuations (6), any plane yo -Po^^ is trans- 
+formed into any plane «/ -pz, the axis of a? being transformed directly, 
+and the neighbourhoods of on the planes as divided by the axis of ir 
+corresponding in assigned manners. Hence by axiom (3) of § 45, this 
+is the only transformation of tlie group for which these conditions are 
+fulfilled. 
+
+Henc« the transformations for which the origin and the axi.s of a; 
+are latent, the axis of jc being transformed directly in the neighbour- 
+hood of the origin, form a one-limbed continuons group produced by 
+the infinitesimal transformation which fulfils these conditions. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+52 LATENCY OF POINTS ON AXIS [CH. VI 
+
+49. The transfonnation of §46 (I) on the latent axis of x 
+(i.e. y = (i, z — Q) is given by 
+
+dx_ _ „ 
+
+dt~ " ' ■ 
+If a-a + 0, the solution is 
+
+If Oil = 0, tho solution is 
+
+But ((if § 48) ivhon t^2iTJv, ive find x-x,, for every value of x^. 
+Hence a,i = 0, q, = 0. 
+
+Thus every point on any line is latent for a rotation round it with one 
+point of it latent. This fundamental theorem will be cited by the 
+shortened statement, that ' every point on aii axis of rotation is 
+latent.'. 
+
+Thus equations (1) of g 46 for the infinitesimal rotation round tJie 
+axis of X, reduce to 
+
+dx / \\ 
+
+^ = a.^/ + ".^-^C".2/ + a,^) 
+
+
+
+^^^o.^y + a^Z~y{a.,y + ^Z) V (l), 
+
+
+
+dt 
+
+
+
+= a..,^y-i-a..^..Z-z{a.,yA-iXiZ)} 
+
+
+
+where 
+and 
+
+
+
+-.(2). 
+
+
+
+50. The condition that 
+
+lx + my + nz = 0, (/ + 0) (I), 
+
+should be a latent plane for tlie rotation (1) of g 49 is that 
+,dx dy dz ,, 
+
+whenever (1) is satisfied. Hence substituting for 
+
+dx dy ds 
+
+dt ' 'dt ' dt ' 
+and using (1), we find 
+
+
+
+-(»)■ 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+49-52] LATENT PLANES 53 
+
+From the inequality (2) of § 49, it follows that the solution of this 
+equation satisfies the condition, ^+0. 
+
+Let this plane be taken to be the plane of yz, i.e. the plane x = G. 
+Tliis reiiuires 
+
+«..-o, ".. = <> (*). 
+
+51. With this specialization of the plane of yz, tlie condition that, 
+
+Ix + my + nz + l^f) (l), 
+
+should he a latent plane for the rotation (1) of g 49 is that 
+
+,dx dy dz „ 
+at dt dt 
+whenever (l) is satisfied. Hence substituting fi-om equations (l) of 
+S 49 and using equation (1), we find (cf. § 50, equation (4)) 
+
+''32«* + "33«+ "3 = 0/ 
+
+Hence there is a family of latent planes of the form (l), where I is 
+the variable parameter, and m and n are definitely determined in terms 
+of the coefficients of the infinitesimal rotation. Now let one member 
+of this family be taken to be the infinite plane. Then from equations 
+(2), we find 
+
+a, = 0, a, = (3). 
+
+Hence with these choices for the plane of ys and for the infinite 
+plane, the infinitesimal rotation round the axis of x is reduced to the 
+form 
+
+^ = «s3y + a2ajr y (4), 
+
+dz 
+
+where 052+033 =01 ,-•. 
+
+'^!i<hs-°-n°'^>^> 
+
+Then every plane of the family, A^r + /i = 0, is latent. 
+
+52. Any infinitesima] motion, which keeps the origin fixed, is of 
+the form 
+
+
+
+with two similar equations ) 
+
+
+
+-CD- 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+54 AXES OF ROTATIONS [CH. VI 
+
+If the line, x:-l<T,y~ m<r, z - nrr, is latent, then 
+
+dxjdir dy_ d<r dz _ d^ 
+di ~ dt ' dt~ dt ' di dt' 
+
+Henee putting p for - -r- , the equations (l) become 
+
+with two similar equations. 
+
+These equations hold for all values of a-. Accordingly, nuar the 
+origin, when cr is very small, 
+
+with two similar equations. 
+Hence p, in the neighbourhood of the origin. 
+
+
+
+But this equation has always one real root. Thus there is always 
+one real latent line through the origin. Hence every infinitesimal 
+motion for which one point is latent possesses an 'axis.' Also (of. §49) 
+every point on this axis is latent. Accordingly for every point on the 
+axis, x = l<T, y- mo; z — no-, we have 
+
+
+
+
+
+I-. 
+
+
+i~-o- 
+
+
+fr-"- 
+
+
+Henee 
+
+
+f„ / + %«! + «i3W - <7 {Ui + m(3 + »M,) = 0, 
+
+
+
+
+with two similar equations. 
+
+
+These equations hold for every 
+
+
+value of o 
+
+
+. Tlius 
+
+
+
+
+<„( + 
+
+
+,3»i + (,,n 
+
+
+.0 
+
+
+
+
+.„( + 
+
+
+^m + tasM 
+
+
+= I 
+
+
+
+
+-of 
+
+
+
+
+.,; + 
+
+
+aWi + e,n 
+
+
+= 
+
+
+
+Henee we find the equation, 1 1™ | = 0, and that the values of 
+I : m : n which satisfy the first three equations, must satisfy the 
+fourth. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+52, 53] AXES OF ROTATIONS 55 
+
+53. The infinitesimal rotatioQ round the axis of y as axis is of the 
+form (cf. § 49, equations (1) and (2)), 
+
+
+
+..(2). 
+
+
+
+where A, + ^^^ =0| 
+
+Then, since (rf ^ 45, axiom (1)) the motions form a group, by 
+combining this mfitiitesima! rotation with that round the axis of x, 
+another infinitesimal rotation of the group is found. Thus (cf. g 51, 
+equations (4)) an mfinite'.imal rotation of the group, assuming the 
+special axes and infinite plane of s? 51, is of the form 
+
+J„ft,»- + .a„<, + (A,+ «a„)2-J/(fta) + As)| (3), 
+
+where k has any arbitrary value. 
+Hence (ef. g 52) we have 
+
+I Am 0, fe I 
+
+
+
+But equation (4) holds for every value of «. Hence 
+Hence (cf. § 51, equations (5)), 
+
+
+
+Tlienee, again from etiuation (4), we find 
+
+
+
+From equations (2) and (5) we find 
+
+A.-0 ., 
+
+
+
+(6). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+56 RECTANGULAR AXES [CH. VI 
+
+54. Now (ef. I 50) the plane of yz Is the latent plaue through the 
+origin of the infiDitesimal rotation round the axis of x, and the axes of 
+y and z are any distinct lines in this plane through the origin. Any 
+point on the latent plane, Ix-^-my-^nz-^i, of the rotation round the 
+axis of y satisfies (cf. § 53, equations (1), (6), and (7)) 
+
+Hence m^.^ + n^^ = 0, l^y, + m^^, - 0. 
+
+Thus tlie equation of the latent plane is 
+
+But (cf. §53, equations (2)) ^i |ff,i cinnot \anish Hence the 
+latent plane cannot contain the axis of ^ Thus we may assume its 
+intersection with the plane, « = {if with the latent pliiie of the 
+rotation round Ox), to be the axis of z With thi^j assumption we 
+have 
+
+A. = (2). 
+
+Then from equation (6) of g 53, we find 
+
+"^ = (3). 
+
+And from equations fS) of | 51, we find 
+
+•..-0 (*)■ 
+
+A latent plane of an infinitesimal rotation round an axis ivill be 
+said to be perpendicular to the axis. The set of axes of coordinates 
+with any given origin, found by taking the axis of x to be any line, 
+the axis of y to be any line in the latent plane through the origin of 
+the infinitesimal rotation round the axis of x, and the axis of s to ba 
+the line of intersection of the latent planes through the origin of the 
+infinitesimal rotations round the axes of x and y, will be said to be 
+mutually perpendicular, or mutually at right angles. 
+
+It has now to be proved that a set of axes mutually at right angles 
+have reciprocal properties in respect to each other. 
+
+55. With the mutually perpendicular axes of § 54, the equations 
+(2) of § 52, as applied to the infinitesimal rotation of equations (3) of 
+g 53, become 
+
+Hence « can be given any arbitrary value, and then the corresponding 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+54-50] THK COMMON LATENT PLANE 57 
+
+values of I : m -.n are to be iouiid. Also fi,-,, P:„, n^., a-^ cannot 
+vanish. 
+
+Henee we have n = 0, Ijxa^ = m/(- ^a,). 
+Thus ft-0 (1). 
+
+56. Again, let 1'^ + mi/ + 31^+1=0, he any one of the family of 
+latent planes of the rotation round the axis of j/. Then for all points 
+on the plane, 
+
+.d^ d^ dz 
+dt dt dt 
+Hence substituting from equations (1) of § 53, remembering that 
+
+Pn. fe. Ai, A 
+have all been proved to vanish for the special axes, we have 
+
+for all points on the plane. Also jS,,, ft, do not vanish. Hence 
+
+« = 0, /--(»Bfe + ft)/ft,. 
+
+Thus there is one latent [»laiie for which »j-(), !? = 0, /- — ft/(3ia- 
+This is the plane 
+
+But this plane is a member of the family (cf. | 51) of latent planes 
+of the rotation round the axis of x. Also the infinite plane ha.^ been 
+chosen to he any member of this family. Thus we now choose the 
+infinite plane to be the one common member of the two families of 
+latent planes of the infinitesimal rotations round the ajces of x and of 
+y. ITiis plane, since j8,s=i=0, can never pass through the origin. With 
+this choice, we find 
+
+ft-« (>). 
+
+Then, with this special tetrahedron of reference, the equations 
+defining the infinitesimal rotation round the axis of iv are reduced to 
+dx „ dii dz ,,,. 
+
+^=^' dt-'^^'' jr"-^ t^)' 
+
+where assOjj^o (3). 
+
+Also the equations defining the infinitesimal rotation round the axis 
+of y are reduced to 
+
+S^ft- f^''- a^«- w 
+
+where Anfti<U (5). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+S8 AXES OP ROTATIONS [CH. VI 
+
+57. The equations defining the infinitesimal rotation round the 
+axis of z are (cf. g 53, equations (1), (5) and (7)), 
+
+
+
+dx 
+
+
+
+yi,ie-y{y,x + y,,y) 
+'^.=y^x + y^y-z{y,x + y,y) 
+
+
+
+dt 
+
+
+
+where 
+
+
+
+7..y.i<0 (2). 
+
+Thus the transformation found by combining three infinitesimal 
+rotations round the axes of x, of y, and of z is by equations (2) and 
+(4) of §56, 
+
+
+
+^^- - "-c/i^v + •'■A^ - ■■^ («^<yj^ + "^.r^y) 
+
+
+£ = «m^ + C-^^, + « A.) e-y («iY,a; + «.y,i/) 
+
+
+~ = («,^:,, + «37,,0 .T + {K.,y,, + OL^) y - s (K^y.X + « 
+
+
+ce applying equations (2) of § 52, we find 
+
+
+
+
+, «3y„ , "A 
+
+
+
+
+"SYSI , , a^ + K2^.33 
+
+
+
+
+■<i^^ + "m, "^y-^ + a^.. 
+
+
+
+iV^) j 
+
+
+
+This equation holds for every value of kj and tj. 
+
+Thus the term involving k^% yields yi;i8~!;83i = 0. Hence, since 
+y,i and jSsi cannot vanish, we have 
+
+
+
+The term involving k^^ yields 7127^0^, = 0. Hence, : 
+cannot vanish, we have 
+
+
+
+....(4). 
+^ and a 
+
+
+
+.(5; 
+
+
+
+The coefficient of kjS is yisysi^ss + ftay^ysa- Hence, using (4_1 and (0), 
+and noting that yS,^ and y-j, cannot vanish, we find 
+
+y^^-0 (6). 
+
+
+
+The coefiieient of kc,k.j gives 
+
+y,.«^A 
+
+
+
+Jo^in^y^ = 
+
+
+
+..(7). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+67, 58] OESERAL FORM FOE INFrSlTESIMAL ROTATIONS 59 
+
+Now equations (2) of § 52, applied to tin's case, become, after 
+simplifying by (4), (5) and (6), 
+
+Ka7,2m + K^^n = 0, 
+K,y^l + UiaW = 0, 
+
+Ks^jl + osi-m = 0, 
+
+Instil + K^^m - 0. 
+Hence a^y^ - njisiys = 0. 
+
+This equation hoWs for all values of kj, and a^^^ and ^^ do not vanish. 
+
+Hence yj = 0, y3 = (8). 
+
+Thus the infinite plane is the common latent plane of the tliree infini- 
+tesimal rotations round the three rectangular axes. 
+
+58. Thus using equations (4), (5), (6), (8) of § 57, the eiitiations 
+for the infinitesimal rotations round the three mutiutUy perpendicular 
+axes, the infinite plane being the common latent plane of the rotatioii.s, 
+are 
+
+(Jx ^ Au -ds , , . 
+
+
+
+dx 
+
+
+
+1% <h 
+
+dt ' it ' 
+
+
+
+■m, 
+
+
+
+'^1=^'^^- Ir^--^^' dt='' ^-^^^ 
+
+where ».5'»:^<0, AA<0, yi.ysi<0 (4), 
+
+and T,»cu^:n + As<^y^ = (5). 
+
+jt at once follows irom the symmetry of these equations, that a set 
+of axes mutually at right angles have reciprocal properties in respect to 
+each other. 
+
+The mention of equations (4) and (5) is avoided by altering the 
+unit points* on the axes, that is, by writing Aa; for x, ii-y for y, and 
+vz for s, where A, ^ v are constants at our disposal. Let them be 
+chosen, so that 
+
+/^.la/f = - i^/t ^ <", (say), 
+and vPnl^ = - \p^ijv = w; (say). 
+
+By equations (4), tJie ratios ai k -. p. : v are real. Then by equation 
+(5), we have 
+
+^ya/^ = - /i-yi./A- = «i3 (say). 
+* Cf. Proj. Geoui. §42. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+60 GENERAL FORM FOR INFINITESIMAL ROTATIONS [CH. YI 
+
+Hence remembering that oi,, ui^, ai^ are arbitrary parameters, we find 
+that any infinitesimal rotation round an axis through the origin can be 
+expressed in the form 
+
+da:: dy dz ,„, 
+
+s— »»"* i=-".'+« a— "'^+"'» ■(«)■ 
+
+The latent line of the rotation is given by 
+
+Thus this form gives one and only one infinitesimal rotation round aJiy 
+line through the origin. Hence the fonn (6) can include no infini- 
+tesimal transformation other than those of the congruence group under 
+consideration. 
+
+A t«trahedroii formed by three mutually perpendicular axes, mth 
+the common latent plane of the three rotations round the axes for its 
+fourth plane, and with the unit points of its axes chosen so aa to produce 
+equations (6), will be called a normal reference tetrahedron. 
+
+When the coi^ruence group is given, the normal reference tetra- 
+hedrons are determinate, though infinite in number. But a congruence 
+group can be found so that any given tetrahedron is a normal reference 
+tetrahedron. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER VII. 
+
+
+
+THE ABSOLUTK. 
+
+
+
+59. Consider the surfaces which are latent for a rotation round 
+the axis of m. Let the axis system form a normal reference tetrahedron. 
+Then the infinitesimal rotation can be written 
+
+dx „ dy dz ,,, 
+
+Let u = be any latent surface. Then we have 
+
+
+
+as the requisite condition. Solving this linear equation by I 
+
+rule, and remembering that x has been treated as a constant, we find 
+
+that the latent surfaces are of the form 
+
+/(," + «■, j;).0 (2), 
+
+where/ is an arbitrary function. Surfaces, whose equations are of the 
+form of (2), will be called surfaces of revolution round tlie axis of x. 
+
+60. A necessary and sufficient condition, that a surface may be 
+latent for any congruence transformation which leaves tlie origin at 
+rest, is tliat the surface be a surface of revolution round each of the 
+three axes. Hence by equation (2) of § 59 this family of surfaces is 
+represented by 
+
+A(^ + / + 3=) + ^ = (1), 
+
+where A and ^ are arbitrary parameters. Let these be called spheres, 
+with the origin as centre. 
+
+The infinite plane is the common polar plane of the origin, with 
+respect to each of the spheres with it as centre. Thus transforming to 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+6i SPBEKES [CH. VH 
+
+homogeneous coordinates by putting x = Ji^iU', y=^YlU, z^ZjU, 
+where, U=0, is the equation of the infinite plaue, the equation of 
+the family of couccutric spheres is 
+
+k{X-'+ r^ + ^) + /j,t^=0 (2). 
+
+Thus returning to the original coordinates, if (a;, y, z) - 0, is the 
+equation of any sphere, centre at {x„, y,„ sj, the equation of the family 
+of spheres with that centre is 
+
+x*(..,..)..(..g.,.|..S/i)^o m. 
+
+where, as usual, t is introduced to make the equation homogeneous 
+and is put equal to 1 after differentiation. 
+
+61. By recurring to equation (2) of § 60, we see that the plane 
+of yx, which is the plane perpendicular to the axis of a;, is the plane 
+through the origin and through the common conjugate line of the axis 
+of CO with respect to any of the spheres, centre the origin. Hence if, 
+^ (a,', y, a) = 0, is any sphere with centre A^ {x^, y^, z^, and A, is the 
+point {x^, y,, z,), then the plane through A^ perpendicular to A^A^ is 
+
+C,..A..)g.(j,. + »„)'|+(„A..)|.(l.»)|.0 ...(1), 
+where 
+
+and i/>o, (3)1 6tc. are the results of substituting the coordinates of 
+
+Ao in <l> (x, y, s), t~ , etc. 
+
+Let the left-liand side of (l) be written (A^, Ai, P)^, where P is 
+the variable point {x, y, z). Thus the equation of the plane, perpen- 
+dicular to the line AoA, and through the point ^0, is 
+
+{A„A„P)i = (2). 
+
+A quadratic surface of revolution round the axis of j» is of the form 
+(cf. equation (2) of § 59) 
+
+b(f + ^) + a:>^ + 2gx + c = (.^ 
+
+This can he written in the form 
+
+X {a (a^ +/ + £■') + ^} + a's:^ + 2gx + c'^0. 
+Thus, \i'p{x,y, s) = () is the equation of a sphere, centre d, (xo,yo,^u). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+60-62] FAMIHES OF CONCENTRIC SPHEREH 63 
+
+the eijuation of a ^uadric biirfiice of revolution round the line joining 
+At to Ai (xi, yi , Si) is 
+
+
+
+
+
+
+^ dj> djji- 
+
+
+
+"i}-« c* 
+
+
+
+The family of quadric surfaces of revolution round any line must 
+include every family of concentric spheres with its common c«ntre at a 
+point on the line. Accordingly taking ^o to be the origin, and <j> (w, y, z) 
+to be ar' + y + a=+l, the family of spheres at any point {Wi, y,, a,) is 
+included in the family 
+
+X(a? + i/' + x;* + l) + ^ {a!,x + yiy + z,zf + 'iv (x,x + y,y + s,s) + p = 0, 
+that is, in the family 
+
+X(a^ + ^ + s?) + IJ.(s!,a: + y,i/ + z,zf + 2y(a:iX+2/,y + z,z) + cr = ...(5). 
+For this is the family of quadrics of revolution round the line joining 
+the origin to the point (x^, y,, z,). 
+
+62, Consider any two infinitesimal projective transformations in 
+
+
+
+the plane 
+
+
+of 431. 
+
+
+One transformation is defined by 
+
+
+
+
+
+
+
+
+1,^; + (h^y + ay, - 
+
+
+-x(a,a; + a,y) 
+
+
+
+
+
+
+f = * 
+
+
+1^ + a^y + «ai ■ 
+
+
+-y{a^x^a.,y) 
+
+
+The other is defined by 
+
+
+
+
+
+
+
+
+
+
+S-. 
+
+
+,x + b,iy + bu - 
+
+
+-^(M + &,j)| 
+
+
+
+
+
+
+I-- 
+
+
+aX + h^ + bta- 
+
+
+-y{h,x + b.,y)^ 
+
+
+
+..(2). 
+
+
+
+Now each of these transformations leaves a family of curves latent, 
+the locus of points, which either are the points of contact of members 
+of the respective famiKes, or are points on a curve common to the two 
+families, is given by 
+
+anX + a^y + dia - a; {a-tX + (i^y) ^ a^jX + a^y ^-a-g-y («i^ + a^y) ,„. 
+baW-i-hyiy+bi!,-a;{biX-i-b.iy') biiX + h^y-i-b«3-y{biX + biy) ^' '' 
+Tliis locus is a cubic curve. 
+
+Now consider two rotations belonging to the congruence group 
+under consideration. Let one be about the point (0, 0, 0), and the 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+64 THE ABSOLUTE SPHERE [CH. V!I 
+
+other about the point (a;^, y^, 0), and let the plane of xy be latent for 
+them both. Then for the first rotation, the family of latent curves 
+(of. g 60, equation (1)) in the plane of xy is given by 
+
+A(a^U/)+/i = (4); 
+
+and for the second rotation, the family of latent curves (ef. § 61, 
+equation (5)) in the plane of xy is included in the family 
+
+A, {£' + /) + /., {xix H- y^yy + 2n {x^x + i/iy) + T,^0 (5). 
+
+It is easy to prove tliat the locus of points where members of the 
+family (4) touch members of the family (5) is the line, x/xi^y/y^. 
+
+Hence for the case of these two rotations the cubic curve of equation 
+(3) above becomes a straight line and a common member of the two 
+families (4) and (5). Thus these two families must possess a common 
+member. Let it be 
+
+Then (cf. g60, equation (1), and g 61, equation (5)) the sphere, 
+
+c,(_x' + f + ^) + l^O (6), 
+
+belongs to the family of spheres centre (0, 0, 0), aiid also to the family 
+of spheres centre {x,, y„ 0). 
+
+Hence any two distinct families of concentric spheres with different 
+centres possess one member in common. 
+
+63. Let (xu 2/1, Si) and (^j, y.., Zi) be any two points which are 
+not eoUinear witli the point (0, 0, 0), Let (of, § 62) 
+
+Ci(i^ + y + 3')+l-0 (1) 
+
+be the sphere common to the two families of spheres with centres at 
+(O, 0, 0) and {x^, y^, zi) respectively ; and let 
+
+e,{x- + f+z^) + l=0 (2) 
+
+be tlie sphere common to the two famihes of spheres with centres at 
+(0, 0, 0) and {x^, y^, z^ respectively. Then (cf. g 60, equation (3)) the 
+family of spheres, centre {x,, y„ Zi), is given by 
+
+\,{c(^ + f + £?•)+ l\ + l^r{Ci(XrX+y,y + S,Z) + l\' = 0.-.(3\ 
+and the family of spheres, centre (xs, y^, 2a), is given by 
+
+But (cf. § 62) it is possible to find a common member of the families 
+(3) and (4). Then remembering that the two centres are not collinear 
+with the origin, it is easy to prove that we must have 
+
+A'i^O, ^. = 0, c,^c, (5), 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+i2-65] 
+
+
+
+THE ABSOLUTE 
+
+
+
+65 
+
+
+
+Thus the three families of concentric spheres witli centres at three 
+non-eollinear points have one member in common. Hence it is easy to 
+prove that there is one sphere common to all families of concentric 
+spheres. Let this sphere be called ' The Absolute.' 
+
+64. By a rotation round a suitable axis any point can be moved 
+to any neighbouring position. For, if 
+
+c(^ + / + 2?)+l-0 (1) 
+
+is the absolute, then (cf. § 63, equation (3)) 
+
+c{a? + f + z') + l-{c,{x,x + y,yi-z,z)+\f^Q (2) 
+
+ia the equation of the sphere, centre (x,, yn z^, touching at the origin 
+the plane 
+
+Hence if Xijl = y,jm = Sijn, the sphere touches at the origin the plane 
+
+
+
+foH 
+
+
+
+my + 
+
+
+
+Now let this be any plane through the origin and through the neigh- 
+bouring position to which the origin is to be displaced. Then it 
+follows that a rotation round a suitable axis through the point (jci,yi,2i) 
+can effect the required displacement of the origin. 
+
+Thus the effect of any infinitesimal congruent transformation can 
+be produced by combining a rotation round some line not passing 
+through the origin with a rotation round some line through the origin. 
+Hence (cf, § 45, axiom (3)) the absolute i,s latent for any congruent 
+transformation of the group. 
+
+65. Conversely the group of projective transformations, for which 
+a given imaginary or convex quadric is latent, forms a congruence group. 
+For take a tetrahedron, self-polar with respect to the given surface of 
+the second degree, as the fundamental tetrahedron, Then the equation 
+of the surface can be reduced to the form 
+
+c{x' + f--r^)^l=Q (1), 
+
+and, when c = 0, the surface degenerates into the infinite plane. 
+
+The most general form of infinitesimal projective transformation is 
+dx _ 
+di" 
+
+
+
+dt 
+dz _ 
+di~ 
+
+
+
+f a^^y + a,^~x (a,X + a^y + a^) 
+¥a.^y+a^-y (a,x + a^y + a^z) 
+
+
+
++ a^X + a^^y + <h^ - Z (>i,x + rhy + a^z) 
+
+
+
+..(2). 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+66 THE ABSOLUTE [CH. VII 
+
+This is to satisfy 
+
+-^ + J/f*»S = (B), 
+
+
+
+when (1) is satisfied. 
+
+Hence (3) becomes, after simplifying by (l), 
+
+CX(U + thi^ + ai^ + Oiae) + CT/ (« + a.,,3; + a^ + a^) 
+
++ cz(w + a-^,ir + a:,,y + a^) 4- (a,(t! + a^p+a^)^0 (4). 
+
+Then (4) must either he identical with (l), or must be an identity. 
+But it cannot he identical with (l). Hence it is an identity. 
+
+Thus CM + o, =0, CV + a^-O, C>C + a3 = 0, 
+
+
+
+(5). 
+
+
+
+But when the origin is fixed, these equations reduce to the equations 
+(6) of § 58 for the general infinitesimal rotation round the origin of the 
+corresponding congruence group. Also it is easy to see that the 
+above equations give one and only one infinitesimal transformation 
+which transports the origin to a given neighbouring point (udt, vdf, 
+wdi), and at the same time transforms a given line I through the 
+origin, and a given plane ^ through I, into a neighbouring line and 
+plane respectively through the new position of the origin and the new 
+position of I. Thus by g 64 and by axiom (3) of § 45 all the transforma- 
+tions of the form (5) belong to the associated congruence group. 
+
+Hence these equations give the general form of an infinitesimal 
+congruence transformation, referred to a normal reference tetrahedron. 
+The equation of the absolute is then 
+
+c{a^ + f + z')+1^0 (6). 
+
+It follows from equations (5) by applying tiie ' Second Fundamental 
+Theorem ' (cf. g 36) that a congruence group is a six-limhed finite 
+continuous group. 
+
+
+
+ea„ = 0, cnjs = 0, cas, 
+
+
+-0, 
+
+
+C(a,. + n^) = 0, C(a,, + a,:) = 0, C (a^ + a,,) 
+
+
+= 0. 
+
+
+Thus the general form of transformation is 
+
+
+
+
+
+
+
+
+— = 1! — to,z + lo^a: 4- ml (ii.r + iw/ + wjs"! 
+
+
+
+
+, " "'I* ' "'a*" ^ ^u ^«*t ^ vif T it,vj 
+
+
+
+
+iz 
+
+
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+65-67] TYPES OF COSGBOENCE GROUPS 67 
+
+66. The congrnenoe groups are divisible into three types. 
+
+In Type I, c is positive. Tlien the absolute (cf. § 65, equation 
+(6)) is an imaginary quadric. The congruence axioms hold for the 
+transformation of all points of the projective space by any members 
+of such a congruence group. Such a congruence group is called 
+Elliptic. 
+
+In Type II, e is negative. Then the absolute is a real convex 
+quadric. The congruence axioms only hold for all points within the 
+space enclosed by the absolute for transformations by any members 
+of the corresponding congruence group. Such a congruence group is 
+called Hyperbolic. 
+
+In Type III, the numerical value of c has diminished indefinitely. 
+Groups of this type require further investigation. They are called 
+Parabolic. 
+
+67. In the Parabolic case, when c diminishes indefinitely, the point 
+equation of the absolute 
+
+reduces to that of the infinite plane. Hence for every parabolic group 
+a plane is latent. 
+
+Again in equation (3) of g 63 by putting Ac = «, /i = i - X, we find 
+that the equation of any sphere, centre (iBi, ^i, sj, can be written 
+a{^ + y' + !^- 2«ia^ - '^yty - SSi^) + & + c {{he - a) {x^a: + p^ + z^zf 
++ 2h {XiX + y^ + z,z)] = 0. 
+Hence when c dimimshes indefinitely, and the coefficient of no t«rm 
+is infinite, the general equation for spheres, centre («!, i/„ z,), becomes 
+
+a(a^ + f + ^-2x,x-2y,y-2siz) + b^0 (1). 
+
+Hence every sphere cuts the infinite plane, which is latent for this 
+special choice of coordinates, in the imaginary conic where 
+
+a^ + P^ + s^^O, 
+cuts it. Thus this imaginary conic in the infinite plane is also 
+latent. 
+
+Accordingly in the parabolic form the absolute is represented by 
+the latent infinite plane, and by the imaginary latent conic in the 
+infinite plane, A set of concurrent rectangular axes are a set of 
+concurrent lines intersecting the infinite plane at the angular points 
+of a triangle self-conjugate with regard to the absolute conic. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+68 I'ARABOLic Groups [ch. vii 
+
+The general form of the iofinitesima! transformation (cf. § G5, 
+equations (5)), referred to a normal reference tetrahedron, reduces to 
+
+
+
+di ~ 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+CHAPTER VIII. 
+
+
+
+METRICAL GEOMETRY. 
+
+
+
+68. The theory of distauce foUowa immediately from that of con- 
+gruence hy noting two facts. In the first place let the anhannouic 
+ratio* of the range {FQRS} he denoted by [PQRS] ; then if 
+
+^,, A,, P„ F„ P, 
+are collinear points, we have 
+
+{A,P,A,F~] X {AJ\A,P,} - {A,P,A,P,}, 
+or, in another fonn, 
+
+log{A,F,A,P,} + \Qg{A,P^J',] = hg{A,P,A,P,} (I). 
+
+In the second place, let Ai and Ai be the two real or imaginary 
+points in which the line containing the points P,, P., P-^ meets the 
+real or imaginary absolute of some definite congruence group. Then 
+for any transformation of that group (a) the anhamionie ratios are 
+unaltered because the transformation is projective, and (yS) the points 
+A-i and jiaare transformed into the points in which the transformed 
+position of the line P1P3P3 cuts the absolute. 
+
+Thus if some multiple t of log {AiPjA^Pj} be defined as the 
+distance between the points P, and Pa, where Ai and A^ are the 
+points where the line PiPaCuts the absolute, then equation (1) secures 
+the characteristic addition property of distance in respect to collineai 
+points, and the second consideration secures the characteristic in- 
+variability of distances in a congruence transformation. 
+
+* Of. Proj. Geom, §38. 
+
++ Thia definition ia due to Cayley, Sixth Memoir on Quantics, Phil, Trans. 
+1859 and Coll. Papers, vol. ii., and to Klein, Ueber die eogc/iaimle nicht-eukUdisahe 
+Oemnetrie, Matli. Ann. vol. it. 1871. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+70 ANALYTICAL EXPRESSION FOR DISTANCE [CH. VHI 
+
+69. Now let A be tiie point (a:,, y., z,), and A tlie point 
+(jJ^i yii z,). Then the coordinates of any point on the line P1P2 take 
+thefomi 
+
+Ajc, + /la^.j A^i + jjj/^ A^j + nz^ 
+
+A 4- ^ A -r jTX A + ^ 
+
+Thus the points ^, and -4,, where the line PjP^ cuts the absolute, 
+
+are given by the roots Aj//^ and A^Z/ij of the q^uadratic equation 
+A= {c (x,^ + y{' + i,=) + 1 } + 2A;,t {c (a;,a-, + y^^ + z,s,) + 1 } 
+
++ /*McC^='+y.' + 2=0 + il = o (!)■ 
+
+For the elliptic case, when c ie positive, put 
+
+cose= c(w,x._^v,y. + z,z.)^l 
+
+M^i" + 2/1' + %") + 1 !* {C (i^s' + 3/s' + s^,') + 1 } - 
+Then* {A ,P,AJ\\ = ^A^/A,^ = e2.«. 
+
+Thus the distance PiP;, written dist {P-iPi), can be deiined by 
+
+A\%tiP,P:) = ^hg{A,P,A.,r.'i (2). 
+
+Hence 
+dist_r/Vy ^ ^^ flfj;i;r3 + .yiya + Sia„)+ 1 . , 
+
+It is evident that there will be two distances, associated with the two 
+segments into which the point-pair Pi and P^ divides the line PiP^. 
+If one distance, say the smaller, is called dist (PiPi), the other will 
+be 117 -dist {Pi Pa)- Thus the whole length of a straight line is jry. 
+This system of metrical geometry embraces the whole of Projective 
+Space t. 
+
+70. For the hj'jierholic case, when c is negative, put 
+coshe= 1^^(W.^/,?A. + .,^.) 
+
+- Cf. Proj.Geom. §38. 
+
++ Tlie pOBsibilitj of a Metrical Geometry with closed liuea of finite length was 
+first suggested by Kiemann, of. loc. cit. For a full account and ampliEoation of 
+BieiQBnn'a treatment of distanoe, cf. Forme of Noa-BuclideanSpaee, hyF.S.WoodtS, 
+printed in Ths Boston CoUoqmnm, New York. 1905. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+69-72] ANALYTICAL EXPRESSION FOR DISTANCE 71 
+
+Then if Fi and P-^ are both within the region enclosed hy the ahsolnte, 
+is necessarily real. 
+
+Hence (cf. g 69, equation (1)) 
+
+Thus the distance P1P2, written dist{PiPs), can he defined hy 
+
+dht(P,P,)^iyhg{A^PiA,P,} (1). 
+
+Therefore 
+
+^^dist(P^) _ ___ i..r.,..H-,,..,.^..) 
+
+n 11 ly b n d ta betw n P an I P Th m t b 
+
+at 1 nth tl e ol egn e t f tl e line -P P h h 1 e. h lly 
+
+w tl n tl e^ n n lo ed by tl ab ol te Tl y t f metn al 
+
+ge met y nly b a tl p t wb h 1 w th n the eg 
+
+1 d b> t! ab 1 te A j i nt n ti n t la 1 tb 
+
+11 t ! if t ajil t h t 1 t i It 
+
+the I 1 t 
+
+71. The parabolic formula for the distance, arising when c is in- 
+definitely diminished, can be derived as a limit from either of the other 
+two cases. Put v% = ±l, according &S c is positive or negative, so 
+that y increases as e diminishes numerically. Then expanding both 
+sides of equation (3) of § S9, or of equation (2) of § 70, and pro- 
+ceeding to the limit, we find 
+
+{d»t(P.i>,)|- = (i.-»,)- + G,,-,,)- + fe-^,)' (1). 
+
+The pamboHc system of metrical geometry embraces all projective 
+space with the exception of points on the latent plane, which is the 
+infinite plane in our system of coordinates. This is the ordinary 
+EucHdeau Geometry. 
+
+72. Exactly the same procedure can be applied for the measure- 
+ment of the angle between planes. Let pi and p^ be any two planes, 
+and let d and (2 be the two real or imaginary planes through the 
+intersection of p^ and p-i and tangential to the absolute. When the 
+
+■ Metrical Geometry of this Hyperbolic Type was first discovered by Lobat- 
+Bohefskij in 1826, and independeatly by J. Eolyai in 1832. This discovery 13 
+the origin of the modern period of thought in respect to the foundations of 
+Geometry. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+72 ANGLES [CH. VJII 
+
+congruence group is elliptic, or when the congruence group is hyper- 
+bolic, and the line of intersection of p, and p^ passes through the 
+region enclosed by the absolute, then t, and ti are necessarily not real. 
+
+Then the angle between the planes is defined to be :^\og{tipApi\. 
+'fhns if the two planes are given by 
+
+IjX + m,y + tiiZ + pi ^ 0, Ij: + m.,y + n£+p.! = Q, 
+and 6 is the angle between them, we have 
+
+, 1,1^ + m,mi + n,n^ + cptp.. 
+
+
+
+{li' + m^ + ni' + cpi']^ [li + m^ + Ha' + cp?\ 
+
+
+
+..(1). 
+
+
+
+As before, there are two angles and ir-B ; but it can be proved that 
+the whole angle round a line is 27r, owing to the existence of dia- 
+metrically opposite regions in the neiglibourhood of the line. 
+
+In the parabolic case, when c is indefinitely diminished, the angle 
+between the planes is given by 
+
+
+
+_ liL + !Ki?«j + ni«3 
+
+
+
+.(2). 
+
+
+
+73. The same procedure can also be applied for the measurement 
+of the angle between two concurrent lines. Let ^i and l^ be any two 
+concurrent lines in a plane p. Let (, and tz be the real or imaginary 
+tangents from the point (^ . l.) to the conic which is the section of the 
+absolute by the plane/'. When the congruence group is elliptic, or when 
+the congruence group ia hyperbolic and the point (^i . l^ lies within the 
+region enclosed by the absolute, then ^i and t^ are necessarily imaginary. 
+
+Then the angle between the lines is defined to be - log |^i^*/;}. Thus 
+there are two angles 6 and tt - ^ between two intersecting lines, and 
+the whole angle round a point is 2t. 
+
+In the degenerate parabolic case the section of the absolute by the 
+plane p becomeis two conjugate imaginary points in tlie plane at 
+infinity. These are known as the circular points at infinity. Then 
+(i and ij are the imaginary lines from the point {l^ . Q to these points 
+respectively*. 
+
+* This projectiTe view of Euclidean Metrical Geometry was elaborated by 
+Lagnerre in 1853, previously to the rise of the general theory which is explained 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
+Cambridge Tracts in Mathematics 
+and Mathematical Physics 
+
+
+
+No, 1. VOLUME AND SURFACE INTEGRALS USED IN 
+PHYSICS, by J. G. Leathem, M.A. 2s. 6d. net. 
+
+No. 2. THE INTEGRATION OF FUNCTIONS OF A SINGLE 
+VARIABLE, by G. H. Hardy, M.A, 2s. ^d. net. 
+
+No. 3. QUADRATIC FORMS AND THEIR CLASSIFICATION 
+EY MEANS OF INVARIANT FACTORS, by 
+T. J. I'A. Bromwich, M.A., F.R.S. 3^: dd. net. 
+
+No. 4- THE AXIOMS OF PROJECTIVE GEOMETRY, by 
+A. N. Whitehead, ScD., F.R.S. ^s. i>d. net. 
+
+No. 5. THE AXIOMS OF DESCRIPTIVE GEOMETRY, by 
+A. N. Whitehead, ScD., F.R.S. 2s. 6d. net. 
+
+
+
+In preparation. 
+
+
+
+THE DEFINITE INTEGRAL, ITS MEANING AND 
+FUNDAMENTAL PROPERTIES, by E. W. Hobson, 
+ScD., F.R.S. 
+
+SINGULAR POINTS AND ASYMPTOTES OF PLANE 
+CURVES, by Miss C. A. Scott. 
+
+THEEIKONALAND ITS APPLICATION TO OPTICAL 
+INSTRUMENTS, by E. T. Whittakler, M.A., F.R.S. 
+
+THE FUNDAMENTAL THEOREMS OF THE DIF- 
+FERENTIAL CALCULUS, by W. H. Young, ScD. 
+
+THE CIRCLE AT INFINITY, by J. H. Gu.\ce, M.A. 
+
+
+
+Hosted by 
+
+
+
+Google 
+
+
+
