@@ -8,15 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from string import punctuation
 from io import StringIO
-'''
-------- Originally used for python 2 ------------
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
-from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument, PDFTextExtractionNotAllowed
-'''
 from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
@@ -32,7 +23,10 @@ http://www.sophia-project.org/classical-philosophy.html
 
 def init_driver():
 	'''
-	Initialize selenium driver
+	INPUT:
+		None
+	OUTPUT:
+		driver - selenium Chrome web driver
 	'''
 	driver = webdriver.Chrome()
 	driver.implicitly_wait(10)
@@ -42,7 +36,12 @@ def init_driver():
 
 def cicero(docs):
 	'''
-	Get works for Cicero (test for other philosophers)
+	INPUT:
+		docs - documents dataframe
+	OUTPUT:
+		driver - selenium Chrome web driver
+
+	Get documents for Cicero (test for other philosophers)
 	'''
 	url = 'http://www.sophia-project.org/classical-philosophy.html'
 
@@ -81,7 +80,13 @@ def cicero(docs):
 
 def other_philosophers(phils, docs):
 	'''
-	Obtain documents for other philosophers on the page
+	INPUT:
+		docs - documents dataframe
+		phils - philosophers dataframe
+	OUTPUT:
+		driver - selenium Chrome web driver
+
+	Obtain documents for philosophers on website
 	'''
 	url = 'http://www.sophia-project.org/classical-philosophy.html'
 
@@ -195,7 +200,14 @@ def other_philosophers(phils, docs):
 
 def convert(fname, pages=None):
 	'''
-	Get text from pdf
+	INPUT:
+		fname - filename to convert
+		pages - pages to convert
+				If None, convert all
+	OUTPUT:
+		text - text scraped from pdf
+
+	Converts pdf document to text
 	'''
 	fp = open(fname, 'rb')
 	parser = PDFParser(fp)
@@ -219,7 +231,11 @@ def convert(fname, pages=None):
 
 def get_text(pdf_file, author):
 	'''
-	Clean text received from convert function
+	INPUT:
+		pdf_file - location of pdf
+		author - author of document
+	OUTPUT:
+		Text cleaned of unnecessary characters
 	'''
 	text = convert(pdf_file)
 
@@ -251,5 +267,4 @@ def get_text(pdf_file, author):
 
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
-	# driver = cicero(docs)
-	# driver = other_philosophers(phils, docs)
+	driver = other_philosophers(phils, docs)

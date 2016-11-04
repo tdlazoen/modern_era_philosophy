@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from modern_dfs import ModernPhilosophers, ModernDocuments
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,6 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import re
+import sys
+import os
+sys.path.append(os.path.abspath('..'))
+from modern_dfs import ModernPhilosophers, ModernDocuments
 
 '''
 This file scrapes the website
@@ -18,6 +21,12 @@ for modern era philosophical texts
 '''
 
 def init_driver():
+    '''
+    INPUT:
+        None
+    OUTPUT:
+        driver - selenium Chrome web driver
+    '''
     driver = webdriver.Chrome()
     driver.wait = WebDriverWait(driver, 5)
 
@@ -25,6 +34,15 @@ def init_driver():
 
 def get_author_doc_info(phils, driver):
     '''
+    INPUT:
+        phils - modern philosopher dataframe
+        driver - selenium Chrome web driver
+    OUTPUT:
+        authors - document authors
+        years - years each document was written
+        links - links to each document's text
+        titles - document titles
+
     Get the basic document info
     '''
     url = 'https://www.marxists.org/reference/subject/philosophy/'
@@ -108,6 +126,12 @@ def get_author_doc_info(phils, driver):
 
 def get_text(link, driver):
     '''
+    INPUT:
+        link - link to document text
+        driver - selenium Chrome web driver
+    OUTPUT:
+        text - text obtained from link; empty if retrieval failed
+
     Get text for a specific link
     '''
     r = requests.get(link)
@@ -188,7 +212,16 @@ def get_text(link, driver):
 
 def add_documents(authors, years, links, titles, driver, docs):
     '''
-    Add documents from on website
+    INPUT:
+        authors - document authors
+        years - years each document was written
+        links - document links
+        titles - document titles
+        driver - selenium Chrome web driver
+        docs - documents dataframe
+    OUTPUT:
+        None
+    Add documents from the website
     '''
     for i in range(len(authors)):
         author = authors[i]

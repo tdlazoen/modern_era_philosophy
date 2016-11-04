@@ -19,6 +19,11 @@ https://en.wikipedia.org/wiki/Hellenistic_philosophy
 
 def famous_philosophers(phils):
 	'''
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
 	Get philosopher data from famous-philosohpers.com
 	'''
 	url = 'http://famous-philosophers.com/'
@@ -54,6 +59,11 @@ def famous_philosophers(phils):
 
 def renaissance_philosophers(phils):
 	'''
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
 	Get renaissance philosopher info from wikipedia page on renaissance philosophy
 	'''
 	url = 'https://en.wikipedia.org/wiki/Renaissance_philosophy'
@@ -61,6 +71,11 @@ def renaissance_philosophers(phils):
 
 def reason_philosophers(phils):
 	'''
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
 	Get age of reason philosopher info from wikipedia page on age of reason philosophy
 	'''
 	url = 'https://en.wikipedia.org/wiki/17th-century_philosophy'
@@ -68,7 +83,13 @@ def reason_philosophers(phils):
 
 def get_philosophers(url, tag, first_index, last_index):
 	'''
-	Used for scraping philosopher data originating on wikipedia pages
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
+	Used for scraping renaissance and age of reason
+	philosopher data originating on wikipedia pages
 	'''
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
@@ -95,6 +116,11 @@ def get_philosophers(url, tag, first_index, last_index):
 
 def contemporary_philosophers(phils):
 	'''
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
 	Get base collection of contemporary philosophers
 	'''
 	url = 'http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/'
@@ -110,6 +136,11 @@ def contemporary_philosophers(phils):
 
 def hellenistic_philosophers(phils):
 	'''
+	INPUT:
+		phils - philosopher dataframe
+	OUTPUT:
+		None
+
 	Obtain info on hellenistic/roman time_period philosophers
 	'''
 	url = 'https://en.wikipedia.org/wiki/Hellenistic_philosophy'
@@ -154,8 +185,8 @@ def hellenistic_philosophers(phils):
 
 if __name__ == '__main__':
 	phils = Philosophers()
-	# famous_philosophers(phils)
-	# renaissance_philosophers(phils)
-	# reason_philosophers(phils)
-	# contemporary_philosophers(phils)
-	# hellenistic_philosophers(phils)
+	famous_philosophers(phils)
+	renaissance_philosophers(phils)
+	reason_philosophers(phils)
+	contemporary_philosophers(phils)
+	hellenistic_philosophers(phils)

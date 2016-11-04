@@ -9,16 +9,6 @@ import os
 import re
 import time
 import philosopher_profile_data as ppd
-'''
-------- Originally used for python 2 ---------
-from cStringIO import StringIO
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
-from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument
-'''
 from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
@@ -33,6 +23,13 @@ http://www.earlymoderntexts.com/texts
 
 def add_to_philosophers_dict(phil_dict):
 	'''
+	INPUT:
+		phil_dict - dictionary with philosopher info
+	OUTPUT:
+		authors - list of authors added to dictionary
+		phil_dict - philosopher dictionary with new
+					philosophers added
+
 	Add Newly acquired philosopher names into philosopher
 	dictionary if not already existing in it
 	'''
@@ -71,6 +68,17 @@ def add_to_philosophers_dict(phil_dict):
 
 def add_document(dct, author, title, year, url, filepath=None):
 	'''
+	INPUT:
+		dct - documents dictionary
+		author - document author
+		title - document title
+		year - year document was written
+		url - link to document text online
+		filepath - filepath where document is saved
+				   None if no file was downloaded
+	OUTPUT:
+		dct - documents dictionary with new document added
+
 	Add new document to the documents list
 	'''
 	idx = len(dct)
@@ -85,7 +93,16 @@ def add_document(dct, author, title, year, url, filepath=None):
 
 def get_pdfs(author):
 	'''
-	Get information to download an author's pdfs
+	INPUT:
+		author - name of author of interest
+	OUTPUT:
+		text_author - author of works
+		titles - titles of all works written by author
+		year_pub - list of years each work was published
+		pdf_links - links to download pdfs from
+		filepaths - paths pdfs were downloaded to
+
+	Get information needed to add documents
 	'''
     base_link = 'http://www.earlymoderntexts.com/authors/'
     author_link = None
@@ -290,7 +307,12 @@ def get_pdfs(author):
 
 def download_pdfs(authors):
 	'''
-	Download pdfs of each author's texts
+	INPUT:
+		authors - list of authors on site
+	OUTPUT:
+		documents - dictionary of all documents
+
+	Download pdfs of all works for each author
 	'''
 	documents = defaultdict(dict)
 	for author in authors:
@@ -310,63 +332,14 @@ def download_pdfs(authors):
 
 def convert(fname, pages=None):
 	'''
-	Get text from pdf
-	'''
-    if not pages:
-        pagenums = set()
-    else:
-        pagenums = set(pages)
+	INPUT:
+		fname - filename to convert
+		pages - pages to convert
+				If None, convert all
+	OUTPUT:
+		text - text scraped from pdf
 
-    output = StringIO()
-    manager = PDFResourceManager()
-    converter = TextConverter(manager, output, laparams=LAParams())
-    interpreter = PDFPageInterpreter(manager, converter)
-
-    infile = file(fname, 'rb')
-    for page in PDFPage.get_pages(infile, pagenums):
-        interpreter.process_page(page)
-    infile.close()
-    converter.close()
-    text = output.getvalue()
-    output.close
-
-    return text
-
-'''
------- Original Python 2 function --------
-def get_text(pdf_file, author):
-
-	# Clean text received from convert function
-
-    text = convert(pdf_file)
-
-    start = text.find('Copyright')
-    end = text[start:].find(author) + len(text[:start])
-
-	# Check if the start and end worked.  If not, just scrape entire text
-    if not (start == -1 or end == -1):
-        text = text[:start] + text[end-1:]
-        name_first = text.find(author)
-        idx = name_first + len(author)
-        text = text[:idx] + text[idx:].replace(author, '')
-
-    text = text.strip(punctuation)
-
-    if not(text.isalpha()):
-        text_lst = text.split()
-
-        for i in range(len(text_lst)):
-            if not(text_lst[i].isalpha()):
-                text_lst[i] = filter(str.isalnum, text_lst[i])
-
-        text = ' '.join(word for word in text_lst)
-
-    return text
-'''
-
-def convert(fname, pages=None):
-	'''
-	Get text from pdf (Python 3 version)
+	Converts pdf document to text
 	'''
 	fp = open(fname, 'rb')
 	parser = PDFParser(fp)
@@ -427,7 +400,14 @@ def save_dfs(documents_dict, philosopher_dict):
 	philosophers_df.to_csv(philosophers_path)
 
 def scrape_pdfs(documents_df):
-	# Obtain text for each document
+	'''
+	INPUT:
+		documents_df - dataframe containing document information
+	OUTPUT:
+		documents_df - dataframe containing text for each document
+
+	Scrape text from downloaded pdf files
+	'''
 	for i in range(documents_df.shape[0]):
 	    author = documents_df.loc[i, 'author']
 	    pdf_file = documents_df.loc[i, 'pdf_file']
@@ -436,8 +416,10 @@ def scrape_pdfs(documents_df):
 
 	return documents_df
 
-def main():
+if __name__ == '__main__':
 	philosophers = ppd.western_philosophers()
 	philosophers, authors = add_to_philosophers_dict(philosophers)
 	documents = download_pdfs(authors)
 	save_dfs(documents, philosophers)
+	doc_df = pd.read_csv('data/documents.csv')
+	doc_df = scrape_pdfs(documents_df)

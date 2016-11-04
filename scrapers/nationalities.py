@@ -3,7 +3,22 @@ from bs4 import BeautifulSoup
 import re
 import json
 
+'''
+This file creates a json file containing a dictionary
+where keys = countries and values = nationalities
+
+Used for determing nationality of philsophers based on
+birthplace
+'''
+
 def get_countries_nationalities():
+    '''
+    INPUT:
+        None
+    OUTPUT:
+        countries - list of countries from website
+        nationalities - list of corresponding nationalities
+    '''
     r = requests.get('https://www.englishclub.com/vocabulary/world-countries-nationality.htm')
 
     soup = BeautifulSoup(r.content, 'html.parser')

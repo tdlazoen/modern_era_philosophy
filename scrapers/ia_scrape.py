@@ -1,5 +1,4 @@
 from selenium import webdriver
-from modern_dfs import ModernPhilosophers, ModernDocuments
 from default_ordered_dict import DefaultOrderedDict
 import json
 import time
@@ -11,19 +10,44 @@ from requests.exceptions import ConnectionError
 import pdb
 import os
 import codecs
+import sys
+sys.path.append(os.path.abspath('..'))
+from modern_dfs import ModernPhilosophers, ModernDocuments
+
+'''
+This file scrapes the Internet Archive for philosophical texts
+from the modern era
+https://www.archive.org
+'''
 
 def init_driver():
+    '''
+    INPUT:
+        None
+    OUTPUT:
+        driver - selenium Chrome web driver
+    '''
     driver = webdriver.Chrome()
 
     return driver
 
-def scope_out_archives(phils, identifiers):
+def scope_out_archives(phils):
+    '''
+    INPUT:
+        phils - philosopher dataframe
+    OUTPUT:
+        identifiers - unique indentifiers for all documents of interest
+
+    Searches internet archive for works by each philsopher and saves
+    the unique identifier for each for later use
+    '''
     driver = init_driver()
     driver.get('https://archive.org/details/texts?and[]=languageSorter%3A%22English%22&and[]=mediatype%3A%22texts%22')
 
     time.sleep(5)
 
-    for i in range(77, phils.df.shape[0]):
+    identifiers = []
+    for i in range(phils.df.shape[0]):
         author = phils.df.loc[i, 'name']
         box = driver.find_element_by_xpath('//*[@id="tabby-collection"]/div/div[1]/form/input[1]')
         box.clear()
@@ -38,7 +62,16 @@ def scope_out_archives(phils, identifiers):
     return identifiers
 
 def save_in_json(idents):
-    pdb.set_trace()
+    '''
+    INPUT:
+        idents - list of identifiers or dictionary of
+                 {author: list of identifiers for author's works}
+    OUTPUT:
+        None
+
+    Saves identifiers with corresponding author names
+    into json file for later use
+    '''
     if isinstance(idents, list):
         ident_dict = DefaultOrderedDict(list)
 
@@ -58,12 +91,26 @@ def save_in_json(idents):
             json.dump(idents, f)
 
 def load_data(filename):
+    '''
+    INPUT:
+        filename - json file
+    OUPUT:
+        data - data in filename
+    '''
     with open(filename, 'r') as f:
         data = json.load(f)
 
     return data
 
 def get_text(item, title):
+    '''
+    INPUT:
+        item - internetarchive 'item' object
+        title - title of work corresponding with item
+    OUTPUT:
+        text - text obtained from text file of work
+        new_filepath - filepath where text file was saved
+    '''
     user = os.path.expanduser('~')
 
     text_file = [x['name'] for x in item.item_metadata['files'] if ('.txt' in x['name']) and ('meta.' not in x['name'])]
@@ -81,6 +128,12 @@ def get_text(item, title):
     return text, new_filepath
 
 def clean_text(text):
+    '''
+    INPUT:
+        text - document text
+    OUTPUT:
+        Text cleaned of unwanted sections
+    '''
     remove_begin_sections = ['PREFACE', 'INTRODUCTION', "NOTE", 'FOREWORD']
     remove_end_sections = ['INDEX', 'APPENDIX']
     d_us = enchant.Dict('en_US')
@@ -104,6 +157,23 @@ def clean_text(text):
     return text
 
 def get_doc_info(ident_dict):
+    '''
+    INPUT:
+        ident_dict - dictionary with key = philosopher name
+                                 and value = list of identifiers for
+                                             philosopher's work
+    OUTPUT:
+        authors - document authors
+        titles - document titles
+        urls - urls for each document
+        years - year each document was published
+        idents - unique identifiers of each document
+
+    This gets the document info for each work that corresponds
+    with an identifier in the ident_dict
+
+    Only used once - data then saved in json file
+    '''
     driver = init_driver()
     driver.get('https://www.google.com')
     doc_info_dict = load_data('../data/ia_document_info.json')
@@ -179,6 +249,17 @@ def get_doc_info(ident_dict):
     return authors, titles, urls, years, idents
 
 def add_documents(docs, docs_info):
+    '''
+    INPUT:
+        docs - document dataframe
+        docs_info - dictionary containing internetarchive
+                    document info
+    OUTPUT:
+        None
+
+    Adds documents from the internet archive into documents
+    dataframe
+    '''
     authors = docs_info['authors']
     titles = docs_info['titles']
     years = docs_info['years']
@@ -215,12 +296,6 @@ def add_documents(docs, docs_info):
 
 if __name__ == '__main__':
     phils, docs = ModernPhilosophers(), ModernDocuments()
-    # identifiers = scope_out_archives(phils)
-    # save_in_json(identifiers)
-
-    # ident_dict = load_data('../data/identifiers.json')
-
-    # authors, titles, urls, years, idents = get_doc_info(ident_dict)
 
     docs_info = load_data('../data/ia_document_info.json')
     add_documents(docs, docs_info)

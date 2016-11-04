@@ -9,14 +9,24 @@ import re
 import time
 
 '''
-This file contains the steps taken to obtain the initial set of
-philosophers for analysis.  More philosophers were added to this
-set later.
+This file contains the first steps of this project.
+
+Scraped website philosophybasics to obtain the initial set of
+philosophers for analysis.  More philosophers were added set later.
+
+http://www.philosophybasics.com/historical.html
 '''
 
-# WESTERN PHILOSOPHERS
-
 def add_new(phil_dict, name, birth, death):
+    '''
+    INPUT:
+        phil_dict - dictionary with philosopher info
+        name - name of philosopher
+        birth - year of philosopher's birth
+        death - year of philosopher's death
+    OUTPUT:
+        phil_dict - philosopher dictionary with new philosopher added
+    '''
     name, filepath = standardize_name(name, image=True)
     phil_dict[name]['time_period'] = determine_time_period(phil_dict, birth)
     phil_dict[name]['year_born'] = birth
@@ -26,6 +36,17 @@ def add_new(phil_dict, name, birth, death):
     return phil_dict
 
 def determine_time_period(phil_dict, birth):
+    '''
+    INPUT:
+        phil_dict - dictionary with philosopher info
+        birth - year of philosopher's birth
+    OUTPUT:
+        time_period - determined time period of philosopher
+
+    This uses information about philosophers already known and uses it
+    to determine the time period of newly added philosophers (improved upon
+    later)
+    '''
     time_periods = set([phil_dict[x]['time_period'] for x in phil_dict])
     for time_period in time_periods:
         years = [int(phil_dict[x]['year_born']) for x in phil_dict if phil_dict[x]['time_period'] == time_period]
@@ -37,8 +58,6 @@ def determine_time_period(phil_dict, birth):
 
 def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', death='BC'):
     '''
-    Add the philosopher's information to the dictionary
-
     INPUT: url - the url that corresponds to the philosopher's profile
            name - name of philosopher
            phil_dict - the dictionary of philsoophers thus far
@@ -48,6 +67,8 @@ def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', deat
            western - Whether the philosopher is a western thinker or not
 
     OUTPUT: philosopher dictionary updated with new philosopher's information
+
+    Add the philosopher's information to the dictionary
     '''
     # Request url
     r = requests.get(url)
@@ -85,9 +106,9 @@ def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', deat
 
 def get_image(name, filepath):
     '''
-    Saves the image of given philosopher and returns filepath
     INPUT: filepath to save image to
     OUTPUT: filepath of image file
+    Saves the image of given philosopher and returns filepath
     '''
     # Google images url with search terms of name
     img_url = '''https://www.google.com/search?site=imghp&tbm=isch&source=hp&biw=1440&bih=803&q={}&oq={}&
@@ -107,6 +128,11 @@ def get_image(name, filepath):
 
 def ancient_time_period(time_period):
     '''
+    INPUT:
+        time_period - time_period to scrape
+    OUTPUT:
+        phil_dict - dictionary containing ancient era philsopher data
+
     Get information for philosophers of a certain era for ancient time periods
     '''
     # Make Request to page of specific time period
@@ -209,6 +235,11 @@ def ancient_time_period(time_period):
 
 def ancient_philosophers():
     '''
+    INPUT:
+        None
+    OUTPUT:
+        ancient - dictionary with information for all ancient era philosophers
+
     Combine all ancient time period philosophers into one dictionary
     '''
     pre_socratic = ancient_time_period('presocratic')
@@ -225,6 +256,11 @@ def ancient_philosophers():
 
 def medieval_time_period(time_period):
     '''
+    INPUT:
+        time_period - time_period to scrape
+    OUTPUT:
+        phil_dict - dictionary containing medieval era philsopher data
+
     Get information for philosophers of a certain era for medieval time periods
     '''
     # Make Request to page of specific time period
@@ -283,6 +319,11 @@ def medieval_time_period(time_period):
 
 def medieval_philosophers():
     '''
+    INPUT:
+        None
+    OUTPUT:
+        medieval - dictionary with information for all medieval era philosophers
+
     Combine all medieval philosophers into one dictionary
     '''
     medieval = medieval_time_period('medieval')
@@ -295,6 +336,11 @@ def medieval_philosophers():
 
 def modern_time_period(time_period):
     '''
+    INPUT:
+        time_period - time_period to scrape
+    OUTPUT:
+        phil_dict - dictionary containing modern era philsopher data
+
     Get information for philosophers of a certain era for modern time period
     '''
     # Make Request to page of specific time period
@@ -353,6 +399,11 @@ def modern_time_period(time_period):
 
 def modern_philosophers():
     '''
+    INPUT:
+        None
+    OUTPUT:
+        modern - dictionary with information for all modern era philosophers
+
     Combine all modern philosopher groups into one dictionary
     '''
     reason = modern_time_period('reason')
@@ -367,6 +418,11 @@ def modern_philosophers():
 
 def western_philosophers():
     '''
+    INPUT:
+        None
+    OUTPUT:
+        western - dictionary with information for all philosophers
+
     Combine all western philosophers into one dictionary
     '''
     ancient = ancient_philosophers()
@@ -377,52 +433,23 @@ def western_philosophers():
     western.update(medieval)
     western.update(modern)
 
-    western = find_nationality(western)
     western = standardize_initial_dict(western)
+    western = thucydides(western)
 
     return western
 
-# Function proved to not be useful
-'''
-def find_nationality(d):
-
-    # Determine the nationality of each philosopher
-    # INPUT: Dictionary (philosopher data)
-    # OUTPUT: Dictionary with added nationality feature
-
-    time_periods = ['presocratic', 'socratic', 'hellenistic', 'roman', 'medieval', 'renaissance', 'reason', \
-                   'enlightenment', 'modern']
-    for time_period in time_periods:
-        url = 'http://www.philosophybasics.com/historical_' + time_period + '.html'
-        r = requests.get(url)
-        soup = BeautifulSoup(r.content, 'html.parser')
-        content = soup.select('font font')
-
-        nationals = []
-        for i in range(len(content)):
-            lst_words = [unidecode(x) for x in content[i].get_text().strip().split('\n')]
-            if len(lst_words) > 1:
-                nationals.append(lst_words)
-
-        nationals = [item for lst in nationals for item in lst]
-
-        i = 0
-        for name in d.iterkeys():
-            if d[name]['time_period'] == time_period:
-                if name == 'Thucydides':
-                    continue
-
-                components = re.split(r'\)', nationals[i])
-
-                d[name]['Nationality'] = components[-1].strip()
-
-                i += 1
-
-    return d
-'''
 # Standardize name of philosopher
 def standardize_name(name, image=False):
+    '''
+    INPUT:
+        name - name of philosopher
+        image - whether to seach and download image of philosopher
+    OUTPUT:
+        new_name - name formatted as: (title) First Last
+        filepath - path where image is saved
 
+    Standardize names of new entries into dictionary
+    '''
     if 'Sir' in name:
         components = re.split(r', Sir ', name)
     else:
@@ -447,6 +474,17 @@ def standardize_name(name, image=False):
 
 # Add consistency across dataset
 def standardize_initial_dict(d, images=False):
+    '''
+    INPUT:
+d - dictionary of philosopher info OUTPUT:
+    d - dictionary of philosophers with Thucydides added
+
+Add Thucydides to dataframe (prominent philosopher not included in
+original scrape)
+        images - whether to seach and download images of philosophers
+    OUTPUT:
+        new_d - philosopher dictionary with correctly formatted names
+    '''
     if images: # Only set true on first run to load images
         # Make new directory images
         newpath = os.path.expanduser('~') + '/philosophy_capstone/images'
@@ -476,6 +514,15 @@ def standardize_initial_dict(d, images=False):
 
 # Add Thucydides (not in original scrape) to data
 def thucydides(d):
+    '''
+    INPUT:
+        d - dictionary of philosopher info
+    OUTPUT:
+        d - dictionary of philosophers with Thucydides added
+
+    Add Thucydides to dataframe (prominent philosopher not included in
+    original scrape)
+    '''
     # Url to use for Thucydides
     url = 'https://en.wikipedia.org/wiki/Thucydides'
 
@@ -491,7 +538,6 @@ def thucydides(d):
     lifespan = soup.select('span')
     birth = unidecode(lifespan[2].string)
     death = unidecode(lifespan[4].string)
-    nationality = 'Greek'
     time_period = 'socratic'
     western = True
 
@@ -499,6 +545,8 @@ def thucydides(d):
     d[name]['year_born'] = -1 * int(filter(str.isdigit, birth))
     d[name]['year_died'] = -1 * int(filter(str.isdigit, death))
     d[name]['time_period'] = time_period
-    d[name]['Nationality'] = nationality
 
     return d
+
+if __name__ == '__main__':
+    western = western_philosophers()

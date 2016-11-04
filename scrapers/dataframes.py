@@ -18,6 +18,10 @@ import us
 '''
 Classes utilized for easily editing and accessing
 the philosopher and document dataframes
+
+Used for scraping, but due to time constraint and lack
+of resources, subsetted full corpus of documents to only
+those from modern era
 '''
 
 class Philosophers(object):

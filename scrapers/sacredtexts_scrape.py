@@ -20,7 +20,15 @@ http://sacred-texts.com/phi/
 
 def scrape_sacred():
 	'''
+	INPUT:
+		None
+	OUTPUT:
+		new_names - document authors
+		titles - document titles
+		dates - years documents were published
+		links - links to document text
 
+	Scrape sacret-texts philosophy page for document info
 	'''
 	base_url = 'http://sacred-texts.com/phi/'
 	r = requests.get(base_url)
@@ -83,6 +91,11 @@ def scrape_sacred():
 
 def add_documents():
 	'''
+	INPUT:
+		None
+	OUTPUT:
+		None
+
 	Add documents (text files) to documents dataframe
 	'''
 	new_names, titles, dates, links = scrape_sacred()
@@ -107,7 +120,13 @@ def add_documents():
 
 def merge_parts(docs):
 	'''
-	Data cleaning - merges documents that have multiple parts before adding more documents
+	INPUT:
+		docs - documents dataframe
+	OUTPUT:
+		None
+
+	Data cleaning - Dataframe contained documents split into multiple parts
+	from previous scraping.  Merges documents with multiple parts together
 	'''
 	# Used to determine which documents have multiple parts
 	last_title = docs.df.title.values[0]
@@ -147,7 +166,10 @@ def merge_parts(docs):
 
 def init_driver():
 	'''
-	Initialize selenium driver
+	INPUT:
+		None
+	OUTPUT:
+		driver - selenium Chrome web driver
 	'''
 	driver = webdriver.Chrome()
 	driver.implicitly_wait(10)
@@ -155,11 +177,18 @@ def init_driver():
 
 	return driver
 
-def aristotle(docs):
+def aristotle_test(docs):
 	'''
-	Get works for Aristotle (served as test for getting data on other classical philosophers)
+	INPUT:
+		docs - documents dataframe
+	OUTPUT:
+		driver - selenium Chrome web driver
 
-	Proved unfruitful due to too many format inconsistencies among other philosopher
+	Get works for Aristotle
+
+	Tested the scraping of the classical section of sacred-texts website
+	Succeeded in obtaining Aristotle data, but too many format inconsistencies
+	and broken links among other philosophers to scrape others
 	'''
 	driver = init_driver()
 
@@ -210,4 +239,4 @@ def aristotle(docs):
 
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')
-	# driver = aristotle(docs)
+	add_documents()
