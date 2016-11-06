@@ -249,7 +249,8 @@ def add_documents(authors, years, links, titles, driver, docs):
 
 
 if __name__ == '__main__':
-    phils, docs = ModernPhilosophers(), ModernDocuments()
+    phils = ModernPhilosophers(filepath='../data/modern_philosophers.csv')
+    docs = ModernDocuments(filepath='../data/modern_documents.csv')
     driver = init_driver()
     authors, years, links, titles = get_author_doc_info(phils, driver)
     phils.save_df()

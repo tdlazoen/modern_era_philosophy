@@ -305,7 +305,8 @@ def add_documents(docs, docs_info):
 
 
 if __name__ == '__main__':
-    phils, docs = ModernPhilosophers(), ModernDocuments()
+    phils = ModernPhilosophers(filepath='../data/modern_philosophers.csv')
+    docs = ModernDocuments(filepath='../data/modern_documents.csv')
 
     docs_info = load_data('../data/ia_document_info.json')
     add_documents(docs, docs_info)

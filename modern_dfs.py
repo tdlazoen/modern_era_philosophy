@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from string import punctuation
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -296,8 +295,8 @@ class ModernPhilosophers(object):
 		r = requests.get(img_url)
 		soup = BeautifulSoup(r.content, 'html.parser')
 
-	    # Unidecode source url
-		url = unidecode(soup.img['src'])
+	    # source url
+		url = soup.img['src']
 
 		# Save image to inputted filepath
 		if filepath not in self.df['image_path'].values:

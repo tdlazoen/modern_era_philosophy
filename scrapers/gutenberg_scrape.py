@@ -183,7 +183,8 @@ def download_text(authors, doc_titles, links):
 
 
 if __name__ == '__main__':
-    phils, docs = Philosophers(), Documents()
+    phils = Philosophers(filepath='../data/philosophers.csv')
+    docs = Documents(filepath='../data/documents.csv')
     authors, doc_titles, links = gutenberg_info()
     download_text(authors, doc_titles, links)
     docs.save_df()

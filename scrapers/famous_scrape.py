@@ -191,7 +191,7 @@ def hellenistic_philosophers(phils):
 
 
 if __name__ == '__main__':
-	phils = Philosophers()
+	phils = Philosophers('../data/philosophers.csv')
 	famous_philosophers(phils)
 	renaissance_philosophers(phils)
 	reason_philosophers(phils)
