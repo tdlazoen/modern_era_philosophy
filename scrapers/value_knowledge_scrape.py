@@ -14,11 +14,13 @@ import os
 sys.path.append(os.path.abspath('..'))
 from modern_dfs import ModernPhilosophers, ModernDocuments
 
+
 '''
 This file scrapes the website
 https://www.marxists.org/reference/subject/philosophy/
 for modern era philosophical texts
 '''
+
 
 def init_driver():
     '''
@@ -31,6 +33,7 @@ def init_driver():
     driver.wait = WebDriverWait(driver, 5)
 
     return driver
+
 
 def get_author_doc_info(phils, driver):
     '''
@@ -124,6 +127,7 @@ def get_author_doc_info(phils, driver):
 
     return authors, years, links, titles
 
+
 def get_text(link, driver):
     '''
     INPUT:
@@ -210,6 +214,7 @@ def get_text(link, driver):
         except NoSuchElementException:
             return ''
 
+
 def add_documents(authors, years, links, titles, driver, docs):
     '''
     INPUT:
@@ -241,6 +246,7 @@ def add_documents(authors, years, links, titles, driver, docs):
             docs.add_document(author, title, year, text, link)
         else:
             continue
+
 
 if __name__ == '__main__':
     phils, docs = ModernPhilosophers(), ModernDocuments()

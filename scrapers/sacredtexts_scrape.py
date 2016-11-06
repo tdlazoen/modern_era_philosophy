@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from collections import defaultdict
 from dataframes import Philosophers, Documents
 from selenium import webdriver
@@ -13,10 +12,12 @@ from selenium.common.exceptions import TimeoutException
 import re
 import pdb
 
+
 '''
 This file scrapes the philosophy section of
 http://sacred-texts.com/phi/
 '''
+
 
 def scrape_sacred():
 	'''
@@ -34,11 +35,11 @@ def scrape_sacred():
 	r = requests.get(base_url)
 	soup = BeautifulSoup(r.content, 'lxml')
 
-	names = [unidecode(x.get_text().strip()) for x in soup.select('h3')][:-1]
+	names = [x.get_text().strip() for x in soup.select('h3')][:-1]
 	names.remove('Epicurus')
 	new_names = []
-	titles_dates = [unidecode(x.get_text()) for x in soup.select('span.c_e')]
-	links = [unidecode(x['href']).strip() for x in soup.select('span.c_e a')]
+	titles_dates = [x.get_text() for x in soup.select('span.c_e')]
+	links = [x['href'].strip() for x in soup.select('span.c_e a')]
 	links
 
 	i = 0
@@ -89,6 +90,7 @@ def scrape_sacred():
 
 	return new_names, titles, dates, links
 
+
 def add_documents():
 	'''
 	INPUT:
@@ -117,6 +119,7 @@ def add_documents():
         text = docs.clean_text(text)
         print('Adding Document')
         docs.add_document(author, title, year, text, url, filepath=filepath)
+
 
 def merge_parts(docs):
 	'''
@@ -164,6 +167,7 @@ def merge_parts(docs):
 	# Save dataframe
 	docs.save_df()
 
+
 def init_driver():
 	'''
 	INPUT:
@@ -176,6 +180,7 @@ def init_driver():
 	driver.wait = WebDriverWait(driver, 10)
 
 	return driver
+
 
 def aristotle_test(docs):
 	'''
@@ -202,8 +207,8 @@ def aristotle_test(docs):
 
 		links = driver.find_elements_by_xpath('/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/span/span[@class="c_e"]/span[@class="c_t"]/a')
 
-		title = unidecode(links[i].text)
-		url = unidecode(links[i].get_attribute('href'))
+		title = links[i].text
+		url = links[i].get_attribute('href')
 
 		if title == 'Aristotle: On Generation and Corruption' or title == 'Aristotle: On the Heavens':
 			title = title[len('Aristotle: '):]
@@ -223,7 +228,7 @@ def aristotle_test(docs):
 				pars = driver.find_elements(By.TAG_NAME, 'p')
 
 				page_text = ' '.join(x.text for x in pars)
-				text += unidecode(page_text)
+				text += page_text
 
 				driver.back()
 
@@ -236,6 +241,7 @@ def aristotle_test(docs):
 		driver.back()
 
 	return driver
+
 
 if __name__ == '__main__':
 	phils, docs = Philosophers(filepath='../data/philosophers.csv'), Documents(filepath='../data/documents.csv')

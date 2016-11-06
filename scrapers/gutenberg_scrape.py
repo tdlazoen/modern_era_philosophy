@@ -1,7 +1,6 @@
 import time
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 import re
 import urllib
 from string import punctuation
@@ -9,6 +8,7 @@ import os
 from dataframes import Philosophers, Documents
 from gutenberg.acquire import load_etext
 from gutenberg.cleanup import strip_headers
+
 
 def get_document_info(tags):
     '''
@@ -34,11 +34,11 @@ def get_document_info(tags):
     for i, entry in enumerate(tags[1:]):
         try:
             # Get text associated with entry (title of document)
-            x = unidecode(entry.string)
+            x = entry.string
             x = re.split(r'[()]', x)[0]
 
             # Get link associated with entry
-            link = 'https:' + unidecode(entry['href']).strip('/')
+            link = 'https:' + entry['href'].strip('/')
 
             # Used for inconsistencies
             if x == 'vol. 1' and i == 48:
@@ -84,6 +84,7 @@ def get_document_info(tags):
 
     return doc_titles, doc_mask, cleaned_links
 
+
 def gutenberg_info():
     '''
     INPUT:
@@ -92,7 +93,7 @@ def gutenberg_info():
         authors - document authors
         doc_titles - document titles
         links - links to each document
-        
+
     Creates and returns work titles with corresponding links and authors
     '''
     # Base url for retrieving information
@@ -114,7 +115,7 @@ def gutenberg_info():
     names = soup.select('li')
 
     # Get the cleaned names list
-    authors_and_docs = [unidecode(x.get_text()).strip() for x in names[15:126]]
+    authors_and_docs = [x.get_text().strip() for x in names[15:126]]
     authors_and_docs = [re.split(r'[()]', name)[0].strip() for i, name in enumerate(authors_and_docs) if i not in drop_idx]
     authors_and_docs.remove('Benedictus de Spinoza Theologico-Political Treatise -- Part 1')
 
@@ -143,6 +144,7 @@ def gutenberg_info():
             links.pop(idx)
 
     return authors, doc_titles, links
+
 
 def download_text(authors, doc_titles, links):
     '''
@@ -178,6 +180,7 @@ def download_text(authors, doc_titles, links):
                 print('Download URI for {} not supported'.format(ids[i]))
         else:
             print('\nThat Author isn\'t one of the philosophers!')
+
 
 if __name__ == '__main__':
     phils, docs = Philosophers(), Documents()

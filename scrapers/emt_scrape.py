@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from collections import defaultdict
-from itertools import izip
 from string import punctuation
 import urllib
 import os
@@ -16,10 +14,12 @@ from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 import pandas as pd
 import numpy as np
 
+
 '''
 This file scapes the website Early Modern Philosophy
 http://www.earlymoderntexts.com/texts
 '''
+
 
 def add_to_philosophers_dict(phil_dict):
 	'''
@@ -40,7 +40,7 @@ def add_to_philosophers_dict(phil_dict):
 	soup = BeautifulSoup(r.content, 'html.parser')
 
 	# Get names of each author
-	authors = [unidecode(x.string) for x in soup.select('li b')]
+	authors = [x.string for x in soup.select('li b')]
 
 	# Remove non-philosophers / ones with no texts
 	authors.remove('Isaac Newton (1642-1727)')
@@ -66,6 +66,7 @@ def add_to_philosophers_dict(phil_dict):
 
 	return phil_dict, authors
 
+
 def add_document(dct, author, title, year, url, filepath=None):
 	'''
 	INPUT:
@@ -90,6 +91,7 @@ def add_document(dct, author, title, year, url, filepath=None):
 		dct[idx]['pdf_file'] = filepath
 
 	return dct
+
 
 def get_pdfs(author):
 	'''
@@ -125,11 +127,11 @@ def get_pdfs(author):
     soup = BeautifulSoup(r.content, 'html.parser')
 
 	# Get author's name
-    text_author = unidecode(soup.select('div.content h2')[0].get_text())
+    text_author = soup.select('div.content h2')[0].get_text()
     text_author = re.split(r',', text_author)[0]
 
 	# Get all titles
-    titles = [unidecode(x.get_text()) for x in soup.select('li b')]
+    titles = [x.get_text() for x in soup.select('li b')]
 
 	# Account for inconsistencies
     if author == 'Thomas Hobbes':
@@ -217,7 +219,7 @@ def get_pdfs(author):
         titles.remove('A System of Logic')
         titles.remove('Three Essays on Religion')
 
-    long_titles = [unidecode(x.get_text()) for x in soup.select('li')]
+    long_titles = [x.get_text() for x in soup.select('li')]
     year_pub = []
 
 	# Get year each title was published
@@ -286,7 +288,7 @@ def get_pdfs(author):
     base_pdf_link = 'http://www.earlymoderntexts.com'
 
 	# Get pdf links for each text
-    links = [unidecode(x['href']) for x in soup.select('li a')][5:]
+    links = [x['href'] for x in soup.select('li a')][5:]
     first_pdf = links[0].split('/')[-1]
 
     pdf_links = [base_pdf_link + links[0]]
@@ -304,6 +306,7 @@ def get_pdfs(author):
             last_doc = link
 
     return text_author, titles, year_pub, pdf_links, filepaths
+
 
 def download_pdfs(authors):
 	'''
@@ -329,6 +332,7 @@ def download_pdfs(authors):
 	        time.sleep(5)
 
 	return documents
+
 
 def convert(fname, pages=None):
 	'''
@@ -361,8 +365,15 @@ def convert(fname, pages=None):
 	            text += lt_obj.get_text()
 	return text
 
+
 def save_dfs(documents_dict, philosopher_dict):
 	'''
+    INPUT:
+        documents_dict - dictionary of document information
+        philosopher_dict - dictionary of philosopher information
+    OUTPUT:
+        None
+
 	Save the dataframes for future use and add the text for each document
 	'''
 	lst = []
@@ -399,6 +410,7 @@ def save_dfs(documents_dict, philosopher_dict):
 	documents_df.to_csv(documents_path)
 	philosophers_df.to_csv(philosophers_path)
 
+
 def scrape_pdfs(documents_df):
 	'''
 	INPUT:
@@ -415,6 +427,7 @@ def scrape_pdfs(documents_df):
 		print('Getting text from: {}'.format(documents_df.loc[i, 'title']))
 
 	return documents_df
+
 
 if __name__ == '__main__':
 	philosophers = ppd.western_philosophers()

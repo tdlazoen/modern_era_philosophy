@@ -14,11 +14,13 @@ import sys
 sys.path.append(os.path.abspath('..'))
 from modern_dfs import ModernPhilosophers, ModernDocuments
 
+
 '''
 This file scrapes the Internet Archive for philosophical texts
 from the modern era
 https://www.archive.org
 '''
+
 
 def init_driver():
     '''
@@ -30,6 +32,7 @@ def init_driver():
     driver = webdriver.Chrome()
 
     return driver
+
 
 def scope_out_archives(phils):
     '''
@@ -61,6 +64,7 @@ def scope_out_archives(phils):
 
     return identifiers
 
+
 def save_in_json(idents):
     '''
     INPUT:
@@ -90,6 +94,7 @@ def save_in_json(idents):
         with open('../data/identifiers.json', 'w') as f:
             json.dump(idents, f)
 
+
 def load_data(filename):
     '''
     INPUT:
@@ -101,6 +106,7 @@ def load_data(filename):
         data = json.load(f)
 
     return data
+
 
 def get_text(item, title):
     '''
@@ -126,6 +132,7 @@ def get_text(item, title):
         text = f.read()
 
     return text, new_filepath
+
 
 def clean_text(text):
     '''
@@ -155,6 +162,7 @@ def clean_text(text):
             text = text[:idx]
 
     return text
+
 
 def get_doc_info(ident_dict):
     '''
@@ -248,6 +256,7 @@ def get_doc_info(ident_dict):
     driver.quit()
     return authors, titles, urls, years, idents
 
+
 def add_documents(docs, docs_info):
     '''
     INPUT:
@@ -293,6 +302,7 @@ def add_documents(docs, docs_info):
         else:
             print('Adding document {}'.format(title))
             docs.add_document(author, title, year, text, url, filepath)
+
 
 if __name__ == '__main__':
     phils, docs = ModernPhilosophers(), ModernDocuments()

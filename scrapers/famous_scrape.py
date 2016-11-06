@@ -2,10 +2,10 @@ import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from collections import defaultdict
 from dataframes import Philosophers, Documents
 import re
+
 
 '''
 This file scrapes various websites for information about prominent philosophers
@@ -16,6 +16,7 @@ https://en.wikipedia.org/wiki/Renaissance_philosophy
 http://theculturetrip.com/europe/united-kingdom/articles/top-10-living-philosophers/
 https://en.wikipedia.org/wiki/Hellenistic_philosophy
 '''
+
 
 def famous_philosophers(phils):
 	'''
@@ -30,7 +31,7 @@ def famous_philosophers(phils):
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
 
-	names = [unidecode(x.get_text().strip()) for x in soup.select('td a')]
+	names = [x.get_text().strip() for x in soup.select('td a')]
 
 	years = [filter(str.isdigit, re.split(r'[()]', x)[1]) for x in names]
 	births = [int(x[:len(x)/2]) for x in years]
@@ -57,6 +58,7 @@ def famous_philosophers(phils):
 	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
+
 def renaissance_philosophers(phils):
 	'''
 	INPUT:
@@ -69,6 +71,7 @@ def renaissance_philosophers(phils):
 	url = 'https://en.wikipedia.org/wiki/Renaissance_philosophy'
 	get_philosophers(url, 'li', first_index=68, last_index=90)
 
+
 def reason_philosophers(phils):
 	'''
 	INPUT:
@@ -80,6 +83,7 @@ def reason_philosophers(phils):
 	'''
 	url = 'https://en.wikipedia.org/wiki/17th-century_philosophy'
 	get_philosophers(url, 'li', first_index=34, last_index=54)
+
 
 def get_philosophers(url, tag, first_index, last_index):
 	'''
@@ -94,7 +98,7 @@ def get_philosophers(url, tag, first_index, last_index):
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
 
-	names_years = [unidecode(x.get_text().strip()) for x in soup.select(tag)[first_index:last_index]]
+	names_years = [x.get_text().strip() for x in soup.select(tag)[first_index:last_index]]
 
 	try:
 		names_years.remove('Mir Damad (d. 1631)')
@@ -114,6 +118,7 @@ def get_philosophers(url, tag, first_index, last_index):
 	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
 
+
 def contemporary_philosophers(phils):
 	'''
 	INPUT:
@@ -127,12 +132,13 @@ def contemporary_philosophers(phils):
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
 
-	name_years = [unidecode(x.get_text()) for x in soup.select('h3 strong')]
+	name_years = [x.get_text() for x in soup.select('h3 strong')]
 	names = [re.split(r'[()]', x)[0].strip() for x in name_years]
 	births = [int(filter(str.isdigit, re.split(r'[()]', x)[1])) for x in name_years]
 
 	for i in range(len(names)):
 		phils.add_philosopher_entry(names[i], births[i], np.nan, time_period='contemporary')
+
 
 def hellenistic_philosophers(phils):
 	'''
@@ -147,7 +153,7 @@ def hellenistic_philosophers(phils):
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
 
-	names_years = [unidecode(x.get_text().strip()) for x in soup.select('li')[17:71]]
+	names_years = [x.get_text().strip() for x in soup.select('li')[17:71]]
 	k = 0
 	for i in range(len(names_years)):
 	    if 'century' in names_years[i-k] or 'c.' in names_years[i-k]:
@@ -182,6 +188,7 @@ def hellenistic_philosophers(phils):
 			deaths[i] = -127
 
 		phils.add_philosopher_entry(names[i], births[i], deaths[i])
+
 
 if __name__ == '__main__':
 	phils = Philosophers()

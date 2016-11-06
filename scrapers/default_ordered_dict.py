@@ -1,8 +1,13 @@
 from collections import OrderedDict, Callable
+
+
 '''
 A class for a defaultdict that is also ordered
 '''
+
+
 class DefaultOrderedDict(OrderedDict):
+    
     # Source: http://stackoverflow.com/a/6190500/562769
     def __init__(self, default_factory=None, *a, **kw):
         if (default_factory is not None and

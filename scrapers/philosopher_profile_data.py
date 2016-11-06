@@ -1,12 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from default_ordered_dict import DefaultOrderedDict
 import string
 import urllib
 import os
 import re
 import time
+
 
 '''
 This file contains the first steps of this project.
@@ -16,6 +16,7 @@ philosophers for analysis.  More philosophers were added set later.
 
 http://www.philosophybasics.com/historical.html
 '''
+
 
 def add_new(phil_dict, name, birth, death):
     '''
@@ -34,6 +35,7 @@ def add_new(phil_dict, name, birth, death):
     phil_dict[name]['image_path'] = filepath
 
     return phil_dict
+
 
 def determine_time_period(phil_dict, birth):
     '''
@@ -56,6 +58,7 @@ def determine_time_period(phil_dict, birth):
         if birth in range(min_year, max_year):
             return time_period
 
+
 def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', death='BC'):
     '''
     INPUT: url - the url that corresponds to the philosopher's profile
@@ -74,8 +77,8 @@ def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', deat
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'lxml')
 
-    # Unidecode first paragraph
-    par = unidecode(soup.select('p')[0].get_text())
+    # first paragraph
+    par = soup.select('p')[0].get_text()
 
     # Split text on parentheses
     split_par = re.split(r'[()]', par)
@@ -104,6 +107,7 @@ def add_initial_philosophers(url, name, phil_dict, time_period, birth='BC', deat
 
     return phil_dict
 
+
 def get_image(name, filepath):
     '''
     INPUT: filepath to save image to
@@ -119,8 +123,8 @@ def get_image(name, filepath):
     r = requests.get(img_url)
     soup = BeautifulSoup(r.content, 'html.parser')
 
-    # Unidecode source url
-    url = unidecode(soup.img['src'])
+    # source url
+    url = soup.img['src']
 
     # Save image to inputted filepath
     urllib.request.urlretrieve(url, filepath)
@@ -153,8 +157,8 @@ def ancient_time_period(time_period):
     else: # time_period == 'roman'
         min_slice, max_slice = 9, 14
 
-    # Return list of unidecoded philosopher names
-    philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
+    # Return list of philosopher names
+    philosophers = [x.string for x in philosophers[min_slice:max_slice]]
 
     # Base url for philosopher profile pages
     base_url = 'http://www.philosophybasics.com/philosophers_'
@@ -233,6 +237,7 @@ def ancient_time_period(time_period):
 
     return phil_dict
 
+
 def ancient_philosophers():
     '''
     INPUT:
@@ -253,6 +258,7 @@ def ancient_philosophers():
     ancient.update(roman)
 
     return ancient
+
 
 def medieval_time_period(time_period):
     '''
@@ -277,8 +283,8 @@ def medieval_time_period(time_period):
     else: # time_period == 'renaissance'
         min_slice, max_slice = 12, 16
 
-    # Create list of unidecoded philosopher names
-    philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
+    # Create list of philosopher names
+    philosophers = [x.string for x in philosophers[min_slice:max_slice]]
 
     # Url for philosopher profile pages
     base_url = 'http://www.philosophybasics.com/philosophers_'
@@ -334,6 +340,7 @@ def medieval_philosophers():
 
     return medieval
 
+
 def modern_time_period(time_period):
     '''
     INPUT:
@@ -356,7 +363,7 @@ def modern_time_period(time_period):
     else: # time_period == 'modern'
         min_slice, max_slice = 8, 36
 
-    philosophers = [unidecode(x.string) for x in philosophers[min_slice:max_slice]]
+    philosophers = [x.string for x in philosophers[min_slice:max_slice]]
 
     base_url = 'http://www.philosophybasics.com/philosophers_'
     phil_dict = DefaultOrderedDict(dict)
@@ -397,6 +404,7 @@ def modern_time_period(time_period):
 
     return phil_dict
 
+
 def modern_philosophers():
     '''
     INPUT:
@@ -415,6 +423,7 @@ def modern_philosophers():
     modern_phil.update(modern)
 
     return modern_phil
+
 
 def western_philosophers():
     '''
@@ -437,6 +446,7 @@ def western_philosophers():
     western = thucydides(western)
 
     return western
+
 
 # Standardize name of philosopher
 def standardize_name(name, image=False):
@@ -472,18 +482,18 @@ def standardize_name(name, image=False):
 
     return new_name.strip(), filepath
 
+
 # Add consistency across dataset
 def standardize_initial_dict(d, images=False):
     '''
     INPUT:
-d - dictionary of philosopher info OUTPUT:
-    d - dictionary of philosophers with Thucydides added
-
-Add Thucydides to dataframe (prominent philosopher not included in
-original scrape)
+        d - dictionary of philosopher info
         images - whether to seach and download images of philosophers
     OUTPUT:
         new_d - philosopher dictionary with correctly formatted names
+
+    Add Thucydides to dataframe (prominent philosopher not included in
+    original scrape)
     '''
     if images: # Only set true on first run to load images
         # Make new directory images
@@ -512,6 +522,7 @@ original scrape)
 
     return new_d
 
+
 # Add Thucydides (not in original scrape) to data
 def thucydides(d):
     '''
@@ -532,12 +543,12 @@ def thucydides(d):
 
     # Get name
     name_tag = soup.select('h1#firstHeading')
-    name = unidecode(name_tag[0].string)
+    name = name_tag[0].string
 
     # Find lifespan, set other features in entry
     lifespan = soup.select('span')
-    birth = unidecode(lifespan[2].string)
-    death = unidecode(lifespan[4].string)
+    birth = lifespan[2].string
+    death = lifespan[4].string
     time_period = 'socratic'
     western = True
 

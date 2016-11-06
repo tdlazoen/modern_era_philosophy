@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from unidecode import unidecode
 from string import punctuation
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,6 +14,7 @@ import re
 import os
 import us
 
+
 '''
 Classes utilized for easily editing and accessing
 the philosopher and document dataframes
@@ -24,11 +24,14 @@ of resources, subsetted full corpus of documents to only
 those from modern era
 '''
 
+
 class Philosophers(object):
+
 	'''
 	Allows for easy accessing and updating/saving of
 	dataframe containing all philosophers
 	'''
+
 	def __init__(self, filepath='../data/philosophers.csv'):
 		'''
 		Parameters:
@@ -268,8 +271,8 @@ class Philosophers(object):
 		r = requests.get(img_url)
 		soup = BeautifulSoup(r.content, 'html.parser')
 
-	    # Unidecode source url
-		url = unidecode(soup.img['src'])
+	    # source url
+		url = soup.img['src']
 
 		# Save image to inputted filepath
 		if filepath not in self.df['image_path'].values:
@@ -289,11 +292,14 @@ class Philosophers(object):
 			self.filepath = filepath
 		self.df.to_csv(self.filepath, index=False)
 
+
 class Documents(object):
+
 	'''
 	Allows for easy accessing and updating/saving of
 	dataframe containing all documents
 	'''
+    
 	def __init__(self, filepath='../data/documents.csv'):
 		'''
 		Parameters:

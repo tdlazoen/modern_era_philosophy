@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import json
 
+
 '''
 This file creates a json file containing a dictionary
 where keys = countries and values = nationalities
@@ -10,6 +11,7 @@ where keys = countries and values = nationalities
 Used for determing nationality of philsophers based on
 birthplace
 '''
+
 
 def get_countries_nationalities():
     '''
@@ -55,6 +57,7 @@ def get_countries_nationalities():
             nationalities[i] = 'luxembourgish'
 
     return countries, nationalities
+
 
 if __name__ == '__main__':
     countries, nationalities = get_countries_nationalities()
