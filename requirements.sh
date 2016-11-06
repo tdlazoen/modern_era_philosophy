@@ -1,12 +1,13 @@
 # This was made for a general purpose linux ami
 
-touch ~/.bash_profile
-echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
-source ~/.bash_profile
+# touch ~/.bash_profile
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
+# source ~/.bash_profile
 
 # homebrew and anaconda
 if [[ "$OSTYPE" == linux-gnu ]]; then
 	sudo yum groupinstall 'Development Tools' && sudo yum install curl git irb python-setuptools ruby
+    sudo yum install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 	# PATH="$HOME/.linuxbrew/bin:$PATH"
 	echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bash_profile
@@ -15,22 +16,12 @@ if [[ "$OSTYPE" == linux-gnu ]]; then
     echo 'export INFOPATH="/home/ec2-user/.linuxbrew/share/info:$INFOPATH"' >>~/.bash_profile
 	source ~/.bash_profile
 
-	# anaconda
-	curl -L http://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh > ~/anaconda_script.sh
-	bash ~/anaconda_script.sh
-	echo 'export PATH="~/anaconda3/bin:$PATH"' >> ~/.bash_profile
-
     # pyenchant
     sudo yum install enchant
 
 elif [[ "$OSTYPE" == darwin* ]]; then
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-	# anaconda
-	curl -L http://repo.continuum.io/archive/Anaconda3-4.2.0-MacOSX-x86_64.sh > ~/anaconda_script.sh
-	bash ~/anaconda_script.sh
-	echo 'export PATH="~/anaconda3/bin:$PATH"' >> ~/.bash_profile
-    
     # pyenchant
     brew install enchant
 fi
@@ -43,47 +34,46 @@ brew install berkeley-db4
 brew info berkeley-db4
 echo -n 'What is the filepath of the berkeley-db package? > '
 read FILEPATH
-echo 'export BERKELEYDB_DIR=$FILEPATH' >> ~/.bash_profile
-source ~/.bash_profile
+echo 'export BERKELEYDB_DIR=$FILEPATH' >> ~/.zshrc
+source ~/.zshrc
 
-conda update conda
-conda update anaconda
-
-sudo ln -s /usr/local/bin/pip /usr/bin/pip
+# python 3
+brew install python3
+source ~/.zshrc
 
 # Base libraries
-pip install --upgrade pip
-pip install --upgrade wheel
-pip install --upgrade ipython
-pip install numpy
-pip install pandas
-pip install scipy
-pip install --upgrade sklearn
+pip3 install --upgrade pip
+pip3 install --upgrade wheel
+pip3 install --upgrade ipython
+pip3 install numpy
+pip3 install pandas
+pip3 install scipy
+pip3 install --upgrade sklearn
 
 # Web scraping
-pip install bs4
-pip install requests
-pip install urllib
-pip install selenium
-pip install pdfminer3k
-pip install bsddb3
-pip install gutenberg
-pip install internetarchive
-pip install us
-pip install langdetect
-pip install pymongo
+pip3 install bs4
+pip3 install requests
+pip3 install urllib
+pip3 install selenium
+pip3 install pdfminer3k
+pip3 install bsddb3
+pip3 install gutenberg
+pip3 install internetarchive
+pip3 install us
+pip3 install langdetect
+pip3 install pymongo
 
 # NLP
-pip install pyenchant
-pip install autocorrect
-pip install patterns
-pip install gensim
-pip install --upgrade spacy
-python -m spacy.en.download all
+pip3 install pyenchant
+pip3 install autocorrect
+pip3 install patterns
+pip3 install -U gensim
+pip3 install -U spacy
+python3 -m spacy.en.download all
 
-echo 'import nltk
-nltk.download("all")' | python
+pip3 install nltk
+python3 -m nltk.downloader all
 
 # Web app
-pip install flask
-pip install SQLAlchemy
+pip3 install flask
+pip3 install SQLAlchemy
