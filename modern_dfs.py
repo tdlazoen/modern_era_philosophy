@@ -432,14 +432,14 @@ class ModernDocuments(object):
 		'''
 		text = text.strip(punctuation)
 
-		if not(text.isalpha()):
+		if not text.isalpha():
 			text_lst = text.split()
 
-		for i in range(len(text_lst)):
-			if not(text_lst[i].isalpha()):
-				text_lst[i] = ''.join(x for x in text_lst[i] if x.isalpha())
+    		for i in range(len(text_lst)):
+    			if not text_lst[i].isalpha():
+    				text_lst[i] = ''.join(x for x in text_lst[i] if x.isalpha())
 
-		text = ' '.join(word for word in text_lst)
+    		text = ' '.join(word for word in text_lst)
 
 		return text.lower()
 

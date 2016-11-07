@@ -299,7 +299,7 @@ class Documents(object):
 	Allows for easy accessing and updating/saving of
 	dataframe containing all documents
 	'''
-    
+
 	def __init__(self, filepath='../data/documents.csv'):
 		'''
 		Parameters:
