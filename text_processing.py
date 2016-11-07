@@ -37,9 +37,9 @@ def clean_document(doc):
     '''
     # Part's of speech to keep in the result
     pos_lst = ['ADJ', 'ADV', 'NOUN', 'PROPN', 'VERB']
-    tokens = [token.lemma_.lower().replace(' ', '_') for token in doc if token.pos_ in pos_lst]
+    tokens = [token.lemma_.lower().strip(punctuation).strip().replace(' ', '_') for token in doc if token.pos_ in pos_lst]
 
-    spaces_lst = ['', ' ', '\n', '\n\n', '\r'] + ' '.join(punctuation).split()
+    spaces_lst = ['', ' ', '\n', '\n\n', '\r']
     tokens = [token for token in doc if token not in spaces_lst]
 
     tokens = [token for token in tokens if token not in STOPLIST]
@@ -53,23 +53,29 @@ def cleanse_corpus(documents):
         documents - an array-like object of text documents
     OUTPUT:
         cleaned_texts - an array of documents cleaned of
-        unnecessary words and characters
+                        unnecessary words and characters
+        parsed_docs - an array containing the parsed SpaCy
+                      doc objects
+
+    Cleanses entire corpus of documents using SpaCy
     '''
-    tokenized_docs = []
+    parsed_docs = []
 
     clean_texts = np.array([], dtype='object')
     num_cores = multiprocessing.cpu_count()
     batch_size = min(int(len(documents) / (num_cores * 2)), 20)
     if batch_size == 0:
-        batch_size=1
+        batch_size = 1
 
-    batch_num = 0
+    print("{} Documents Total with {} Cores Working".format(len(documents), num_cores-1))
+    num_doc = 1
     for doc in parser.pipe(documents, batch_size=batch_size, n_threads=num_cores - 1):
-        print("Cleaning text for batch {}".format(batch_num))
+        print("\nCleaning Text for Document {}".format(num_doc))
         clean_texts = np.append(clean_document(doc), clean_texts)
-        batch_num += 1
+        parsed_docs.append(doc)
+        num_doc += 1
 
-    return clean_texts, tokenized_docs
+    return clean_texts, parsed_docs
 
 
 def term_frequency(documents):
@@ -79,6 +85,7 @@ def term_frequency(documents):
     OUTPUT:
         normalized_tf - term frequency matrix for the corpus
                         normalized with the l2 norm
+        vectorizer - TfidfVectorizer fit with document data
 
     Transforms an array of documents into a normalized
     term frequency matrix
@@ -116,17 +123,19 @@ def load_data():
 
 if __name__ == '__main__':
     phils, docs, full_texts, titles = load_data()
+    print('Downloading Parser...')
     parser = English()
 
-    full_texts = [x for x in full_texts[:3]]
+    clean_texts, parsed_docs = cleanse_corpus(full_texts)
+    print('Finished!  Beginning Next Process...')
 
-    clean_texts, tokenized_docs = cleanse_corpus(full_texts)
-
+    print('\nVectorizing Documents...')
     normalized_tf, vectorizer = term_frequency(clean_texts)
 
+    print('Pickling objects...')
     with open('data/model/vectorizer.pkl', 'wb') as f:
         pickle.dump(vectorizer, f)
     with open('data/model/tf_matrix.pkl', 'wb') as f:
         pickle.dump(normalized_tf, f)
-    with open('data/model/tokens.pkl', 'wb') as f:
-        pickle.dump(tokenized_docs, f)
+    with open('data/model/parsed_docs.pkl', 'wb') as f:
+        pickle.dump(parsed_docs, f)

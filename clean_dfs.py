@@ -204,7 +204,7 @@ def fix_misspelled_words(text):
                 words.append(d_us.suggest(word)[0])
             except IndexError:
                 continue
-                
+
     end = time.time()
     print('Time: {}'.format(end - start))
     return ' '.join(x for x in words)
