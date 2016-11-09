@@ -1,32 +1,39 @@
-html {
+body {
+    margin: -23px 0;
     height: 100%;
-    margin: 0;
+    width: 100%;
+    overflow-y: scroll;
 }
 
-body {
+header {
+    height: 100px;
+    width: 100px;
+    padding: 25px 50px;
+    position: fixed;
+}
+
+img[alt="Logo"] {
+    height: 100%;
+    width: 100px;
+    opacity: 1;
+}
+
+main {
     background-image: url('../../imgs/dark-brown-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    height: 100%;
-    margin: 0;
-    padding-top: 0;
+    padding-top: 29vh;
 }
 
-div.header {
-    height: 75px;
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    height: 10px;
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
 
-div.container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    text-align: center;
-}
-
-button.start {
+a.begin {
     background-color: transparent;
-    margin-top: 20px;
+    padding: 14px 17px;
     height: 80px;
     width: 80px;
     border-radius: 50px;
@@ -34,39 +41,291 @@ button.start {
     border: 5px solid #E4D2BA;
 }
 
-i {
+a.begin i {
     color: #E4D2BA;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
                  0px 8px 13px rgba(0,0,0,0.1),
                  0px 18px 23px rgba(0,0,0,0.1);
 }
 
-div.container h1 {
+.container {
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    padding: 0;
+}
+
+#home h1 {
     text-shadow: -4px 1px 7px rgba(20, 20, 20, 0.91);
 }
 
-div.container h1:nth-of-type(1) {
-    color: #DAA520;
-    margin-top: 6%;
-    font-size: 6em;
-    font-family: 'Kaushan Script', cursive;
-}
-
-div.container h1:nth-of-type(2) {
+#home h1:nth-of-type(1) {
     color: #D2B48C;
-    font-size: 6em;
+    font-size: 5em;
+    font-family: 'Ledger', serif;
+    letter-spacing: 4px;
+}
+
+#home h1:nth-of-type(2) {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    color: #DAA520;
+    font-size: 10em;
+    font-family: 'Dancing Script', cursive;
+    letter-spacing: 0.5px;
+}
+
+#story {
+    background-color: #D2B48C;
+}
+
+div.controls {
+    background-color: #492D1F;
+    height: 100px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 30px;
+    padding-left: 175px;
+    -webkit-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
+    box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
+}
+
+button:focus {
+    outline: 0;
+}
+
+div.controls button {
+    background: transparent;
+    color: #DAA520;
+    border: none;
+    float: left;
+    font-size: 1.5em;
+    text-shadow: -3px 4px 3px rgba(0,0,0,0.4),
+                 -3px 8px 13px rgba(0,0,0,0.1),
+                 -3px 18px 23px rgba(0,0,0,0.1);
+}
+
+#back, #play, #pause {
+    margin-right: 4px;
+}
+
+#stop {
+    margin-right: 12px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2;
+  background: #FFFFFF;
+  border-radius: 25px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 25px;
+  background: #DAA520;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #FFFFFF;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  animate: 0.2s;
+  cursor: pointer;
+  background: #FFFFFF;
+  border-radius: 25px;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 25px;
+  background: #DAA520;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #FFFFFF;
+  border-radius: 40px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #FFFFFF;
+  border-radius: 40px;
+}
+
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 25px;
+  background: #DAA520;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #FFFFFF;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #FFFFFF;
+}
+
+#time-slider {
+    position: relative;
+    margin-top: 14px;
+    margin-right: 12px;
+    width: 86%;
+    float: left;
+    border-radius: 25px;
+}
+
+output {
+    background: transparent;
+    float: right;
+    padding-top: 1px;
+    margin-top: 14px;
+    font-family: 'Ledger', serif;
     font-weight: 700;
-    font-family: 'Tangerine', cursive;
+    font-size: 4em;
+    text-align: center;
+    color: black;
+    height: 75px;
+    width: 220px;
+    text-shadow: -1px 0.5px 3px rgba(0,0,0,0.4),
+                 -1px 1px 3px rgba(0,0,0,0.1),
+                 -1px 2px 3px rgba(0,0,0,0.1);
 }
 
-img[alt="Logo"] {
-    height: 100%;
-    width: 150px;
-    margin-top: 25px;
-    margin-left: 50px;
-    opacity: 1;
+#credits div.credits-header {
+    background-color: #D2B48C;
+    height: 100px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 15px;
+    -webkit-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
+    box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
 }
 
-.transparent {
-    opacity: 0;
+#credits div.credits-header h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 4em;
+}
+
+#credits div.column {
+    text-align: center;
+    float: left;
+    height: 86%;
+}
+
+#credits div.column h1 {
+    font-family: 'Ledger', serif;
+    font-size: 3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#credits div.made-possible {
+    padding-top: 30px;
+    width: 60vw;
+}
+
+#credits div.packages-used {
+    padding-left: 60px;
+}
+
+#credits div.made-possible h1 {
+    margin-bottom: 30px;
+    padding-left: -60px;
+}
+
+#credits img {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+#credits div.connect {
+    padding-left: 0;
+    padding-top: 30px;
+    width: 40vw;
+}
+#credits div.connect a {
+    font-size: 2em;
+}
+
+#credits div.connect a:last-of-type {
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+#credits div.special-thanks {
+    padding-left: 10%;
+    padding-right: 25%;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+#credits div.special-thanks h1 {
+    font-family: 'Dancing Script', cursive;
+}
+
+#credits div.special-thanks p {
+    font-family: 'Ledger', serif;
+    font-size: 1.5em;
+}
+
+#github {
+    padding-top: 5px;
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+#phone {
+    padding-top: 15px;
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+#linkedin {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+#email {
+    margin-left: 10px;
+    font-size: 1.2em;
 }
