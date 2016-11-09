@@ -36,15 +36,17 @@ def clean_document(doc):
     Cleans a single document's text
     '''
     # Part's of speech to keep in the result
-    pos_lst = ['ADJ', 'ADV', 'NOUN', 'PROPN', 'VERB']
+    pos_lst = ['ADJ', 'ADV', 'NOUN', 'PROPN', 'VERB', 'AUX']
     tokens = [token.lemma_.lower().strip(punctuation).strip().replace(' ', '_') for token in doc if token.pos_ in pos_lst]
 
     spaces_lst = ['', ' ', '\n', '\n\n', '\r']
-    tokens = [token for token in doc if token not in spaces_lst]
+    tokens = [token for token in doc if token.text not in spaces_lst]
 
-    tokens = [token for token in tokens if token not in STOPLIST]
+    tokens = [token for token in tokens if token.text not in STOPLIST]
 
-    return ' '.join(str(token) for token in tokens)
+    clean_text = ' '.join(token.text for token in tokens)
+
+    return clean_text
 
 
 def cleanse_corpus(documents):
@@ -72,6 +74,7 @@ def cleanse_corpus(documents):
     for doc in parser.pipe(documents, batch_size=batch_size, n_threads=num_cores - 1):
         print("\nCleaning Text for Document {}".format(num_doc))
         clean_texts = np.append(clean_document(doc), clean_texts)
+        doc = parser(clean_texts[-1])
         parsed_docs.append(doc)
         num_doc += 1
 
@@ -91,12 +94,10 @@ def term_frequency(documents):
     term frequency matrix
     '''
 
-    vectorizer = TfidfVectorizer(max_df=0.95, min_df=2, \
-                                norm='l2', use_idf=False)
+    vectorizer = TfidfVectorizer(max_df=0.9, min_df=5, use_idf=False)
+    tf_matrix = vectorizer.fit_transform(documents)
 
-    normalized_tf = vectorizer.fit_transform(documents)
-
-    return normalized_tf, vectorizer
+    return tf_matrix, vectorizer
 
 
 def load_data():
@@ -130,12 +131,12 @@ if __name__ == '__main__':
     print('Finished!  Beginning Next Process...')
 
     print('\nVectorizing Documents...')
-    normalized_tf, vectorizer = term_frequency(clean_texts)
+    tf_matrix, vectorizer = term_frequency(clean_texts)
 
     print('Pickling objects...')
     with open('data/model/vectorizer.pkl', 'wb') as f:
         pickle.dump(vectorizer, f)
     with open('data/model/tf_matrix.pkl', 'wb') as f:
-        pickle.dump(normalized_tf, f)
+        pickle.dump(tf_matrix, f)
     with open('data/model/parsed_docs.pkl', 'wb') as f:
         pickle.dump(parsed_docs, f)
