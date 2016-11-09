@@ -7,6 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 
+
 # Main page
 @app.route('/')
 def home():
@@ -16,7 +17,7 @@ def home():
     OUTPUT:
         Home page template
     '''
-    pass
+    return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, threaded=True)
+    app.run(host='0.0.0.0', port=8080, threaded=True, debug=True)

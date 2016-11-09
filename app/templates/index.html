@@ -19,6 +19,9 @@
       <!-- Font-awesome -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+      <!-- leaflet -->
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+
       <!-- Custom -->
       <link rel="stylesheet" href="../static/css/index.css">
     </head>
@@ -26,12 +29,12 @@
       <!-- Header -->
       <header>
         <a href="#page-top" class="page-scroll">
-          <img alt="Logo" src="../imgs/old_book.png">
+          <img alt="Logo" src="../static/imgs/old_book.png">
         </a>
       </header>
 
       <!-- Intro Section -->
-      <main role="main">
+      <main role="main" style="background-image: url('../static/imgs/dark-brown-background.jpg');">
         <div id="home" class="container">
           <h1>A Journey Through</h1>
           <h1>Modern Era Philosophy</h1>
@@ -60,7 +63,16 @@
               oninput="outputUpdate(value)">
           </div>
           <div class="journey">
-              <output for"time-slider" id="volume">1550</output>
+              <output for"time-slider" id="time">1550</output>
+              <div id="map" style="width: 960px; height: 500px"></div>
+              <div class="search-bar">
+                  <input type="text" name="name" placeholder="e.g. John Locke">
+              </div>
+              <a href="#credits" class="page-scroll">
+                <div class="footer">
+                  <p>More Info about this project <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>
+                </div>
+              </a>
           </div>
       </section>
 
@@ -74,22 +86,22 @@
               <div class="packages-used">
                   <table>
                       <tr>
-                          <td><img src="../imgs/resources/python-3.png"/></td>
-                          <td><img src="../imgs/resources/project_gut.jpg" style="height: 130px; border-radius: 100px;"/></td>
-                          <td><img src="../imgs/resources/internet_archive.png" style="height: 140px; width: 150px;"/></td>
-                          <td><img src="../imgs/resources/requests.png" style="height: 140px; width: 150px;"/></td>
+                          <td><img src="../static/imgs/resources/python-3.png"/></td>
+                          <td><img src="../static/imgs/resources/project_gut.jpg" style="height: 130px; border-radius: 100px;"/></td>
+                          <td><img src="../static/imgs/resources/internet_archive.png" style="height: 140px; width: 150px;"/></td>
+                          <td><img src="../static/imgs/resources/requests.png" style="height: 140px; width: 150px;"/></td>
                       </tr>
                       <tr>
-                          <td><img src="../imgs/resources/aws.png" style="width: 200px; height: 75px;"/></td>
-                          <td><img src="../imgs/resources/spacy.jpg" style="width: 200px; height: 75px; border-radius: 100px;"/></td>
-                          <td><img src="../imgs/resources/sklearn.png" style="width: 175px; height: 175px;"/></td>
-                          <td><img src="../imgs/resources/gensim.png" style="width: 150px; height: 65px;"/></td>
+                          <td><img src="../static/imgs/resources/aws.png" style="width: 200px; height: 75px;"/></td>
+                          <td><img src="../static/imgs/resources/spacy.jpg" style="width: 200px; height: 75px; border-radius: 100px;"/></td>
+                          <td><img src="../static/imgs/resources/sklearn.png" style="width: 175px; height: 175px;"/></td>
+                          <td><img src="../static/imgs/resources/gensim.png" style="width: 150px; height: 65px;"/></td>
                       </tr>
                       <tr>
-                          <td><img src="../imgs/resources/Flask.png" style="width: 150px; height: 200px;"/></td>
-                          <td><img src="../imgs/resources/html_css.png" style="width: 150px; height: 125px;"/></td>
-                          <td><img src="../imgs/resources/jquery.gif" style="width: 120px; height: 150px;"/></td>
-                          <td><img src="../imgs/resources/d3.png" style="width: 120px; height: 150px;"/></td>
+                          <td><img src="../static/imgs/resources/Flask.png" style="width: 150px; height: 200px;"/></td>
+                          <td><img src="../static/imgs/resources/html_css.png" style="width: 150px; height: 125px;"/></td>
+                          <td><img src="../static/imgs/resources/jquery.gif" style="width: 120px; height: 150px;"/></td>
+                          <td><img src="../static/imgs/resources/d3.png" style="width: 120px; height: 150px;"/></td>
                       </tr>
                   </table>
               </div>
@@ -98,16 +110,14 @@
               <div class="special-thanks">
                   <h1>A Special Thanks...</h1>
                   <p>
-                      None of this would have been possible if it wasn't for Galvanize
-                      granting me this opportunity.  I've never been surrounded by so many
-                      motivated people.  I owe both the instructors and my classmates tremendously
-                      for the amount they've helped me grow.  Thank you to all those who were a part
-                      of my experience here.
+                      Thank you to all of my instructors and classmates!  Also,
+                      I'd like to extend my thanks to Galvanize as well for granting
+                      me the opportunity to be a part of their program.
                   </p>
               </div>
               <div id="behind-scenes">
                   <h1>Go Behind the Scenes!</h1>
-                  <a href="https://www.github.com/tdlazoen" target="_blank">
+                  <a href="https://www.github.com/tdlazoen" class="extra-space" target="_blank">
                     <i class="fa fa-github" id="github" aria-hidden="true"></i>
                     Check it out on Github
                   </a>
@@ -120,17 +130,27 @@
                   <a href="mailto:tylerlazoen@gmail.com", target="_top">
                       <i class="fa fa-envelope" id="email" aria-hidden="true"></i>
                   </a>
+                  <a href="https://www.galvanizedintodata.com" target="_blank">
+                    <i class="fa fa-wordpress" id="blog" aria-hidden="true"></i>
+                  </a>
                   <br>
-                  <a href="tel:1-248-825-1332">
-                      <i class="fa fa-phone" id="phone" aria-hidden="true"></i>(248) 825-1332
+                  <a href="tel:1-248-825-1332" style="display: inline-block; margin-top: 10px; padding-left: 0;">
+                      <i class="fa fa-mobile" id="phone" aria-hidden="true"></i>
+                        (248) 825-1332
                   </a>
               </div>
+          </div>
+          <div class="footer">
+              <p>Copyright © Tyler Lazoen 2016</p>
           </div>
       </section>
 
       <!-- JQuery & JQuery UI -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script type="text/javascript"src="../static/js/jquery-ui.min.js"></script>
+
+      <!-- leaflet -->
+      <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 
       <!-- Bootstrap -->
       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

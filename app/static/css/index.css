@@ -10,6 +10,7 @@ header {
     width: 100px;
     padding: 25px 50px;
     position: fixed;
+    z-index: 999;
 }
 
 img[alt="Logo"] {
@@ -19,7 +20,6 @@ img[alt="Logo"] {
 }
 
 main {
-    background-image: url('../../imgs/dark-brown-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 29vh;
@@ -210,6 +210,11 @@ input[type=range]:focus::-ms-fill-upper {
     border-radius: 25px;
 }
 
+div.journey {
+    position: relative;
+    height: 88%;
+}
+
 output {
     background: transparent;
     float: right;
@@ -225,6 +230,31 @@ output {
     text-shadow: -1px 0.5px 3px rgba(0,0,0,0.4),
                  -1px 1px 3px rgba(0,0,0,0.1),
                  -1px 2px 3px rgba(0,0,0,0.1);
+}
+
+a[href="#credits"] {
+    color: #492D1F;
+    text-transform: capitalize;
+    font-weight: 700;
+    text-shadow: -1.3px 1.3px 0px rgba(0,0,0,0.2);
+}
+
+div.search-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+input[type='text'] {
+    width: 600px;
+    height: 50px;
+    border-radius: 20px;
+    padding-left: 10px;
+    outline: 0;
+}
+
+#credits {
+    position: relative;
 }
 
 #credits div.credits-header {
@@ -249,7 +279,7 @@ output {
 #credits div.column {
     text-align: center;
     float: left;
-    height: 86%;
+    height: 80%;
 }
 
 #credits div.column h1 {
@@ -265,12 +295,11 @@ output {
 }
 
 #credits div.packages-used {
-    padding-left: 60px;
+    padding-left: 40px;
 }
 
 #credits div.made-possible h1 {
     margin-bottom: 30px;
-    padding-left: -60px;
 }
 
 #credits img {
@@ -287,13 +316,13 @@ output {
     font-size: 2em;
 }
 
-#credits div.connect a:last-of-type {
+#credits div.connect a.extra-space {
     display: inline-block;
     margin-bottom: 40px;
 }
 
 #credits div.special-thanks {
-    padding-left: 10%;
+    padding-left: 5%;
     padding-right: 25%;
     text-align: left;
     margin-bottom: 40px;
@@ -314,18 +343,24 @@ output {
     margin-right: 5px;
 }
 
+
 #phone {
-    padding-top: 15px;
+    display: inline;
+    vertical-align: middle;
     font-size: 1.2em;
-    margin-right: 5px;
 }
 
-#linkedin {
+#linkedin, #email, #blog {
     margin-right: 10px;
     font-size: 1.2em;
 }
 
-#email {
-    margin-left: 10px;
-    font-size: 1.2em;
+div.footer {
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    margin: 0;
+    font-family: 'Ledger', serif;
+    text-align: left;
+    font-size: 1.3em;
 }
