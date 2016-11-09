@@ -12,6 +12,7 @@ from selenium.common.exceptions import TimeoutException
 from modern_dfs import ModernPhilosophers, ModernDocuments
 import enchant
 import multiprocessing
+from geopy.geocoders import Nominatim
 
 
 def determine_nationality(df):
@@ -20,7 +21,7 @@ def determine_nationality(df):
         df - dataframe containing philosopher data
     OUTPUT:
         df - dataframe with null nationalities filled in
-			 (if the same row has a non-null birthplace)
+             (if the same row has a non-null birthplace)
 
     Determines the nationality of philosophers with null nationalities but non-null birthplaces based on their birthplace
     '''
@@ -238,6 +239,43 @@ def clean_dfs(phils, docs):
     docs.save_df()
 
 
+def add_coordinates(phils):
+    '''
+    INPUT:
+        phils - philosopher dataframe
+    OUTPUT:
+        None
+
+    Finds the latitude and longitude of each philosopher's birthplace
+    '''
+    geolocator = Nominatim()
+
+    phils.df['latitude'] = np.nan
+    phils.df['longitude'] = np.nan
+
+    for i in range(phils.df.shape[0]):
+        birthplace = phils.df.loc[i, 'birthplace']
+
+        # Accounts for places (governorates, republics, etc.) that no longer exist
+        if i == 71:
+            birhplace = 'frankfurt, germany'
+        if i == 110:
+            birthplace = 'saratov, russia'
+        if i == 121:
+            birthplace = 'austria'
+
+        location = geolocator.geocode(birthplace)
+
+        if location is None:
+            country = re.split(r', ', birthplace)[-1]
+
+            location = geolocator.geocode(country)
+
+        if location is not None:
+            phils.df.loc[i, 'latitude'] = location.latitude
+            phils.df.loc[i, 'longitude'] = location.longitude
+
+
 if __name__ == '__main__':
     # Load dataframes
     phils = ModernPhilosophers()
@@ -267,4 +305,4 @@ if __name__ == '__main__':
     print('Number of null birthplaces: ', phils.df[phils.df.birthplace.isnull()].shape[0])
 
     print('Number of philosophers with birthplaces but no nationalities: ',
-	phils.df[(phils.df.birthplace.notnull()) & (phils.df.nationality.isnull())].shape[0])
+    phils.df[(phils.df.birthplace.notnull()) & (phils.df.nationality.isnull())].shape[0])

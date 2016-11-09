@@ -4,13 +4,13 @@ import pickle
 from modern_dfs import ModernPhilosophers, ModernDocuments
 from spacy.en import English
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 from spacy.en import English
 from string import punctuation
 import multiprocessing
 import re
 import pdb
+from collections import Counter
 
 
 '''
@@ -22,7 +22,8 @@ to perform topic modeling
 
 # Global variables
 STOPLIST = set(stopwords.words('english') + ["n't", "'s", "'m", "'", "'re", "'ve"] \
-           + ['philosophy', 'philosophers'] + list(ENGLISH_STOP_WORDS))
+           + ['philosophy', 'philosophers'] + list(ENGLISH_STOP_WORDS)) + \
+           list([ch for ch in 'abcdefghijklmnopqrstuvwxyz'])
 
 
 def clean_document(doc):
@@ -40,13 +41,13 @@ def clean_document(doc):
     tokens = [token.lemma_.lower().strip(punctuation).strip().replace(' ', '_') for token in doc if token.pos_ in pos_lst]
 
     spaces_lst = ['', ' ', '\n', '\n\n', '\r']
-    tokens = [token for token in doc if token.text not in spaces_lst]
+    tokens = [token for token in tokens if token not in spaces_lst]
 
-    tokens = [token for token in tokens if token.text not in STOPLIST]
+    tokens = [token for token in tokens if token not in STOPLIST]
 
-    clean_text = ' '.join(token.text for token in tokens)
+    clean_text = ' '.join(token for token in tokens)
 
-    return clean_text
+    return clean_text, tokens
 
 
 def cleanse_corpus(documents):
@@ -62,8 +63,8 @@ def cleanse_corpus(documents):
     Cleanses entire corpus of documents using SpaCy
     '''
     parsed_docs = []
+    tokenized_docs = []
 
-    clean_texts = np.array([], dtype='object')
     num_cores = multiprocessing.cpu_count()
     batch_size = min(int(len(documents) / (num_cores * 2)), 20)
     if batch_size == 0:
@@ -73,31 +74,13 @@ def cleanse_corpus(documents):
     num_doc = 1
     for doc in parser.pipe(documents, batch_size=batch_size, n_threads=num_cores - 1):
         print("\nCleaning Text for Document {}".format(num_doc))
-        clean_texts = np.append(clean_document(doc), clean_texts)
-        doc = parser(clean_texts[-1])
+        cleaned_text, tokens = clean_document(doc)
+        doc = parser(cleaned_text)
         parsed_docs.append(doc)
+        tokenized_docs.append(tokens)
         num_doc += 1
 
-    return clean_texts, parsed_docs
-
-
-def term_frequency(documents):
-    '''
-    INPUT:
-        documents - an array-like object of text documents
-    OUTPUT:
-        normalized_tf - term frequency matrix for the corpus
-                        normalized with the l2 norm
-        vectorizer - TfidfVectorizer fit with document data
-
-    Transforms an array of documents into a normalized
-    term frequency matrix
-    '''
-
-    vectorizer = TfidfVectorizer(max_df=0.9, min_df=5, use_idf=False)
-    tf_matrix = vectorizer.fit_transform(documents)
-
-    return tf_matrix, vectorizer
+    return parsed_docs, tokenized_docs
 
 
 def load_data():
@@ -117,26 +100,20 @@ def load_data():
     docs = ModernDocuments()
 
     full_texts = docs.df['text'].values
-    titles = docs.df['title'].values
 
-    return phils, docs, full_texts, titles
+    return phils, docs, full_texts
 
 
 if __name__ == '__main__':
-    phils, docs, full_texts, titles = load_data()
+    phils, docs, full_texts = load_data()
     print('Downloading Parser...')
     parser = English()
 
-    clean_texts, parsed_docs = cleanse_corpus(full_texts)
+    parsed_docs, tokenized_docs = cleanse_corpus(full_texts)
     print('Finished!  Beginning Next Process...')
 
-    print('\nVectorizing Documents...')
-    tf_matrix, vectorizer = term_frequency(clean_texts)
-
-    print('Pickling objects...')
-    with open('data/model/vectorizer.pkl', 'wb') as f:
-        pickle.dump(vectorizer, f)
-    with open('data/model/tf_matrix.pkl', 'wb') as f:
-        pickle.dump(tf_matrix, f)
+    print('\nPickling objects...')
+    with open('data/model/tokenized_docs.pkl', 'wb') as f:
+        pickle.dump(tokenized_docs, f)
     with open('data/model/parsed_docs.pkl', 'wb') as f:
         pickle.dump(parsed_docs, f)
