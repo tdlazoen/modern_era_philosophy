@@ -44,17 +44,33 @@ def clean_document(doc):
 
 
 def split_text(doc, title, n_words):
+    '''
+    INPUT:
+        doc - document text
+        title - title of document
+        n_words - number of words in each chunk
+    OUTPUT:
+        chunks - list of chunks created from doc
+        list of [title] the length of chunks
+
+    Takes a text that is greater than (n_words) and
+    splits the original text up into a nubmer of smaller
+    chunks
+    '''
     words = str(doc).split()
     chunks = []
     current_chunk_words = []
     current_chunk_word_count = 0
-    for word in words:
+    for i, word in enumerate(words):
         current_chunk_words.append(word)
         current_chunk_word_count += 1
         if current_chunk_word_count == n_words:
-            chunks.append(' '.join(current_chunk_words))
-            current_chunk_words = []
-            current_chunk_word_count = 0
+            if len(words) - i < 500:
+                break
+            else:
+                chunks.append(' '.join(current_chunk_words))
+                current_chunk_words = []
+                current_chunk_word_count = 0
     chunks.append(' '.join(current_chunk_words))
 
     return chunks, [title] * len(chunks)
@@ -133,21 +149,26 @@ if __name__ == '__main__':
     print('Downloading Parser...')
     parser = English()
 
+    with open('data/custom_stopwords.txt', 'r') as f:
+        words = f.read()
+
+    custom_stopwords = words.split('\n')
+    custom_stopwords = [x.strip() for x in custom_stopwords]
+
     STOPLIST = set(stopwords.words('english') + ["n't", "'s", "'m", "'", "'re", "'ve"] + \
-                   ['philosophy', 'philosophers', 'philosopher', 'source', 'translator', \
-                    'editor', 'tranlation', 'publication', 'version', 'material', 'mennen'] + \
+                   custom_stopwords + list(ENGLISH_STOP_WORDS) + \
                    [word.strip() for name in phils.df.name.values for word in name.split()] + \
                    [word.strip() for title in docs.df.title.values for word in title.split()] + \
-                   list(ENGLISH_STOP_WORDS) + list([ch for ch in 'abcdefghijklmnopqrstuvwxyz']))
+                   list([ch for ch in 'abcdefghijklmnopqrstuvwxyz']))
 
     tokenized_docs, all_titles = cleanse_corpus(full_texts, docs)
     print('Finished!  Beginning Next Process...')
 
     if len(tokenized_docs) == len(all_titles):
         print('\nPickling objects...')
-        with open('data/model/tokenized_docs.pkl', 'wb') as f:
+        with open('data/model/tokenized_docs_final.pkl', 'wb') as f:
             pickle.dump(tokenized_docs, f)
-        with open('data/model/chunk_titles.pkl', 'wb') as f:
+        with open('data/model/chunk_titles_final.pkl', 'wb') as f:
             pickle.dump(all_titles, f)
     else:
         print(len(tokenized_docs), len(all_titles))

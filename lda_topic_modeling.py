@@ -19,6 +19,12 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 
 
 def load_pickled(filename):
+    '''
+    INPUT:
+        filename - path to a pickle(.pkl) file
+    OUTPUT:
+        data - contents of pickle file
+    '''
     with open(filename, 'rb') as f:
         data = pickle.load(f)
 
@@ -84,7 +90,7 @@ class LDA(object):
             self.workers = multiprocessing.cpu_count() - 1
 
         if self.chunksize is None:
-            self.chunksize = docs.df.shape[0]
+            self.chunksize = 2000
 
         self.id2word = dict((v, k) for k, v in self.dictionary.token2id.items())
 
@@ -188,21 +194,21 @@ if __name__ == '__main__':
     np.random.seed(42)
 
     print("Loading Model data...")
-    all_titles = load_pickled('data/model/chunk_titles.pkl')
-    tokenized_docs = load_pickled('data/model/tokenized_docs.pkl')
+    all_titles = load_pickled('data/model/chunk_titles_final.pkl')
+    tokenized_docs = load_pickled('data/model/tokenized_docs_final.pkl')
 
     print("Fitting LDA model...")
     lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=150, workers=56)
-    lda.fit(run_lda=False)
+    lda.fit(run_lda=True)
 
-    # with open('data/model/lda_chunks.pkl', 'wb') as f:
-    #     pickle.dump(lda, f)
+    # with open('data/model/lda_200.pkl', 'rb') as f:
+    #     lda_best = pickle.load(f)
 
-    with open('data/model/lda_chunks.pkl', 'rb') as f:
-        lda_best = pickle.load(f)
-
-    lda.lda = lda_best.lda
+    # lda.lda = lda_best.lda
     print("Getting topic weights...")
     lda.calculate_topic_weights()
     print("Grouping Chunks...")
     lda.group_doc_chunks()
+
+    with open('data/model/lda_150.pkl', 'wb') as f:
+        pickle.dump(lda, f)
