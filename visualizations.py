@@ -108,7 +108,7 @@ def docs_by_philosopher(figsize=(10, 8), filepath=None):
             plt.savefig(filepath, bbox_inches='tight')
 
 
-def word_distribution_plots(figsize=(15, 12), filepath=None):
+def word_distribution_plots(figsize=(16, 10), filepath=None):
     with open('data/model/tokenized_docs.pkl', 'rb') as f:
         tokenized_docs = pickle.load(f)
 
@@ -184,29 +184,33 @@ def document_length_distribution(figsize=(16, 10), filepath=None):
         plt.savefig(filepath, bbox_inches='tight')
 
 
-def word_cloud(filepath):
-    STOPLIST = set(stopwords.words('english') + ["n't", "'s", "'m", "'", "'re", "'ve"] \
-               + ['philosophy', 'philosophers'] + list(ENGLISH_STOP_WORDS) + \
-               list([ch for ch in 'abcdefghijklmnopqrstuvwxyz']))
+def word_cloud(model_file, base_filepath):
+    phils = ModernPhilosophers()
 
-    with open('data/model/lda_final.pkl', 'rb') as f:
+    STOPLIST = set(stopwords.words('english') + ["n't", "'s", "'m", "'", "'re", "'ve"] + \
+                   ['philosophy', 'philosophers', 'philosopher', 'source', 'translator', \
+                    'editor', 'tranlation', 'publication', 'version', 'material', 'mennen'] + \
+                   [word.strip() for name in phils.df.name.values for word in name.split()] + \
+                   [word.strip() for title in docs.df.title.values for word in title.split()] + \
+                   list(ENGLISH_STOP_WORDS) + list([ch for ch in 'abcdefghijklmnopqrstuvwxyz']))
+
+    with open(model_file, 'rb') as f:
         lda = pickle.load(f)
 
     for topic in lda.most_important:
         wordcloud = WordCloud(background_color="white")
-        pdb.set_trace()
-        term_freqs = lda.word_frequency(topic)
+        term_freqs = lda.top_topic_word_frequency(topic)
         wordcloud.fit_words(term_freqs)
 
-        filepath = filepath + '_topic_{}'.format(topic)
+        filepath_topic = filepath + '_topic{}.png'.format(topic)
 
-        wordcloud.to_file(filepath)
+        wordcloud.to_file(filepath_topic)
 
 if __name__ == '__main__':
     # topics_vs_threshold(filepath='visualizations/topics_thresholds.png')
     # docs_by_century(filepath='visualizations/docs_century.png')
     # docs_by_philosopher(filepath='visualizations/docs_philosopher.png')
-    # word_distribution_plots(filepath='visualizations/word_distributions.png')
+    word_distribution_plots(filepath='visualizations/word_distributions.png')
     # lda_mean_word_probs(filepath='visualizations/lda-200-word-probs.png')
     # document_length_distribution(filepath='visualizations/document_lengths.png')
-    word_cloud(filepath='visualizations/lda')
+    # word_cloud(model_file='data/model/lda_200.pkl', base_filepath='visualizations/lda200')
