@@ -19,6 +19,11 @@ img[alt="Logo"] {
     opacity: 1;
 }
 
+a, a:hover, a:active, a:visited {
+    color: #492D1F;
+    text-decoration: none;
+}
+
 main {
     background-repeat: no-repeat;
     background-size: cover;
@@ -239,13 +244,26 @@ a[href="#credits"] {
     text-shadow: -1.3px 1.3px 0px rgba(0,0,0,0.2);
 }
 
+.go-back-story {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    font-family: 'Ledger', serif;
+    text-align: left;
+    font-size: 1.3em;
+    color: #492D1F;
+    text-transform: capitalize;
+    font-weight: 700;
+    text-shadow: -1.3px 1.3px 0px rgba(0,0,0,0.2);
+}
+
 div.search-bar {
     position: absolute;
     bottom: 20px;
     left: 20px;
 }
 
-input[type='text'] {
+.search-bar {
     width: 600px;
     height: 50px;
     border-radius: 20px;
@@ -263,6 +281,7 @@ input[type='text'] {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    margin-bottom: 15px;
     padding-top: 15px;
     -webkit-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
@@ -271,13 +290,11 @@ input[type='text'] {
 
 #credits div.credits-header h1 {
     margin-top: 0;
-    margin-bottom: 50px;
     font-family: 'Dancing Script', cursive;
     font-size: 4em;
 }
 
 #credits div.column {
-    text-align: center;
     float: left;
     height: 80%;
 }
@@ -290,6 +307,7 @@ input[type='text'] {
 }
 
 #credits div.made-possible {
+    text-align: left;
     padding-top: 30px;
     width: 60vw;
 }
@@ -299,6 +317,7 @@ input[type='text'] {
 }
 
 #credits div.made-possible h1 {
+    margin-left: 22%;
     margin-bottom: 30px;
 }
 
@@ -308,11 +327,14 @@ input[type='text'] {
 }
 
 #credits div.connect {
+    text-align: center;
     padding-left: 0;
     padding-top: 30px;
     width: 40vw;
 }
+
 #credits div.connect a {
+    color: #D2B48C;
     font-size: 2em;
 }
 

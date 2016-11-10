@@ -1,161 +1,155 @@
-<!DOCTYPE html>
-<html>
-    <head>
-      <meta charset="utf-8">
-      <title>Philosophy</title>
+{% extends "base.html" %}
+{% block content %}
 
-      <!-- Favicon -->
-      <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />`
+<!-- Header -->
+<header>
+  <a href="#page-top" class="page-scroll">
+    <img alt="Logo" src="../static/imgs/old_book.png">
+  </a>
+</header>
 
-      <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ledger" rel="stylesheet">
+<!-- Intro Section -->
+<main role="main" style="background-image: url('../static/imgs/dark-brown-background.jpg');">
+  <div id="home" class="container">
+    <h1>A Journey Through</h1>
+    <h1>Modern Era Philosophy</h1>
+    <a href="#story" class="page-scroll begin">
+      <i class="fa fa-chevron-down animated" aria-hidden="true"></i>
+    </a>
+  </div>
+</main>
 
-      <!-- JQuery UI -->
-      <link rel="stylesheet" href="../static/css/jquery-ui.min.css">
+<!-- Story Section -->
+<section id="story" class="container">
 
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Slider controls -->
+  <div class="controls">
+    <button type="button" id="rewind">
+      <i class="fa fa-fast-backward" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="play">
+      <i class="fa fa-play" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="pause">
+      <i class="fa fa-pause" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="stop">
+      <i class="fa fa-stop" aria-hidden="true"></i>
+    </button>
+    <input type="range" id="time-slider" name="time-slider" value="1550" min="1550" max="2016"
+        oninput="outputUpdate(value)">
+  </div>
 
-      <!-- Font-awesome -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Main story section -->
+  <div class="journey">
+    <output for"time-slider" id="time">1550</output>
+    <div id="map" style="width: 960px; height: 500px"></div>
 
-      <!-- leaflet -->
-      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <!-- Philosopher time search -->
+    <div class="search-bar">
+      <input type="text" name="name" placeholder="e.g. John Locke">
+    </div>
 
-      <!-- Custom -->
-      <link rel="stylesheet" href="../static/css/index.css">
-    </head>
-    <body id="page-top">
-      <!-- Header -->
-      <header>
-        <a href="#page-top" class="page-scroll">
-          <img alt="Logo" src="../static/imgs/old_book.png">
-        </a>
-      </header>
+    <!-- Scroll to credits -->
+    <a href="#credits" class="page-scroll">
+      <div class="footer">
+        <p>More Info about this project <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>
+      </div>
+    </a>
+  </div>
+</section>
 
-      <!-- Intro Section -->
-      <main role="main" style="background-image: url('../static/imgs/dark-brown-background.jpg');">
-        <div id="home" class="container">
-          <h1>A Journey Through</h1>
-          <h1>Modern Era Philosophy</h1>
-          <a href="#story" class="page-scroll begin">
-            <i class="fa fa-chevron-down animated" aria-hidden="true"></i>
-          </a>
-        </div>
-      </main>
+<!-- Credits Section -->
+<section id="credits" class="container">
 
-      <!-- Story Section -->
-      <section id="story" class="container">
-          <div class="controls">
-              <button type="button" id="rewind">
-                <i class="fa fa-fast-backward" aria-hidden="true"></i>
-              </button>
-              <button type="button" id="play">
-                <i class="fa fa-play" aria-hidden="true"></i>
-              </button>
-              <button type="button" id="pause">
-                <i class="fa fa-pause" aria-hidden="true"></i>
-              </button>
-              <button type="button" id="stop">
-                <i class="fa fa-stop" aria-hidden="true"></i>
-              </button>
-              <input type="range" id="time-slider" name="time-slider" value="1550" min="1550" max="2016"
-              oninput="outputUpdate(value)">
-          </div>
-          <div class="journey">
-              <output for"time-slider" id="time">1550</output>
-              <div id="map" style="width: 960px; height: 500px"></div>
-              <div class="search-bar">
-                  <input type="text" name="name" placeholder="e.g. John Locke">
-              </div>
-              <a href="#credits" class="page-scroll">
-                <div class="footer">
-                  <p>More Info about this project <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>
-                </div>
-              </a>
-          </div>
-      </section>
+  <!-- Header -->
+  <div class="credits-header">
+    <h1>This Project was Made Possible by:</h1>
+    <a href="#story" class="page-scroll go-back-story">
+      <div>
+        <p>Continue The Journey <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></p>
+      </div>
+    </a>
+  </div>
 
-      <!-- Credits Section -->
-      <section id="credits" class="container">
-          <div class="credits-header">
-              <h1>This Project was Made Possible by:</h1>
-          </div>
-          <div class="made-possible column">
-              <h1>Some Resources Used</h1>
-              <div class="packages-used">
-                  <table>
-                      <tr>
-                          <td><img src="../static/imgs/resources/python-3.png"/></td>
-                          <td><img src="../static/imgs/resources/project_gut.jpg" style="height: 130px; border-radius: 100px;"/></td>
-                          <td><img src="../static/imgs/resources/internet_archive.png" style="height: 140px; width: 150px;"/></td>
-                          <td><img src="../static/imgs/resources/requests.png" style="height: 140px; width: 150px;"/></td>
-                      </tr>
-                      <tr>
-                          <td><img src="../static/imgs/resources/aws.png" style="width: 200px; height: 75px;"/></td>
-                          <td><img src="../static/imgs/resources/spacy.jpg" style="width: 200px; height: 75px; border-radius: 100px;"/></td>
-                          <td><img src="../static/imgs/resources/sklearn.png" style="width: 175px; height: 175px;"/></td>
-                          <td><img src="../static/imgs/resources/gensim.png" style="width: 150px; height: 65px;"/></td>
-                      </tr>
-                      <tr>
-                          <td><img src="../static/imgs/resources/Flask.png" style="width: 150px; height: 200px;"/></td>
-                          <td><img src="../static/imgs/resources/html_css.png" style="width: 150px; height: 125px;"/></td>
-                          <td><img src="../static/imgs/resources/jquery.gif" style="width: 120px; height: 150px;"/></td>
-                          <td><img src="../static/imgs/resources/d3.png" style="width: 120px; height: 150px;"/></td>
-                      </tr>
-                  </table>
-              </div>
-          </div>
-          <div class="connect column">
-              <div class="special-thanks">
-                  <h1>A Special Thanks...</h1>
-                  <p>
-                      Thank you to all of my instructors and classmates!  Also,
-                      I'd like to extend my thanks to Galvanize as well for granting
-                      me the opportunity to be a part of their program.
-                  </p>
-              </div>
-              <div id="behind-scenes">
-                  <h1>Go Behind the Scenes!</h1>
-                  <a href="https://www.github.com/tdlazoen" class="extra-space" target="_blank">
-                    <i class="fa fa-github" id="github" aria-hidden="true"></i>
-                    Check it out on Github
-                  </a>
-              </div>
-              <div id="connect">
-                  <h1>Connect with me!</h1>
-                  <a href="https://www.linkedin.com/in/tdlazoen" target="_blank">
-                    <i class="fa fa-linkedin" id="linkedin" aria-hidden="true"></i></i>
-                  </a>
-                  <a href="mailto:tylerlazoen@gmail.com", target="_top">
-                      <i class="fa fa-envelope" id="email" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.galvanizedintodata.com" target="_blank">
-                    <i class="fa fa-wordpress" id="blog" aria-hidden="true"></i>
-                  </a>
-                  <br>
-                  <a href="tel:1-248-825-1332" style="display: inline-block; margin-top: 10px; padding-left: 0;">
-                      <i class="fa fa-mobile" id="phone" aria-hidden="true"></i>
-                        (248) 825-1332
-                  </a>
-              </div>
-          </div>
-          <div class="footer">
-              <p>Copyright © Tyler Lazoen 2016</p>
-          </div>
-      </section>
+  <!-- Development stack -->
+  <div class="made-possible column">
+    <h1>Some Resources Used</h1>
 
-      <!-- JQuery & JQuery UI -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script type="text/javascript"src="../static/js/jquery-ui.min.js"></script>
+    <div class="packages-used">
+      <table>
+        <tr>
+          <td><img src="../static/imgs/resources/python-3.png"/></td>
+          <td><img src="../static/imgs/resources/project_gut.jpg" style="height: 130px; border-radius: 100px;"/></td>
+          <td><img src="../static/imgs/resources/internet_archive.png" style="height: 140px; width: 150px;"/></td>
+          <td><img src="../static/imgs/resources/requests.png" style="height: 140px; width: 150px;"/></td>
+        </tr>
+        <tr>
+          <td><img src="../static/imgs/resources/aws.png" style="width: 200px; height: 75px;"/></td>
+          <td><img src="../static/imgs/resources/spacy.jpg" style="width: 200px; height: 75px; border-radius: 100px;"/></td>
+          <td><img src="../static/imgs/resources/sklearn.png" style="width: 175px; height: 175px;"/></td>
+          <td><img src="../static/imgs/resources/gensim.png" style="width: 150px; height: 65px;"/></td>
+        </tr>
+        <tr>
+          <td><img src="../static/imgs/resources/Flask.png" style="width: 150px; height: 200px;"/></td>
+          <td><img src="../static/imgs/resources/html_css.png" style="width: 150px; height: 125px;"/></td>
+          <td><img src="../static/imgs/resources/jquery.gif" style="width: 120px; height: 150px;"/></td>
+          <td><img src="../static/imgs/resources/d3.png" style="width: 120px; height: 150px;"/></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-      <!-- leaflet -->
-      <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+  <!-- Contact Info/Thanks -->
+  <div class="connect column">
 
-      <!-- Bootstrap -->
-      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Thanks to Galvanize -->
+    <div class="special-thanks">
+      <h1>A Special Thanks...</h1>
+      <p>
+        Thank you to all of my instructors and classmates!  Also,
+        I'd like to extend my thanks to Galvanize as well for granting
+        me the opportunity to be a part of their program.
+      </p>
+    </div>
 
-      <!-- Custom -->
-      <script type="text/javascript" src="../static/js/index.js"></script>
-    </body>
-</html>
+    <!-- Github -->
+    <div id="behind-scenes">
+      <h1>Go Behind the Scenes!</h1>
+      <a href="https://www.github.com/tdlazoen" class="extra-space" target="_blank">
+        <i class="fa fa-github" id="github" aria-hidden="true"></i>
+         Check it out on Github
+      </a>
+    </div>
+
+    <!-- Connect/contact -->
+    <div id="connect">
+      <h1>Connect with me!</h1>
+      <!-- linkedin -->
+      <a href="https://www.linkedin.com/in/tdlazoen" target="_blank">
+        <i class="fa fa-linkedin" id="linkedin" aria-hidden="true"></i></i>
+      </a>
+      <!-- email -->
+      <a href="mailto:tylerlazoen@gmail.com", target="_top">
+        <i class="fa fa-envelope" id="email" aria-hidden="true"></i>
+      </a>
+      <!-- blog -->
+      <a href="https://www.galvanizedintodata.com" target="_blank">
+        <i class="fa fa-wordpress" id="blog" aria-hidden="true"></i>
+      </a>
+      <br>
+      <!-- phone -->
+      <a href="tel:1-248-825-1332" style="display: inline-block; margin-top: 10px; padding-left: 0;">
+        <i class="fa fa-mobile" id="phone" aria-hidden="true"></i>
+         (248) 825-1332
+      </a>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer">
+    <p>Copyright © Tyler Lazoen 2016</p>
+  </div>
+</section>
+
+{% endblock %}
