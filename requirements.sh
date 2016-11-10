@@ -63,6 +63,7 @@ elif [[ "$OSTYPE" == darwin* ]]; then
     pip3 install autocorrect
     pip3 install patterns
     pip3 install -U gensim
+    pip3 install pyLDAvis
     pip3 install -U spacy
     python3 -m spacy.en.download all
 

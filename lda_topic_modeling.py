@@ -8,11 +8,14 @@ import pdb
 from collections import defaultdict
 from gensim.corpora import Dictionary
 from gensim.matutils import corpus2dense, Dense2Corpus
-from gensim.models.ldamodel import LdaModel
 from gensim.models.ldamulticore import LdaMulticore
 from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
 from modern_dfs import ModernPhilosophers, ModernDocuments
+
+
+import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 
 def load_pickled(filename):
@@ -29,7 +32,7 @@ class LDA(object):
     of documents
     '''
 
-    def __init__(self, df, tokenized_docs, num_topics=200, workers=None, \
+    def __init__(self, df, tokenized_docs, chunk_titles, num_topics=150, workers=None, \
                  chunksize=None, random_state=42, multicore=True):
         '''
         PARAMETERS:
@@ -43,6 +46,7 @@ class LDA(object):
         '''
         self.df = df
         self.tokenized_docs = tokenized_docs
+        self.chunk_titles = chunk_titles
         self.num_topics = num_topics
         self.workers = workers
         self.chunksize = chunksize
@@ -53,9 +57,17 @@ class LDA(object):
         self.corpus = [self.dictionary.doc2bow(tokens) for tokens in tokenized_docs]
 
     def filter_out_extremes(self):
+        '''
+        INPUT:
+            None
+        OUTPUT:
+            None
+
+        Filters extreme occurences of words out from dictionary
+        '''
         self.dictionary.filter_extremes(no_below=10, no_above=0.9)
 
-    def fit(self, normalize=True, run_lda=True):
+    def fit(self, run_lda=True):
         '''
         INPUT:
             tf_mat - term frequency matrix for corpus
@@ -72,7 +84,7 @@ class LDA(object):
             self.workers = multiprocessing.cpu_count() - 1
 
         if self.chunksize is None:
-            self.chunksize = 0.3 * docs.df.shape[0]
+            self.chunksize = docs.df.shape[0]
 
         self.id2word = dict((v, k) for k, v in self.dictionary.token2id.items())
 
@@ -81,12 +93,9 @@ class LDA(object):
                       'workers': self.workers, 'chunksize': self.chunksize, \
                       'random_state': self.random_state}
 
-            if self.multicore:
-                self.lda = LdaMulticore(corpus=self.normalized_corpus, **params, passes=20)
-            else:
-                self.lda = LdaModel(corpus=self.normalized_corpus, **params, passes=20)
+            self.lda = LdaMulticore(corpus=self.corpus, **params, passes=30)
 
-    def doc_topic_dists(self):
+    def calculate_topic_weights(self):
         '''
         INPUT:
             None
@@ -97,23 +106,31 @@ class LDA(object):
         ascending by id and place list of probabilities for topics 1-self.num_topics
         into new column called 'topic_dist'
         '''
-        self.topic_weight_mat = np.zeros((self.df.shape[0], self.num_topics))
+        self.topic_weight_mat = np.zeros((len(self.corpus), self.num_topics))
 
-        doc_topics = []
-        top_topics = []
-        maxs = []
         for i, doc_bow in enumerate(self.corpus):
             topics = self.lda.get_document_topics(doc_bow, minimum_probability=0)
             sorted_topics = sorted(topics, key=lambda x: x[0])
-            sorted_by_value = sorted(topics, key=lambda x: x[1], reverse=True)
-            doc_topics.append(sorted_topics)
-            top_topics.append([sorted_by_value[x][0] for x in range(5)])
-            maxs.append(sorted_by_value[0][0])
             self.topic_weight_mat[i, :] = ([x[1] for x in sorted_topics])
 
-        for i in range(5):
-            self.df['top_topic_{}'.format(i+1)] = [x[i] for x in top_topics]
-        self.most_important = np.unique(maxs)
+    def group_doc_chunks(self):
+        '''
+        INPUT:
+            None
+        OUTPUT:
+            None
+
+        Groups document chunk probabilities together
+        '''
+        all_docs = []
+        for i, title in enumerate(self.df.title.values):
+            doc_chunks = self.topic_weight_mat[self.chunk_titles == title]
+            doc_topic_probs = list(np.sum(doc_chunks, axis=0) / np.sum(doc_chunks))
+            doc_ids_to_probs = [(topic, prob) for topic, prob in enumerate(doc_topic_probs)]
+            all_docs.append(doc_ids_to_probs)
+
+        self.topic_dists = [(title, topic_prob_lst) for title, topic_prob_lst in \
+                            zip(lda.df.title.values, all_docs)]
 
     def top_words(self, topics=5, n_words=10):
         '''
@@ -138,12 +155,7 @@ class LDA(object):
             for word, prob in sorted(topic[1], key=lambda x: x[1], reverse=True):
                 print("Word: {} Probability: {}".format(word, prob))
 
-    def print_most_important(self):
-        for topicid in most_important:
-            print("\nTopic id {}".format(topicid))
-            lda.lda.print_topic(topicid)
-
-    def top_topic_word_frequency(self, topic_id):
+    def topic_word_frequency(self, topic_id):
         '''
         INPUT:
             topic_id - topic unique identifier
@@ -152,34 +164,45 @@ class LDA(object):
 
         Get the term frequency for a certain topic (for word cloud)
         '''
-        if topic_id in self.most_important:
-            idxs = self.df[(self.df.top_topic_1 == topic_id) | (self.df.top_topic_2 == topic_id)].index.tolist()
+        idxs = []
+        for i in range(self.topic_weight_mat.shape[0]):
+            topic_weights = self.topic_weight_mat[i, :]
+            top_topic = np.argsort(topic_weights)[-1]
+            if topic_id == top_topic:
+                idxs.append(i)
 
-            doc_term_freqs = corpus2dense(self.corpus, num_terms=len(self.dictionary.keys())).T
-            topic_term_freqs = doc_term_freqs[idxs]
+        mask = np.array(idxs)
 
-            freqs = np.sum(topic_term_freqs, axis=0)
+        doc_term_freqs = corpus2dense(self.corpus, num_terms=len(self.dictionary.keys())).T
+        topic_term_freqs = doc_term_freqs[mask]
 
-            words = [dict(self.id2word)[i] for i in range(len(freqs))]
+        freqs = np.sum(topic_term_freqs, axis=0)
 
-            return [(word, freq) for word, freq in zip(words, freqs)]
-        else:
-            return "Error!  The topic must be one of the most important"
+        words = [dict(self.id2word)[i] for i in range(len(freqs))]
+
+        return [(word, freq) for word, freq in zip(words, freqs)]
 
 
 if __name__ == '__main__':
     phils, docs = ModernPhilosophers(), ModernDocuments()
+    np.random.seed(42)
 
     print("Loading Model data...")
-    parsed_docs = load_pickled('data/model/parsed_docs.pkl')
+    all_titles = load_pickled('data/model/chunk_titles.pkl')
     tokenized_docs = load_pickled('data/model/tokenized_docs.pkl')
 
     print("Fitting LDA model...")
-    lda = LDA(docs.df, tokenized_docs, num_topics=200, workers=56)
+    lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=150, workers=56)
     lda.fit(run_lda=False)
 
-    with open('data/model/lda_final.pkl', 'rb') as f:
+    # with open('data/model/lda_chunks.pkl', 'wb') as f:
+    #     pickle.dump(lda, f)
+
+    with open('data/model/lda_chunks.pkl', 'rb') as f:
         lda_best = pickle.load(f)
 
     lda.lda = lda_best.lda
-    lda.doc_topic_dists()
+    print("Getting topic weights...")
+    lda.calculate_topic_weights()
+    print("Grouping Chunks...")
+    lda.group_doc_chunks()
