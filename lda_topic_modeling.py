@@ -198,17 +198,16 @@ if __name__ == '__main__':
     tokenized_docs = load_pickled('data/model/tokenized_docs_final.pkl')
 
     print("Fitting LDA model...")
-    lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=150, workers=56)
+    lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=25, workers=56)
     lda.fit(run_lda=True)
 
-    # with open('data/model/lda_200.pkl', 'rb') as f:
+    # with open('data/model/lda_50.pkl', 'rb') as f:
     #     lda_best = pickle.load(f)
 
-    # lda.lda = lda_best.lda
     print("Getting topic weights...")
     lda.calculate_topic_weights()
     print("Grouping Chunks...")
     lda.group_doc_chunks()
 
-    with open('data/model/lda_150.pkl', 'wb') as f:
+    with open('data/model/lda_25.pkl', 'wb') as f:
         pickle.dump(lda, f)

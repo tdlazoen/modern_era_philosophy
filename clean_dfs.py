@@ -275,6 +275,27 @@ def add_coordinates(phils):
             phils.df.loc[i, 'latitude'] = location.latitude
             phils.df.loc[i, 'longitude'] = location.longitude
 
+def drop_eastern(phils, docs):
+    eastern = ['japan', 'china', 'korea']
+
+    phil_idxs = []
+    phils_to_drop = []
+    for i in range(phils.df.shape[0]):
+        if phils.df.loc[i, 'country'] in eastern:
+            phil_idxs.append(i)
+            phils_to_drop.append(phils.df.loc[i, 'name'])
+
+    phils.df.drop(phil_idxs, inplace=True)
+
+    doc_idxs = []
+    for i in range(docs.df.shape[0]):
+        if docs.df.loc[i, 'author'] in phils_to_drop:
+            doc_idxs.append(i)
+
+    docs.df.drop(doc_idxs, inplace=True)
+
+    phils.save_df()
+    docs.save_df()
 
 if __name__ == '__main__':
     # Load dataframes

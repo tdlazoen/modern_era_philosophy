@@ -137,3 +137,6 @@ xxx
 sens
 etc
 est
+pair
+datum
+ind
