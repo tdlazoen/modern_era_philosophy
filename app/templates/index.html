@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+
+<!-- Custom -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <!-- Header -->
@@ -43,16 +51,16 @@
   <!-- Main story section -->
   <div class="journey">
     <output for"time-slider" id="time">1550</output>
-    <div id="map" style="width: 960px; height: 500px"></div>
+    <div id="map"></div>
 
     <!-- Philosopher time search -->
     <div class="search-bar">
-      <input type="text" name="name" placeholder="e.g. John Locke">
+      <input type="text" name="search" placeholder="e.g. John Locke">
     </div>
 
     <!-- Scroll to credits -->
     <a href="#credits" class="page-scroll">
-      <div class="footer">
+      <div class="footer more-info">
         <p>More Info about this project <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>
       </div>
     </a>
@@ -147,9 +155,18 @@
   </div>
 
   <!-- Copyright -->
-  <div class="footer">
+  <div class="footer copyright">
     <p>Copyright © Tyler Lazoen 2016</p>
   </div>
 </section>
+{% endblock %}
 
+{% block javascript %}
+
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% block visuals %}{% endblock %}
 {% endblock %}

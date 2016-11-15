@@ -1,0 +1,111 @@
+{% extends "index.html" %}
+
+{% block visuals %}
+<script>
+    // Philosopher Map
+    var map = L.map('map').setView([51.505, -0.09], 2);
+
+    // Remove certain zoom controls
+    map.zoomControl.remove()
+    new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+    map.touchZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
+
+    // Set minimum zoom
+    map.options.minZoom = 2;
+
+    // Create and style leaflet map from geojson file
+    $.ajax({
+      dataType: "json",
+      url: "{{ url_for('static', filename='json/western_countries.json') }}",
+      success: function(data) {
+        var geoJsonLayer = new L.geoJson(data.features, {
+                            style: function(feature) {
+                                switch(feature.properties['CONTINENT']) {
+                                    case 'North America': return {fillColor: '#492D1F',
+                                                                  fillOpacity: 1,
+                                                                  weight: 1.2,
+                                                                  color: '#D2B48C',
+                                                                  opacity: 1
+                                                          };
+                                    case 'Europe': return {fillColor: '#492D1F',
+                                                           fillOpacity: 1,
+                                                           weight: 1.2,
+                                                           color: '#D2B48C',
+                                                           opacity: 1
+                                                   };
+                                    default: return {
+                                        fillColor: 'none',
+                                        fillOpacity: 1,
+                                        weight: 1.2,
+                                        color: '#492D1F',
+                                        opacity: 0.5
+                                    }
+                                }
+                            }
+        });
+        geoJsonLayer.addTo(map);
+      }
+    }).error(function() {});
+
+    // Add current time philosophers onto map
+    var markers = new Array();
+    $(function() {
+        $("#time-slider").bind("change", function() {
+            $.getJSON($SCRIPT_ROOT + '/_current_phils', {
+                year: $("#time-slider").val()
+            }, function(data) {
+                var new_markers = new Array();
+                data.json_list.forEach(function(phil) {
+                    var marker = L.marker([phil.latitude, phil.longitude]);
+
+                    if (markers.indexOf(marker) == -1) {
+                        markers.push(marker);
+                        map.addLayer(marker);
+                        marker.bindPopup(phil.name);
+                    }
+                    new_markers.push(marker);
+                });
+
+                markers.forEach(function(element) {
+                    if (new_markers.indexOf(element) == -1) {
+                        map.removeLayer(element);
+                    }
+                });
+            });
+            // $.getJSON($SCRIPT_ROOT + '/_calculate_topics', {
+            //     year: $("#time-slider").val()
+            // }, function(data) {
+            //     console.log(data.json_list)
+            // })
+        });
+    });
+
+    // Jump to a certain philosopher's time period
+    $(function() {
+        $("input[type='text']").bind("keydown", function(k) {
+            if (k.keyCode == 13) {
+                $.getJSON($SCRIPT_ROOT + '/_jump_to_phil', {
+                    name: $(this).val()
+                }, function(data) {
+                    $('#time-slider').val(String(data.year)).change()
+                })
+            }
+        });
+    });
+
+    // // Visualize topic distribution of a certain time
+    // $(function() {
+    //     $("#time-slider").bind("change", function() {
+    //         $.getJSON($SCRIPT_ROOT + '/_calculate_topics', {
+    //             year: $("#time-slider").val()
+    //         }, function(data) {
+    //             console.log(data.json_list)
+    //         })
+    //     })
+    // })
+
+</script>
+{% endblock %}

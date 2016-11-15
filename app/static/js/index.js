@@ -4,19 +4,24 @@ $(window).load(function() {
 });
 
 // Scroll to story section from home page
-$(".page-scroll").on("click", function(e) {
+$(".page-scroll").click(function(e) {
     e.preventDefault();
     var section = $(this).attr("href");
     $("html, body").animate({
         scrollTop: $(section).offset().top
-    }, 1250);
+    }, 1100);
 });
+
+$("#time-slider").click(function(e) {
+    e.preventDefault()
+    var value = $(this).val();
+    $(this).val(value).change();
+    $("#time").val(value).change();
+})
 
 $("#time-slider").on("change", function(e) {
     e.preventDefault();
     var value = $(this).val();
-    $("#time-slider").val(value);
-    $("#time").val(value)
     if (value == "2016") {
         $(".go-back-story div").text("One More Time? ")
                                .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
@@ -27,22 +32,37 @@ $("#time-slider").on("change", function(e) {
     };
 });
 
-var intervalIds = [];
+var intervalIds = [],
+    starttime,
+    requestAnimationReference;
+
+window.requestAnimationFrame = window.requestAnimationFrame
+                               || window.mozRequestAnimationFrame
+                               || window.webkitRequestAnimationFrame
+                               || window.msRequestAnimationFrame;
+
+window.cancelAnimationFrame = window.cancelAnimationFrame
+                              || window.mozCancelAnimationFrame
 
 // Move slider when play is pressed
 $("#play").click(function(e) {
     e.preventDefault();
-    clearIntervals(intervalIds)
-    intervalIds.push(
-        iterateSlider(1550, 2016)
-    );
+    clearIntervals(intervalIds);
+    var slider = $("#time-slider")
+    var output = $("#time")
+    requestAnimationReference = requestAnimationFrame(function(timestamp) {
+                                        starttime = timestamp
+                                        playSmoothly(timestamp, slider, output, 466, 100000)
+                                });
 });
 
 $("#pause").click(function(e) {
     clearIntervals(intervalIds);
+    cancelAnimationFrame(requestAnimationReference)
 });
 
 $("#rewind").mousedown(function(e) {
+    cancelAnimationFrame(requestAnimationReference)
     e.preventDefault();
     intervalIds.push(
         iterateSlider(1550, 2016, add=false)
@@ -54,8 +74,12 @@ $("#rewind").mousedown(function(e) {
 $("#stop").click(function(e) {
     e.preventDefault();
     clearIntervals(intervalIds)
-    $("#time-slider").val("1550")
-    $("#time").val("1550")
+    cancelAnimationFrame(requestAnimationReference)
+    $("#time-slider").val("1550").change()
+    $("#time").val("1550").change()
+    markers.forEach(function(marker) {
+        map.removeLayer(marker);
+    });
 });
 
 // Reset if one more time button clicked
@@ -63,21 +87,14 @@ $(".go-back-story").click(function(e) {
     e.preventDefault()
     $(this).text("Continue The Journey ")
                              .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
-    $("#time-slider").val("1550");
-    $("#time").val("1550");
+    $("#time-slider").val("1550").change();
+    $("#time").val("1550").change();
 });
 
 function clearIntervals(obj) {
     obj.forEach(function(element) {
         clearInterval(element);
     });
-}
-
-function animateRewind(intVal, valueToSet) {
-    var val = {"value": valueToSet};
-    var distance = intVal - Math.floor(valueToSet);
-    $("#time-slider").animate(val, distance * 3, 'linear');
-    $("#time").val(valueToSet);
 }
 
 function iterateSlider(min, max, add=true) {
@@ -98,10 +115,28 @@ function iterateSlider(min, max, add=true) {
             intVal = String(min);
             clearIntervals(intervalIds);
         };
-        $("#time-slider").val(String(intVal));
-        $("#time").val(String(intVal))
+        $("#time-slider").val(String(intVal)).change();
+        $("#time").val(String(intVal)).change();
     }, 10);
     return id
+}
+
+function playSmoothly(timestamp, el, el2, dist, duration) {
+    var timestamp = timestamp;
+    var runtime = timestamp - starttime;
+    var progress = runtime / duration;
+
+    progress = Math.min(progress, 1);
+
+    var value = Math.floor((progress * dist) + 1550)
+    el.val(String(value)).change();
+    el2.val(String(value)).change();
+
+    if (progress < 1) {
+        requestAnimationReference = requestAnimationFrame(function(timestamp) {
+                                        playSmoothly(timestamp, el, el2, dist, duration)
+                                    });
+    }
 }
 
 function outputUpdate(val) {
@@ -111,5 +146,5 @@ function outputUpdate(val) {
   else if (val < 1550) {
       val = 1550;
   };
-  $("#time").val(val)
+  $("#time").val(val).change()
 }

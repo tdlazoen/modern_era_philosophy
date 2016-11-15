@@ -5,13 +5,10 @@
       <title>Philosophy</title>
 
       <!-- Favicon -->
-      <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />`
+      <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />`
 
       <!-- Google Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ledger" rel="stylesheet">
-
-      <!-- JQuery UI -->
-      <link rel="stylesheet" href="../static/css/jquery-ui.min.css">
 
       <!-- Bootstrap -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,23 +20,35 @@
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 
       <!-- Custom -->
-      <link rel="stylesheet" href="../static/css/index.css">
+      {% block css %}{% endblock %}
     </head>
     <body id="page-top">
 
       {% block content %}{% endblock %}
 
-      <!-- JQuery & JQuery UI -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script type="text/javascript"src="../static/js/jquery-ui.min.js"></script>
 
-      <!-- leaflet -->
-      <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+      <!-- D3.js -->
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="https://d3js.org/d3-array.v1.min.js"></script>
+      <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+      <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
+      <script src="https://d3js.org/topojson.v1.min.js"></script>
+
+      <!-- Topojson -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+
+      <!-- JQuery -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
       <!-- Bootstrap -->
       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+      <!-- Script Root -->
+      <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      </script>
+
       <!-- Custom -->
-      <script type="text/javascript" src="../static/js/index.js"></script>
+      {% block javascript %}{% endblock %}
     </body>
 </html>
