@@ -33,31 +33,37 @@ def lda_word_dists(lda_model, figsize=(16, 10), filepath=None):
         ax1 = fig.add_subplot(1, 2, 1)
 
         ax1.hist(max_word_probs, histtype='stepfilled', color='b', \
-                bins=num_topics, alpha=0.7)
+                bins=num_topics, alpha=0.6)
 
         avg_max = np.mean(max_word_probs)
         ax1.axvline(avg_max, lw=3, c='r', linestyle='dashed', alpha=0.8, \
                     label='Mean: {}'.format(np.round(avg_max, 3)))
 
-        ax1.set_title("Distribution of max word probabilities for {}-topic LDA model".format(num_topics))
-        ax1.set_xlabel("Max word probability", fontsize=14)
-        ax1.set_ylabel("Number of topics", fontsize=14)
+        ax1.set_title("Distribution of max word probabilities for {}-topic LDA model".format(num_topics), fontsize=40)
+        ax1.set_xlabel("Max word probability", fontsize=30)
+        ax1.set_ylabel("Number of topics", fontsize=30)
+
+        ax1.tick_params(axis='x', labelsize=20)
+        ax1.tick_params(axis='y', labelsize=20)
 
         ax1.legend(loc='best')
 
         ax2 = fig.add_subplot(1, 2, 2)
 
-        ax2.hist(mean_word_probs, histtype='stepfilled', color='c', \
-                 bins=num_topics, alpha=0.7)
+        ax2.hist(mean_word_probs, histtype='stepfilled', color='b', \
+                 bins=num_topics, alpha=0.6)
 
         avg_mean = np.mean(mean_word_probs)
         ax2.axvline(avg_mean, lw=3, c='r', linestyle='dashed', alpha=0.8, \
                     label='Mean: {}'.format(np.round(avg_mean, 3)))
 
-        ax2.set_title("Distribution of mean word probabilities for {}-topic LDA model".format(num_topics))
-        ax2.set_xlabel("Mean word probability", fontsize=14)
-        ax2.set_ylabel("Number of topics", fontsize=14)
+        ax2.set_title("Distribution of mean word probabilities for {}-topic LDA model".format(num_topics), fontsize=40)
+        ax2.set_xlabel("Mean word probability", fontsize=30)
+        ax2.set_ylabel("Number of topics", fontsize=30)
         ax2.legend(loc='best')
+
+        ax2.tick_params(axis='x', labelsize=20)
+        ax2.tick_params(axis='y', labelsize=20)
 
         plt.tight_layout()
         plt.show()
@@ -89,14 +95,18 @@ def topic_distribution(lda_model, figsize=(10, 8), filepath=None):
         fig = plt.figure(figsize=figsize)
         ax = fig.add_subplot(1, 1, 1)
 
-        ax.hist(max_topics, histtype='stepfilled', color='#3AB26F', bins=num_topics, \
-                alpha=0.7)
+        ax.hist(max_topics, histtype='stepfilled', color='b', bins=num_topics, \
+                alpha=0.6)
 
-        ax.set_title("Top topic distribution for {}-topic LDA model".format(num_topics))
-        ax.set_xlabel("Top topic")
-        ax.set_ylabel("Number of documents")
-        ax.set_xlim(0, 150)
+        ax.set_title("Top topic distribution for {}-topic LDA model".format(num_topics), fontsize=40)
+        ax.set_xlabel("Top topic", fontsize=30)
+        ax.set_ylabel("Number of documents", fontsize=30)
+        ax.set_xlim(0, num_topics)
 
+        ax.tick_params(axis='x', labelsize=20)
+        ax.tick_params(axis='y', labelsize=20)
+
+        plt.tight_layout()
         plt.show()
 
         if filepath:
@@ -124,12 +134,16 @@ def docs_by_century(docs, figsize=(10, 8), filepath=None):
         height = [docs.df[docs.df.century == cent].shape[0] for cent in centuries]
         tick_labels = centuries
 
-        ax.bar(left, height, color='g', tick_label=tick_labels, width=80, \
+        ax.bar(left, height, color='b', tick_label=tick_labels, width=80, \
                align='center', linewidth=0, alpha=0.6)
-        ax.set_title("Number of documents by century", fontsize=20)
-        ax.set_xlabel("Century", fontsize=14)
-        ax.set_ylabel("Number of documents", fontsize=14)
+        ax.set_title("Documents by century", fontsize=40)
+        ax.set_xlabel("Century", fontsize=30)
+        ax.set_ylabel("Number of documents", fontsize=30)
 
+        ax.tick_params(axis='x', labelsize=20)
+        ax.tick_params(axis='y', labelsize=20)
+
+        plt.tight_layout()
         plt.show()
 
         if filepath:
@@ -159,13 +173,17 @@ def docs_by_philosopher(phils, docs, figsize=(10, 8), filepath=None):
         fig = plt.figure(figsize=figsize)
         ax = fig.add_subplot(1, 1, 1)
 
-        ax.hist(counts, bins=len(np.unique(counts)), color='m', \
+        ax.hist(counts, bins=len(np.unique(counts)), color='b', \
                 histtype='stepfilled', alpha=0.6)
 
-        ax.set_title("Distribution of documents per philosopher")
-        ax.set_xlabel("Number of documents")
-        ax.set_ylabel("Number of philosophers")
+        ax.set_title("Distribution of documents", fontsize=40)
+        ax.set_xlabel("Number of documents", fontsize=30)
+        ax.set_ylabel("Number of philosophers", fontsize=30)
 
+        ax.tick_params(axis='x', labelsize=20)
+        ax.tick_params(axis='y', labelsize=20)
+
+        plt.tight_layout()
         plt.show()
 
         if filepath:
@@ -193,13 +211,17 @@ def document_length_distribution(docs, figsize=(12, 10), filepath=None):
         fig = plt.figure(figsize=figsize)
         ax1 = fig.add_subplot(1, 1, 1)
 
-        ax1.hist(words, bins=215, histtype="stepfilled", color='c')
-        ax1.set_title("Distribution of corpus document lengths", fontsize=20)
-        ax1.set_xlabel("Document length", fontsize=14)
-        ax1.set_ylabel("Number of documents", fontsize=14)
+        ax1.hist(words, bins=215, histtype="stepfilled", color='b', alpha=0.6)
+        ax1.set_title("Distribution of document lengths", fontsize=40)
+        ax1.set_xlabel("Document length", fontsize=30)
+        ax1.set_ylabel("Number of documents", fontsize=30)
         ax1.set_xlim(0, 100000)
-        ax1.set_xticks([0, 100000])
+        ax1.xaxis.set_ticks([0, 100000])
 
+        ax1.tick_params(axis='x', labelsize=20)
+        ax1.tick_params(axis='y', labelsize=20)
+
+        plt.tight_layout()
         plt.show()
 
         if filepath:
@@ -218,7 +240,7 @@ def word_cloud(lda_model, topic, filepath):
     Saves a word cloud for topic id to specified filename
     '''
     if not os.path.exists(filepath):
-        wordcloud = WordCloud(background_color="white")
+        wordcloud = WordCloud(background_color="white", stopwords={'law', 'pair'})
         term_freqs = lda_model.topic_word_frequency(topic)
         wordcloud.fit_words(term_freqs)
 
@@ -227,18 +249,18 @@ def word_cloud(lda_model, topic, filepath):
         print("Already exists!")
 
 if __name__ == '__main__':
-    with open('data/model/lda_150.pkl', 'rb') as f:
+    with open('data/model/lda_25.pkl', 'rb') as f:
         lda = pickle.load(f)
 
     phils, docs = ModernPhilosophers(), ModernDocuments()
-
-    # docs_by_century(docs, filepath='visualizations/data_vis/docs_century.png')
-    # docs_by_philosopher(phils, docs, filepath='visualizations/data_vis/docs_philosopher.png')
+#
+    docs_by_century(docs, filepath='visualizations/data_vis/docs_century.png')
+    docs_by_philosopher(phils, docs, filepath='visualizations/data_vis/docs_philosopher.png')
     # word_distribution_plots(docs, filepath='visualizations/data_vis/word_distributions.png')
-    # lda_word_dists(lda, filepath='visualizations/data_vis/lda-word-dists.png')
-    # topic_distribution(lda, filepath='visualizations/data_vis/lda-topic-dist.png')
+    # lda_word_dists(lda, filepath='visualizations/data_vis/lda-25-word-dists.png')
+    # topic_distribution(lda, filepath='visualizations/data_vis/lda-25-topic-dist.png')
     document_length_distribution(docs, filepath='visualizations/data_vis/document_lengths.png')
     # for topic_id in range(lda.num_topics):
     #     print("Getting word cloud for topic {}".format(topic_id))
-    #     filepath = 'visualizations/word_clouds/topic{}.png'.format(topic_id)
+    #     filepath = 'visualizations/word_clouds/topics_25/topic{}.png'.format(topic_id)
     #     word_cloud(lda, topic_id, filepath)
