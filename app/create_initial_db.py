@@ -4,6 +4,7 @@ import os
 import sys
 sys.path.append(os.path.abspath('..'))
 from modern_dfs import ModernPhilosophers, ModernDocuments
+from lda_topic_modeling import LDA
 
 def add_initial():
     '''

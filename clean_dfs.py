@@ -173,6 +173,9 @@ def fill_in_nulls(phils, docs):
         nationality = phils.df.loc[i, 'nationality']
         birthplace = phils.df.loc[i, 'birthplace']
 
+        if phils.df.loc[i, 'year_died'] == 0:
+            phils.df.loc[i, 'year_died'] = 2050;
+
         if not nationality:
             query = 'nationality of ' + name
             phils.df.loc[i, 'nationality'] = null_value_query(query)

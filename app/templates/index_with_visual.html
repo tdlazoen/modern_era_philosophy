@@ -3,7 +3,7 @@
 {% block visuals %}
 <script>
     // Philosopher Map
-    var map = L.map('map').setView([51.505, -0.09], 2);
+    var map = L.map('map').setView([52, 15.2551], 3.5);
 
     // Remove certain zoom controls
     map.zoomControl.remove()
@@ -27,13 +27,13 @@
                                     case 'North America': return {fillColor: '#492D1F',
                                                                   fillOpacity: 1,
                                                                   weight: 1.2,
-                                                                  color: '#D2B48C',
+                                                                  color: '#8eaecc',
                                                                   opacity: 1
                                                           };
                                     case 'Europe': return {fillColor: '#492D1F',
                                                            fillOpacity: 1,
                                                            weight: 1.2,
-                                                           color: '#D2B48C',
+                                                           color: '#8eaecc',
                                                            opacity: 1
                                                    };
                                     default: return {
@@ -50,8 +50,26 @@
       }
     }).error(function() {});
 
+    // Customized leaflet icon
+    var featherPenIcon = L.icon({
+        iconUrl: "{{ url_for('static', filename='imgs/feather-pen.png')}}",
+        iconSize:     [30, 88],
+        iconAnchor:   [0, 88],
+        popupAnchor:  [25, -62]
+    });
+
+    // Bar chart global variables
+    var width = $("#bar-chart").width(),
+        height = $("#bar-chart").height()
+
+    xScale= d3.scaleLinear()
+               .domain([0, 0.6])
+               .range([0, width])
+
+
     // Add current time philosophers onto map
     var markers = new Array();
+    var titles = new Array();
     $(function() {
         $("#time-slider").bind("change", function() {
             $.getJSON($SCRIPT_ROOT + '/_current_phils', {
@@ -59,7 +77,7 @@
             }, function(data) {
                 var new_markers = new Array();
                 data.json_list.forEach(function(phil) {
-                    var marker = L.marker([phil.latitude, phil.longitude]);
+                    var marker = L.marker([phil.latitude, phil.longitude], {icon: featherPenIcon});
 
                     if (markers.indexOf(marker) == -1) {
                         markers.push(marker);
@@ -75,11 +93,26 @@
                     }
                 });
             });
-            // $.getJSON($SCRIPT_ROOT + '/_calculate_topics', {
-            //     year: $("#time-slider").val()
-            // }, function(data) {
-            //     console.log(data.json_list)
-            // })
+            // Get the top 5 topics for a specific year
+            $.getJSON($SCRIPT_ROOT + '/_calculate_topics', {
+                year: $("#time-slider").val()
+            }, function(data) {
+                var topics = data.json_list;
+                var probs = [topics.first_prob, topics.second_prob, topics.third_prob,
+                             topics.fourth_prob, topics.fifth_prob];
+                var currentTitles = [topics.first_title, topics.second_title, topics.third_title,
+                              topics.fourth_title, topics.fifth_title];
+
+                var topicInfo = []
+                for (i = 0; i < probs.length; i++) {
+                    topicInfo.push({
+                        title: currentTitles[i],
+                        prob: probs[i]
+                    });
+                }
+
+                updateBarChart(topicInfo)
+            });
         });
     });
 
@@ -91,21 +124,52 @@
                     name: $(this).val()
                 }, function(data) {
                     $('#time-slider').val(String(data.year)).change()
+                    $('#time').val(String(data.year)).change()
                 })
             }
         });
     });
 
-    // // Visualize topic distribution of a certain time
-    // $(function() {
-    //     $("#time-slider").bind("change", function() {
-    //         $.getJSON($SCRIPT_ROOT + '/_calculate_topics', {
-    //             year: $("#time-slider").val()
-    //         }, function(data) {
-    //             console.log(data.json_list)
-    //         })
-    //     })
-    // })
+    function updateBarChart(currentInfo) {
+        var bars = d3.select("#bar-chart")
+                     .selectAll(".bar")
+                     .data(currentInfo)
+                     .style("width", function(d) { return String(xScale(d.prob)) + "px"; })
+
+        var h2s = d3.select("#bar-chart")
+                    .selectAll("h2")
+                    .data(currentInfo)
+                    .text(function(d) { return d.title; })
+
+        var h1s = d3.select("#bar-chart")
+                    .selectAll("h1")
+                    .data(currentInfo)
+                    .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; })
+
+        bars.enter()
+            .append("div")
+            .attr("class", "bar")
+            .style("width", function(d) { return String(xScale(d.prob)) + "px"; })
+
+        bars.exit().remove()
+
+        h2s.enter()
+           .append("h2")
+           .text(function(d) { return d.title; })
+
+        h2s.exit().remove()
+
+        h1s.enter()
+           .append("h1")
+           .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; })
+
+        h1s.exit().remove()
+
+    }
+
+    $(window).load(function() {
+        $("#time-slider").val("1597").change()
+    })
 
 </script>
 {% endblock %}

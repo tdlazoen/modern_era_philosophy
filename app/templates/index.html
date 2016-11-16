@@ -44,13 +44,33 @@
     <button type="button" id="stop">
       <i class="fa fa-stop" aria-hidden="true"></i>
     </button>
-    <input type="range" id="time-slider" name="time-slider" value="1550" min="1550" max="2016"
+    <input type="range" id="time-slider" name="time-slider" value="1597" min="1597" max="2001"
         oninput="outputUpdate(value)">
   </div>
 
   <!-- Main story section -->
   <div class="journey">
-    <output for"time-slider" id="time">1550</output>
+    <output for="time-slider" id="time">1597</output>
+    <div id="topic-bars">
+        <h1 id='header'>Top 5 Topics for 1597</h1>
+        <div id="bar-chart">
+            <h2>Topic 1</h2>
+            <div class="bar"></div>
+            <h1>0%</h1>
+            <h2>Topic 2</h2>
+            <div class="bar"></div>
+            <h1>0%</h1>
+            <h2>Topic 3</h2>
+            <div class="bar"></div>
+            <h1>0%</h1>
+            <h2>Topic 4</h2>
+            <div class="bar"></div>
+            <h1>0%</h1>
+            <h2>Topic 5</h2>
+            <div class="bar"></div>
+            <h1>0%</h1>
+        </div>
+    </div>
     <div id="map"></div>
 
     <!-- Philosopher time search -->

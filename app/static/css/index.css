@@ -6,9 +6,9 @@ body {
 }
 
 header {
-    height: 100px;
-    width: 100px;
-    padding: 25px 50px;
+    height: 15%%;
+    width: 10%;
+    padding: 2.5% 5%;
     position: fixed;
     z-index: 999;
 }
@@ -81,7 +81,7 @@ a.begin i {
 }
 
 #story {
-    background-color: #D2B48C;
+    background-color: #8eaecc;
 }
 
 div.controls {
@@ -90,8 +90,8 @@ div.controls {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
-    padding-top: 30px;
-    padding-left: 175px;
+    padding-top: 2%;
+    padding-left: 12%;
     -webkit-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
     box-shadow: 0px 3px 7px 2px rgba(0,0,0,0.5);
@@ -240,9 +240,67 @@ output {
                  -1px 2px 3px rgba(0,0,0,0.1);
 }
 
+div#topic-bars {
+    width: 32%;
+    height: 88.9%;
+    position: absolute;
+    padding-left: 1.5%;
+    bottom: 10%;
+    z-index: 0;
+    text-align: left;
+}
+
+div#topic-bars #header {
+    text-align: center;
+    font-size: 4em;
+    color: #492D1F;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 900;
+    text-shadow: -1px 1px 3px rgba(0,0,0,0.4),
+                 -1px 2px 13px rgba(0,0,0,0.1),
+                 -1px 4px 23px rgba(0,0,0,0.1);
+}
+
+div#bar-chart {
+    position: absolute;
+    margin-top: 1.5%;
+    height: 85%;
+    width: 94%;
+}
+
+div#bar-chart h2 {
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-family: 'Ledger', serif;
+    font-size: 2.2em;
+    text-shadow: -1px 1px 3px rgba(0,0,0,0.4),
+                 -1px 2px 13px rgba(0,0,0,0.1),
+                 -1px 4px 23px rgba(0,0,0,0.1);
+}
+
+div#bar-chart h2:nth-of-type(1) {
+    margin-top: 1%;
+}
+
+div#bar-chart div.bar {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 2%;
+    height: 8%;
+    width: 50%;
+    background-color: #492D1F;
+}
+
+div#bar-chart h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    margin-bottom: 0;
+    font-weight: 800;
+}
+
 div#map {
     overflow: hidden;
-    width: 67%;
+    width: 66%;
     height: 88.9%;
     position: absolute;
     right: 1%;
@@ -252,13 +310,13 @@ div#map {
 }
 
 .leaflet-container {
-    background-color: #D2B48C;
+    background-color: #8eaecc;
 }
 
 div.search-bar {
     position: absolute;
     bottom: 2%;
-    left: 1.5%;
+    left: 1%;
     width: 40%;
     height: 7%;
 }
@@ -325,15 +383,16 @@ a[href="#credits"] {
 }
 
 #credits div.made-possible {
-    text-align: center;
+    text-align: left;
     width: 60vw;
 }
 
 #credits div.packages-used {
-    padding-left: 3%;
+    padding-left: 10%;
 }
 
 #credits div.made-possible h1 {
+    padding-left: 25%;
     margin-bottom: 2.5%;
 }
 

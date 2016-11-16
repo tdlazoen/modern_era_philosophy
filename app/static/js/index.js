@@ -17,12 +17,14 @@ $("#time-slider").click(function(e) {
     var value = $(this).val();
     $(this).val(value).change();
     $("#time").val(value).change();
+    clearIntervals(intervalIds)
+    cancelAnimationFrame(requestAnimationReference)
 })
 
 $("#time-slider").on("change", function(e) {
     e.preventDefault();
     var value = $(this).val();
-    if (value == "2016") {
+    if (value === "2001") {
         $(".go-back-story div").text("One More Time? ")
                                .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
     }
@@ -30,6 +32,7 @@ $("#time-slider").on("change", function(e) {
         $(".go-back-story div p").text("Continue The Journey ")
                                  .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
     };
+    $("div#topic-bars #header").text("Top 5 Topics for " + String(value))
 });
 
 var intervalIds = [],
@@ -48,11 +51,15 @@ window.cancelAnimationFrame = window.cancelAnimationFrame
 $("#play").click(function(e) {
     e.preventDefault();
     clearIntervals(intervalIds);
-    var slider = $("#time-slider")
-    var output = $("#time")
+    var slider = $("#time-slider");
+    var output = $("#time");
+    var value = $("#time-slider").val();
+    var oldValue = Math.floor(value)
+    var dist = 2001 - Math.floor(value);
+    var duration = 150000 - (300 * (404 - dist))
     requestAnimationReference = requestAnimationFrame(function(timestamp) {
                                         starttime = timestamp
-                                        playSmoothly(timestamp, slider, output, 466, 100000)
+                                        playSmoothly(timestamp, slider, output, dist, value, oldValue, duration)
                                 });
 });
 
@@ -65,7 +72,7 @@ $("#rewind").mousedown(function(e) {
     cancelAnimationFrame(requestAnimationReference)
     e.preventDefault();
     intervalIds.push(
-        iterateSlider(1550, 2016, add=false)
+        iterateSlider(1597, 2001, add=false)
     );
 }).bind('mouseup mouseleave', function() {
     clearIntervals(intervalIds)
@@ -75,8 +82,8 @@ $("#stop").click(function(e) {
     e.preventDefault();
     clearIntervals(intervalIds)
     cancelAnimationFrame(requestAnimationReference)
-    $("#time-slider").val("1550").change()
-    $("#time").val("1550").change()
+    $("#time-slider").val("1597").change()
+    $("#time").val("1597").change()
     markers.forEach(function(marker) {
         map.removeLayer(marker);
     });
@@ -87,8 +94,8 @@ $(".go-back-story").click(function(e) {
     e.preventDefault()
     $(this).text("Continue The Journey ")
                              .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
-    $("#time-slider").val("1550").change();
-    $("#time").val("1550").change();
+    $("#time-slider").val("1597").change();
+    $("#time").val("1597").change();
 });
 
 function clearIntervals(obj) {
@@ -121,30 +128,33 @@ function iterateSlider(min, max, add=true) {
     return id
 }
 
-function playSmoothly(timestamp, el, el2, dist, duration) {
+function playSmoothly(timestamp, el, el2, dist, start, oldValue, duration) {
     var timestamp = timestamp;
     var runtime = timestamp - starttime;
     var progress = runtime / duration;
 
     progress = Math.min(progress, 1);
+    var value = Math.floor((progress * dist) + Math.floor(start))
 
-    var value = Math.floor((progress * dist) + 1550)
-    el.val(String(value)).change();
-    el2.val(String(value)).change();
+    if (value - oldValue >= 1) {
+        el.val(String(value)).change();
+        el2.val(String(value)).change();
+        oldValue = value
+    }
 
     if (progress < 1) {
         requestAnimationReference = requestAnimationFrame(function(timestamp) {
-                                        playSmoothly(timestamp, el, el2, dist, duration)
+                                        playSmoothly(timestamp, el, el2, dist, start, oldValue, duration)
                                     });
     }
 }
 
 function outputUpdate(val) {
-  if (val > 2016) {
-      val = 2016;
+  if (val > 2001) {
+      val = 2001;
   }
-  else if (val < 1550) {
-      val = 1550;
+  else if (val < 1597) {
+      val = 1597;
   };
   $("#time").val(val).change()
 }
