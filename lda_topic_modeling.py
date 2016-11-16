@@ -138,6 +138,36 @@ class LDA(object):
         self.topic_dists = [(title, topic_prob_lst) for title, topic_prob_lst in \
                             zip(lda.df.title.values, all_docs)]
 
+    def get_philosopher_distributions(self):
+        self.philosopher_topic_dists = []
+
+        for name in self.df.author.unique():
+            phil_df = self.df[self.df.author == name]
+            titles = phil_df.title.values
+            mask = np.in1d(self.chunk_titles, titles)
+            phil_weights = self.topic_weight_mat[mask]
+            phil_dist = np.sum(phil_weights, axis=0) / np.sum(phil_weights)
+            self.philosopher_topic_dists.append((name, phil_dist))
+
+    def get_similar_philosophers(self):
+        model.philosopher_cosine_sims = []
+        for name, vector in model.philosopher_topic_dists:
+            cos_sims = []
+            for name2, vector2 in model.philosopher_topic_dists:
+                if name2 == name:
+                    continue
+                else:
+                    cos_sim = cosine(vector, vector2)
+                    cos_sims.append((name2, cos_sim))
+            ordered_cos = sorted(cos_sims, key=lambda x: x[1], reverse=True)
+            sim_dict = {'name': name, \
+                        'first': ordered_cos[0][0], \
+                        'second': ordered_cos[1][0], \
+                        'third': ordered_cos[2][0], \
+                        'fourth': ordered_cos[3][0], \
+                        'fifth': ordered_cos[4][0] }
+            model.philosopher_cosine_sims.append(sim_dict)
+
     def top_words(self, topics=5, n_words=10):
         '''
         INPUT:
