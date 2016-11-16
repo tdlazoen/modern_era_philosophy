@@ -1,10 +1,11 @@
 from app import db
-from models import Philosopher, Document, CurrentTopics
+from models import Philosopher, Document, CurrentTopics, SimilarPhilosophers
 import pickle
 import numpy as np
 import os
 import sys
 sys.path.append(os.path.abspath('..'))
+from modern_dfs import ModernPhilosophers
 from lda_topic_modeling import LDA
 
 def add_topic_table():
@@ -67,5 +68,23 @@ def add_topic_table():
                               'fifth_prob': 0}
         year_topics = CurrentTopics(**current_params)
         db.session.add(year_topics)
+
+    db.session.commit()
+
+
+def similar_philosophers_table():
+    with open('../data/model/lda_25.pkl', 'rb') as f:
+        model = pickle.load(f)
+
+    for dct in model.philosopher_cosine_sims:
+        params = {'name': dct['name'], \
+                  'first_name': dct['first'], \
+                  'second_name': dct['second'], \
+                  'third_name': dct['third'], \
+                  'fourth_name': dct['fourth'], \
+                  'fifth_name': dct['fifth']}
+
+        similar_phils = SimilarPhilosophers(**params)
+        db.session.add(similar_phils)
 
     db.session.commit()

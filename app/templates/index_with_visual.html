@@ -82,7 +82,7 @@
                     if (markers.indexOf(marker) == -1) {
                         markers.push(marker);
                         map.addLayer(marker);
-                        marker.bindPopup(phil.name);
+                        marker.bindPopup("<a class='phils-sum'>" + phil.name + "</a>");
                     }
                     new_markers.push(marker);
                 });
@@ -116,6 +116,16 @@
         });
     });
 
+    // Bring up philosopher summary
+    // $(function() {
+    //     $(".phils-sum").bind("click", function() {
+    //         $.getJSON($SCRIPT_ROOT + '/_phil_sum', {
+    //             name: $(this).text()
+    //         }, function(data) {
+    //         });
+    //     });
+    // });
+
     // Jump to a certain philosopher's time period
     $(function() {
         $("input[type='text']").bind("keydown", function(k) {
@@ -134,33 +144,36 @@
         var bars = d3.select("#bar-chart")
                      .selectAll(".bar")
                      .data(currentInfo)
+                     .transition()
                      .style("width", function(d) { return String(xScale(d.prob)) + "px"; })
 
         var h2s = d3.select("#bar-chart")
                     .selectAll("h2")
                     .data(currentInfo)
+                    .transition()
                     .text(function(d) { return d.title; })
 
         var h1s = d3.select("#bar-chart")
                     .selectAll("h1")
                     .data(currentInfo)
+                    .transition()
                     .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; })
 
-        bars.enter()
-            .append("div")
+        bars.enter().append("div")
             .attr("class", "bar")
+            .transition()
             .style("width", function(d) { return String(xScale(d.prob)) + "px"; })
 
         bars.exit().remove()
 
-        h2s.enter()
-           .append("h2")
+        h2s.enter().append("h2")
+           .transition()
            .text(function(d) { return d.title; })
 
         h2s.exit().remove()
 
-        h1s.enter()
-           .append("h1")
+        h1s.enter().append("h1")
+           .transition()
            .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; })
 
         h1s.exit().remove()

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, jsonify
 from database import db
-from models import Philosopher, Document, CurrentTopics
+from models import Philosopher, Document, CurrentTopics, SimilarPhilosophers
 import pickle
 import numpy as np
 import os
@@ -15,6 +15,18 @@ db.init_app(app)
 
 with open('../data/model/lda_25.pkl', 'rb') as f:
     model = pickle.load(f)
+
+
+@app.route('/_phil_sum', methods=["GET"])
+def phil_sum():
+    name = request.args.get('name').lower()
+    phil_info = Philosopher.query \
+                           .join(SimilarPhilosophers, \
+                                 SimilarPhilosophers.name == Philosopher.name) \
+                           .filter(Philosopher.name == name) \
+                           .first()
+
+    return jsonify(phil_info.serialize)
 
 
 @app.route('/_jump_to_phil', methods=["GET"])
