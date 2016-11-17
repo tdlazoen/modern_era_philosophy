@@ -6,12 +6,56 @@ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
 
 # homebrew and anaconda
 if [[ "$OSTYPE" == linux-gnu ]]; then
-    sudo yum groupinstall 'Development Tools' && sudo yum install curl git irb python-setuptools ruby
-    sudo yum install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel
-    source ~/.bash_profile
+    sudo apt-get update
+    sudo apt-get install python3
 
-    # pyenchant
-    sudo yum install enchant
+    sudo apt-get install python3-pip
+
+    # Base libraries
+    sudo pip3 install --upgrade pip
+    sudo pip3 install --upgrade wheel
+    sudo pip3 install --upgrade ipython
+    sudo pip3 install jupyter
+    sudo pip3 install numpy
+    sudo pip3 install pandas
+    sudo pip3 install scipy
+    sudo pip3 install matplotlib
+    sudo pip3 install --upgrade sklearn
+
+    # Web scraping
+    sudo pip3 install bs4
+    sudo pip3 install requests
+    sudo pip3 install urllib
+    sudo pip3 install selenium
+    sudo pip3 install pdfminer3k
+    sudo pip3 install internetarchive
+    sudo pip3 install us
+    sudo pip3 install langdetect
+    sudo pip3 install geopy
+
+    # NLP
+    sudo pip3 install pyenchant
+    sudo pip3 install autocorrect
+    sudo pip3 install patterns
+    sudo pip3 install -U gensim
+    sudo pip3 install pyLDAvis
+    sudo pip3 install -U spacy
+    sudo python3 -m spacy.en.download all
+
+    # sudo pip3 install nltk
+    # sudo python3 -m nltk.downloader all
+
+    # Web app
+    sudo apt-get install -y nodejs
+    sudo apt install nodejs-legacy
+    sudo apt install npm
+    npm init
+    sudo npm install ogr2ogr
+    sudo npm install topojson
+
+    sudo pip3 install flask
+    sudo pip3 install sqlalchemy
+    sudo pip3 install flask-sqlalchemy
 
 elif [[ "$OSTYPE" == darwin* ]]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -71,8 +115,13 @@ elif [[ "$OSTYPE" == darwin* ]]; then
     python3 -m nltk.downloader all
 
     # Web app
+    brew install node
+    brew install npm
+    npm init
+    npm install ogr2ogr
+    npm install topojson
+
     pip3 install flask
     pip3 install sqlalchemy
     pip3 install flask-sqlalchemy
-    pip3 install folium
 fi
