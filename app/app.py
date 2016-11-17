@@ -20,6 +20,7 @@ with open('../data/model/lda_25.pkl', 'rb') as f:
 @app.route('/_phil_sum', methods=["GET"])
 def phil_sum():
     name = request.args.get('name').lower()
+    print(name)
     phil_info = Philosopher.query \
                            .join(SimilarPhilosophers, \
                                  SimilarPhilosophers.name == Philosopher.name) \
@@ -80,4 +81,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=8000, threaded=True, debug=True)

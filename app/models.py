@@ -162,15 +162,19 @@ class SimilarPhilosophers(db.Model):
     third_name = db.Column(db.String(50))
     fourth_name = db.Column(db.String(50))
     fifth_name = db.Column(db.String(50))
+    first_topic = db.Column(db.String(50))
+    second_topic = db.Column(db.String(50))
 
     def __init__(self, name, first_name, second_name, third_name, \
-                 fourth_name, fifth_name):
+                 fourth_name, fifth_name, first_topic, second_topic):
         self.name = name
         self.first_name = first_name
         self.second_name = second_name
         self.third_name = third_name
         self.fourth_name = fourth_name
         self.fifth_name = fifth_name
+        self.first_topic = first_topic
+        self.second_topic = second_topic
 
 
     @property
@@ -180,4 +184,6 @@ class SimilarPhilosophers(db.Model):
                 'second_name': self.second_name,
                 'third_name': self.third_name,
                 'fourth_name': self.fourth_name,
-                'fifth_name': self.fifth_name}
+                'fifth_name': self.fifth_name,
+                'first_topic': self.first_topic,
+                'second_topic': self.second_topic}

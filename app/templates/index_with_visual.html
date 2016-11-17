@@ -55,7 +55,7 @@
         iconUrl: "{{ url_for('static', filename='imgs/feather-pen.png')}}",
         iconSize:     [30, 88],
         iconAnchor:   [0, 88],
-        popupAnchor:  [25, -62]
+        popupAnchor:  [24, -76]
     });
 
     // Bar chart global variables
@@ -71,7 +71,7 @@
     var markers = new Array();
     var titles = new Array();
     $(function() {
-        $("#time-slider").bind("change", function() {
+        $("#time-slider").on("change", function() {
             $.getJSON($SCRIPT_ROOT + '/_current_phils', {
                 year: $("#time-slider").val()
             }, function(data) {
@@ -82,7 +82,7 @@
                     if (markers.indexOf(marker) == -1) {
                         markers.push(marker);
                         map.addLayer(marker);
-                        marker.bindPopup("<a class='phils-sum'>" + phil.name + "</a>");
+                        marker.bindPopup("<span class='phil-sum'>" + phil.name + "</span>");
                     }
                     new_markers.push(marker);
                 });
@@ -116,19 +116,9 @@
         });
     });
 
-    // Bring up philosopher summary
-    // $(function() {
-    //     $(".phils-sum").bind("click", function() {
-    //         $.getJSON($SCRIPT_ROOT + '/_phil_sum', {
-    //             name: $(this).text()
-    //         }, function(data) {
-    //         });
-    //     });
-    // });
-
     // Jump to a certain philosopher's time period
     $(function() {
-        $("input[type='text']").bind("keydown", function(k) {
+        $("input[type='text']").on("keydown", function(k) {
             if (k.keyCode == 13) {
                 $.getJSON($SCRIPT_ROOT + '/_jump_to_phil', {
                     name: $(this).val()
@@ -140,24 +130,35 @@
         });
     });
 
+    // Bring up a philosopher summary
+    $(function() {
+        $("span.phil-sum").on("click", function() {
+            $.getJSON($SCRIPT_ROOT + '/_phil_sum', {
+                name: name
+            }, function(data) {
+                console.log(data)
+            });
+        });
+    });
+
     function updateBarChart(currentInfo) {
         var bars = d3.select("#bar-chart")
                      .selectAll(".bar")
                      .data(currentInfo)
                      .transition()
-                     .style("width", function(d) { return String(xScale(d.prob)) + "px"; })
+                     .style("width", function(d) { return String(xScale(d.prob)) + "px"; });
 
         var h2s = d3.select("#bar-chart")
                     .selectAll("h2")
                     .data(currentInfo)
                     .transition()
-                    .text(function(d) { return d.title; })
+                    .text(function(d) { return d.title; });
 
         var h1s = d3.select("#bar-chart")
                     .selectAll("h1")
                     .data(currentInfo)
                     .transition()
-                    .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; })
+                    .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; });
 
         bars.enter().append("div")
             .attr("class", "bar")

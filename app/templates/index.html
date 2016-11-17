@@ -73,6 +73,8 @@
     </div>
     <div id="map"></div>
 
+    {% block philosopher %}{% endblock %}
+
     <!-- Philosopher time search -->
     <div class="search-bar">
       <input type="text" name="search" placeholder="e.g. John Locke">
@@ -151,26 +153,35 @@
     </div>
 
     <!-- Connect/contact -->
-    <div id="connect">
-      <h1>Connect with me!</h1>
-      <!-- linkedin -->
-      <a href="https://www.linkedin.com/in/tdlazoen" target="_blank">
-        <i class="fa fa-linkedin" id="linkedin" aria-hidden="true"></i></i>
-      </a>
-      <!-- email -->
-      <a href="mailto:tylerlazoen@gmail.com", target="_top">
-        <i class="fa fa-envelope" id="email" aria-hidden="true"></i>
-      </a>
-      <!-- blog -->
-      <a href="https://www.galvanizedintodata.com" target="_blank">
-        <i class="fa fa-wordpress" id="blog" aria-hidden="true"></i>
-      </a>
-      <br>
-      <!-- phone -->
-      <a href="tel:1-248-825-1332" style="display: inline-block; margin-top: 10px; padding-left: 0;">
-        <i class="fa fa-mobile" id="phone" aria-hidden="true"></i>
-         (248) 825-1332
-      </a>
+    <div id="contact">
+      <div style="text-align: center;">
+        <h1>Connect with me!</h1>
+      </div>
+      <div id="sites">
+          <!-- email -->
+          <a href="mailto:tylerlazoen@gmail.com", target="_top">
+            <i class="fa fa-envelope" id="email" aria-hidden="true"></i>
+            <p style="margin-left: 0;">tylerlazoen@gmail.com</p>
+          </a>
+          <br>
+          <!-- linkedin -->
+          <a href="https://www.linkedin.com/in/tdlazoen" style="display: inline-block; margin-right: 1%;" target="_blank">
+            <i class="fa fa-linkedin" id="linkedin" aria-hidden="true"></i>
+            <p style="margin-left: 0;">tdlazoen</p>
+          </a>
+          <!-- phone -->
+          <a href="tel:1-248-825-1332" style="display: inline-block; padding-left: 1%;">
+            <i class="fa fa-mobile" id="phone" aria-hidden="true"></i>
+             <p style="margin-left: 0;">(248) 825-1332</p>
+          </a>
+          <br>
+          <!-- blog -->
+          <a href="https://www.galvanizedintodata.com" target="_blank">
+            <i class="fa fa-wordpress" id="blog" aria-hidden="true"></i>
+            <p style="margin-left: 0;">galvanizedintodata.com</p>
+          </a>
+          <br>
+      </div>
     </div>
   </div>
 

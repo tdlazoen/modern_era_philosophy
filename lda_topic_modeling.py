@@ -99,7 +99,7 @@ class LDA(object):
                       'workers': self.workers, 'chunksize': self.chunksize, \
                       'random_state': self.random_state}
 
-            self.lda = LdaMulticore(corpus=self.corpus, **params, passes=30)
+            self.lda = LdaMulticore(corpus=self.corpus, passes=30, **params)
 
     def calculate_topic_weights(self):
         '''
@@ -219,25 +219,25 @@ class LDA(object):
         return [(word, freq) for word, freq in zip(words, freqs)]
 
 
-if __name__ == '__main__':
-    phils, docs = ModernPhilosophers(), ModernDocuments()
-    np.random.seed(42)
-
-    print("Loading Model data...")
-    all_titles = load_pickled('data/model/chunk_titles_final.pkl')
-    tokenized_docs = load_pickled('data/model/tokenized_docs_final.pkl')
-
-    print("Fitting LDA model...")
-    lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=25, workers=56)
-    lda.fit(run_lda=True)
-
-    # with open('data/model/lda_50.pkl', 'rb') as f:
-    #     lda_best = pickle.load(f)
-
-    print("Getting topic weights...")
-    lda.calculate_topic_weights()
-    print("Grouping Chunks...")
-    lda.group_doc_chunks()
-
-    with open('data/model/lda_25.pkl', 'wb') as f:
-        pickle.dump(lda, f)
+# if __name__ == '__main__':
+#     phils, docs = ModernPhilosophers(), ModernDocuments()
+#     np.random.seed(42)
+#
+#     print("Loading Model data...")
+#     all_titles = load_pickled('data/model/chunk_titles_final.pkl')
+#     tokenized_docs = load_pickled('data/model/tokenized_docs_final.pkl')
+#
+#     print("Fitting LDA model...")
+#     lda = LDA(docs.df, tokenized_docs, all_titles, num_topics=25, workers=56)
+#     lda.fit(run_lda=True)
+#
+#     # with open('data/model/lda_50.pkl', 'rb') as f:
+#     #     lda_best = pickle.load(f)
+#
+#     print("Getting topic weights...")
+#     lda.calculate_topic_weights()
+#     print("Grouping Chunks...")
+#     lda.group_doc_chunks()
+#
+#     with open('data/model/lda_25.pkl', 'wb') as f:
+#         pickle.dump(lda, f)

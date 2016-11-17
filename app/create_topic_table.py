@@ -77,12 +77,19 @@ def similar_philosophers_table():
         model = pickle.load(f)
 
     for dct in model.philosopher_cosine_sims:
+        phil_topic_dist = [x for x in model.philosopher_topic_dists if x[0] == dct['name']][0]
+        first_two_topics = np.argsort(phil_topic_dist[1])[::-1][:2]
+        first_topic = model.topic_dict[first_two_topics[0]]
+        second_topic = model.topic_dict[first_two_topics[1]]
+
         params = {'name': dct['name'], \
                   'first_name': dct['first'], \
                   'second_name': dct['second'], \
                   'third_name': dct['third'], \
                   'fourth_name': dct['fourth'], \
-                  'fifth_name': dct['fifth']}
+                  'fifth_name': dct['fifth'], \
+                  'first_topic': first_topic, \
+                  'second_topic': second_topic}
 
         similar_phils = SimilarPhilosophers(**params)
         db.session.add(similar_phils)
