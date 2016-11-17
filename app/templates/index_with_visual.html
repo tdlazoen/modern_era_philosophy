@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "phil_sum.html" %}
 
 {% block visuals %}
 <script>
@@ -130,35 +130,93 @@
         });
     });
 
+    String.prototype.capitalize = function(){
+       return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+      };
+
     // Bring up a philosopher summary
-    $(function() {
+    $(".leaflet-popup-pane").on("click", function() {
         $("span.phil-sum").on("click", function() {
+            var name = $("span.phil-sum").text()
+            var modal = $(".modal")
             $.getJSON($SCRIPT_ROOT + '/_phil_sum', {
                 name: name
             }, function(data) {
                 console.log(data)
+                $(".close").on("click", function() {
+                    modal.fadeOut(1000)
+                });
+
+                modal.click(function(e) {
+                    if (e.target.class == "wrapper" || $(e.target).parents(".wrapper").size()) {
+                        doNothing()
+                    } else {
+                       modal.fadeOut(1000)
+                    }
+                });
+
+                $("div.wrapper h1").text(data.name.toLowerCase().capitalize())
+                var underscoreName = data.image_path.split("/").pop();
+                var imgPath = "/static/imgs/philosophers/" + underscoreName
+
+                $("div.summary img").attr("src", imgPath)
+                $("div.summary p#summary").text(data.summary)
+
+                var similar = [data.first_name, data.second_name, data.third_name,
+                           data.fourth_name, data.fifth_name]
+
+                var similarLis = d3.select("div.summary ul#similar")
+                                   .selectAll("li")
+                                   .data(similar)
+
+                similarLis.text(function(d) { return d.toLowerCase().capitalize() })
+                similarLis.enter().append("li")
+                          .text(function(d) { return d.toLowerCase().capitalize() })
+                similarLis.exit().remove()
+
+                $("div.info p#year-born").text(String(data.year_born))
+                $("div.info p#year-died").text(String(data.year_died))
+
+                var topics = [data.first_topic, data.second_topic]
+                var topicLis = d3.select("div.info ul#topics")
+                                 .selectAll("li")
+                                 .data(topics)
+
+                topicLis.text(function(d) { return d })
+                topicLis.enter().append("li")
+                        .text(function (d) { return d })
+                topicLis.exit().remove()
+
+                var docs = d3.select("div.info ul#documents")
+                             .selectAll("li")
+                             .data(data.documents)
+
+                docs.html(function(d) { return "<a href='" + d.url + "' target='_blank'>" + d.title +
+                                        " (" + d.year + ")</a>"})
+                docs.enter().append("li")
+                    .html(function(d) { return "<a href='" + d.url + "' target='_blank'>" + d.title +
+                                               " (" + d.year + ")</a>"})
+                docs.exit().remove()
+                modal.fadeIn(1000)
             });
-        });
+        })
     });
 
     function updateBarChart(currentInfo) {
         var bars = d3.select("#bar-chart")
                      .selectAll(".bar")
                      .data(currentInfo)
-                     .transition()
-                     .style("width", function(d) { return String(xScale(d.prob)) + "px"; });
 
         var h2s = d3.select("#bar-chart")
                     .selectAll("h2")
                     .data(currentInfo)
-                    .transition()
-                    .text(function(d) { return d.title; });
 
         var h1s = d3.select("#bar-chart")
                     .selectAll("h1")
                     .data(currentInfo)
-                    .transition()
-                    .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; });
+
+        bars.transition()
+            .style("width", function(d) { return String(xScale(d.prob)) + "px"; });
 
         bars.enter().append("div")
             .attr("class", "bar")
@@ -167,11 +225,17 @@
 
         bars.exit().remove()
 
+        h2s.transition()
+           .text(function(d) { return d.title; });
+
         h2s.enter().append("h2")
            .transition()
            .text(function(d) { return d.title; })
 
         h2s.exit().remove()
+
+        h1s.transition()
+           .text(function(d) { return String(Math.round(d.prob * 100)) + "%"; });
 
         h1s.enter().append("h1")
            .transition()
@@ -184,6 +248,10 @@
     $(window).load(function() {
         $("#time-slider").val("1597").change()
     })
+
+    function doNothing() {
+        return
+    }
 
 </script>
 {% endblock %}

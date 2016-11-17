@@ -20,14 +20,23 @@ with open('../data/model/lda_25.pkl', 'rb') as f:
 @app.route('/_phil_sum', methods=["GET"])
 def phil_sum():
     name = request.args.get('name').lower()
-    print(name)
     phil_info = Philosopher.query \
-                           .join(SimilarPhilosophers, \
-                                 SimilarPhilosophers.name == Philosopher.name) \
                            .filter(Philosopher.name == name) \
                            .first()
 
-    return jsonify(phil_info.serialize)
+    similar_info = SimilarPhilosophers.query \
+                                      .filter(SimilarPhilosophers.name == name) \
+                                      .first()
+
+    documents = Document.query \
+                         .filter(Document.author == name) \
+                         .all()
+
+    dct = phil_info.serialize
+    dct.update(similar_info.serialize)
+    dct['documents'] = [doc.serialize for doc in documents]
+
+    return jsonify(dct)
 
 
 @app.route('/_jump_to_phil', methods=["GET"])

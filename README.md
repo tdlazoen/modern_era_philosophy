@@ -1,4 +1,4 @@
-# PhilosophiTexts (name to be changed)
+# A Journey Through Modern Era Philosophy
 
 # Motivation
 Philosophical study is somewhat dying in contemporary society.  It wasn't always this way.  Past philosophical thought has in many ways shaped the world today.  An important precursor to the American Revolution was the ideas that began to cultivate during the Age of Enlightenment.  History has showed us that ideas and words have the power to change the world.  To understand these changes more deeply, this project searches for changes in thinking throughout the Modern era of philosophy, and gain insights into the history of this period of philosophical thought.  How did the flow of ideas and topics change as time continued?  When and where did significant differences in thought occur?  Questions like these are what this project attempts to find an answer for through data.
