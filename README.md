@@ -90,11 +90,11 @@ Even after the above process was completed, there were still some philosophers w
 ### Misspellings
 In the process of obtaining data from the [Internet Archive](https://www.archive.org), I had noticed that the plain text of some documents appeared to be scanned (below).  The books that were scanned appeared to be written in a font where some of the "s" characters looked like "f".  As can be seen from the images below, this could arise some serious problems if one tried to run any type of analysis on the document below.
 
-<img align="left" src="visualizations/slide_vis/misspelled.png" width="44%">
+<img align="left" src="visualizations/slide_vis/misspelled.png" width="43%">
 
-<img align="left" src="visualizations/slide_vis/misspelled_scanned_one.png" width="24.3%">
+<img align="left" src="visualizations/slide_vis/misspelled_scanned_one.png" width="23.6%">
 
-<img align="left" src="visualizations/slide_vis/misspelled_scanned_two.png" width="25%">
+<img align="left" src="visualizations/slide_vis/misspelled_scanned_two.png" width="24.3%">
 
 *Left: The original document, Right: The scanned text*
 
