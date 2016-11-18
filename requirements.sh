@@ -42,8 +42,8 @@ if [[ "$OSTYPE" == linux-gnu ]]; then
     sudo pip3 install -U spacy
     sudo python3 -m spacy.en.download all
 
-    # sudo pip3 install nltk
-    # sudo python3 -m nltk.downloader all
+    sudo pip3 install nltk
+    sudo python3 -m nltk.downloader all
 
     # Web app
     sudo apt-get install -y nodejs
