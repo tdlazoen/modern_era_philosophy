@@ -68,17 +68,62 @@ In addition to the data obtained from the process above, I was interested in obt
 # Data Munging
 *The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
 
+### Missing Data
+
 Due to the fact that my data was obtained from various sites, there were many entries in both the philosopher and document data that had missing values.  
 
 <img align="left" src="visualizations/slide_vis/google_search.png" width="60%">
 
 Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element (right) containing the value in interest; a majority of the missing values were filled in this way.
 
-Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, it was required to manually input the value.
+Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, the code was paused and the value was entered manually by examining the existing search results.
 
 Other missing values, such as time period, were calculated using values from other philosophers in the dataset.
 
-### Text Cleaning & Processing
+### Insufficient Data
+
+Even after the above process was completed, there were still some philosophers with no document data.  Any philosophers for which this was the case were dropped.  As for philosophers with only one document, them and their documents were removed from the datasets if their document was less than 30,000 words.
+
+# Text Cleaning & Processing
+*The text cleaning process can be found in [text_processing.py](text_processing.py)*
+
+### Misspellings
+In the process of obtaining data from the [Internet Archive](https://www.archive.org), I had noticed that the plain text of some documents appeared to be scanned (below).  The books that were scanned appeared to be written in a font where some of the "s" characters looked like "f".  As can be seen from the images below, this could arise some serious problems if one tried to run any type of analysis on the document below.
+
+<img align="left" src="visualizations/slide_vis/misspelled.png" width="44.5%">
+
+<img align="left" src="visualizations/slide_vis/misspelled_scanned_one.png" width="24.4%">
+
+<img align="left" src="visualizations/slide_vis/misspelled_scanned_two.png" width="25.15%">
+
+*Left: The original document, Right: The scanned text*
+
+In order to solve this problem, I utilized the Python package [PyEnchant](http://pythonhosted.org/pyenchant/), which has the functionality to check whether a word is actually an english word and, if not, suggest possible replacements.  
+```python
+>>> import enchant
+>>> d = enchant.Dict('en_US')
+>>> d.check("confideration")
+False
+>>> d.suggest("confideration")
+['consideration', 'confederation', 'confide ration', 'configuration', 'confidential', 'confider', 'confirmation']
+```
+PyEnchant lists possible suggestions from highest to lowest probability.  Therefore, to fix misspellings in my text, I checked if each word was in the english dictionary.  If not, I would replace it with the most likely replacement according to PyEnchant.  
+
+Though in most cases it performed great, it's not perfect.  It doesn't perform so well on the the mispelled word "lnagin" (meant to be "imagine") from the image above (blue box)
+```python
+>>> d.check("lnagin")
+False
+>>> d.suggest("lnagin")
+['linage', 'lineage', 'linkage', 'linguine']
+```
+As can be seen, the words suggested by PyEnchant aren't anywhere close to the word "imagine".  Despite this caveat, the results of my text analysis suggest PyEnchant did relatively well in fixing a majority of the misspellings, and these edge cases likely did not have a significant effect.  Furthermore, as there is no way to know what the word is supposed to be without manually looking at the context, these edge cases would prove to be very difficult to account for.
+
+It should be noted that I also attempted to use a package called [autocorrect](https://pypi.python.org/pypi/autocorrect/0.1.0), which is based off of [this short article](http://norvig.com/spell-correct.html) by Peter Norvig.  However, it performed much slower.
+
+This process took quite long.  Even running on an Amazon AWS compute-optimized EC2 instance and utilizing 15 cores, the process still took 7-8 hours to complete.
+
+### Extracting Parts of Speech
+
 
 # Resources
 ### Web Scraping
