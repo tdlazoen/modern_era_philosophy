@@ -9,7 +9,6 @@ from collections import defaultdict
 from gensim.corpora import Dictionary
 from gensim.matutils import corpus2dense, Dense2Corpus
 from gensim.models.ldamulticore import LdaMulticore
-from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
 from modern_dfs import ModernPhilosophers, ModernDocuments
 
