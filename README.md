@@ -34,17 +34,15 @@ There were many challenges associated with the data collection process including
 
 Three sites had blocked me for short periods of time - <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>, [Sacred Texts](http://sacred-texts.com/phi/), and the [Sophia Project](http://www.sophia-project.org/classical-philosophy.html).  However, I had already obtained the data I needed from Sacred Texts and the Sophia Project when they blocked me, and I discovered a python package specifically made for Project Gutenberg that allowed for me to obtain their documents.
 
-<img align="left" src="visualizations/slide_vis/emt_pdf.png" width="70%">
-
 Right off the bat, I was faced with a challenge I had never considered: scraping text from a PDF.  The documents on the first website I scraped ([Early Modern Texts](http://www.earlymoderntexts.com/texts)) were all in PDF format.
 
-Luckily, the python community came through and there was a package called [PDFMiner3k](https://pypi.python.org/pypi/pdfminer3k) that provided a solution for this problem.
-
-Below is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
+Luckily, the python community came through and there was a package called [PDFMiner3k](https://pypi.python.org/pypi/pdfminer3k) that provided a much simpler solution for this problem.
 
 <img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="31%">
 
 <img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="63.5%">
+
+Above is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
 
 Thankfully, the Python package [Selenium](http://selenium-python.readthedocs.io/) and it's utilization of a web driver served as a way around this problem.
 
