@@ -76,6 +76,8 @@ Where possible, missing data was filled in through utilizing Selenium to perform
 
 Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, it was required to manually input the value.
 
+Other missing values, such as time period, were calculated using values from other philosophers in the dataset.
+
 ### Text Cleaning & Processing
 
 # Resources
