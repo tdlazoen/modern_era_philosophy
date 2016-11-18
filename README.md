@@ -9,7 +9,7 @@ Philosophy is a prime example of ideas changing the world.  Whether it be econom
 My goal with this project was to analyze the relationship between philosophy and the world.  How has philosophy influenced the world?  How has the world influenced philosophical discussion?  Can the answers to these questions be discovered through data?  My project hopes to answer questions such as these.
 
 # The Process
-![Workflow](visualizations/slide_vis/workflow.png?raw=true)
+![Workflow](https://raw.github.com/tdlazone/modern_era_philosophy/master/visualizations/slide_vis/workflow.png?raw=true)
 
 # Resources
 ### Web Scraping
