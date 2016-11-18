@@ -32,9 +32,9 @@ There were many challenges associated with the data collection process including
 
 Below is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
 
-<img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="30%">
+<img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="33%">
 
-<img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="60%">
+<img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="67%">
 
 # Resources
 ### Web Scraping
