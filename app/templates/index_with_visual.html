@@ -142,7 +142,6 @@
             $.getJSON($SCRIPT_ROOT + '/_phil_sum', {
                 name: name
             }, function(data) {
-                console.log(data)
                 $(".close").on("click", function() {
                     modal.fadeOut(1000)
                 });
@@ -246,7 +245,12 @@
     }
 
     $(window).load(function() {
-        $("#time-slider").val("1597").change()
+        $("#home h1:nth-of-type(1)").fadeIn(1000, function() {
+            $("#home h1:nth-of-type(2)").fadeIn(1000, function() {
+                $("a.begin").fadeIn(1000)
+            });
+        });
+        $("#time-slider").val("1597").change();
     })
 
     function doNothing() {

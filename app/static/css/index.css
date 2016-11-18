@@ -37,6 +37,7 @@ main {
 }
 
 a.begin {
+    display: none;
     background-color: transparent;
     padding: 14px 17px;
     height: 80px;
@@ -65,6 +66,7 @@ a.begin i {
 }
 
 #home h1:nth-of-type(1) {
+    display: none;
     color: #D2B48C;
     font-size: 5em;
     font-family: 'Ledger', serif;
@@ -72,6 +74,7 @@ a.begin i {
 }
 
 #home h1:nth-of-type(2) {
+    display: none;
     margin-top: 5px;
     margin-bottom: 30px;
     color: #DAA520;
