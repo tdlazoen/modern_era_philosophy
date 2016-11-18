@@ -6,10 +6,35 @@ This app is live at [philosophyjourney.com](http://philosophyjourney.com)
 # Motivation
 Philosophy is a prime example of ideas changing the world.  Whether it be economics, political ideology, the freedom of man, or even the law of gravity, these are all ideas that fall under the realm of philosophy and have shaped the world as we know it today.
 
-My goal with this project was to analyze the relationship between philosophy and the world.  How has philosophy influenced the world?  How has the world influenced philosophical discussion?  Can the answers to these questions be discovered through data?  My project hopes to answer questions such as these.
+My goal with this project was to analyze the relationship between philosophy and the world.  How has philosophy influenced the world?  How has the world influenced philosophical discussion?  My project hopes to answer questions such as these.
 
 # The Process
-![Workflow](/visualizations/slide_vis/Workflow.png?raw=true)
+
+<img src="visualizations/slide_vis/Workflow.png" style="width: 65%; height: 400px; margin-right: 10px; float: left">
+
+The first step of the process was web scraping various websites to obtain philosopher information as well as the full texts and other data for philosophical texts.
+
+Then missing information was accounted for and entries with insufficient information dropped.
+
+The full texts of the documents were then cleaned and prepared for analysis.  Latent Dirichlet Allocation was run on the prepped documents with varying topic sizes (150, 50, 25) and 30 passes.  The results of LDA were analyzed and utilized to glean insights into the data.  
+
+These insights - along with the philosopher and document data - were then placed into an sqlite database using SQLAlchemy.
+
+An app was created using Flask and front end web development technologies to visualize the results.  SQLAlchemy was used to communicate between the app and the database.
+
+# Web Scraping
+The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
+
+Three sites had blocked me for short periods of time - <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>, [Sacred Texts](http://sacred-texts.com/phi/), and the [Sophia Project](http://www.sophia-project.org/classical-philosophy.html).  However, I had already obtained the data I needed from Sacred Texts and the Sophia Project when they blocked me, and I discovered a python package specifically made for Project Gutenberg that allowed for me to obtain their documents.
+
+### Challenges
+There were many challenges associated with the data collection process including, the largest being that it is difficult to find the full text of philosophical documents available for free online.  There was no go-to resource or database containing a large portion of the data I needed.  The web scraping was truly a process of searching and scraping the edges of the web for the data I needed.
+
+Below is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
+
+<img src="visualizations/slide_vis/sacred_text_plain.png" style="width: 47%; height: 450px; margin-right: 10px; float: left">
+
+<img src="visualizations/slide_vis/sacred_text_links.png" style="width: 47%; height: 300px; margin-right: 10px; float: left">
 
 # Resources
 ### Web Scraping
@@ -23,7 +48,7 @@ My goal with this project was to analyze the relationship between philosophy and
 * [Early Modern Texts](http://www.earlymoderntexts.com/texts)
 * [Sacred Texts](http://sacred-texts.com/phi/)
 * [Sophia Project](http://www.sophia-project.org/classical-philosophy.html)
-* <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Gutenberg</a>
+* <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>
 * [Value of Knowledge](https://www.marxists.org/reference/subject/philosophy/)
 * [Internet Archive](https://www.archive.org)
 
