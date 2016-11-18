@@ -10,7 +10,7 @@ My goal with this project was to analyze the relationship between philosophy and
 
 # The Process
 
-<img align="left" src="visualizations/slide_vis/Workflow.png" width="65%" height="20%">
+<img align="left" src="visualizations/slide_vis/Workflow.png" width="65%">
 
 The first step of the process was web scraping various websites to obtain philosopher information as well as the full texts and other data for philosophical texts.
 
@@ -22,6 +22,8 @@ These insights - along with the philosopher and document data - were then placed
 
 An app was created using Flask and front end web development technologies to visualize the results.  SQLAlchemy was used to communicate between the app and the database.
 
+Although we used Python 2 throughout the program, I opted to use Python 3 for my project due to my project centering around Natural Language Processing.  Python 3's treatment of all text as unicode would remove the headache of dealing with both string and unicode data types.
+
 # Web Scraping
 The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
 
@@ -30,11 +32,23 @@ Three sites had blocked me for short periods of time - <a href="https://www.gute
 ### Challenges
 There were many challenges associated with the data collection process including, the largest being that it is difficult to find the full text of philosophical documents available for free online.  There was no go-to resource or database containing a large portion of the data I needed.  The web scraping was truly a process of searching and scraping the edges of the web for the data I needed.
 
+<img align="left" src="visualizations/slide_vis/emt_pdf.png" width="70%">
+
+Right off the bat, I was faced with a challenge I had never considered: scraping text from a PDF.  The documents on the first website I scraped ([Early Modern Texts](http://www.earlymoderntexts.com/texts)) were all in PDF format.
+
+Luckily, the python community came through and there was a package called [PDFMiner3k](https://pypi.python.org/pypi/pdfminer3k) that provided a solution for this problem.
+
 Below is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
 
 <img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="31%">
 
 <img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="63%">
+*Plain text document*
+*Sectioned document*
+
+Thankfully, the python package [Selenium](http://selenium-python.readthedocs.io/) and it's utilization of a web driver worked as a way around this problem.
+
+This problem of texts being in multiple formats would prove to be a persistent one, appearing again in the text cleaning stage.
 
 # Resources
 ### Web Scraping
