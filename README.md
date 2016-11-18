@@ -42,7 +42,7 @@ Below is two screenshots of document pages from [Sacred Texts](http://sacred-tex
 
 <img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="31.5%">
 
-<img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="64%">
+<img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="63.5%">
 *Plain text document*
 *Sectioned document*
 
