@@ -72,7 +72,7 @@ Due to the fact that my data was obtained from various sites, there were many en
 
 <img align="left" src="visualizations/slide_vis/google_search.png" width="60%">
 
-Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element containing the value in interest; a majority of the missing values were filled in this way.
+Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element (right) containing the value in interest; a majority of the missing values were filled in this way.
 
 Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, it was required to manually input the value.
 
