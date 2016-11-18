@@ -25,11 +25,15 @@ An app was created using Flask and front end web development technologies to vis
 Although we used Python 2 throughout the program, I opted to use Python 3 for my project due to my project centering around Natural Language Processing.  Python 3's treatment of all text as unicode would remove the headache of dealing with both string and unicode data types.
 
 # Web Scraping
+*The web scraping process can be found in the [scrapers](scrapers) directory*
+
 The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
 
 I began by scraping for philosopher data, and then using the names I had collected scraped websites for documents by each respective philosopher.
 
-### Challenges
+The philosopher and document data were placed into [pandas](http://pandas.pydata.org/) dataframes for easily accessing and editing the data.  Classes were created for easily updating and saving the dataframe, which can be found in *[modern_dfs.py](modern_dfs.py)*.
+
+### Challenges & Solutions
 There were many challenges associated with the data collection process including, the largest being that it is difficult to find the full text of philosophical documents available for free online.  There was no go-to resource or database containing a large portion of the data I needed.  The web scraping was truly a process of searching and scraping the edges of the web for the data I needed.
 
 Three sites had blocked me for short periods of time - <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>, [Sacred Texts](http://sacred-texts.com/phi/), and the [Sophia Project](http://www.sophia-project.org/classical-philosophy.html).  However, I had already obtained the data I needed from Sacred Texts and the Sophia Project when they blocked me, and I discovered a python package specifically made for Project Gutenberg that allowed for me to obtain their documents.
@@ -48,7 +52,7 @@ Thankfully, the Python package [Selenium](http://selenium-python.readthedocs.io/
 
 This problem of texts being in multiple formats would prove to be a persistent one, particularly during the text cleaning stage.
 
-<img align="left" src="visualizations/slide_vis/internetarchive.png" width="70%">
+<img align="left" src="visualizations/slide_vis/internetarchive.png" width="65%">
 
 To the right is a screenshot of a document search on the [Internet Archive](https://www.archive.org).  The archive is considered one of the largest libraries of online texts available on the internet.  This solved some problems, but others arose from the volume of texts available.  The documents are pulled from a variety of resources, resulting in there being multiples of some works as well as texts in languages other than English - even when the "English" language filter was selected.  Furthermore, some documents were incomplete and searches for many philosophers returned no results.
 
@@ -58,8 +62,21 @@ Initially I had hoped to examine the entire history of philosophy - from pre-soc
 
 Though my final scope was smaller than initially planned, it allowed for closer analysis of the documents and perhaps allowed me to glean better insights about the data overall.
 
-# Data Munging
+### Obtaining Extra Data
+In addition to the data obtained from the process above, I was interested in obtaining extra information for my analysis.  Utilizing Selenium, I was able to obtain the birthplace and nationality of each philosopher, which was eventually used in my web app to observe how the spread of philosophers changed throughout the years.  Though some philosophers moved far away from their birthplaces sometime in their life, a majority remained in or close to their hometowns, so I determined these special exceptions to not be very important.
 
+# Data Munging
+*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
+
+Due to the fact that my data was obtained from various sites, there were many entries in both the philosopher and document data that had missing values.  
+
+<img align="left" src="visualizations/slide_vis/google_search.png" width="60%">
+
+Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element containing the value in interest; a majority of the missing values were filled in this way.
+
+Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, it was required to manually input the value.
+
+### Text Cleaning & Processing
 
 # Resources
 ### Web Scraping
