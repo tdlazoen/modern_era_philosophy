@@ -10,7 +10,7 @@ My goal with this project was to analyze the relationship between philosophy and
 
 # The Process
 
-<img src="visualizations/slide_vis/Workflow.png" style="width: 65%; height: 400px; margin-right: 10px; float: left">
+<img src="visualizations/slide_vis/Workflow.png" style="width: 65%; height: 250px; margin-right: 10px; float: left">
 
 The first step of the process was web scraping various websites to obtain philosopher information as well as the full texts and other data for philosophical texts.
 
@@ -32,9 +32,9 @@ There were many challenges associated with the data collection process including
 
 Below is two screenshots of document pages from [Sacred Texts](http://sacred-texts.com/phi/), one of the websites I scraped.  Both were taken from links on the home page, but one is in plain text format while the other has the text split into sections across multiple pages.  I initially performed my web scraping using only requests and beautiful soup, but this soon led to a problem when faced with Sacred Texts.
 
-<img src="visualizations/slide_vis/sacred_text_plain.png" style="width: 47%; height: 450px; margin-right: 10px; float: left">
+<img src="visualizations/slide_vis/sacred_text_plain.png" style="width: 47%; height: 250px; margin-right: 10px; float: left">
 
-<img src="visualizations/slide_vis/sacred_text_links.png" style="width: 47%; height: 300px; margin-right: 10px; float: left">
+<img src="visualizations/slide_vis/sacred_text_links.png" style="width: 47%; height: 150px; margin-right: 10px; float: left">
 
 # Resources
 ### Web Scraping
