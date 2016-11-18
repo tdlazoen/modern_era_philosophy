@@ -96,7 +96,7 @@ In the process of obtaining data from the [Internet Archive](https://www.archive
 
 <img align="left" src="visualizations/slide_vis/misspelled_scanned_two.png" width="24.9%">
 
-* **Left:** The original document, **Right:** The scanned text*
+**Left:** The original document, **Right:** The scanned text
 
 In order to solve this problem, I utilized the Python package [PyEnchant](http://pythonhosted.org/pyenchant/), which has the functionality to check whether a word is actually an english word and, if not, suggest possible replacements.  
 ```python
