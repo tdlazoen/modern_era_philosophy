@@ -7,7 +7,6 @@ Philosophy is a prime example of ideas changing the world.  Whether it be econom
 My goal with this project was to analyze the relationship between philosophy and the world.  How has philosophy influenced the world?  How has the world influenced philosophical discussion?  My project hopes to answer questions such as these.
 
 # The Process
-*This provides a high-level summary of my project and insights gained.  For a deeper dive into the process, see [process.md](process.md)*
 
 <img align="left" src="visualizations/slide_vis/Workflow.png" width="65%">
 
@@ -23,9 +22,9 @@ An app was created using Flask and front end web development technologies to vis
 
 Although we used Python 2 throughout the program, I opted to use Python 3 for my project due to my project centering around Natural Language Processing.  Python 3's treatment of all text as unicode would remove the headache of dealing with both string and unicode data types.
 
+*This provides a high-level summary of my project and insights gained.  For a deeper dive into the process, see [process.md](process.md)*
+
 # The Results
-
-
 
 # Resources
 ### Web Scraping
