@@ -27,10 +27,12 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 # Web Scraping
 The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
 
-Three sites had blocked me for short periods of time - <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>, [Sacred Texts](http://sacred-texts.com/phi/), and the [Sophia Project](http://www.sophia-project.org/classical-philosophy.html).  However, I had already obtained the data I needed from Sacred Texts and the Sophia Project when they blocked me, and I discovered a python package specifically made for Project Gutenberg that allowed for me to obtain their documents.
+I began by scraping for philosopher data, and then using the names I had collected scraped websites for documents by each respective philosopher.
 
 ### Challenges
 There were many challenges associated with the data collection process including, the largest being that it is difficult to find the full text of philosophical documents available for free online.  There was no go-to resource or database containing a large portion of the data I needed.  The web scraping was truly a process of searching and scraping the edges of the web for the data I needed.
+
+Three sites had blocked me for short periods of time - <a href="https://www.gutenberg.org/wiki/Philosophy_(Bookshelf)">Project Gutenberg</a>, [Sacred Texts](http://sacred-texts.com/phi/), and the [Sophia Project](http://www.sophia-project.org/classical-philosophy.html).  However, I had already obtained the data I needed from Sacred Texts and the Sophia Project when they blocked me, and I discovered a python package specifically made for Project Gutenberg that allowed for me to obtain their documents.
 
 <img align="left" src="visualizations/slide_vis/emt_pdf.png" width="70%">
 
@@ -43,12 +45,23 @@ Below is two screenshots of document pages from [Sacred Texts](http://sacred-tex
 <img align="left" src="visualizations/slide_vis/sacred_text_plain.png" width="31.5%">
 
 <img align="left" src="visualizations/slide_vis/sacred_text_links.png" width="63.5%">
-*Plain text document*
-*Sectioned document*
 
-Thankfully, the python package [Selenium](http://selenium-python.readthedocs.io/) and it's utilization of a web driver worked as a way around this problem.
+Thankfully, the Python package [Selenium](http://selenium-python.readthedocs.io/) and it's utilization of a web driver served as a way around this problem.
 
-This problem of texts being in multiple formats would prove to be a persistent one, appearing again in the text cleaning stage.
+This problem of texts being in multiple formats would prove to be a persistent one, particularly during the text cleaning stage.
+
+<img align="left" src="visualizations/slide_vis/internetarchive.png" width="70%">
+
+To the right is a screenshot of a document search on the [Internet Archive](https://www.archive.org).  The archive is considered one of the largest libraries of online texts available on the internet.  This solved some problems, but others arose from the volume of texts available.  The documents are pulled from a variety of resources, resulting in there being multiples of some works as well as texts in languages other than English - even when the "English" language filter was selected.  Furthermore, some documents were incomplete and searches for many philosophers returned no results.
+
+Each document on the Internet Archive had a unique identifier, and their respective metadata and text files could be accessed and downloaded through this identifier (using the [internetarchive](https://internetarchive.readthedocs.io/en/latest/index.html) package).  I then used Selenium to run a search for each author, and logged the identifiers of texts that were complete and in English.  These were then logged into a JSON file and the necessary data was obtained through these identifiers.
+
+Initially I had hoped to examine the entire history of philosophy - from pre-socratic era to contemporary.  However, there was simply not enough free resources available online.  As a result, by the end of my scraping process, I had sufficient data for the modern era of philosophy only.  The exact time period isn't definite, but is often accepted as roughly spanning from the 17th to 20th century.
+
+Though my final scope was smaller than initially planned, it allowed for closer analysis of the documents and perhaps allowed me to glean better insights about the data overall.
+
+# Data Munging
+
 
 # Resources
 ### Web Scraping
