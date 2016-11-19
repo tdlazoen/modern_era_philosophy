@@ -1,5 +1,4 @@
 # Web Scraping
-*The web scraping process can be found in the [scrapers](scrapers) directory*
 
 The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
 
@@ -28,7 +27,7 @@ This problem of texts being in multiple formats would prove to be a persistent o
 
 <img align="left" src="visualizations/slide_vis/internetarchive.png" width="65%">
 
-To the right is a screenshot of a document search on the [Internet Archive](https://www.archive.org).  The archive is considered one of the largest libraries of online texts available on the internet.  This solved some problems, but others arose from the volume of texts available.  The documents are pulled from a variety of resources, resulting in there being multiples of some works as well as texts in languages other than English - even when the "English" language filter was selected.  Furthermore, some documents were incomplete and searches for many philosophers returned no results.
+To the left is a screenshot of a document search on the [Internet Archive](https://www.archive.org).  The archive is considered one of the largest libraries of online texts available on the internet.  This solved some problems, but others arose from the volume of texts available.  The documents are pulled from a variety of resources, resulting in there being multiples of some works as well as texts in languages other than English - even when the "English" language filter was selected.  Furthermore, some documents were incomplete and searches for many philosophers returned no results.
 
 Each document on the Internet Archive had a unique identifier, and their respective metadata and text files could be accessed and downloaded through this identifier (using the [internetarchive](https://internetarchive.readthedocs.io/en/latest/index.html) package).  I then used Selenium to run a search for each author, and logged the identifiers of texts that were complete and in English.  These were then logged into a JSON file and the necessary data was obtained through these identifiers.
 
@@ -39,8 +38,9 @@ Though my final scope was smaller than initially planned, it allowed for closer 
 ### Obtaining Extra Data
 In addition to the data obtained from the process above, I was interested in obtaining extra information for my analysis.  Utilizing Selenium, I was able to obtain the birthplace and nationality of each philosopher, which was eventually used in my web app to observe how the spread of philosophers changed throughout the years.  Though some philosophers moved far away from their birthplaces sometime in their life, a majority remained in or close to their hometowns, so I determined these special exceptions to not be very important.
 
+*The web scraping process can be found in the [scrapers](scrapers) directory*
+
 # Data Munging
-*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
 
 ### Missing Data
 
@@ -48,9 +48,9 @@ Due to the fact that my data was obtained from various sites, there were many en
 
 <img align="left" src="visualizations/slide_vis/google_search.png" width="60%">
 
-Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element (right) containing the value in interest; a majority of the missing values were filled in this way.
+Where possible, missing data was filled in through utilizing Selenium to perform google seaches.  Many searches returned an element (left) containing the value in interest; a majority of the missing values were filled in this way.
 
-Nonetheless, this method wasn't perfect and there were multiple times there was no element like the one pictured to the right.  In cases like these, the code was paused and the value was entered manually by examining the existing search results.
+Nonetheless, this method wasn't perfect and there were multiple times the search returned no element like the one pictured.  In cases like these, the code was paused and the value was entered manually by examining the existing search results.
 
 Other missing values, such as time period, were calculated using values from other philosophers in the dataset.
 
@@ -58,8 +58,20 @@ Other missing values, such as time period, were calculated using values from oth
 
 Even after the above process was completed, there were still some philosophers with no document data.  Any philosophers for which this was the case were dropped.  As for philosophers with only one document, them and their documents were removed from the datasets if their document was less than 30,000 words.
 
+*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
+
+### Challenges
+There were some inherent challenges associated with this project, particularly due to the limited resources.
+
+<img align="left" src="visualizations/data_vis/docs_philosopher.png" width="48.2%">
+
+<img align="left" src="visualizations/data_vis/document_lengths.png" width="46.3%">
+
+One of the biggest challenges was obtaining a truly representative dataset.  In the graph on the above left, the x-axis is the number of documents, and the y-axis is the number of philosophers with that number of documents.  It can be seen that a majority of philosophers have anywhere from 1-4 documents, and very few have more than 10.  Most of the philosophers have written many more texts than were in my dataset.  Despite this fact, the results were still quite good.
+
+Another initial worry was the overwhelming difference in document lengths.  My dataset contained documents ranging from short essays to full books, and this can be seen through the distribution of document lengths (above left).  The graph is actually zoomed in to get a better idea of the distribution.  There were documents with over 100,000 words - with the largest being over 800,000 - while there were also many under 10,000 - the shortest being 669 words.  This challenge proved easy to solve however, as described in the text cleaning section.
+
 # Text Cleaning & Processing
-*The text cleaning process can be found in [text_processing.py](text_processing.py)*
 
 ### Misspellings
 In the process of obtaining data from the [Internet Archive](https://www.archive.org), I had noticed that the plain text of some documents appeared to be scanned (below).  The books that were scanned appeared to be written in a font where some of the "s" characters looked like "f".  As can be seen from the images below, this could arise some serious problems if one tried to run any type of analysis on the document below.
@@ -92,8 +104,18 @@ False
 ```
 As can be seen, the words suggested by PyEnchant aren't anywhere close to the word "imagine".  Despite this caveat, the results of my text analysis suggest PyEnchant did relatively well in fixing a majority of the misspellings, and these edge cases likely did not have a significant effect.  Furthermore, as there is no way to know what the word is supposed to be without manually looking at the context, these edge cases would prove to be very difficult to account for.
 
-It should be noted that I also attempted to use a package called [autocorrect](https://pypi.python.org/pypi/autocorrect/0.1.0), which is based off of [this short article](http://norvig.com/spell-correct.html) by Peter Norvig.  However, it performed much slower.
-
 This process took quite long.  Even running on an Amazon AWS compute-optimized EC2 instance and utilizing 15 cores, the process still took 7-8 hours to complete.
 
-### Extracting Parts of Speech
+### Preparing Texts
+
+Once misspellings were fixed, I moved to preparing the texts for analysis.  A majority of my process was inspired these two articles, which provided me advice about possible problems that I had to consider prior to performing any analysis:
+* [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
+* [Preprocessing — Text Analysis with Topic Models for the Humanities and Social Sciences](https://de.dariah.eu/tatom/preprocessing.html)
+
+### Part of Speech Tagging
+Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document and using POS tagging, extracting only the nouns from the text.  This process proved quite fast thanks to spaCy's multi-threading functionality, which is efficient and effective due to spaCy's being written in Cython.
+
+#### Breaking it up
+At the advisement of the above articles, I chose to divide any documents over 1500 words into chunks of about 1000 words.  The reasoning for this is that 1000 words is generally long enough to elaborate on a topic, while being short enough that many topics don't get mixed together.
+
+*The text cleaning process can be found in [text_processing.py](text_processing.py)*
