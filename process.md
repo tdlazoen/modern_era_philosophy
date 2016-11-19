@@ -88,6 +88,7 @@ In the process of obtaining data from the [Internet Archive](https://www.archive
 
 In order to solve this problem, I utilized the Python package [PyEnchant](http://pythonhosted.org/pyenchant/), which has the functionality to check whether a word is actually an english word and, if not, suggest possible replacements.  
 ```python
+# A short example showing PyEnchant's functionality
 >>> import enchant
 >>> d = enchant.Dict('en_US') # Loads the US English dictionary of words
 >>> d.check("confideration") # Checks if argument is a real word
