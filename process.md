@@ -89,13 +89,13 @@ In the process of obtaining data from the [Internet Archive](https://www.archive
 In order to solve this problem, I utilized the Python package [PyEnchant](http://pythonhosted.org/pyenchant/), which has the functionality to check whether a word is actually an english word and, if not, suggest possible replacements.  
 ```python
 >>> import enchant
->>> d = enchant.Dict('en_US')
->>> d.check("confideration")
+>>> d = enchant.Dict('en_US') # Loads the US English dictionary of words
+>>> d.check("confideration") # Checks if argument is a real word
 False
->>> d.suggest("confideration")
+>>> d.suggest("confideration") # Suggests possible replacements for a string
 ['consideration', 'confederation', 'confide ration', 'configuration', 'confidential', 'confider', 'confirmation']
 ```
-PyEnchant lists possible suggestions from highest to lowest probability.  Therefore, to fix misspellings in my text, I checked if each word was in the english dictionary.  If not, I would replace it with the most likely replacement according to PyEnchant.  
+PyEnchant lists possible suggestions from highest to lowest probability.  Therefore, to fix misspellings in my text, I checked if each word was in the US English dictionary.  I chose to use the US English dictionary due to many translators being American.  If the word was not in the dictionary, I would replace it with the most likely replacement according to PyEnchant.  
 
 Though in most cases it performed great, it's not perfect.  It doesn't perform so well on the the mispelled word "lnagin" (meant to be "imagine") from the image above (blue box)
 ```python
