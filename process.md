@@ -58,7 +58,7 @@ Other missing values, such as time period, were calculated using values from oth
 
 Even after the above process was completed, there were still some philosophers with no document data.  Any philosophers for which this was the case were dropped.  As for philosophers with only one document, them and their documents were removed from the datasets if their document was less than 30,000 words.
 
-*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
+After all the entries with insufficient data were dropped, 143 philosophers and 453 documents remained.
 
 ### Challenges
 There were some inherent challenges associated with this project, particularly due to the limited resources.
@@ -70,6 +70,8 @@ There were some inherent challenges associated with this project, particularly d
 One of the biggest challenges was obtaining a truly representative dataset.  In the graph on the above left, the x-axis is the number of documents, and the y-axis is the number of philosophers with that number of documents.  It can be seen that a majority of philosophers have anywhere from 1-4 documents, and very few have more than 10.  Most of the philosophers have written many more texts than were in my dataset.  Despite this fact, the results were still quite good.
 
 Another initial worry was the overwhelming difference in document lengths.  My dataset contained documents ranging from short essays to full books, and this can be seen through the distribution of document lengths (above left).  The graph is actually zoomed in to get a better idea of the distribution.  There were documents with over 100,000 words - with the largest being over 800,000 - while there were also many under 10,000 - the shortest being 669 words.  This challenge proved easy to solve however, as described in the text cleaning section.
+
+*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
 
 # Text Cleaning & Processing
 
@@ -107,15 +109,18 @@ As can be seen, the words suggested by PyEnchant aren't anywhere close to the wo
 This process took quite long.  Even running on an Amazon AWS compute-optimized EC2 instance and utilizing 15 cores, the process still took 7-8 hours to complete.
 
 ### Preparing Texts
-
 Once misspellings were fixed, I moved to preparing the texts for analysis.  A majority of my process was inspired these two articles, which provided me advice about possible problems that I had to consider prior to performing any analysis:
 * [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
 * [Preprocessing — Text Analysis with Topic Models for the Humanities and Social Sciences](https://de.dariah.eu/tatom/preprocessing.html)
 
+#### Breaking it up
+At the advisement of the above articles, I chose to divide any large documents into chunks of about 1000 words.  The reasoning for this is that 1000 words is generally long enough to elaborate on a topic, while being short enough that many topics don't get mixed together.
+
+After this, the original 453 documents had been broken up into 23,411 documents of 500-1500 words in length.
+
 ### Part of Speech Tagging
 Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document and using POS tagging, extracting only the nouns from the text.  This process proved quite fast thanks to spaCy's multi-threading functionality, which is efficient and effective due to spaCy's being written in Cython.
 
-#### Breaking it up
-At the advisement of the above articles, I chose to divide any documents over 1500 words into chunks of about 1000 words.  The reasoning for this is that 1000 words is generally long enough to elaborate on a topic, while being short enough that many topics don't get mixed together.
-
 *The text cleaning process can be found in [text_processing.py](text_processing.py)*
+
+# Latent Dirichlet Allocation
