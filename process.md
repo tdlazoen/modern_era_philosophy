@@ -125,4 +125,4 @@ Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document 
 *The text cleaning process can be found in [text_processing.py](text_processing.py)*
 
 # Latent Dirichlet Allocation
-In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  There two topic modeling algorithms I found myself chossing between were Non-negative Matrix Factorization(NMF) and Latent Dirichlet Allocation(LDA).
+In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  There two topic modeling algorithms I found myself chossing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).
