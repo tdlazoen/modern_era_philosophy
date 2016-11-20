@@ -28,7 +28,7 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 *If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)*
 
 # Resources
-### Web Scraping
+### Data
 #### Philosopher Data
 * [Philosophy Basics](http://www.philosophybasics.com/historical.html)
 * [Famous Philosophers](http://famous-philosophers.com/)
@@ -89,7 +89,7 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 * [D3.js](https://d3js.org/)
 * [Leaflet.js](http://leafletjs.com/)
 
-# Learning
+### Learning
 * [Learning How to Build a Web Application](Learning How to Build a Web Application)
 * [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
 * [Exploring Topic Coherence over many models and many topics](http://aclweb.org/anthology/D/D12/D12-1087.pdf)
