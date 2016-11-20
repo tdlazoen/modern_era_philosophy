@@ -119,9 +119,10 @@ At the advisement of the above articles, I chose to divide any large documents i
 
 After this, the original 453 documents had been broken up into 23,411 documents of 500-1500 words in length.
 
-### Part of Speech Tagging
-Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document and using POS tagging, extracting only the nouns from the text.  This process proved quite fast thanks to spaCy's multi-threading functionality, which is efficient and effective due to spaCy's being written in Cython.
+#### Part of Speech Tagging
+Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document and using POS tagging, extracting only the nouns from the text.  This process proved quite fast thanks to spaCy's multi-threading functionality, which is efficient and effective due to spaCy being written in Cython.
 
 *The text cleaning process can be found in [text_processing.py](text_processing.py)*
 
 # Latent Dirichlet Allocation
+In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  There two topic modeling algorithms I found myself chossing between were Non-negative Matrix Factorization(NMF) and Latent Dirichlet Allocation(LDA).

@@ -46,6 +46,7 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 #### Learning
 * [Learning How to Build a Web Application](Learning How to Build a Web Application)
 * [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
+* [Exploring Topic Coherence over many models and many topics](http://aclweb.org/anthology/D/D12/D12-1087.pdf)
 * [Preprocessing — Text Analysis with Topic Models for the Humanities and Social Sciences](https://de.dariah.eu/tatom/preprocessing.html)
 * [Introduction to SQLAlchmey](https://www.youtube.com/watch?v=woKYyhLCcnU)
 * [Dashing D3.js](https://www.dashingd3js.com/)
