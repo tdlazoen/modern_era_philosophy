@@ -86,7 +86,7 @@ def home():
     OUTPUT:
         Main page template
     '''
-    return render_template("index_with_visual.html")
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

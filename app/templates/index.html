@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
 
 <!-- Custom -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="static/css/index.css">
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
 <!-- Header -->
 <header>
   <a href="#page-top" class="page-scroll">
-    <img alt="Logo" src="../static/imgs/old_book.png">
+    <img alt="Logo" src="static/imgs/old_book.png">
   </a>
 </header>
 
@@ -46,6 +46,9 @@
     </button>
     <input type="range" id="time-slider" name="time-slider" value="1597" min="1597" max="2001"
         oninput="outputUpdate(value)">
+    <button type="button" id="question">
+      <i class="fa fa-question-circle" aria-hidden="true"></i>
+    </button>
   </div>
 
   <!-- Main story section -->
@@ -73,8 +76,6 @@
     </div>
     <div id="map"></div>
 
-    {% block philosopher %}{% endblock %}
-
     <!-- Philosopher time search -->
     <div class="search-bar">
       <input type="text" name="search" placeholder="e.g. John Locke">
@@ -87,6 +88,56 @@
       </div>
     </a>
   </div>
+
+  <div class="modal" id="howto">
+      <h1>How to Explore the Modern Era</h1>
+      <div id="instructions">
+          <h2><span>*</span> Click anywhere on the slider to jump through time</h2>
+          <br>
+          <h2 class="float"><span>*</span> Use the </h2>
+          <i class="fa fa-fast-backward" aria-hidden="true"></i>
+          <i class="fa fa-play" aria-hidden="true"></i>
+          <i class="fa fa-pause" aria-hidden="true"></i>
+          <i class="fa fa-stop" aria-hidden="true"></i>
+          <h2 class="float">buttons to travel through time</h2>
+          <h2><span>*</span> Jump to a certain philosopher's time by typing their</h2>
+          <h2>name in the search bar</h2>
+          <br>
+          <h2 class="float"><span>*</span> Click the </h2>
+          <img src="static/imgs/feather-pen.png" style="width: 3%; height: 6%; display: inline-block; vertical-align: top; margin-right: 10px;"/>
+          <h2 class="float"> to see the philosopher's name</h2>
+          <h2><span>*</span> Click on a philosopher's name to see a summary</h2>
+      </div>
+  </div>
+
+  <div class="modal philosopher-summary">
+      <div class="wrapper" style="background-image: url('static/imgs/old-paper.jpg')">
+          <span class="close">X</span>
+          <h1>Hello!</h1>
+          <div class="summary">
+            <img />
+            <h2><strong>Summary</strong></h2>
+            <p id="summary">
+            </p>
+            <h2><strong>Similar Philosophers</strong></h2>
+            <ul id="similar">
+            </ul>
+          </div>
+          <div class="info">
+              <h2><strong>Year of Birth</strong></h2>
+              <p id="year-born"></p>
+              <h2><strong>Year of Death</strong></h2>
+              <p id="year-died"></p>
+              <h2><strong>Top 2 Topics</strong></h2>
+              <ul id="topics">
+              </ul>
+              <h2><strong>List of Documents</strong></h2>
+              <ul id="documents">
+              </ul>
+          </div>
+      </div>
+  </div>
+
 </section>
 
 <!-- Credits Section -->
@@ -197,7 +248,8 @@
 <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 
 <!-- Custom -->
-<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script type="text/javascript" src="static/js/index.js"></script>
+<script type="text/javascript" src="static/js/visuals.js"></script>
 
 {% block visuals %}{% endblock %}
 {% endblock %}

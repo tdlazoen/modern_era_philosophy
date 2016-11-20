@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    height: 15%%;
+    height: 15%;
     width: 10%;
     padding: 2.5% 5%;
     position: fixed;
@@ -88,6 +88,8 @@ a.begin i {
 }
 
 div.controls {
+    position: absolute;
+    top: 127%;
     background-color: #492D1F;
     height: 12%;
     width: 100%;
@@ -213,12 +215,18 @@ input[type=range]:focus::-ms-fill-upper {
     position: relative;
     margin-top: 14px;
     margin-right: 12px;
-    width: 86%;
+    width: 84%;
     float: left;
     border-radius: 25px;
 }
 
+#question {
+    padding-top: 0;
+    font-size: 2em;
+}
+
 div.journey {
+    margin-top: 6.5%;
     position: relative;
     height: 88%;
     overflow: hidden;
@@ -396,6 +404,18 @@ a[href="#credits"] {
     cursor: pointer;
 }
 
+.blur {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
+.extra-focus {
+    z-index: 998;
+}
+
 div.summary {
     float: left;
     padding-top: 0;
@@ -458,6 +478,56 @@ div.info li a:hover {
     text-decoration: underline;
 }
 
+div#howto {
+    padding-top: 6%;
+}
+
+div#howto h1 {
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 7em;
+    margin-bottom: 40px;
+    text-shadow: -3px 1px 3px rgba(0,0,0,0.4),
+                 -3px 2px 13px rgba(0,0,0,0.1),
+                 -3px 4px 23px rgba(0,0,0,0.1);
+}
+
+div#instructions {
+    margin: 0 auto;
+    width: 65s%;
+}
+
+div#instructions h2 {
+    color: white;
+    font-family: 'Ledger', serif;
+    font-size: 2.5em;
+    text-shadow: -3px 1px 3px rgba(0,0,0,0.4),
+                 -3px 2px 13px rgba(0,0,0,0.1),
+                 -3px 4px 23px rgba(0,0,0,0.1);
+}
+
+div#instructions h2.float {
+    display: inline;
+}
+
+div#instructions h2 span {
+    font-size: 1.4em;
+    color: #D2B48C;
+}
+
+div#instructions i {
+    background: transparent;
+    display: inline;
+    vertical-align: top;
+    color: #DAA520;
+    border: none;
+    font-size: 1.8em;
+    margin-right: 5px;
+    text-shadow: -3px 4px 3px rgba(0,0,0,0.4),
+                 -3px 8px 13px rgba(0,0,0,0.1),
+                 -3px 18px 23px rgba(0,0,0,0.1);
+}
+
 .go-back-story {
     position: absolute;
     top: 1%;
@@ -510,7 +580,7 @@ div.info li a:hover {
 }
 
 #credits div.packages-used {
-    padding-left: 10%;
+    margin: auto;
 }
 
 #credits div.made-possible h1 {

@@ -89,6 +89,22 @@ $("#stop").click(function(e) {
     });
 });
 
+// Show info on how to use app
+$("#question").click(function(e) {
+    e.preventDefault()
+    $("#map, #topic-bars, output, .more-info").addClass("blur")
+    $("div.search-bar, div.controls").addClass("extra-focus")
+
+    $("#howto").fadeIn(1000, function() {
+        $(this).click(function(e) {
+            e.preventDefault()
+            $("#map, #topic-bars, output, .more-info").removeClass("blur")
+            $("div.search-bar, div.controls").removeClass("extra-focus")
+            $(this).fadeOut(1000)
+        });
+    });
+});
+
 // Reset if one more time button clicked
 $(".go-back-story").click(function(e) {
     e.preventDefault()
