@@ -126,3 +126,5 @@ Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document 
 
 # Latent Dirichlet Allocation
 In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  There two topic modeling algorithms I found myself chossing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).
+
+***This README is still a work in progress***
