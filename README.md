@@ -8,7 +8,7 @@ My goal with this project was to analyze the relationship between philosophy and
 
 # The Process
 
-<img align="left" src="visualizations/slide_vis/Workflow.png" width="65%">
+<img align="left" src="visualizations/slide_vis/workflow.png" width="65%">
 
 The first step of the process was web scraping various websites to obtain philosopher information as well as the full texts and other data for philosophical texts.
 
