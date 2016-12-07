@@ -324,7 +324,7 @@ div#map {
     background-color: #8eaecc;
 }
 
-span:hover {
+span.phil-sum:hover {
     text-decoration: underline;
     color: #8eaecc;
     cursor: pointer;
@@ -479,14 +479,16 @@ div.info li a:hover {
 }
 
 div#howto {
-    padding-top: 6%;
+    position: absolute;
+    top: 139%;
+    text-align: center;
 }
 
 div#howto h1 {
     color: white;
     font-family: 'Dancing Script', cursive;
     font-size: 7em;
-    margin-bottom: 40px;
+    margin: 5px auto;
     text-shadow: -3px 1px 3px rgba(0,0,0,0.4),
                  -3px 2px 13px rgba(0,0,0,0.1),
                  -3px 4px 23px rgba(0,0,0,0.1);
@@ -494,7 +496,8 @@ div#howto h1 {
 
 div#instructions {
     margin: 0 auto;
-    width: 65s%;
+    text-align: center;
+    width: 65%;
 }
 
 div#instructions h2 {
@@ -504,6 +507,10 @@ div#instructions h2 {
     text-shadow: -3px 1px 3px rgba(0,0,0,0.4),
                  -3px 2px 13px rgba(0,0,0,0.1),
                  -3px 4px 23px rgba(0,0,0,0.1);
+}
+
+div#instructions h2:nth-of-type(1) {
+    margin-top: 0;
 }
 
 div#instructions h2.float {

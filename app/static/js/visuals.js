@@ -245,15 +245,6 @@ function updateBarChart(currentInfo) {
 
 }
 
-$(window).load(function() {
-    $("#home h1:nth-of-type(1)").fadeIn(1000, function() {
-        $("#home h1:nth-of-type(2)").fadeIn(1000, function() {
-            $("a.begin").fadeIn(1000)
-        });
-    });
-    $("#time-slider").val("1597").change();
-});
-
 function doNothing() {
     return
 }

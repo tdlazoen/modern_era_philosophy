@@ -1,6 +1,24 @@
 // Ensure user always begins at top of page
 $(window).load(function() {
     $(this).scrollTop()
+    $("#home h1:nth-of-type(1)").fadeIn(1000, function() {
+        $("#home h1:nth-of-type(2)").fadeIn(1000, function() {
+            $("a.begin").fadeIn(1000)
+        });
+    });
+    $("div#howto").show(function() {
+        $("#map, #topic-bars, output, .more-info").addClass("blur")
+        $("div.search-bar, div.controls").addClass("extra-focus")
+
+        $(this).click(function(e) {
+            e.preventDefault()
+            $("#map, #topic-bars, output, .more-info").removeClass("blur")
+            $("div.search-bar, div.controls").removeClass("extra-focus")
+            $(this).fadeOut(1000)
+        });
+    });
+    $("#time-slider").val("1597").change();
+
 });
 
 // Scroll to story section from home page
@@ -24,14 +42,6 @@ $("#time-slider").click(function(e) {
 $("#time-slider").on("change", function(e) {
     e.preventDefault();
     var value = $(this).val();
-    if (value === "2001") {
-        $(".go-back-story div").text("One More Time? ")
-                               .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
-    }
-    else {
-        $(".go-back-story div p").text("Continue The Journey ")
-                                 .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
-    };
     $("div#topic-bars #header").text("Top 5 Topics for " + String(value))
 });
 
@@ -103,15 +113,6 @@ $("#question").click(function(e) {
             $(this).fadeOut(1000)
         });
     });
-});
-
-// Reset if one more time button clicked
-$(".go-back-story").click(function(e) {
-    e.preventDefault()
-    $(this).text("Continue The Journey ")
-                             .append('<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>')
-    $("#time-slider").val("1597").change();
-    $("#time").val("1597").change();
 });
 
 function clearIntervals(obj) {
