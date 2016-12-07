@@ -1,4 +1,4 @@
-# This was made for a general purpose linux ami
+# This file currently only works for ubuntu and Mac systems
 
 # touch ~/.bash_profile
 echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
