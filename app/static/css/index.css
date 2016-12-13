@@ -630,6 +630,7 @@ div#instructions i {
 #credits div.special-thanks p {
     font-family: 'Ledger', serif;
     font-size: 1.5em;
+    font-weight: normal;
 }
 
 #github {
@@ -650,8 +651,9 @@ div#instructions i {
     display: inline;
 }
 
-div#contact{
+div#contact, div#behind-scenes {
     text-align: center;
+    font-weight: normal;
 }
 
 div#sites a {
