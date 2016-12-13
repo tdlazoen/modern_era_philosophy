@@ -253,14 +253,14 @@ if __name__ == '__main__':
         lda = pickle.load(f)
 
     phils, docs = ModernPhilosophers(), ModernDocuments()
-#
+
     docs_by_century(docs, filepath='visualizations/data_vis/docs_century.png')
     docs_by_philosopher(phils, docs, filepath='visualizations/data_vis/docs_philosopher.png')
-    # word_distribution_plots(docs, filepath='visualizations/data_vis/word_distributions.png')
-    # lda_word_dists(lda, filepath='visualizations/data_vis/lda-25-word-dists.png')
-    # topic_distribution(lda, filepath='visualizations/data_vis/lda-25-topic-dist.png')
+    word_distribution_plots(docs, filepath='visualizations/data_vis/word_distributions.png')
+    lda_word_dists(lda, filepath='visualizations/data_vis/lda-25-word-dists.png')
+    topic_distribution(lda, filepath='visualizations/data_vis/lda-25-topic-dist.png')
     document_length_distribution(docs, filepath='visualizations/data_vis/document_lengths.png')
-    # for topic_id in range(lda.num_topics):
-    #     print("Getting word cloud for topic {}".format(topic_id))
-    #     filepath = 'visualizations/word_clouds/topics_25/topic{}.png'.format(topic_id)
-    #     word_cloud(lda, topic_id, filepath)
+    for topic_id in range(lda.num_topics):
+        print("Getting word cloud for topic {}".format(topic_id))
+        filepath = 'visualizations/word_clouds/topics_25/topic{}.png'.format(topic_id)
+        word_cloud(lda, topic_id, filepath)
