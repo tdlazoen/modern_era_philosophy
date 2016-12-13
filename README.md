@@ -22,10 +22,10 @@ An app was created using Flask and front end web development technologies to vis
 
 Although we used Python 2 throughout the program, I opted to use Python 3 for my project due to my project centering around Natural Language Processing.  Python 3's treatment of all text as unicode would remove the headache of dealing with both string and unicode data types.
 
-*This provides a high-level summary of my project and the results obtained.  For a deeper dive into the process, see [process.md](process.md)*
+***This provides a high-level summary of my project and the results obtained.  For a deeper dive into the process, see [process.md](process.md)***
 
 # Insights & Results
-*If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)*
+***If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)***
 
 # Special Thanks
 I want to extend my thanks to Galvanize for granting me the opportunity to attend the Data Science Immersive program, as well as the Galvanize community for the daily encouragement and support I received during the program.  I'd like to especially thank all of my classmates and instructors for everything I've learned from them.  Each and every one made motivated me to improve every day and made this program very fun!  I've grown so much thanks to all of them, and I will treasure the things they have given me for the rest of my life.

@@ -42,7 +42,7 @@ Though my final scope was smaller than initially planned, it allowed for closer 
 ### Obtaining Extra Data
 In addition to the data obtained from the process above, I was interested in obtaining extra information for my analysis.  Utilizing Selenium, I was able to obtain the birthplace and nationality of each philosopher, which was eventually used in my web app to observe how the spread of philosophers changed throughout the years.  Though some philosophers moved far away from their birthplaces sometime in their life, a majority remained in or close to their hometowns, so I determined these special exceptions to not be very important.
 
-*The web scraping process can be found in the [scrapers](scrapers) directory*
+***The web scraping process can be found in the [scrapers](scrapers) directory***
 
 # Data Munging
 
@@ -75,7 +75,7 @@ One of the biggest challenges was obtaining a truly representative dataset.  In 
 
 Another initial worry was the overwhelming difference in document lengths.  My dataset contained documents ranging from short essays to full books, and this can be seen through the distribution of document lengths (above left).  The graph is actually zoomed in to get a better idea of the distribution.  There were documents with over 100,000 words - with the largest being over 800,000 - while there were also many under 10,000 - the shortest being 669 words.  This challenge proved easy to solve however, as described in the text cleaning section.
 
-*The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)*
+***The data cleaning process can be found in [clean_dfs.py](clean_dfs.py)***
 
 # Text Cleaning & Processing
 
@@ -129,7 +129,7 @@ After this, the original 453 documents had been broken up into 23,411 documents 
 #### Part of Speech Tagging
 Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document and using POS tagging, extracting only the nouns from the text.  This process proved quite fast thanks to spaCy's multi-threading functionality, which is efficient and effective due to spaCy being written in Cython.
 
-*The text cleaning process can be found in [text_processing.py](text_processing.py)*
+***The text cleaning process can be found in [text_processing.py](text_processing.py)***
 
 # Latent Dirichlet Allocation
 In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  The two topic modeling algorithms I found myself choosing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).  I decided on LDA, since it's use of a Dirichlet prior allows for increased variation of the topic and word distributions for the corpus.  Furthermore, [this paper by Stevens, Keith et. al.](http://aclweb.org/anthology/D/D12/D12-1087.pdf) shows LDA often outperforming NMF in both consistency and topic coherence.
