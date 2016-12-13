@@ -27,7 +27,9 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 # Insights & Results
 ****If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)***
 
-The final LDA model chosen 
+The number of topics chosen for the final model was 25 topics.  This is because the results of running LDA with both 150 and 50 topics resulted in either repeat or incoherent topics being identified.  While there is a couple of general topics within the 25-topic model that are harder to identify, there are already very specific topics present, and increasing the number of topics could result in more repeat or incoherent topics.
+
+
 
 # Special Thanks
 I want to extend my thanks to Galvanize for granting me the opportunity to attend the Data Science Immersive program, as well as the Galvanize community for the daily encouragement and support I received during the program.  I'd like to especially thank all of my classmates and instructors for everything I've learned from them.  Each and every one made motivated me to improve every day and made this program very fun!  I've grown so much thanks to all of them, and I will treasure the things they have given me for the rest of my life.
