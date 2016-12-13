@@ -22,7 +22,7 @@ An app was created using Flask and front end web development technologies to vis
 
 Although we used Python 2 throughout the program, I opted to use Python 3 for my project due to my project centering around Natural Language Processing.  Python 3's treatment of all text as unicode would remove the headache of dealing with both string and unicode data types.
 
-***This provides a high-level summary of my project and the results obtained.  For a deeper dive into the process, see [process.md](process.md)***
+****This provides a high-level summary of my project and the results obtained.  For a deeper dive into the process, see [process.md](process.md)***
 
 # Insights & Results
 ****If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)***
