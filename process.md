@@ -1,5 +1,9 @@
-# Web Scraping
+***NOTE: This README is still a work in progress***
 
+# Defining Scope
+When I first began this project, I had hoped to analyze philosophical thought from around 600 BC to 2016.  Many of my earlier scrapers and files were made with this plan in mind.  Throughout the data collection process, however, it became apparent that the resources needed for this scope just weren't available online.  Because of this, the scope was reduced to only the modern era of philosophy, and the files from that point on were written with this scope in mind.
+
+# Web Scraping
 The first step in the process was data collection.  Both philosopher data and document data was needed to obtain insights through the analysis.  Eleven websites were scraped in total, resulting in the collection of data on over 200 philosophers and about 500 documents.  These numbers were later lowered during the data cleaning process.
 
 I began by scraping for philosopher data, and then using the names I had collected scraped websites for documents by each respective philosopher.
@@ -114,6 +118,9 @@ Once misspellings were fixed, I moved to preparing the texts for analysis.  A ma
 * [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
 * [Preprocessing — Text Analysis with Topic Models for the Humanities and Social Sciences](https://de.dariah.eu/tatom/preprocessing.html)
 
+#### Removing Stop Words
+
+
 #### Breaking it up
 At the advisement of the above articles, I chose to divide any large documents into chunks of about 1000 words.  The reasoning for this is that 1000 words is generally long enough to elaborate on a topic, while being short enough that many topics don't get mixed together.
 
@@ -125,6 +132,25 @@ Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document 
 *The text cleaning process can be found in [text_processing.py](text_processing.py)*
 
 # Latent Dirichlet Allocation
-In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  The two topic modeling algorithms I found myself chossing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).
+In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  The two topic modeling algorithms I found myself choosing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).  I decided on LDA, since it's use of a Dirichlet prior allows for increased variation of the topic and word distributions for the corpus.  Furthermore, [this paper by Stevens, Keith et. al.](http://aclweb.org/anthology/D/D12/D12-1087.pdf) shows LDA often outperforming NMF in both consistency and topic coherence.
 
-***This README is still a work in progress***
+I implemented LDA with three different numbers of topics - 150, 50, and 25.
+
+### 150 Topics
+
+### 50 Topics
+
+### Final Model - 25 Topics
+
+# Web Application
+
+### Databases with SQLAlchemy
+
+### Front End
+
+### Back End
+
+### Deployment
+
+# Insights & Results
+***For a summary of this interesting findings from this project, see [README.md](README.md)***
