@@ -14,7 +14,7 @@ The first step of the process was web scraping various websites to obtain philos
 
 Then missing information was accounted for and entries with insufficient information dropped.
 
-The full texts of the documents were then cleaned and prepared for analysis.  Latent Dirichlet Allocation was run on the prepped documents with varying topic sizes (150, 50, 25) and 30 passes.  The results of LDA were analyzed and utilized to glean insights into the data.  
+The full texts of the documents were then cleaned and prepared for analysis.  Latent Dirichlet Allocation (LDA) was run on the prepped documents with varying topic sizes (150, 50, 25) and 30 passes.  The results of LDA were analyzed and utilized to glean insights into the data.  
 
 These insights - along with the philosopher and document data - were then placed into an sqlite database using SQLAlchemy.
 
@@ -26,6 +26,8 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 
 # Insights & Results
 ****If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)***
+
+The final LDA model chosen 
 
 # Special Thanks
 I want to extend my thanks to Galvanize for granting me the opportunity to attend the Data Science Immersive program, as well as the Galvanize community for the daily encouragement and support I received during the program.  I'd like to especially thank all of my classmates and instructors for everything I've learned from them.  Each and every one made motivated me to improve every day and made this program very fun!  I've grown so much thanks to all of them, and I will treasure the things they have given me for the rest of my life.
