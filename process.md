@@ -118,9 +118,6 @@ Once misspellings were fixed, I moved to preparing the texts for analysis.  A ma
 * [“Secret” Recipe for Topic Modeling Themes](http://www.matthewjockers.net/2013/04/12/secret-recipe-for-topic-modeling-themes/)
 * [Preprocessing — Text Analysis with Topic Models for the Humanities and Social Sciences](https://de.dariah.eu/tatom/preprocessing.html)
 
-#### Removing Stop Words
-
-
 #### Breaking it up
 At the advisement of the above articles, I chose to divide any large documents into chunks of about 1000 words.  The reasoning for this is that 1000 words is generally long enough to elaborate on a topic, while being short enough that many topics don't get mixed together.
 
