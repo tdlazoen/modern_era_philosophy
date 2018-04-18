@@ -131,23 +131,5 @@ Utilizing the Python package [spaCy](https://spacy.io/), I parsed each document 
 # Latent Dirichlet Allocation
 In order to analyze change in philosophical thought over time, it was first important to identify topics being discussed within the documents.  The two topic modeling algorithms I found myself choosing between were Non-negative Matrix Factorization (NMF) and Latent Dirichlet Allocation (LDA).  I decided on LDA, since it's use of a Dirichlet prior allows for increased variation of the topic and word distributions for the corpus.  Furthermore, [this paper (Stevens et. al., 2012)](http://aclweb.org/anthology/D/D12/D12-1087.pdf) shows LDA often outperforming NMF in both consistency and topic coherence.
 
-I implemented LDA with three different numbers of topics - 150, 50, and 25.
-
-### 150 Topics
-
-### 50 Topics
-
-### Final Model - 25 Topics
-
-# Web Application
-
-### Databases with SQLAlchemy
-
-### Front End
-
-### Back End
-
-### Deployment
-
 # Insights & Results
 ****For a summary of this interesting findings from this project, see [README.md](README.md)***
