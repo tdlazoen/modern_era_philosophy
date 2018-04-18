@@ -1,5 +1,4 @@
 # A Journey Through Modern Era Philosophy
-This app is live at [philosophyjourney.com](http://philosophyjourney.com)
 
 # Motivation
 Philosophy is a prime example of ideas changing the world.  Whether it be economics, political ideology, the freedom of man, or even the law of gravity, these are all ideas that fall under the realm of philosophy and have shaped the world as we know it today.
@@ -25,7 +24,6 @@ Although we used Python 2 throughout the program, I opted to use Python 3 for my
 ****This provides a high-level summary of my project and the results obtained.  For a deeper dive into the process, see [process.md](process.md)***
 
 # Insights & Results
-****If you haven't already, the final product of this project as well as my contact information can be found at [philosophyjourney.com](http://philosophyjourney.com)***
 
 The number of topics chosen for the final model was 25 topics.  This is because the results of running LDA with both 150 and 50 topics resulted in either repeat or incoherent topics being identified.  While there is a couple of general topics within the 25-topic model that are harder to identify, there are already very specific topics present, and increasing the number of topics could result in more repeat or incoherent topics.
 
